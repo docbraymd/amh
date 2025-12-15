@@ -5,12 +5,26 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Patient Education | Archangel Michael Health</title>
 
-  <!-- Your shared stylesheet (GitHub Pages) -->
+  <!-- Shared stylesheet (GitHub Pages) -->
   <link rel="stylesheet" href="https://docbraymd.github.io/amh/style.css" />
 
-  <!-- Minimal page-local styles for the action buttons + print behavior -->
+  <!-- Minimal page-local styles for logo + action buttons + print behavior -->
   <style>
-    /* Action bar (kept small so your site-wide CSS remains the source of truth) */
+    /* Header logo */
+    .amh-logo-wrap{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      margin: 0 0 14px 0;
+    }
+    .amh-logo{
+      width: 110px;
+      height: auto;
+      display:block;
+      filter: drop-shadow(0 8px 18px rgba(0,0,0,0.22));
+    }
+
+    /* Action bar */
     .action-bar{
       display:flex;
       gap:12px;
@@ -51,6 +65,7 @@
       header{ background:#fff !important; color:#000 !important; border-bottom:2px solid #333 !important; }
       header h2{ opacity:1 !important; }
       .doctor-tag{ background:#fff !important; color:#000 !important; border:1px solid #333 !important; }
+      .amh-logo{ filter:none !important; }
       a{ color:#000 !important; text-decoration:underline !important; }
     }
   </style>
@@ -62,15 +77,22 @@
 <body>
   <div class="main-container" id="pdf-root" role="document">
     <header>
-      <div class="doctor-tag">Dr. Bray | Archangel Michael Health</div>
+      <!-- Logo -->
+      <div class="amh-logo-wrap">
+        <img class="amh-logo" src="https://docbraymd.github.io/amh/AMHLogo.png" alt="Archangel Michael Health logo" />
+      </div>
+
+      <!-- Green pill: practice only -->
+      <div class="doctor-tag">Archangel Michael Health</div>
 
       <h1 id="page-title">Condition Title</h1>
 
-      <h2>A Patient Guide to Lifestyle, Integrative and Conventional Treatment Options.</h2>
+      <!-- Shorter subtitle -->
+      <h2>Patient Guide: Lifestyle, Integrative &amp; Conventional Care</h2>
 
       <div class="byline">by Christopher L. Bray MD PhD</div>
 
-      <!-- Buttons (work reliably on GitHub Pages; no GoDaddy iframe constraints) -->
+      <!-- Buttons -->
       <div class="action-bar no-print" aria-label="Actions">
         <button class="amh-btn secondary" type="button" onclick="window.print()">
           Print / Save as PDF
@@ -87,7 +109,6 @@
         Avoid inline links; place references at the end.
       </p>
 
-      <!-- Table of contents (hash links are safe now that you’re not in GoDaddy) -->
       <div class="toc no-print" aria-label="On this page">
         <h4>On this page</h4>
         <ul>
@@ -97,7 +118,7 @@
           <li><a href="#drivers">Root causes and contributing factors</a></li>
           <li><a href="#plan">Step-by-step improvement plan</a></li>
           <li><a href="#treatments">Conventional treatments</a></li>
-          <li><a href="#integrative">Integrative options (supplements/herbs)</a></li>
+          <li><a href="#integrative">Integrative options</a></li>
           <li><a href="#costs">Cost considerations</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#references">References</a></li>
@@ -165,7 +186,7 @@
       <ul class="symptom-list">
         <li><strong>Sleep:</strong> Mechanisms, how to assess, practical first steps.</li>
         <li><strong>Nutrition:</strong> Common patterns that worsen/improve symptoms; realistic adjustments.</li>
-        <li><strong>Stress physiology:</strong> HPA-axis/autonomic patterns; actionable interventions.</li>
+        <li><strong>Stress physiology:</strong> Autonomic patterns; actionable interventions.</li>
         <li><strong>Environment/exposures:</strong> Triggers and mitigation strategies.</li>
       </ul>
 
@@ -212,7 +233,7 @@
         </div>
       </div>
 
-      <h3 id="integrative">Integrative options (supplements/herbs)</h3>
+      <h3 id="integrative">Integrative options</h3>
       <p>
         Include evidence strength, plausible mechanisms, safety/interaction cautions, and realistic cost. Avoid overpromising.
       </p>
@@ -258,6 +279,7 @@
         <div class="medical-disclaimer">
           <p><strong>Medical disclaimer:</strong> The information on this page is provided for general educational purposes only and is not medical advice. It is not intended to diagnose, treat, cure, or prevent any disease, and it does not establish a physician–patient relationship.</p>
           <p>Do not apply this information to your specific situation without the oversight of a qualified clinician who can consider your full health history, medications, goals, preferences, and limitations. If you have urgent or severe symptoms, seek emergency care.</p>
+          <p style="margin: 0;"><strong>Copyright:</strong> © Dr. Bray at Archangel Michael Health 2025</p>
         </div>
 
         <p><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine</p>
@@ -293,21 +315,17 @@
         btn.disabled = true;
         btn.textContent = "Preparing PDF...";
 
-        var title = document.getElementById("page-title")?.textContent || "Patient Guide";
+        var title = (document.getElementById("page-title") && document.getElementById("page-title").textContent) || "Patient Guide";
         var filename = safeFilename(title) + ".pdf";
 
-        // Clone the content so we can omit interactive UI in the PDF, if needed
+        // Clone content for PDF and remove UI elements
         var source = document.getElementById("pdf-root").cloneNode(true);
-
-        // Remove elements we never want in the downloaded PDF
         source.querySelectorAll(".no-print").forEach(function (el) { el.remove(); });
 
-        // Create a temporary container for rendering
         var wrapper = document.createElement("div");
         wrapper.style.background = "#ffffff";
         wrapper.appendChild(source);
 
-        // html2pdf settings tuned for Letter size clinical handout
         var opt = {
           margin: [0.5, 0.5, 0.6, 0.5], // inches
           filename: filename,
