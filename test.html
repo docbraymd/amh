@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Test Patient Education Page | Archangel Michael Health</title>
+
+  <!-- Shared CSS hosted on GitHub Pages -->
+  <link rel="stylesheet" href="https://docbraymd.github.io/amh/style.css" />
+</head>
+
+<body>
+  <div class="main-container">
+    <header>
+      <div class="doctor-tag">Dr. Bray | Archangel Michael Health</div>
+      <h1 id="page-title">Test Page Title</h1>
+      <h2>A Patient Guide to Lifestyle, Integrative and Conventional Treatment Options.</h2>
+      <div class="byline">by Christopher L. Bray MD PhD</div>
+    </header>
+
+    <div class="content-body">
+      <p>
+        This is a reusable template intended to render cleanly inside GoDaddy’s custom-code environment while maintaining
+        a consistent “house style” across all patient education pages.
+      </p>
+
+      <!-- TOC uses buttons + JS scrolling to avoid GoDaddy frame-in-frame behavior from hash links -->
+      <div class="toc" aria-label="On this page">
+        <h4>On this page</h4>
+        <ul>
+          <li><button type="button" class="toc-btn" data-scroll="section-1">1. Overview and key points</button></li>
+          <li><button type="button" class="toc-btn" data-scroll="section-2">2. Symptoms and red flags</button></li>
+          <li><button type="button" class="toc-btn" data-scroll="section-3">3. Diagnosis and what to test</button></li>
+          <li><button type="button" class="toc-btn" data-scroll="section-4">4. Treatment options</button></li>
+          <li><button type="button" class="toc-btn" data-scroll="section-5">5. Action plan and tracking</button></li>
+          <li><button type="button" class="toc-btn" data-scroll="references">References</button></li>
+        </ul>
+      </div>
+
+      <h3 id="section-1">1. Overview and key points</h3>
+      <p>
+        Use this section for the condition overview: what it is, why it matters, common misconceptions, and what usually
+        works first. Avoid inline links; place references at the end.
+      </p>
+      <ul class="symptom-list">
+        <li><strong>Key point:</strong> Brief, high-yield point written in patient-accessible medical language.</li>
+        <li><strong>Key point:</strong> Add risks/benefits framing when patients must make tradeoffs.</li>
+        <li><strong>Key point:</strong> Include “when to escalate care” language.</li>
+      </ul>
+
+      <h3 id="section-2">2. Symptoms and red flags</h3>
+      <h4>Common symptoms</h4>
+      <ul class="symptom-list">
+        <li>Symptom 1 (add short description)</li>
+        <li>Symptom 2 (add short description)</li>
+        <li>Symptom 3 (add short description)</li>
+      </ul>
+
+      <div class="alert-box">
+        <h4>Urgent guidance (red flags)</h4>
+        <p>
+          List symptoms that warrant urgent evaluation or emergency care (tailor per condition).
+        </p>
+      </div>
+
+      <h3 id="section-3">3. Diagnosis and what to test</h3>
+      <div class="clinical-note">
+        <h4>Clinical note</h4>
+        <p>
+          Use this block for nuance: overlapping conditions, common pitfalls, and how diagnosis changes management.
+        </p>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Testing approach</div>
+          <div class="rx-type">DIAGNOSTICS</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">High-yield history</div>
+          <div>Key questions that change management.</div>
+
+          <div class="rx-label">Core testing</div>
+          <div>Minimum useful tests and what they show.</div>
+
+          <div class="rx-label">When to expand</div>
+          <div>Additional tests only if they change next-step decisions.</div>
+
+          <div class="rx-label">Limitations</div>
+          <div>False positives/negatives, confounders, and interpretation pitfalls.</div>
+        </div>
+      </div>
+
+      <h3 id="section-4">4. Treatment options</h3>
+      <p>
+        Use RX cards for conventional medications, lifestyle changes, and integrative options. Keep dosing non-prescriptive
+        (general patterns), and include safety/interaction highlights.
+      </p>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Lifestyle intervention</div>
+          <div class="rx-type">FOUNDATION</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">What it is</div>
+          <div>Sleep, nutrition, exercise, trigger reduction, stress physiology.</div>
+
+          <div class="rx-label">How it works</div>
+          <div>Mechanism and expected timeframe to see benefit.</div>
+
+          <div class="rx-label">Typical usage</div>
+          <div>Concrete plan with frequency/duration and a tracking metric.</div>
+
+          <div class="rx-label">Cost</div>
+          <div>Free/low-cost vs paid options.</div>
+
+          <div class="rx-label">Risks</div>
+          <div>Who should consult a clinician before starting.</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Conventional medication</div>
+          <div class="rx-type">STANDARD</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">What it is</div>
+          <div>Medication class and typical role in care.</div>
+
+          <div class="rx-label">How it works</div>
+          <div>Mechanism at an advanced-patient level.</div>
+
+          <div class="rx-label">Side effects</div>
+          <div>Common vs serious; monitoring considerations.</div>
+
+          <div class="rx-label">Cost</div>
+          <div>Generic vs brand; typical out-of-pocket range.</div>
+
+          <div class="rx-label">Notes</div>
+          <div>Who benefits most; who should avoid.</div>
+        </div>
+      </div>
+
+      <div class="success-box">
+        <h4>Practical success criteria</h4>
+        <p>
+          Define what “better” looks like using measurable metrics (symptom frequency, rescue use, BP, weight trend,
+          sleep quality, etc.), and when to reassess.
+        </p>
+      </div>
+
+      <h3 id="section-5">5. Action plan and tracking</h3>
+      <ul class="symptom-list">
+        <li><strong>Week 1–2:</strong> establish baseline and implement foundational changes.</li>
+        <li><strong>Week 3–6:</strong> add one focused intervention at a time; track response weekly.</li>
+        <li><strong>Week 6+:</strong> adjust, consider targeted testing, escalate care if not improving.</li>
+      </ul>
+
+      <h3 id="references">References</h3>
+      <p>References should appear only here (not inline in the body).</p>
+    </div>
+
+    <footer>
+      <div class="medical-disclaimer">
+        <p><strong>Medical disclaimer:</strong> The information on this page is provided for general educational purposes only and is not medical advice. It is not intended to diagnose, treat, cure, or prevent any disease, and it does not establish a physician–patient relationship.</p>
+        <p>Do not apply this information to your specific situation without the oversight of a qualified clinician who can consider your full health history, medications, goals, preferences, and limitations. If you have urgent or severe symptoms, seek emergency care.</p>
+      </div>
+
+      <p><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine</p>
+
+      <p class="references-block">
+        <strong>References &amp; Resources:</strong><br>
+        1. Reference title (URL): <a href="https://example.com" target="_blank" rel="noopener">https://example.com</a><br>
+        2. Reference title (URL): <a href="https://example.com" target="_blank" rel="noopener">https://example.com</a>
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      // ---- TOC scrolling (no #hash links; avoids GoDaddy frame-in-frame behavior) ----
+      function scrollToId(id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+
+        // Nudge resize after scroll to reduce clipping in some wrappers
+        if (typeof window.AMH_resizeIfFramed === "function") {
+          setTimeout(window.AMH_resizeIfFramed, 250);
+          setTimeout(window.AMH_resizeIfFramed, 900);
+        }
+      }
+
+      document.addEventListener("click", function (e) {
+        var btn = e.target.closest(".toc-btn[data-scroll]");
+        if (!btn) return;
+        e.preventDefault();
+        var target = btn.getAttribute("data-scroll");
+        if (target) scrollToId(target);
+      });
+
+      // ---- Auto-resize if GoDaddy renders this inside an iframe-like container ----
+      function getDocHeight() {
+        var body = document.body;
+        var html = document.documentElement;
+        return Math.max(
+          body.scrollHeight, body.offsetHeight,
+          html.clientHeight, html.scrollHeight, html.offsetHeight
+        );
+      }
+
+      function resizeIfFramed() {
+        if (!window.frameElement) return;
+        var h = getDocHeight() + 24; // buffer
+        window.frameElement.style.height = h + "px";
+        window.frameElement.style.width = "100%";
+        window.frameElement.style.border = "0";
+        window.frameElement.setAttribute("scrolling", "no");
+      }
+
+      window.AMH_resizeIfFramed = resizeIfFramed;
+
+      window.addEventListener("load", resizeIfFramed);
+      window.addEventListener("resize", resizeIfFramed);
+
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(resizeIfFramed).catch(function(){});
+      }
+
+      if (window.ResizeObserver) {
+        var ro = new ResizeObserver(function () { resizeIfFramed(); });
+        ro.observe(document.documentElement);
+      } else {
+        setInterval(resizeIfFramed, 1200);
+      }
+    })();
+  </script>
+</body>
+</html>
