@@ -79,12 +79,23 @@
       padding: 12px;
       border-bottom: 1px solid #eee;
       vertical-align: top;
+      line-height: 1.5;
     }
     .amh-table tr:last-child td {
       border-bottom: none;
     }
     .amh-table tr:nth-child(even) {
       background-color: #fafafa;
+    }
+
+    /* Reference Links */
+    .references-block a {
+      color: var(--accent-teal);
+      text-decoration: none;
+      border-bottom: 1px dotted var(--accent-teal);
+    }
+    .references-block a:hover {
+      border-bottom: 1px solid var(--accent-teal);
     }
 
     .no-print{ display:block; }
@@ -139,17 +150,20 @@
       <div class="toc no-print" aria-label="On this page">
         <h4>On this page</h4>
         <ul>
-          <li><button type="button" class="toc-btn" data-scroll="overview">1. When NOT to Order Tests</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="osteoarthritis">2. Integrative Strategy: Osteoarthritis</button></li>
+          <li><button type="button" class="toc-btn" data-scroll="when-not-to-order">1. When NOT to Order (False Positives)</button></li>
+          <li><button type="button" class="toc-btn" data-scroll="oa-strategy">2. Integrative Strategy: Osteoarthritis</button></li>
           <li><button type="button" class="toc-btn" data-scroll="inflammation">3. The Barometers: ESR &amp; CRP</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="ana">4. ANA &amp; Reflex Patterns</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="specifics">5. Specific Disease Antibodies</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="treatment">6. Medications &amp; Integrative Plan</button></li>
+          <li><button type="button" class="toc-btn" data-scroll="ana-reflex">4. ANA &amp; Reflex Table</button></li>
+          <li><button type="button" class="toc-btn" data-scroll="specific-antibodies">5. Specific Antibodies (Lupus/RA)</button></li>
+          <li><button type="button" class="toc-btn" data-scroll="genetics">6. Genetic HLA Testing</button></li>
+          <li><button type="button" class="toc-btn" data-scroll="root-causes">7. Root Causes &amp; Triggers</button></li>
+          <li><button type="button" class="toc-btn" data-scroll="medications">8. Standard Medications</button></li>
+          <li><button type="button" class="toc-btn" data-scroll="integrative-plan">9. Integrative Action Plan</button></li>
           <li><button type="button" class="toc-btn" data-scroll="references">References</button></li>
         </ul>
       </div>
 
-      <h3 id="overview">1. When NOT to Order Tests</h3>
+      <h3 id="when-not-to-order">1. When NOT to Order Tests</h3>
       <div class="clinical-note">
         <h4>The "False Positive" Trap</h4>
         <p>
@@ -159,27 +173,49 @@
 
       <div class="rx-card">
         <div class="rx-header">
-          <div class="rx-name">Symptoms that mimic Autoimmunity</div>
-          <div class="rx-type">CLINICAL PEARLS</div>
+          <div class="rx-name">Joint Pain</div>
+          <div class="rx-type">OSTEOARTHRITIS VS. RA</div>
         </div>
         <div class="rx-grid">
-          <div class="rx-label">Osteoarthritis vs. RA</div>
+          <div class="rx-label">Osteoarthritis (OA)</div>
           <div>
-            <strong>Osteoarthritis (OA):</strong> "Wear and tear." Pain gets worse with use. Stiffness &lt;30 min. Affects finger tips (DIPs) and knees. <strong>Do NOT order ANA.</strong><br>
-            <strong>Rheumatoid Arthritis (RA):</strong> Inflammatory. Pain gets better with movement. Stiffness &gt;1 hour. Affects knuckles (MCPs).
+            <strong>Mechanism:</strong> "Wear and tear." Pain gets <em>worse</em> with use/activity. Stiffness &lt;30 min. Affects finger tips (DIPs) and knees.<br>
+            <strong>Testing:</strong> <strong>Do NOT order ANA.</strong> It is usually irrelevant and misleading.
           </div>
 
-          <div class="rx-label">Rosacea vs. Lupus Rash</div>
+          <div class="rx-label">Rheumatoid Arthritis (RA)</div>
           <div>
-            <strong>Rosacea:</strong> Redness on cheeks/nose with pimples. Affects the smile lines (nasolabial folds). <strong>Do NOT order ANA.</strong><br>
-            <strong>Malar Rash (Lupus):</strong> "Butterfly" shape. Photosensitive. It <em>spares</em> the smile lines.
+            <strong>Mechanism:</strong> Inflammatory attack on synovium. Pain gets <em>better</em> with movement. Stiffness &gt;1 hour. Affects knuckles (MCPs) and wrists.<br>
+            <strong>Testing:</strong> <strong>Order RF and Anti-CCP.</strong>
           </div>
         </div>
       </div>
 
-      <h3 id="osteoarthritis">2. Integrative Strategy: Osteoarthritis</h3>
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Facial Rashes</div>
+          <div class="rx-type">ROSACEA VS. LUPUS</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Rosacea</div>
+          <div>
+            <strong>Appearance:</strong> Redness on cheeks/nose with pimples/pustules. Triggers include spicy food, heat, alcohol.<br>
+            <strong>Key Sign:</strong> Affects the smile lines (nasolabial folds).<br>
+            <strong>Testing:</strong> <strong>Do NOT order ANA.</strong>
+          </div>
+
+          <div class="rx-label">Malar Rash (Lupus)</div>
+          <div>
+            <strong>Appearance:</strong> "Butterfly" shape across cheeks and bridge of nose. Photosensitive (worse with sun).<br>
+            <strong>Key Sign:</strong> It <em>spares</em> the smile lines (the fold next to the nose remains pale).<br>
+            <strong>Testing:</strong> <strong>Order ANA.</strong>
+          </div>
+        </div>
+      </div>
+
+      <h3 id="oa-strategy">2. Integrative Strategy: Osteoarthritis</h3>
       <p>
-        If your pain is mechanical (Osteoarthritis) rather than autoimmune, ordering an ANA is not helpful. However, integrative medicine offers powerful tools beyond just Tylenol or surgery.
+        If your pain is mechanical (Osteoarthritis) rather than autoimmune, ordering an ANA is not helpful. However, integrative medicine offers powerful tools beyond just Tylenol or surgery to preserve cartilage and reduce pain.
       </p>
 
       <div class="rx-card">
@@ -190,7 +226,7 @@
         <div class="rx-grid">
           <div class="rx-label">Metabolic Weight Loss</div>
           <div>
-            Adipose tissue (fat) is not inert; it releases inflammatory cytokines called adipokines that actively degrade cartilage. Losing even 5-10% of body weight reduces both the mechanical load and the "chemical load" on your joints.
+            Adipose tissue (fat) is not inert; it releases inflammatory cytokines called <em>adipokines</em> that actively degrade cartilage. Losing even 5-10% of body weight reduces both the mechanical load and the "chemical load" on your joints.
           </div>
 
           <div class="rx-label">Movement is Medicine</div>
@@ -212,6 +248,8 @@
       </div>
 
       <h3 id="inflammation">3. The Barometers: ESR &amp; CRP</h3>
+      <p>Before identifying <em>what</em> is being attacked, we must establish if there is a systemic fire.</p>
+
       <div class="rx-card">
         <div class="rx-header">
           <div class="rx-name">ESR (Sed Rate)</div>
@@ -219,7 +257,7 @@
         </div>
         <div class="rx-grid">
           <div class="rx-label">What it is</div>
-          <div>Measures how fast red blood cells fall. Inflammation creates fibrinogen, making cells sticky and heavy.</div>
+          <div>Measures how fast red blood cells fall. Inflammation creates proteins (fibrinogen) that make cells sticky (rouleaux) and fall faster.</div>
           <div class="rx-label">Nuance</div>
           <div>Obesity increases ESR because fat cells release inflammatory cytokines. A moderately high ESR in an overweight patient without joint pain is often metabolic, not autoimmune.</div>
         </div>
@@ -232,15 +270,19 @@
         </div>
         <div class="rx-grid">
           <div class="rx-label">What it is</div>
-          <div>Produced by the liver in direct response to immune signaling. Rises within hours.</div>
+          <div>Produced by the liver in direct response to immune signaling (IL-6). Rises within hours.</div>
           <div class="rx-label">Interpretation</div>
-          <div><strong>&gt;3.0 mg/L:</strong> Suggests active inflammation or high cardiovascular risk.</div>
+          <div>
+            <strong>&lt;0.5 mg/L:</strong> Optimal (Cool system).<br>
+            <strong>1.0-3.0 mg/L:</strong> Warning (Leaky gut, insulin resistance).<br>
+            <strong>&gt;3.0 mg/L:</strong> Danger (Active inflammation / High CV risk).
+          </div>
         </div>
       </div>
 
-      <h3 id="ana">4. ANA &amp; Reflex Patterns</h3>
+      <h3 id="ana-reflex">4. ANA &amp; Reflex Table</h3>
       <p>
-        If the ANA is positive, the "Pattern" and specific antibodies tell us the diagnosis. Below is a breakdown of what these markers typically signify.
+        If the ANA is positive, the "Pattern" and "Titer" provide clues. A titer of <strong>1:40 or 1:80</strong> is often clinically insignificant (seen in healthy aging or viral infection). Titers of <strong>1:160 or 1:320+</strong> are more likely to represent true autoimmunity. The table below details the specific antibodies found when the ANA is positive.
       </p>
 
       <div class="amh-table-wrap">
@@ -249,7 +291,7 @@
             <tr>
               <th>Test / Pattern</th>
               <th>Associated Condition(s)</th>
-              <th>Frequency / Specificity</th>
+              <th>Key Notes &amp; Specificity</th>
             </tr>
           </thead>
           <tbody>
@@ -260,7 +302,7 @@
             </tr>
             <tr>
               <td><strong>Homogeneous Pattern</strong></td>
-              <td>Systemic Lupus (SLE), Drug-Induced Lupus</td>
+              <td>Systemic Lupus (SLE)</td>
               <td>Common in SLE; targets DNA/Histones.</td>
             </tr>
             <tr>
@@ -296,7 +338,7 @@
             <tr>
               <td><strong>Anti-SSA (Ro)</strong></td>
               <td>Sjogren's &amp; Lupus</td>
-              <td>60-90% of Sjogren's; 20-60% of Lupus. Risk of neonatal heart block in pregnancy.</td>
+              <td>60-90% of Sjogren's. <strong>Warning:</strong> Can cross placenta and cause neonatal heart block.</td>
             </tr>
             <tr>
               <td><strong>Anti-SSB (La)</strong></td>
@@ -317,7 +359,21 @@
         </table>
       </div>
 
-      <h3 id="specifics">5. Specific Disease Antibodies</h3>
+      <h3 id="specific-antibodies">5. Specific Antibodies (Lupus/RA)</h3>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Lupus (SLE)</div>
+          <div class="rx-type">DIAGNOSTIC</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Anti-dsDNA</div>
+          <div><strong>The Tracker.</strong> 97% specific. Rising levels predict kidney flares (Nephritis).</div>
+          
+          <div class="rx-label">Complement (C3/C4)</div>
+          <div><strong>Low levels:</strong> Suggest active "consumption" by immune complexes (Lupus flare).<br><strong>High levels:</strong> Suggest insulin resistance (metabolic syndrome).</div>
+        </div>
+      </div>
 
       <div class="rx-card">
         <div class="rx-header">
@@ -332,25 +388,48 @@
           <div><strong>The Sniper.</strong> 96-98% specific for RA. Can appear 10-15 years before joint pain begins. Strongly linked to smoking and gum disease.</div>
 
           <div class="rx-label">Anti-MCV</div>
-          <div><strong>Mutated Citrullinated Vimentin.</strong> A newer marker similar to Anti-CCP. It detects antibodies against vimentin (a structural protein). Like CCP, it is highly specific for RA and helps identify aggressive disease, sometimes catching cases that are CCP-negative.</div>
+          <div><strong>Mutated Citrullinated Vimentin.</strong> A newer marker similar to Anti-CCP. Like CCP, it is highly specific for RA and helps identify aggressive disease, sometimes catching cases that are CCP-negative.</div>
         </div>
       </div>
+
+      <div class="alert-box">
+        <h4>Pregnancy Warning: Anti-SSA (Ro) &amp; Anti-SSB (La)</h4>
+        <p>
+          These antibodies are hallmarks of Sjogren's Syndrome and Lupus. <strong>Clinical Criticality:</strong> Anti-SSA can cross the placenta and attack the fetal heart conduction system, causing congenital heart block. Women of childbearing age with these markers require specialized fetal monitoring (fetal echo) during pregnancy.
+        </p>
+      </div>
+
+      <h3 id="genetics">6. Genetic HLA Testing</h3>
+      <p>
+        While antibodies show an active attack, HLA genetic markers reveal your inherent risk profile.
+      </p>
 
       <div class="rx-card">
         <div class="rx-header">
-          <div class="rx-name">Genetic HLA Markers</div>
-          <div class="rx-type">RISK PROFILE</div>
+          <div class="rx-name">HLA Markers</div>
+          <div class="rx-type">GENETIC RISK</div>
         </div>
         <div class="rx-grid">
           <div class="rx-label">HLA-B27</div>
-          <div><strong>Ankylosing Spondylitis.</strong> Essential test for inflammatory back pain (worse with rest/night). A strong genetic predisposition marker.</div>
+          <div><strong>Conditions:</strong> Ankylosing Spondylitis (AS), Reactive Arthritis, Uveitis.<br><strong>When to order:</strong> For inflammatory back pain (pain at night, better with exercise).<br><strong>Meaning:</strong> It is a strong predisposing factor. Being positive does not guarantee disease, but increases probability significantly in the presence of symptoms.</div>
           
           <div class="rx-label">HLA-DRB1</div>
-          <div><strong>Rheumatoid Arthritis.</strong> The "Shared Epitope." Carriers have higher risk for RA, especially if they smoke.</div>
+          <div><strong>Conditions:</strong> Rheumatoid Arthritis (RA).<br><strong>Meaning:</strong> Known as the "Shared Epitope." Carriers are at much higher risk for RA, especially if they smoke. The gene interacts with smoking to trigger the formation of Anti-CCP antibodies.</div>
         </div>
       </div>
 
-      <h3 id="treatment">6. Medications &amp; Integrative Plan</h3>
+      <h3 id="root-causes">7. Root Causes &amp; Triggers</h3>
+      <p>
+        Genetics loads the gun, but environment pulls the trigger. In the "Pre-Clinical" phase, identifying these triggers offers the best chance to turn off the process.
+      </p>
+      <ul class="symptom-list">
+        <li><strong>Intestinal Permeability ("Leaky Gut"):</strong> The protein <em>Zonulin</em> regulates the tight junctions between gut cells. Triggers like gluten (gliadin) and dysbiosis cause Zonulin release, opening the gates. This allows toxins (LPS) and undigested food into the blood, triggering "molecular mimicry" where the immune system attacks self-tissue.</li>
+        <li><strong>Infections (EBV):</strong> The Epstein-Barr Virus (Mono) hides in B-cells. Its proteins (EBNA-1) structurally resemble human nuclear proteins. Chronic reactivation of EBV due to stress is a leading driver of ANA positivity.</li>
+        <li><strong>Oral Health &amp; Lungs:</strong> <em>Porphyromonas gingivalis</em> (gum disease bacteria) and cigarette smoke both contain enzymes that cause "citrullination" of proteins. The immune system attacks these citrullinated proteins, driving Anti-CCP production and Rheumatoid Arthritis.</li>
+        <li><strong>Environmental Toxins:</strong> Mercury (from dental amalgams or tuna) and Silica dust are potent immune disruptors. Mercury levels have been shown to correlate directly with ANA titers.</li>
+      </ul>
+
+      <h3 id="medications">8. Standard Medications</h3>
       <p>
         We use a "treat-to-target" approach. While lifestyle is foundational, medications are essential when organs are threatened.
       </p>
@@ -362,53 +441,71 @@
         </div>
         <div class="rx-grid">
           <div class="rx-label">Lupus (SLE)</div>
-          <div><strong>Hydroxychloroquine (Plaquenil):</strong> The anchor drug. It prevents organ damage and flares. Generally well-tolerated but requires annual eye exams.</div>
+          <div><strong>Hydroxychloroquine (Plaquenil):</strong> The anchor drug. It prevents organ damage and flares. Generally well-tolerated but requires annual eye exams.<br><strong>Mechanism:</strong> Modulates the immune system (TLR inhibition) rather than suppressing it broadly.</div>
 
           <div class="rx-label">Rheumatoid Arthritis</div>
-          <div><strong>Methotrexate:</strong> The gold standard "Disease Modifying" drug (DMARD). Started early to prevent joint erosion.<br><strong>Biologics:</strong> Used if Methotrexate is insufficient.</div>
+          <div><strong>Methotrexate:</strong> The gold standard "Disease Modifying" drug (DMARD). Started early to prevent joint erosion.<br><strong>Biologics:</strong> Drugs like Abatacept or TNF-inhibitors are used if Methotrexate is insufficient.</div>
 
-          <div class="rx-label">Polymyalgia Rheumatica</div>
-          <div><strong>Prednisone:</strong> PMR causes severe stiffness in shoulders/hips. It responds miraculously to low-dose prednisone (10-20mg).</div>
+          <div class="rx-label">Polymyalgia Rheumatica (PMR)</div>
+          <div><strong>Corticosteroids (Prednisone):</strong> PMR causes severe stiffness in shoulders/hips. It responds miraculously to low-dose prednisone (10-20mg). If symptoms don't resolve quickly, the diagnosis is likely wrong.</div>
 
           <div class="rx-label">Ankylosing Spondylitis</div>
-          <div><strong>NSAIDs:</strong> High-dose NSAIDs (like Naproxen) are first-line.<br><strong>TNF-Inhibitors:</strong> (e.g., Humira) highly effective for the spine.</div>
+          <div><strong>NSAIDs:</strong> High-dose NSAIDs (like Naproxen/Indomethacin) are the first line.<br><strong>TNF-Inhibitors:</strong> (e.g., Humira/Enbrel). Highly effective for spinal inflammation where Methotrexate often fails.</div>
+        </div>
+      </div>
+
+      <h3 id="integrative-plan">9. Integrative Action Plan</h3>
+      <p>
+        Our goal is to restore tolerance and lower systemic inflammation.
+      </p>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Nutrition &amp; Diet</div>
+          <div class="rx-type">FOUNDATION</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Mediterranean Diet</div>
+          <div><strong>For Maintenance:</strong> High in Omega-3s and polyphenols. Proven to reduce RA pain and inflammatory markers.</div>
+
+          <div class="rx-label">Autoimmune Protocol (AIP)</div>
+          <div><strong>For Flares:</strong> A temporary elimination of grains, dairy, nightshades, nuts, and eggs to "reset" the system.</div>
+
+          <div class="rx-label">Gluten-Free</div>
+          <div><strong>For Mimicry:</strong> Essential for Celiac, but also highly effective for Sjogren's and Hashimoto's due to molecular mimicry between gluten and glandular tissue.</div>
         </div>
       </div>
 
       <div class="rx-card">
         <div class="rx-header">
-          <div class="rx-name">Integrative Strategy</div>
-          <div class="rx-type">LIFESTYLE RX</div>
+          <div class="rx-name">Supplements</div>
+          <div class="rx-type">INTEGRATIVE RX</div>
         </div>
         <div class="rx-grid">
-          <div class="rx-label">Nutrition</div>
-          <div><strong>Mediterranean Diet:</strong> High in Omega-3s. Proven to reduce RA pain.<br><strong>Autoimmune Protocol (AIP):</strong> For active flares. Eliminates grains/dairy to "reset."</div>
+          <div class="rx-label">Vitamin D3 + K2</div>
+          <div><strong>Role:</strong> Teaches T-cells to distinguish self from non-self. Deficiency correlates with Lupus/MS.<br><strong>Target:</strong> 40-60 ng/mL.</div>
 
-          <div class="rx-label">Supplements</div>
-          <div>
-            <strong>Vitamin D:</strong> Target 40-60 ng/mL.<br>
-            <strong>Omega-3s:</strong> 2-4g daily for inflammation.<br>
-            <strong>Curcumin:</strong> Potent anti-inflammatory for joint pain.
-          </div>
+          <div class="rx-label">Omega-3s (Fish Oil)</div>
+          <div><strong>Role:</strong> Produces "resolvins" that actively turn off inflammation pathways.<br><strong>Dose:</strong> 2-4 grams of combined EPA/DHA daily.</div>
 
-          <div class="rx-label">Root Causes</div>
-          <div>
-            <strong>Leaky Gut:</strong> Treat dysbiosis/gluten triggers.<br>
-            <strong>Oral Health:</strong> Treat gum disease to lower RA antibodies.
-          </div>
+          <div class="rx-label">Curcumin</div>
+          <div><strong>Role:</strong> Potent anti-inflammatory that modulates cytokines (TNF-alpha). Use bioavailable forms (with black pepper or lipid matrix).</div>
+
+          <div class="rx-label">L-Glutamine</div>
+          <div><strong>Role:</strong> Fuel for gut lining cells. Helps repair "leaky gut" tight junctions caused by Zonulin release.</div>
         </div>
       </div>
 
       <h3 id="references">References</h3>
       <p class="references-block">
-        1. Decoding Your Immune System: A Comprehensive Guide to Autoimmunity Testing.<br>
-        2. Windows of Opportunity for Preclinical Rheumatoid Arthritis.<br>
-        3. Erythrocyte Sedimentation Rate and C-Reactive Protein (PMC).<br>
-        4. Antinuclear Antibodies (ANA) - American College of Rheumatology.<br>
-        5. Mercury Exposure and Antinuclear Antibodies (NHANES).<br>
-        6. Vitamin D deficiency is associated with increased autoimmune response.<br>
-        7. The VITAL trial: Vitamin D and Omega-3s.<br>
-        8. Zonulin and Its Regulation of Intestinal Barrier Function.
+        1. <a href="https://www.ncbi.nlm.nih.gov/books/NBK537071/" target="_blank">Biochemistry, Antinuclear Antibodies (ANA) - StatPearls - NCBI Bookshelf</a><br>
+        2. <a href="https://www.ifm.org/articles/rheumatoid-arthritis" target="_blank">Windows of Opportunity for Preclinical Rheumatoid Arthritis - The Institute for Functional Medicine</a><br>
+        3. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4653962/" target="_blank">Erythrocyte sedimentation rate and C-reactive protein - PMC</a><br>
+        4. <a href="https://rheumatology.org/patients/antinuclear-antibodies-ana" target="_blank">Antinuclear Antibodies (ANA) - American College of Rheumatology</a><br>
+        5. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4529012/" target="_blank">Mercury Exposure and Antinuclear Antibodies among Females of Reproductive Age: NHANES - NIH</a><br>
+        6. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5135624/" target="_blank">Association between vitamin D deficiency and antinuclear antibodies - NIH</a><br>
+        7. <a href="https://journals.physiology.org/doi/full/10.1152/physrev.00003.2008" target="_blank">Zonulin and Its Regulation of Intestinal Barrier Function - American Physiological Society</a><br>
+        8. <a href="https://www.arthritis.org/health-wellness/healthy-living/nutrition/anti-inflammatory/the-ultimate-arthritis-diet" target="_blank">The Ultimate Arthritis Diet - Arthritis Foundation</a>
       </p>
 
       <footer>
