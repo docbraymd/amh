@@ -1,450 +1,417 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navigating Supplement Quality | Archangel Michael Health</title>
-    <style>
-        :root {
-            /* Primary Colors */
-            --primary-dark: #2c3e50;
-            --primary-light: #34495e;
-            --white: #ffffff;
-            
-            /* Accent Colors */
-            --accent-teal: #16a085;
-            --accent-indigo: #667eea;
-            
-            /* Backgrounds */
-            --bg-light: #f8f9fa;
-            --bg-instruction: #ecf0f1;
-            --bg-accent-light: #d5f4e6;
-            
-            /* Text & Utilities */
-            --text-dark: #333333;
-            --text-muted: #7f8c8d;
-            --border-color: #e0e0e0;
-            
-            /* Alert Colors */
-            --alert-danger: #e74c3c;
-            --alert-warning: #f39c12;
-            --alert-success: #28a745;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Navigating Supplement Quality | Archangel Michael Health</title>
 
-        body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.8;
-            margin: 0;
-            padding: 0;
-        }
+  <!-- Shared stylesheet (GitHub Pages) -->
+  <link rel="stylesheet" href="https://docbraymd.github.io/amh/style.css" />
 
-        /* Header Styling */
-        header {
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
-            color: var(--white);
-            padding: 3rem 1rem;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
+  <!-- Minimal page-local styles for logo + action buttons + print behavior -->
+  <style>
+    /* Header logo */
+    .amh-logo-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 0 14px 0;
+    }
+    .amh-logo {
+      width: 110px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 8px 18px rgba(0,0,0,0.22));
+    }
 
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            font-weight: 700;
-        }
+    /* Action bar */
+    .action-bar {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      align-items: center;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+    .amh-btn {
+      appearance: none;
+      border: 1px solid rgba(255,255,255,0.35);
+      background: #16a085;
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+    .amh-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,0.18); }
+    .amh-btn.secondary {
+      background: #34495e;
+      border-color: rgba(255,255,255,0.25);
+    }
+    .amh-btn:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    .no-print { display: block; }
 
-        header p {
-            margin-top: 1rem;
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+    /* Print: hide action UI; remove background gradients for clean PDF */
+    @media print {
+      .no-print { display: none !important; }
+      body { background: #fff !important; }
+      .main-container { margin: 0 !important; box-shadow: none !important; border-radius: 0 !important; }
+      header { background: #fff !important; color: #000 !important; border-bottom: 2px solid #333 !important; }
+      header h2 { opacity: 1 !important; }
+      .doctor-tag { background: #fff !important; color: #000 !important; border: 1px solid #333 !important; }
+      .amh-logo { filter: none !important; }
+      a { color: #000 !important; text-decoration: underline !important; }
+    }
+  </style>
 
-        /* Main Container */
-        .container {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
-        }
-
-        /* Section Cards */
-        .section-card {
-            background: var(--white);
-            border-radius: 8px;
-            padding: 2.5rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-            border-left: 5px solid var(--accent-teal);
-        }
-
-        h2 {
-            color: var(--primary-dark);
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 0.5rem;
-            margin-top: 0;
-            font-size: 1.8rem;
-        }
-
-        h3 {
-            color: var(--accent-teal);
-            margin-top: 2rem;
-            font-size: 1.4rem;
-        }
-
-        h4 {
-            color: var(--primary-light);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        p {
-            margin-bottom: 1.2rem;
-        }
-
-        /* Lists */
-        ul {
-            margin-bottom: 1.5rem;
-            padding-left: 1.5rem;
-        }
-
-        li {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Callout Boxes */
-        .callout {
-            background-color: var(--bg-instruction);
-            border-left: 4px solid var(--primary-light);
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 4px;
-        }
-
-        .callout-warning {
-            background-color: #fff3cd;
-            border-left-color: var(--alert-warning);
-            color: #856404;
-        }
-
-        .callout-success {
-            background-color: var(--bg-accent-light);
-            border-left-color: var(--accent-teal);
-            color: var(--primary-dark);
-        }
-
-        /* Brand & Detail Boxes */
-        .brand-box {
-            border: 1px solid var(--border-color);
-            padding: 1.5rem;
-            border-radius: 6px;
-            margin-bottom: 1.5rem;
-            transition: all 0.3s;
-        }
-
-        .brand-box:hover {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            border-color: var(--accent-teal);
-        }
-
-        .brand-title {
-            font-weight: 700;
-            color: var(--primary-dark);
-            font-size: 1.1rem;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .tag {
-            display: inline-block;
-            background-color: var(--accent-teal);
-            color: var(--white);
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            margin-right: 0.5rem;
-            font-weight: 600;
-        }
-        
-        .tag-clinical {
-            background-color: var(--accent-indigo);
-        }
-
-        .tag-secondary {
-            background-color: var(--primary-light);
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--primary-dark);
-            color: var(--white);
-            padding: 3rem 1rem;
-            margin-top: 4rem;
-            font-size: 0.9rem;
-        }
-
-        footer h3 {
-            color: var(--accent-teal);
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-            padding-bottom: 1rem;
-        }
-
-        .references {
-            list-style: none;
-            padding: 0;
-            opacity: 0.8;
-        }
-
-        .references li {
-            margin-bottom: 0.8rem;
-            font-size: 0.85rem;
-        }
-
-        a {
-            color: var(--accent-teal);
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* Responsive */
-        @media (max-width: 600px) {
-            header h1 { font-size: 1.8rem; }
-            .section-card { padding: 1.5rem; }
-        }
-    </style>
+  <!-- html2pdf for one-click PDF download -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
+
 <body>
+  <div class="main-container" id="pdf-root" role="document">
+    <header>
+      <!-- Logo -->
+      <div class="amh-logo-wrap">
+        <img class="amh-logo" src="https://docbraymd.github.io/amh/AMHLogo.png" alt="Archangel Michael Health logo" />
+      </div>
 
-<header>
-    <h1>The Supplement Integrity Gap</h1>
-    <p>A Physician’s Guide to Quality, Safety, and Efficacy in a Deregulated Market</p>
-    <p style="font-size: 1rem; margin-top: 0.5rem; font-weight: 400;">Dr. Bray | Archangel Michael Health</p>
-</header>
+      <!-- Green pill: practice only -->
+      <div class="doctor-tag">Archangel Michael Health</div>
 
-<div class="container">
+      <h1 id="page-title">The Supplement Integrity Gap</h1>
 
-    <div class="section-card">
-        <h2>The "Wild West" of Wellness</h2>
-        <p>
-            In our practice at Archangel Michael Health, we believe in using the least invasive methods to achieve health—optimizing lifestyle first and using supplements as targeted tools to correct deficiencies or support physiology. However, a dangerous cognitive error exists in modern healthcare: the assumption that the supplement bottle on the shelf has been vetted with the same scrutiny as the prescription medication in the pharmacy.
-        </p>
-        <p>
-            The reality is vastly different. Under the Dietary Supplement Health and Education Act (DSHEA) of 1994, supplements are regulated more like food than drugs. The FDA does not pre-approve supplements for safety or efficacy before they reach the market. This creates a "post-market" enforcement environment where products are only pulled <em>after</em> harm has occurred.
-        </p>
-        <p>
-            For my patients, this means we must move from being passive consumers to active curators. We cannot simply trust the label; we must verify the source.
-        </p>
-    </div>
+      <!-- Shorter subtitle -->
+      <h2>A Physician’s Guide to Quality, Safety, and Efficacy in a Deregulated Market</h2>
 
-    <div class="section-card">
-        <h2>Symptoms of the "Integrity Gap"</h2>
-        <p>
-            When a patient takes a supplement and sees no result, the immediate assumption is often that "supplements don't work." Frequently, however, the failure is not in the nutrient itself, but in the quality of the product. The consequences of poor quality supplements generally fall into three categories:
-        </p>
-        
-        <h3>1. Therapeutic Failure (The "Placebo" Effect in Reverse)</h3>
-        <p>
-            This is the most common issue. You take a supplement for a specific condition—such as magnesium for palpitations or B12 for fatigue—but experience no relief.
-        </p>
-        <div class="callout">
-            <strong>The Cause:</strong> Potency drift and poor bioavailability. Studies have shown that some "Herbal" supplements contained no detectable plant DNA of the listed herb, while others contained only a fraction of the listed dosage. If you are taking a product that is only 20% potent, you are effectively leaving your condition untreated.
-        </div>
+      <div class="byline">by Christopher L. Bray MD PhD</div>
 
-        <h3>2. Hidden Toxicity</h3>
-        <p>
-            Lower quality manufacturers often source raw ingredients from the cheapest global suppliers, frequently in regions with high soil pollution.
-        </p>
-        <div class="callout callout-warning">
-            <strong>The Cause:</strong> Heavy Metal Contamination. Independent testing has repeatedly found lead, arsenic, cadmium, and mercury in herbal products and protein powders. Long-term use of these "health" products can paradoxically lead to heavy metal toxicity, manifesting as neurological issues, fatigue, or kidney stress.
-        </div>
+      <!-- Buttons -->
+      <div class="action-bar no-print" aria-label="Actions">
+        <button class="amh-btn secondary" type="button" onclick="window.print()">
+          Print / Save as PDF
+        </button>
+        <button class="amh-btn" id="downloadPdfBtn" type="button">
+          Download PDF
+        </button>
+      </div>
+    </header>
 
-        <h3>3. Adverse Reactions to Adulterants</h3>
-        <p>
-            This is particularly common in weight loss, sexual enhancement, and bodybuilding supplements. Patients may experience racing heart, anxiety, or blood pressure spikes not caused by the labeled herbs, but by hidden pharmaceutical agents.
-        </p>
-        <div class="callout callout-warning">
-            <strong>The Cause:</strong> Intentional Adulteration. Manufacturers have been caught spiking "natural" supplements with unlisted drugs like sibutramine (a banned stimulant) or sildenafil (Viagra) to ensure the customer "feels" it working. This poses lethal risks for patients on heart medication.
-        </div>
-    </div>
+    <div class="content-body">
+      <p>
+        In our practice at Archangel Michael Health, we believe in using the least invasive methods to achieve health—optimizing lifestyle first and using supplements as targeted tools to correct deficiencies or support physiology.
+      </p>
+      <p>
+        However, a dangerous cognitive error exists in modern healthcare: the assumption that the supplement bottle on the shelf has been vetted with the same scrutiny as the prescription medication in the pharmacy. <strong>It has not.</strong> For my patients, this means we must move from being passive consumers to active curators.
+      </p>
 
-    <div class="section-card">
-        <h2>The Solution: Third-Party Verification</h2>
-        <p>
-            Since the FDA does not rigorously test these products, we must rely on independent, third-party organizations that audit manufacturers. These organizations test for <strong>Identity</strong> (is it what it says it is?), <strong>Potency</strong> (is the dosage correct?), and <strong>Purity</strong> (is it free of mold, bacteria, and heavy metals).
-        </p>
-        <p>
-            <strong>Look for these seals on the bottle. If a product does not carry one of these, I generally recommend avoiding it.</strong>
-        </p>
-
-        <div class="brand-box">
-            <span class="brand-title">USP Verified (United States Pharmacopeia)</span>
-            <span class="tag">The Gold Standard</span>
-            <p>
-                USP is the only standards-setting organization recognized in U.S. federal law. A USP seal indicates the product meets pharmaceutical-grade standards for purity, potency, and—crucially—disintegration (ensuring the pill actually dissolves in your gut).
-                <br><em>Common trusted brands: Nature Made, Kirkland Signature (Costco).</em>
-            </p>
-        </div>
-
-        <div class="brand-box">
-            <span class="brand-title">NSF International / NSF Certified for Sport</span>
-            <span class="tag">Safety & Purity</span>
-            <p>
-                NSF testing is rigorous and includes facility audits. The "Certified for Sport" version goes a step further, screening for over 280 banned substances. This is the mandatory standard for professional athletes, but excellent for any patient wanting to ensure zero adulteration.
-                <br><em>Common trusted brands: Thorne, Klean Athlete, Nordic Naturals (Sport line).</em>
-            </p>
-        </div>
-
-        <div class="brand-box">
-            <span class="brand-title">ConsumerLab.com</span>
-            <span class="tag">The "Watchdog"</span>
-            <p>
-                Unlike USP and NSF which are often paid for by the manufacturer, ConsumerLab buys products off the shelf like a regular customer and blind-tests them. They frequently catch brands that fail to meet their own label claims. While the seal isn't always on the bottle, checking their database is a powerful tool.
-            </p>
-        </div>
-    </div>
-
-    <div class="section-card">
-        <h2>Bioavailability: The "Form" Matters</h2>
-        <p>
-            Even if a supplement is pure, it may be biologically useless if it is in the wrong chemical form. Manufacturers often use the cheapest chemical salts, which are poorly absorbed. As a sophisticated patient, you must flip the bottle over and read the "Supplement Facts" panel to ensure you are buying a form your body can use.
-        </p>
-
-        <h3>1. Magnesium</h3>
-        <p>Magnesium is vital for anxiety, sleep, and heart rhythm, but the form dictates the effect.</p>
+      <div class="toc no-print" aria-label="On this page">
+        <h4>On this page</h4>
         <ul>
-            <li><strong>Avoid: Magnesium Oxide.</strong> This is the most common and cheapest form. It has an absorption rate of only ~4%. Because it stays in the gut, it draws water in, causing diarrhea. It is essentially a laxative, not a nutrient replenisher.</li>
-            <li><strong>Preferred: Magnesium Glycinate (Bisglycinate).</strong> Magnesium is bound to the amino acid glycine. It is absorbed through a different channel (dipeptide channel), has high bioavailability, and is very gentle on the stomach. The glycine component also calms the nervous system.</li>
-            <li><strong>Alternative: Magnesium Citrate.</strong> Good absorption, but can still have a mild laxative effect. Useful if you tend toward constipation.</li>
+          <li><a href="#overview">The "Wild West" of Wellness</a></li>
+          <li><a href="#integrity-gap">Symptoms of the Integrity Gap</a></li>
+          <li><a href="#verification">Solution: Third-Party Verification</a></li>
+          <li><a href="#bioavailability">Bioavailability & Forms</a></li>
+          <li><a href="#brands">Recommended Brands</a></li>
+          <li><a href="#plan">Buying Checklist</a></li>
+          <li><a href="#references">References</a></li>
         </ul>
+      </div>
 
-        <h3>2. Vitamin B12</h3>
-        <p>Critical for energy and nerve health.</p>
-        <ul>
-            <li><strong>Avoid: Cyanocobalamin.</strong> A synthetic form containing a cyanide molecule. Your liver must detoxify the cyanide and methylate the B12 to use it. Many people have genetic variants (MTHFR) that make this conversion difficult.</li>
-            <li><strong>Preferred: Methylcobalamin.</strong> The active, "bio-identical" form found in nature. It bypasses the need for conversion and is immediately available for the nervous system.</li>
-        </ul>
+      <h3 id="overview">The "Wild West" of Wellness</h3>
+      <div class="clinical-note">
+        <h4>Regulatory Reality</h4>
+        <p>
+           Under the Dietary Supplement Health and Education Act (DSHEA) of 1994, supplements are regulated more like food than drugs. The FDA does not pre-approve supplements for safety or efficacy before they reach the market. This creates a "post-market" enforcement environment where products are often only pulled <em>after</em> harm has occurred.
+        </p>
+      </div>
 
-        <h3>3. Fish Oil (Omega-3s)</h3>
-        <p>Essential for inflammation and cardiac health.</p>
-        <ul>
-            <li><strong>Avoid: Ethyl Esters (EE).</strong> During processing, fish oil is turned into a semi-synthetic ethyl ester to clean it. Cheap brands leave it in this state. It is poorly absorbed and prone to going rancid (oxidizing).</li>
-            <li><strong>Preferred: Re-esterified Triglyceride (rTG).</strong> Quality manufacturers take the extra step to convert the oil back into its natural triglyceride structure. This absorbs up to 70% better than ethyl esters.</li>
-        </ul>
-        
-        <div class="callout callout-success">
-            <strong>Pro Tip on Fish Oil:</strong> If your fish oil capsules smell strongly of rotting fish, they are rancid (oxidized). Rancid oil is pro-inflammatory and should be discarded. High-quality fish oil should smell relatively neutral.
+      <h3 id="integrity-gap">Symptoms of the "Integrity Gap"</h3>
+      <p>
+        When a patient takes a supplement and sees no result, the immediate assumption is often that "supplements don't work." Frequently, however, the failure is not in the nutrient itself, but in the quality of the product.
+      </p>
+      
+      <h4>1. Therapeutic Failure</h4>
+      <p>
+        The most common issue. You take a supplement (like magnesium for palpitations) but experience no relief because of potency drift or poor bioavailability. Some "herbal" products have been found to contain no detectable plant DNA of the listed herb.
+      </p>
+
+      <div class="alert-box">
+        <h4>2. Hidden Toxicity & Adulteration</h4>
+        <p>
+          <strong>Heavy Metals:</strong> Independent testing has repeatedly found lead, arsenic, and mercury in low-quality herbal products and protein powders, often due to cheap sourcing from polluted soil.
+        </p>
+        <p style="margin-top: 10px;">
+          <strong>Spiked Products:</strong> Weight loss and sexual enhancement supplements are frequently adulterated with hidden drugs (like sibutramine or sildenafil) to ensure the user "feels" it working, posing lethal risks for patients on heart medication.
+        </p>
+      </div>
+
+      <h3 id="verification">The Solution: Third-Party Verification</h3>
+      <p>
+        Since the FDA does not rigorously test these products, we must rely on independent organizations that audit manufacturers for <strong>Identity</strong>, <strong>Potency</strong>, and <strong>Purity</strong>.
+      </p>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">USP Verified</div>
+          <div class="rx-type">GOLD STANDARD</div>
         </div>
+        <div class="rx-grid">
+          <div class="rx-label">What it is</div>
+          <div>The only standards-setting organization recognized in U.S. federal law.</div>
+
+          <div class="rx-label">What it guarantees</div>
+          <div>Pharmaceutical-grade standards for purity, potency, and disintegration (the pill actually dissolves).</div>
+
+          <div class="rx-label">Common Brands</div>
+          <div>Nature Made, Kirkland Signature (Costco).</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">NSF / Certified for Sport</div>
+          <div class="rx-type">SAFETY & PURITY</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">What it is</div>
+          <div>Rigorous testing that includes facility audits. "Certified for Sport" screens for over 280 banned substances.</div>
+
+          <div class="rx-label">Ideal For</div>
+          <div>Professional athletes and patients wanting to ensure absolute zero adulteration.</div>
+
+          <div class="rx-label">Common Brands</div>
+          <div>Thorne, Klean Athlete, Nordic Naturals (Sport line).</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">ConsumerLab.com</div>
+          <div class="rx-type">WATCHDOG</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">How it works</div>
+          <div>They buy products off the shelf like a customer and blind-test them.</div>
+
+          <div class="rx-label">Why use it</div>
+          <div>They act as a watchdog, frequently catching brands that fail to meet their own label claims. Checking their database is a powerful tool.</div>
+        </div>
+      </div>
+
+      <h3 id="bioavailability">Bioavailability: The "Form" Matters</h3>
+      <p>
+        Even if a supplement is pure, it may be biologically useless if it is in the wrong chemical form. You must read the "Supplement Facts" panel.
+      </p>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Magnesium</div>
+          <div class="rx-type">MINERAL</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Avoid</div>
+          <div><strong>Magnesium Oxide:</strong> Absorption rate is only ~4%. It stays in the gut and acts as a laxative rather than a nutrient.</div>
+
+          <div class="rx-label">Preferred</div>
+          <div><strong>Magnesium Glycinate:</strong> High bioavailability, gentle on the stomach, and the glycine component calms the nervous system.</div>
+          
+           <div class="rx-label">Alternative</div>
+          <div><strong>Magnesium Citrate:</strong> Good absorption, but may have mild laxative effects (useful if constipated).</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Vitamin B12</div>
+          <div class="rx-type">ENERGY & NERVE</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Avoid</div>
+          <div><strong>Cyanocobalamin:</strong> Synthetic form containing a cyanide molecule. Requires liver detoxification and conversion before use.</div>
+
+          <div class="rx-label">Preferred</div>
+          <div><strong>Methylcobalamin:</strong> The active, "bio-identical" form found in nature. Bypasses conversion needs; immediately available for the nervous system.</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Fish Oil (Omega-3)</div>
+          <div class="rx-type">INFLAMMATION</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Avoid</div>
+          <div><strong>Ethyl Esters (EE):</strong> Semi-synthetic processed form. Poorly absorbed and prone to going rancid (oxidizing).</div>
+
+          <div class="rx-label">Preferred</div>
+          <div><strong>Re-esterified Triglyceride (rTG):</strong> Converted back to natural structure. Absorbs up to 70% better.</div>
+
+          <div class="rx-label">Smell Test</div>
+          <div>If capsules smell strongly of rotting fish, they are rancid and pro-inflammatory. Throw them away.</div>
+        </div>
+      </div>
+
+      <h3 id="brands">Recommended Brands by Category</h3>
+      
+      <h4>The "Clinical" Tier</h4>
+      <p>Practitioner-grade brands with superior forms and hypoallergenic profiles.</p>
+      <ul class="symptom-list">
+        <li><strong>Pure Encapsulations:</strong> Hypoallergenic, free from fillers/dyes. Ideal for complex allergies.</li>
+        <li><strong>Thorne:</strong> Industry leader in purity; extensive NSF Certified for Sport line.</li>
+        <li><strong>Gaia Herbs:</strong> Gold standard for botanicals. "Meet Your Herbs" program tracks exact sourcing.</li>
+      </ul>
+
+      <h4>The "Science-Based" Retail Tier</h4>
+      <p>Accessible brands with rigorous standards.</p>
+      <ul class="symptom-list">
+        <li><strong>Jarrow Formulas:</strong> Excellent for probiotics (Jarro-Dophilus) and CoQ10.</li>
+        <li><strong>Nordic Naturals:</strong> The leader in fish oil (rTG form).</li>
+      </ul>
+
+      <h4>The "Value" Tier</h4>
+      <p>Reliable, safe, and inexpensive.</p>
+      <ul class="symptom-list">
+        <li><strong>Nature Made:</strong> The brand with the most USP verified products.</li>
+        <li><strong>Kirkland Signature (Costco):</strong> High standards and USP verification for staples like Fish Oil and Vitamin D.</li>
+      </ul>
+
+      <h3 id="plan">Your Action Plan: How to Buy</h3>
+      <div class="success-box">
+        <h4>The 4-Step Checklist</h4>
+        <ol style="margin-top: 10px; padding-left: 20px; line-height: 1.6;">
+            <li style="margin-bottom: 8px;"><strong>The Seal Check:</strong> Look for USP Verified or NSF marks on the bottle.</li>
+            <li style="margin-bottom: 8px;"><strong>The Form Check:</strong> Flip to Supplement Facts. Is it Oxide or Glycinate? Cyano or Methyl?</li>
+            <li style="margin-bottom: 8px;"><strong>The Ingredients Scan:</strong> Avoid Titanium Dioxide, artificial colors (Blue #1, Red #40), or "Proprietary Blends."</li>
+            <li style="margin-bottom: 8px;"><strong>Source Security:</strong> Avoid buying supplements on Amazon due to commingled inventory (counterfeit risk). Buy direct, via Fullscript, or at trusted physical retailers like Costco/Whole Foods.</li>
+        </ol>
+      </div>
+
+      <h3 id="references">References</h3>
+      <p>Place references only here (not inline in the body).</p>
+
+      <footer>
+        <div class="medical-disclaimer">
+          <p><strong>Medical disclaimer:</strong> The information on this page is provided for general educational purposes only and is not medical advice. It is not intended to diagnose, treat, cure, or prevent any disease, and it does not establish a physician–patient relationship.</p>
+          <p>Do not apply this information to your specific situation without the oversight of a qualified clinician who can consider your full health history, medications, goals, preferences, and limitations.</p>
+          <p style="margin: 0;"><strong>Copyright:</strong> © Dr. Bray at Archangel Michael Health 2025</p>
+        </div>
+
+        <p><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine</p>
+
+        <p class="references-block">
+          <strong>References &amp; Resources:</strong><br />
+          1. US Pharmacopeia (USP). "Choosing for Quality: Dietary Supplements."<br />
+          2. NSF International. "Dietary Supplement and Vitamin Certification - NSF/ANSI 173."<br />
+          3. Cohen, P. A., et al. "Presence of Banned Drugs in Dietary Supplements." JAMA Internal Medicine.<br />
+          4. DiNicolantonio, J. J., et al. "Magnesium bioavailability: Oxide vs Citrate vs Glycinate." Open Heart Journal.
+        </p>
+      </footer>
     </div>
+  </div>
 
-    <div class="section-card">
-        <h2>Recommended Brands by Category</h2>
-        <p>Based on consistent third-party verification and bioavailability standards, these are the brands I frequently recommend to patients.</p>
+  <script>
+    (function () {
+      // Download PDF using html2pdf.js
+      var btn = document.getElementById("downloadPdfBtn");
+      if (!btn) return;
 
-        <h3>The "Clinical" Tier (High Potency & Purity)</h3>
-        <p>These are "Practitioner Grade" brands often used in functional medicine. They use superior forms (methylated Bs, chelated minerals) and have cleaner ingredient profiles (no dyes/fillers).</p>
-        
-        <div class="brand-box">
-            <span class="brand-title">Pure Encapsulations</span>
-            <span class="tag tag-clinical">Hypoallergenic</span> <span class="tag">NSF GMP</span>
-            <p>
-                As the name implies, their core philosophy is "purity." They specialize in hypoallergenic products free from wheat, gluten, egg, peanuts, trans fats, and artificial colors. They rigorously test for pesticides and often avoid magnesium stearate (a common filler). Ideal for patients with complex allergies or mast cell activation issues.
-            </p>
-        </div>
+      function safeFilename(title) {
+        return (title || "patient-guide")
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/(^-|-$)/g, "");
+      }
 
-        <div class="brand-box">
-            <span class="brand-title">Thorne</span>
-            <span class="tag tag-clinical">Sports Performance</span> <span class="tag">NSF Certified</span>
-            <p>
-                Widely considered the industry leader in purity. Thorne conducts four rounds of in-house testing and is a favorite of professional athletes due to their extensive NSF Certified for Sport line. Their chemical forms are consistently top-tier (e.g., using 5-MTHF for folate).
-            </p>
-        </div>
+      btn.addEventListener("click", function () {
+        if (typeof html2pdf === "undefined") {
+          alert("PDF generator is still loading. Please try again in a moment, or use Print / Save as PDF.");
+          return;
+        }
 
-        <div class="brand-box">
-            <span class="brand-title">Gaia Professional (Gaia Herbs)</span>
-            <span class="tag tag-clinical">Botanical/Herbal</span> <span class="tag">B-Corp</span>
-            <p>
-                The gold standard for herbal medicine (adrenal support, sleep aids, stress). Gaia stands out for their "Meet Your Herbs" transparency program, where you can enter the ID number on your bottle to see the exact sourcing and testing results for that batch. They use "Full Spectrum" extraction to keep the herb as nature intended, rather than isolating single chemicals.
-            </p>
-        </div>
+        btn.disabled = true;
+        btn.textContent = "Preparing PDF...";
 
-        <h3>The "Science-Based" Retail Tier</h3>
-        <p>These brands bridge the gap between "Clinical" and "Retail." They are available in stores but maintain rigorous scientific standards often exceeding typical store brands.</p>
+        var title = (document.getElementById("page-title") && document.getElementById("page-title").textContent) || "Patient Guide";
+        var filename = safeFilename(title) + ".pdf";
 
-        <div class="brand-box">
-            <span class="brand-title">Jarrow Formulas</span>
-            <span class="tag">Probiotics & Specialty</span>
-            <p>
-                A science-first brand that is highly accessible. Jarrow is excellent for probiotics (Jarro-Dophilus), bone health (Bone-Up), and CoQ10. They regularly pass ConsumerLab testing with high marks and use trademarked, clinically studied ingredients (like Kaneka Ubiquinol) rather than generic substitutes.
-            </p>
-        </div>
+        // Clone content for PDF and remove UI elements
+        var source = document.getElementById("pdf-root").cloneNode(true);
+        source.querySelectorAll(".no-print").forEach(function (el) { el.remove(); });
 
-        <div class="brand-box">
-            <span class="brand-title">Nordic Naturals</span>
-            <span class="tag">Omega-3 Specialist</span>
-            <p>
-                The leader in fish oil. They use the superior Triglyceride (rTG) form for better absorption and publish Certificates of Analysis for every bottle proving freshness (low oxidation). Essential for anyone taking Omega-3s for heart or brain health.
-            </p>
-        </div>
+        var wrapper = document.createElement("div");
+        wrapper.style.background = "#ffffff";
+        wrapper.appendChild(source);
 
-        <h3>The "Value" Tier (Accessible Standard)</h3>
-        <p>Reliable, safe options available at most pharmacies. They may use standard forms (like Mag Oxide), but they are verified safe from contaminants.</p>
-        <ul>
-            <li><strong>Nature Made:</strong> The brand with the most USP verified products. Reliable and inexpensive.</li>
-            <li><strong>Kirkland Signature (Costco):</strong> Costco uses its buying power to enforce high standards. Their Fish Oil and Vitamin D are USP verified and offer incredible value.</li>
-        </ul>
-    </div>
+        var opt = {
+          margin: [0.5, 0.5, 0.6, 0.5], // inches
+          filename: filename,
+          image: { type: "jpeg", quality: 0.98 },
+          html2canvas: { scale: 2, useCORS: true, letterRendering: true },
+          jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+          pagebreak: { mode: ["css", "legacy"] }
+        };
 
-    <div class="section-card">
-        <h2>Your Action Plan: How to Buy</h2>
-        <p>When you run out of your current supplements, use this checklist before purchasing replacements:</p>
-        
-        <div class="brand-box" style="border-left: 5px solid var(--accent-teal);">
-            <h4>Step 1: The Seal Check</h4>
-            <p style="margin-bottom:0;">Look for the <strong>USP Verified</strong> or <strong>NSF</strong> mark on the front of the bottle. If it's a store brand (CVS, Walgreens), check the back for "Third Party Tested" claims that refer to UL or USP.</p>
-        </div>
+        html2pdf()
+          .set(opt)
+          .from(wrapper)
+          .save()
+          .catch(function (err) {
+            console.error(err);
+            alert("Could not generate the PDF in this browser. Please use Print / Save as PDF.");
+          })
+          .finally(function () {
+            btn.disabled = false;
+            btn.textContent = "Download PDF";
+          });
+      });
+      
+      // Auto-resize if GoDaddy renders this inside an iframe-like container
+      function getDocHeight() {
+        var body = document.body;
+        var html = document.documentElement;
+        return Math.max(
+          body.scrollHeight, body.offsetHeight,
+          html.clientHeight, html.scrollHeight, html.offsetHeight
+        );
+      }
 
-        <div class="brand-box" style="border-left: 5px solid var(--accent-teal);">
-            <h4>Step 2: The Form Check</h4>
-            <p style="margin-bottom:0;">Turn to the Supplement Facts. Are you buying Magnesium <em>Oxide</em> or <em>Glycinate</em>? Is the B12 <em>Cyanocobalamin</em> or <em>Methylcobalamin</em>? Don't pay for forms your body cannot absorb.</p>
-        </div>
+      function resizeIfFramed() {
+        if (!window.frameElement) return;
+        var h = getDocHeight() + 24; // buffer
+        window.frameElement.style.height = h + "px";
+        window.frameElement.style.width = "100%";
+        window.frameElement.style.border = "0";
+        window.frameElement.setAttribute("scrolling", "no");
+      }
 
-        <div class="brand-box" style="border-left: 5px solid var(--accent-teal);">
-            <h4>Step 3: The "Other Ingredients" Scan</h4>
-            <p style="margin-bottom:0;">Look at the fine print below the facts panel. Avoid products with <strong>Titanium Dioxide</strong> (a whitening agent with safety concerns), <strong>Artificial Colors</strong> (Blue #1, Red #40), or "Proprietary Blends" that hide the actual dosage of ingredients.</p>
-        </div>
+      window.AMH_resizeIfFramed = resizeIfFramed;
 
-        <div class="brand-box" style="border-left: 5px solid var(--accent-teal);">
-            <h4>Step 4: Source Security</h4>
-            <p style="margin-bottom:0;"><strong>Beware of Amazon.</strong> Amazon uses "commingled inventory," meaning a bottle sold by a reputable brand might be stored in the same bin as a counterfeit bottle sold by a third-party seller. I recommend buying <strong>Direct from Manufacturer</strong>, via <strong>Fullscript</strong> (our professional dispensary), or physically at a trusted retailer like <strong>Costco</strong> or <strong>Whole Foods</strong>.</p>
-        </div>
-    </div>
+      window.addEventListener("load", resizeIfFramed);
+      window.addEventListener("resize", resizeIfFramed);
 
-</div>
-
-<footer>
-    <h3>Archangel Michael Health</h3>
-    <p>Internal Medicine | Integrative Medicine | Direct Primary Care</p>
-    <br>
-    <h4>References & Further Reading</h4>
-    <ul class="references">
-        <li>1. US Pharmacopeia (USP). "Choosing for Quality: Dietary Supplements." [Verified Mark Program].</li>
-        <li>2. NSF International. "Dietary Supplement and Vitamin Certification - NSF/ANSI 173."</li>
-        <li>3. Cohen, P. A., et al. "Presence of Banned Drugs in Dietary Supplements." JAMA Internal Medicine.</li>
-        <li>4. ConsumerLab.com. "Independent Tests and Reviews of Vitamin, Mineral, and Herbal Supplements."</li>
-        <li>5. National Institutes of Health (NIH). "Dietary Supplement Health and Education Act (DSHEA) of 1994."</li>
-        <li>6. FDA. "Questions and Answers on Dietary Supplements - 21 CFR Part 111 (cGMP)."</li>
-        <li>7. DiNicolantonio, J. J., et al. "Magnesium bioavailability: Oxide vs Citrate vs Glycinate." Open Heart Journal.</li>
-        <li>8. Nordic Naturals. "The difference between Ethyl Ester and Triglyceride Form Fish Oils."</li>
-        <li>9. Gaia Herbs. "Meet Your Herbs Transparency Program & Full Spectrum Processing."</li>
-    </ul>
-    <p style="font-size: 0.8rem; margin-top: 2rem; color: #aaa;">Disclaimer: The information provided here is for educational purposes only and does not constitute medical advice. Always consult your physician before starting any new supplement regimen.</p>
-</footer>
-
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(resizeIfFramed).catch(function(){});
+      }
+      
+      // Smooth Scroll for TOC
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+              targetElement.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
