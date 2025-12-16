@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Decoding Your Immune System | Archangel Michael Health</title>
+  <title>Patient Education | Archangel Michael Health</title>
 
+  <!-- Shared stylesheet (GitHub Pages) -->
   <link rel="stylesheet" href="https://docbraymd.github.io/amh/style.css" />
 
+  <!-- Minimal page-local styling for logo + action buttons + print/PDF behavior -->
   <style>
-    /* Header logo */
     .amh-logo-wrap{
       display:flex;
       justify-content:center;
@@ -16,13 +17,12 @@
       margin: 0 0 14px 0;
     }
     .amh-logo{
-      width: 110px;
+      width: 112px;
       height: auto;
       display:block;
       filter: drop-shadow(0 8px 18px rgba(0,0,0,0.22));
     }
 
-    /* Action bar */
     .action-bar{
       display:flex;
       gap:12px;
@@ -53,21 +53,23 @@
       transform:none;
       box-shadow:none;
     }
+
     .no-print{ display:block; }
 
-    /* Print: hide action UI; remove background gradients for clean PDF */
+    /* Keep PDFs clean and printer-friendly */
     @media print{
       .no-print{ display:none !important; }
       body{ background:#fff !important; }
       .main-container{ margin:0 !important; box-shadow:none !important; border-radius:0 !important; }
       header{ background:#fff !important; color:#000 !important; border-bottom:2px solid #333 !important; }
       header h2{ opacity:1 !important; }
-      .doctor-tag{ background:#fff !important; color:#000 !important; border:1px solid #333 !important; }
+      header .doctor-tag{ background:#fff !important; color:#000 !important; border:1px solid #333 !important; }
       .amh-logo{ filter:none !important; }
       a{ color:#000 !important; text-decoration:underline !important; }
     }
   </style>
 
+  <!-- One-click PDF download -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 
@@ -75,14 +77,20 @@
   <div class="main-container" id="pdf-root" role="document">
     <header>
       <div class="amh-logo-wrap">
-        <img class="amh-logo" src="https://docbraymd.github.io/amh/AMHLogo.png" alt="Archangel Michael Health logo" />
+        <img
+          class="amh-logo"
+          src="https://docbraymd.github.io/amh/AMHLogo.png"
+          alt="Archangel Michael Health logo"
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"
+        />
       </div>
 
       <div class="doctor-tag">Archangel Michael Health</div>
 
-      <h1 id="page-title">Decoding Your Immune System</h1>
+      <h1 id="page-title">Condition Title</h1>
 
-      <h2>A Comprehensive Guide to Autoimmunity Testing &amp; Root Cause Solutions</h2>
+      <h2>Lifestyle, Integrative &amp; Conventional Care</h2>
 
       <div class="byline">by Christopher L. Bray MD PhD</div>
 
@@ -98,372 +106,306 @@
 
     <div class="content-body">
       <p>
-        Autoimmunity is rarely a sudden event; it is a spectrum that develops over years. Conventional medicine often waits for the "scream"—when organ damage is visible. At Archangel Michael Health, we prefer to listen to the "whispers"—subtle shifts in blood markers that offer a window of opportunity. However, listening requires discernment. Not every ache or rash is autoimmune, and indiscriminate testing often leads to confusion rather than clarity.
+        Replace this introduction with a concise overview of the condition: what it is, why it matters, and how to use this guide.
       </p>
 
       <div class="toc no-print" aria-label="On this page">
         <h4>On this page</h4>
         <ul>
-          <li><button type="button" class="toc-btn" data-scroll="overview">1. When NOT to Order Tests</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="inflammation">2. The Barometers: ESR &amp; CRP</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="ana">3. ANA &amp; Genetic HLA Testing</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="specifics">4. Specific Disease Antibodies</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="rootcauses">5. Root Causes &amp; Triggers</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="treatment">6. Medications &amp; Integrative Plan</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="references">References</button></li>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#symptoms">Symptoms &amp; red flags</a></li>
+          <li><a href="#diagnosis">Diagnosis</a></li>
+          <li><a href="#drivers">Contributing factors</a></li>
+          <li><a href="#mcv">Mutated Citrullinated Vimentin (MCV)</a></li>
+          <li><a href="#plan">Step-by-step plan</a></li>
+          <li><a href="#treatments">Conventional treatments</a></li>
+          <li><a href="#integrative">Integrative options</a></li>
+          <li><a href="#costs">Cost considerations</a></li>
+          <li><a href="#faq">FAQ</a></li>
         </ul>
       </div>
 
-      <h3 id="overview">1. When NOT to Order Tests</h3>
-      <div class="clinical-note">
-        <h4>The "False Positive" Trap</h4>
+      <h3 id="overview">Overview</h3>
+      <p>
+        Provide a high-yield overview here. For sophisticated readers, include core physiology/pathophysiology in plain medical language.
+      </p>
+      <ul class="symptom-list">
+        <li><strong>Key point:</strong> What matters most clinically and practically.</li>
+        <li><strong>Key point:</strong> Common misconceptions and how to avoid them.</li>
+        <li><strong>Key point:</strong> When to escalate care and why.</li>
+      </ul>
+
+      <h3 id="symptoms">Symptoms &amp; red flags</h3>
+      <h4>Common symptoms</h4>
+      <ul class="symptom-list">
+        <li>Symptom 1 (1–2 lines of context)</li>
+        <li>Symptom 2 (1–2 lines of context)</li>
+        <li>Symptom 3 (1–2 lines of context)</li>
+      </ul>
+
+      <div class="alert-box">
+        <h4>Red flags (seek urgent evaluation)</h4>
         <p>
-          It is critical to understand that autoimmune tests are <strong>not screening tests</strong> for the general healthy population. A positive result does not automatically mean you have a disease. Up to 30% of healthy individuals (especially women and the elderly) may have low-level positive antibodies without ever developing an autoimmune condition. Ordering an ANA for "general fatigue" or simple joint pain often leads to "rabbit holes" of anxiety and unnecessary medical workups.
+          List urgent warning signs and what to do (same-day clinician contact vs urgent care vs ER), tailored to the condition.
         </p>
       </div>
 
+      <h3 id="diagnosis">Diagnosis</h3>
+      <div class="clinical-note">
+        <h4>Clinical note</h4>
+        <p>
+          Add nuance: overlapping conditions, why diagnosis matters, and what a clinician is trying to rule in/out.
+        </p>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Testing approach</div>
+          <div class="rx-type">DIAGNOSTICS</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">History</div>
+          <div>Key questions that change management decisions.</div>
+
+          <div class="rx-label">Exam</div>
+          <div>High-yield exam findings and what they imply.</div>
+
+          <div class="rx-label">Core tests</div>
+          <div>Minimum useful tests; what they show; common limitations.</div>
+
+          <div class="rx-label">When to expand</div>
+          <div>Additional testing only if results will change next steps.</div>
+        </div>
+      </div>
+
+      <h3 id="drivers">Contributing factors</h3>
       <p>
-        <strong>Common Pitfalls: Confusing Simpler Conditions for Autoimmunity</strong>
-      </p>
-      <div class="rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Joint Pain</div>
-          <div class="rx-type">OSTEOARTHRITIS VS. RA</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">Osteoarthritis (OA)</div>
-          <div>
-            <strong>Mechanism:</strong> "Wear and tear" mechanical degradation.<br>
-            <strong>Key Symptom:</strong> Pain gets <em>worse</em> with use/activity. Morning stiffness lasts &lt;30 minutes.<br>
-            <strong>Location:</strong> Tips of fingers (DIP joints) and knees.<br>
-            <strong>Testing:</strong> Do NOT order ANA. It is usually irrelevant.
-          </div>
-
-          <div class="rx-label">Rheumatoid Arthritis (RA)</div>
-          <div>
-            <strong>Mechanism:</strong> Inflammatory attack on synovium.<br>
-            <strong>Key Symptom:</strong> Pain gets <em>better</em> with movement. Morning stiffness lasts &gt;1 hour.<br>
-            <strong>Location:</strong> Wrists and knuckles (MCP joints).<br>
-            <strong>Testing:</strong> Order RF and Anti-CCP.
-          </div>
-        </div>
-      </div>
-
-      <div class="rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Facial Rashes</div>
-          <div class="rx-type">ROSACEA VS. LUPUS</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">Rosacea</div>
-          <div>
-            <strong>Appearance:</strong> Redness on cheeks, often with pimples or pustules.<br>
-            <strong>Triggers:</strong> Spicy food, alcohol, heat.<br>
-            <strong>Key Sign:</strong> It affects the nasolabial folds (smile lines).<br>
-            <strong>Testing:</strong> Do NOT order ANA.
-          </div>
-
-          <div class="rx-label">Lupus Malar Rash</div>
-          <div>
-            <strong>Appearance:</strong> "Butterfly" distribution across cheeks and nose.<br>
-            <strong>Triggers:</strong> Sun exposure (photosensitive).<br>
-            <strong>Key Sign:</strong> It <em>spares</em> the nasolabial folds (the area right next to the nose remains pale).<br>
-            <strong>Testing:</strong> Order ANA.
-          </div>
-        </div>
-      </div>
-
-      <h3 id="inflammation">2. The Barometers: ESR &amp; CRP</h3>
-      <p>
-        Before identifying <em>what</em> is being attacked, we must establish if there is a systemic fire.
-      </p>
-
-      <div class="rx-card">
-        <div class="rx-header">
-          <div class="rx-name">ESR (Sed Rate)</div>
-          <div class="rx-type">CHRONIC MARKER</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">What it is</div>
-          <div>Measures how fast red blood cells fall. Inflammation creates proteins (fibrinogen) that make cells sticky and heavy.</div>
-
-          <div class="rx-label">Interpretation</div>
-          <div><strong>Optimal:</strong> &lt;10 mm/hr (men), &lt;15 mm/hr (women).<br><strong>High:</strong> &gt;40 mm/hr suggests significant inflammation.<br><strong>Nuance:</strong> Obesity increases ESR because fat cells release inflammatory cytokines. A moderately high ESR in an overweight patient without joint pain is often metabolic, not autoimmune.</div>
-        </div>
-      </div>
-
-      <div class="rx-card">
-        <div class="rx-header">
-          <div class="rx-name">hs-CRP</div>
-          <div class="rx-type">ACUTE / SILENT MARKER</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">What it is</div>
-          <div>C-Reactive Protein is produced by the liver in direct response to immune signaling (IL-6). It rises within hours.</div>
-
-          <div class="rx-label">Interpretation</div>
-          <div>
-            <strong>Optimal:</strong> &lt;0.5 mg/L (Cool system).<br>
-            <strong>Warning:</strong> 1.0–3.0 mg/L (Leaky gut, insulin resistance, or early reactivity).<br>
-            <strong>Danger:</strong> &gt;3.0 mg/L (High risk for cardiovascular events; active inflammation).
-          </div>
-        </div>
-      </div>
-
-      <h3 id="ana">3. ANA &amp; Genetic HLA Testing</h3>
-      <p>
-        We use antibody testing to detect active attacks, and genetic testing to understand your inherent risk profile.
-      </p>
-
-      <div class="rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Antinuclear Antibody (ANA)</div>
-          <div class="rx-type">ANTIBODY SCREEN</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">The Titer</div>
-          <div>
-            <strong>1:40 / 1:80:</strong> Low Positive. Seen in 30% of healthy people, viral infections, or aging. rarely indicates active disease.<br>
-            <strong>&ge; 1:160:</strong> Clinical cutoff. Only ~5% of healthy people have this.<br>
-            <strong>&ge; 1:320:</strong> Strongly suggests underlying autoimmune process.
-          </div>
-
-          <div class="rx-label">The Pattern</div>
-          <div>
-            <strong>Homogeneous:</strong> Classic for Lupus (SLE).<br>
-            <strong>Centromere:</strong> Specific for Limited Scleroderma (CREST).<br>
-            <strong>Speckled:</strong> Non-specific; can be Sjogren's, Lupus, or general inflammation.
-          </div>
-        </div>
-      </div>
-
-      <div class="rx-card">
-        <div class="rx-header">
-          <div class="rx-name">HLA Genetic Testing</div>
-          <div class="rx-type">GENETIC RISK</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">What it is</div>
-          <div>Human Leukocyte Antigen (HLA) markers are genetic "barcodes" on your cells that help your immune system distinguish self from non-self. Certain codes are prone to confusion.</div>
-
-          <div class="rx-label">HLA-B27</div>
-          <div><strong>Condition:</strong> Ankylosing Spondylitis (AS) and Reactive Arthritis.<br><strong>When to order:</strong> For inflammatory back pain (pain at night, better with exercise) or uveitis (eye inflammation).<br><strong>Meaning:</strong> It is a strong predisposing factor. Being positive does not guarantee disease, but increases probability significantly in the presence of symptoms.</div>
-
-          <div class="rx-label">HLA-DRB1</div>
-          <div><strong>Condition:</strong> Rheumatoid Arthritis (RA).<br><strong>Meaning:</strong> Known as the "Shared Epitope." Carriers are at much higher risk for RA, especially if they smoke. The gene interacts with smoking to trigger the formation of Anti-CCP antibodies.</div>
-        </div>
-      </div>
-
-      <h3 id="specifics">4. Specific Disease Antibodies</h3>
-      
-      <div class="rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Lupus (SLE)</div>
-          <div class="rx-type">DIAGNOSTIC</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">Anti-dsDNA</div>
-          <div><strong>The Tracker.</strong> 97% specific for Lupus. Unlike other markers, it fluctuates with disease activity. Rising levels often predict a kidney flare (Nephritis).</div>
-          
-          <div class="rx-label">Anti-Sm (Smith)</div>
-          <div><strong>The Confirm-er.</strong> The most specific antibody for Lupus. If positive, it is virtually diagnostic.</div>
-          
-          <div class="rx-label">Complement (C3/C4)</div>
-          <div><strong>Low levels:</strong> Suggest active "consumption" by immune complexes (Lupus flare).<br><strong>High levels:</strong> Suggest insulin resistance (metabolic syndrome).</div>
-        </div>
-      </div>
-
-      <div class="rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Rheumatoid Arthritis (RA)</div>
-          <div class="rx-type">JOINT HEALTH</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">Rheumatoid Factor</div>
-          <div><strong>The Old Guard.</strong> Non-specific; can be elevated in Hep C, Sjogren's, or healthy aging. Sensitivity is only ~70%.</div>
-          
-          <div class="rx-label">Anti-CCP</div>
-          <div><strong>The Sniper.</strong> 96-98% specific for RA. Can appear 10-15 years before joint pain begins. Strongly linked to smoking and gum disease.</div>
-        </div>
-      </div>
-
-      <h3 id="rootcauses">5. Root Causes &amp; Triggers</h3>
-      <p>
-        In the "Pre-Clinical" phase, identifying these triggers offers the best chance to turn off the process.
+        Discuss lifestyle factors (sleep, nutrition, activity, stress physiology), exposures/irritants, comorbidities,
+        medications, and environmental contributors. Emphasize what is modifiable.
       </p>
       <ul class="symptom-list">
-        <li><strong>Intestinal Permeability ("Leaky Gut"):</strong> Gluten and dysbiosis trigger <em>Zonulin</em> release, opening gut barriers. This allows toxins into the blood, triggering "molecular mimicry" where the immune system attacks self-tissue.</li>
-        <li><strong>Infections (EBV):</strong> The Epstein-Barr Virus (Mono) mimics human nuclear proteins. Chronic reactivation is a leading driver of ANA positivity.</li>
-        <li><strong>Oral Health &amp; Lungs:</strong> Gum disease bacteria (<em>P. gingivalis</em>) and smoking cause "citrullination" of proteins, driving Rheumatoid Arthritis.</li>
+        <li><strong>Sleep:</strong> Mechanisms, how to assess, practical first steps.</li>
+        <li><strong>Nutrition:</strong> Patterns that worsen/improve symptoms; realistic adjustments.</li>
+        <li><strong>Stress physiology:</strong> Autonomic patterns; actionable interventions.</li>
+        <li><strong>Environment/exposures:</strong> Triggers and mitigation strategies.</li>
       </ul>
 
-      <h3 id="treatment">6. Medications &amp; Integrative Plan</h3>
+      <!-- NEW SECTION: MCV -->
+      <h3 id="mcv">Mutated Citrullinated Vimentin (MCV)</h3>
       <p>
-        We use a "treat-to-target" approach. While lifestyle is foundational, medications are essential when organs are threatened.
+        Mutated Citrullinated Vimentin (MCV) is an autoantibody test that can be used in the evaluation of inflammatory arthritis,
+        most commonly in the context of suspected rheumatoid arthritis (RA). “Citrullination” is a chemical change to certain proteins
+        that can occur during inflammation; in some individuals, the immune system forms antibodies against these altered proteins.
       </p>
 
       <div class="rx-card">
         <div class="rx-header">
-          <div class="rx-name">First-Line Medications</div>
-          <div class="rx-type">STANDARD OF CARE</div>
+          <div class="rx-name">How to interpret MCV (patient-focused)</div>
+          <div class="rx-type">LAB</div>
         </div>
         <div class="rx-grid">
-          <div class="rx-label">Lupus (SLE)</div>
-          <div><strong>Hydroxychloroquine (Plaquenil):</strong> The anchor drug. It prevents organ damage and flares. Generally well-tolerated but requires annual eye exams.<br><strong>Mechanism:</strong> Modulates the immune system (via TLR inhibition) rather than suppressing it broadly.</div>
-
-          <div class="rx-label">Rheumatoid Arthritis</div>
-          <div><strong>Methotrexate:</strong> The gold standard "Disease Modifying" drug (DMARD). Often started early to prevent joint erosion.<br><strong>Biologics:</strong> Drugs like Abatacept or TNF-inhibitors are used if Methotrexate is insufficient.</div>
-
-          <div class="rx-label">Polymyalgia Rheumatica (PMR)</div>
-          <div><strong>Corticosteroids (Prednisone):</strong> PMR causes severe morning stiffness in shoulders/hips. It responds miraculously to low-dose prednisone (10-20mg). If symptoms don't resolve quickly, the diagnosis is likely wrong.</div>
-
-          <div class="rx-label">Ankylosing Spondylitis</div>
-          <div><strong>NSAIDs:</strong> High-dose NSAIDs (like Naproxen/Indomethacin) are the first line.<br><strong>TNF-Inhibitors:</strong> (e.g., Humira/Enbrel). Highly effective for spinal inflammation where Methotrexate often fails.</div>
-        </div>
-      </div>
-
-      <div class="rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Integrative Strategy</div>
-          <div class="rx-type">LIFESTYLE RX</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">Nutrition</div>
-          <div><strong>Mediterranean Diet:</strong> High in Omega-3s and polyphenols. Proven to reduce RA pain.<br><strong>Autoimmune Protocol (AIP):</strong> For active flares. Eliminates grains, dairy, nightshades to "reset" the system.</div>
-
-          <div class="rx-label">Supplements</div>
+          <div class="rx-label">What it suggests</div>
           <div>
-            <strong>Vitamin D:</strong> Target 40-60 ng/mL. Deficiency correlates with Lupus/MS.<br>
-            <strong>Omega-3s:</strong> 2-4g daily. Reduces inflammatory cytokines.<br>
-            <strong>Curcumin:</strong> Potent anti-inflammatory for joint pain.
+            A positive MCV may support an autoimmune/inflammatory arthritis diagnosis when symptoms and exam findings fit.
+            It is not diagnostic by itself.
+          </div>
+
+          <div class="rx-label">How it compares</div>
+          <div>
+            MCV is in the same general “family” of RA-related antibody tests as anti-CCP. Depending on the laboratory and population,
+            performance may vary. Clinicians typically interpret MCV alongside anti-CCP, rheumatoid factor (RF), ESR/CRP, imaging,
+            and the clinical pattern.
+          </div>
+
+          <div class="rx-label">False positives</div>
+          <div>
+            Autoantibodies can sometimes be positive in people without active inflammatory arthritis, in other autoimmune conditions,
+            and occasionally without a clear explanation. Context matters.
+          </div>
+
+          <div class="rx-label">False negatives</div>
+          <div>
+            Some people with RA (especially early disease or “seronegative” RA) can have negative antibody tests.
+            A negative MCV does not rule out inflammatory arthritis.
+          </div>
+
+          <div class="rx-label">When it’s useful</div>
+          <div>
+            It can be helpful when symptoms strongly suggest inflammatory arthritis but standard markers are inconclusive,
+            or when a clinician is building a complete “weight of evidence” picture.
+          </div>
+
+          <div class="rx-label">What to do with results</div>
+          <div>
+            If positive and symptoms fit: confirm inflammatory pattern, evaluate joints, consider imaging, and discuss early treatment.
+            If positive but symptoms do not fit: avoid overinterpreting and reassess based on clinical course.
           </div>
         </div>
       </div>
 
-      <h3 id="references">References</h3>
-      <p class="references-block">
-        1. Decoding Your Immune System: A Comprehensive Guide to Autoimmunity Testing.<br>
-        2. Windows of Opportunity for Preclinical Rheumatoid Arthritis.<br>
-        3. Erythrocyte Sedimentation Rate and C-Reactive Protein (PMC).<br>
-        4. Antinuclear Antibodies (ANA) - American College of Rheumatology.<br>
-        5. Mercury Exposure and Antinuclear Antibodies (NHANES).<br>
-        6. Vitamin D deficiency is associated with increased autoimmune response.<br>
-        7. The VITAL trial: Vitamin D and Omega-3s.<br>
-        8. Zonulin and Its Regulation of Intestinal Barrier Function.
+      <div class="clinical-note">
+        <h4>Practical guidance</h4>
+        <p>
+          Autoantibody tests are most helpful when they answer a specific clinical question. If you are ordering or reviewing MCV,
+          pair it with: a symptom timeline, a joint pattern description (which joints, symmetry, morning stiffness duration),
+          inflammatory markers (CRP/ESR), and a clinician-performed joint exam. When in doubt, trend symptoms over time and
+          focus on function and inflammation control rather than “chasing” isolated lab results.
+        </p>
+      </div>
+
+      <h3 id="plan">Step-by-step plan</h3>
+      <div class="success-box">
+        <h4>What “better” looks like</h4>
+        <p>
+          Define measurable improvement: symptom frequency/severity, function, sleep, and objective metrics when appropriate.
+        </p>
+      </div>
+
+      <ul class="symptom-list">
+        <li><strong>Weeks 0–2:</strong> Foundations + baseline tracking.</li>
+        <li><strong>Weeks 2–6:</strong> Add one targeted intervention at a time; reassess weekly.</li>
+        <li><strong>Weeks 6+:</strong> Adjust, consider selective testing, escalate if not improving.</li>
+      </ul>
+
+      <h3 id="treatments">Conventional treatments</h3>
+      <p>
+        Provide standard-of-care options with mechanism, typical usage patterns (non-prescriptive), common side effects, serious risks,
+        monitoring needs, and cost ranges (generic vs brand).
       </p>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Medication class / option</div>
+          <div class="rx-type">STANDARD</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">What it is</div>
+          <div>Medication class and typical role in care.</div>
+
+          <div class="rx-label">How it works</div>
+          <div>Mechanism explained clearly.</div>
+
+          <div class="rx-label">Typical use</div>
+          <div>General patterns for when it’s used; what to monitor; when to re-evaluate.</div>
+
+          <div class="rx-label">Side effects</div>
+          <div>Common vs serious; who needs caution.</div>
+
+          <div class="rx-label">Cost</div>
+          <div>Typical out-of-pocket range; generic vs brand considerations.</div>
+        </div>
+      </div>
+
+      <h3 id="integrative">Integrative options</h3>
+      <p>
+        Include plausible mechanisms, safety/interaction cautions, and realistic cost. Avoid overpromising.
+      </p>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Supplement / herb</div>
+          <div class="rx-type">INTEGRATIVE</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Rationale</div>
+          <div>Mechanism and practical use-case.</div>
+
+          <div class="rx-label">Typical use</div>
+          <div>General patterns (non-prescriptive) and expected timeframe to benefit.</div>
+
+          <div class="rx-label">Safety</div>
+          <div>Interactions (e.g., anticoagulants, SSRIs), pregnancy, liver/kidney cautions.</div>
+
+          <div class="rx-label">Cost</div>
+          <div>Approx monthly range.</div>
+        </div>
+      </div>
+
+      <h3 id="costs">Cost considerations</h3>
+      <ul class="symptom-list">
+        <li>Prioritize highest ROI interventions first (sleep, triggers, basics).</li>
+        <li>Prefer generics when appropriate; avoid duplicative supplements.</li>
+        <li>Reserve testing for decisions that change management.</li>
+      </ul>
+
+      <h3 id="faq">FAQ</h3>
+      <h4>Question 1?</h4>
+      <p>Answer with clear boundaries and when to seek clinician oversight.</p>
+
+      <h4>Question 2?</h4>
+      <p>Answer…</p>
 
       <footer>
         <div class="medical-disclaimer">
           <p><strong>Medical disclaimer:</strong> The information on this page is provided for general educational purposes only and is not medical advice. It is not intended to diagnose, treat, cure, or prevent any disease, and it does not establish a physician–patient relationship.</p>
           <p>Do not apply this information to your specific situation without the oversight of a qualified clinician who can consider your full health history, medications, goals, preferences, and limitations. If you have urgent or severe symptoms, seek emergency care.</p>
-          <p style="margin: 0;"><strong>Copyright:</strong> © Dr. Christopher Bray at Archangel Michael Health 2025</p>
+          <p style="margin:0;"><strong>Copyright:</strong> © Dr. Bray at Archangel Michael Health 2025</p>
         </div>
 
-        <p><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine | Gainesville, FL</p>
+        <p><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine</p>
       </footer>
     </div>
   </div>
 
   <script>
     (function () {
-      // ---- TOC scrolling (no #hash links; avoids GoDaddy frame-in-frame behavior) ----
-      function scrollToId(id) {
-        var el = document.getElementById(id);
-        if (!el) return;
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
-
-        // Nudge resize after scroll to reduce clipping in some wrappers
-        if (typeof window.AMH_resizeIfFramed === "function") {
-          setTimeout(window.AMH_resizeIfFramed, 250);
-          setTimeout(window.AMH_resizeIfFramed, 900);
-        }
-      }
-
-      document.addEventListener("click", function (e) {
-        var btn = e.target.closest(".toc-btn[data-scroll]");
-        if (!btn) return;
-        e.preventDefault();
-        var target = btn.getAttribute("data-scroll");
-        if (target) scrollToId(target);
-      });
-
-      // ---- Auto-resize if GoDaddy renders this inside an iframe-like container ----
-      function getDocHeight() {
-        var body = document.body;
-        var html = document.documentElement;
-        return Math.max(
-          body.scrollHeight, body.offsetHeight,
-          html.clientHeight, html.scrollHeight, html.offsetHeight
-        );
-      }
-
-      function resizeIfFramed() {
-        if (!window.frameElement) return;
-        var h = getDocHeight() + 24; // buffer
-        window.frameElement.style.height = h + "px";
-        window.frameElement.style.width = "100%";
-        window.frameElement.style.border = "0";
-        window.frameElement.setAttribute("scrolling", "no");
-      }
-
-      window.AMH_resizeIfFramed = resizeIfFramed;
-
-      window.addEventListener("load", resizeIfFramed);
-      window.addEventListener("resize", resizeIfFramed);
-
-      // Download PDF using html2pdf.js
       var btn = document.getElementById("downloadPdfBtn");
-      if (btn) {
-        function safeFilename(title) {
-          return (title || "patient-guide")
-            .toLowerCase()
-            .replace(/[^a-z0-9]+/g, "-")
-            .replace(/(^-|-$)/g, "");
+      if (!btn) return;
+
+      function safeFilename(title) {
+        return (title || "patient-guide")
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/(^-|-$)/g, "");
+      }
+
+      btn.addEventListener("click", function () {
+        if (typeof html2pdf === "undefined") {
+          alert("PDF generator is still loading. Please try again in a moment, or use Print / Save as PDF.");
+          return;
         }
 
-        btn.addEventListener("click", function () {
-          if (typeof html2pdf === "undefined") {
-            alert("PDF generator is still loading. Please try again in a moment, or use Print / Save as PDF.");
-            return;
-          }
+        btn.disabled = true;
+        btn.textContent = "Preparing PDF...";
 
-          btn.disabled = true;
-          btn.textContent = "Preparing PDF...";
+        var title = (document.getElementById("page-title") && document.getElementById("page-title").textContent) || "Patient Guide";
+        var filename = safeFilename(title) + ".pdf";
 
-          var title = (document.getElementById("page-title") && document.getElementById("page-title").textContent) || "Patient Guide";
-          var filename = safeFilename(title) + ".pdf";
+        var source = document.getElementById("pdf-root").cloneNode(true);
+        source.querySelectorAll(".no-print").forEach(function (el) { el.remove(); });
 
-          // Clone content for PDF and remove UI elements
-          var source = document.getElementById("pdf-root").cloneNode(true);
-          source.querySelectorAll(".no-print").forEach(function (el) { el.remove(); });
+        var img = source.querySelector(".amh-logo");
+        if (img) {
+          img.setAttribute("crossorigin", "anonymous");
+          img.setAttribute("referrerpolicy", "no-referrer");
+        }
 
-          var wrapper = document.createElement("div");
-          wrapper.style.background = "#ffffff";
-          wrapper.appendChild(source);
+        var wrapper = document.createElement("div");
+        wrapper.style.background = "#ffffff";
+        wrapper.appendChild(source);
 
-          var opt = {
-            margin: [0.5, 0.5, 0.6, 0.5], // inches
-            filename: filename,
-            image: { type: "jpeg", quality: 0.98 },
-            html2canvas: { scale: 2, useCORS: true, letterRendering: true },
-            jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
-            pagebreak: { mode: ["css", "legacy"] }
-          };
+        var opt = {
+          margin: [0.5, 0.5, 0.6, 0.5],
+          filename: filename,
+          image: { type: "jpeg", quality: 0.98 },
+          html2canvas: { scale: 2, useCORS: true, allowTaint: false, letterRendering: true },
+          jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+          pagebreak: { mode: ["css", "legacy"] }
+        };
 
-          html2pdf()
-            .set(opt)
-            .from(wrapper)
-            .save()
-            .catch(function (err) {
-              console.error(err);
-              alert("Could not generate the PDF in this browser. Please use Print / Save as PDF.");
-            })
-            .finally(function () {
-              btn.disabled = false;
-              btn.textContent = "Download PDF";
-            });
-        });
-      }
+        html2pdf()
+          .set(opt)
+          .from(wrapper)
+          .save()
+          .catch(function (err) {
+            console.error(err);
+            alert("Could not generate the PDF in this browser. Please use Print / Save as PDF.");
+          })
+          .finally(function () {
+            btn.disabled = false;
+            btn.textContent = "Download PDF";
+          });
+      });
     })();
   </script>
 </body>
