@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elevated hsCRP Guide | Archangel Michael Health</title>
+
+  <link rel="stylesheet" href="https://docbraymd.github.io/amh/style.css" />
+
+  <style>
+    /* Header logo */
+    .amh-logo-wrap{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      margin: 0 0 14px 0;
+    }
+    .amh-logo{
+      width: 110px;
+      height: auto;
+      display:block;
+      filter: drop-shadow(0 8px 18px rgba(0,0,0,0.22));
+    }
+
+    /* Action bar */
+    .action-bar{
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      align-items:center;
+      margin-top:18px;
+      flex-wrap:wrap;
+    }
+    .amh-btn{
+      appearance:none;
+      border:1px solid rgba(255,255,255,0.35);
+      background:#16a085;
+      color:#fff;
+      padding:10px 14px;
+      border-radius:10px;
+      font-weight:700;
+      cursor:pointer;
+      transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+    .amh-btn:hover{ transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,0.18); }
+    .amh-btn.secondary{
+      background:#34495e;
+      border-color: rgba(255,255,255,0.25);
+    }
+    .amh-btn:disabled{
+      opacity:0.65;
+      cursor:not-allowed;
+      transform:none;
+      box-shadow:none;
+    }
+    .no-print{ display:block; }
+
+    /* Print settings */
+    @media print{
+      .no-print{ display:none !important; }
+      body{ background:#fff !important; }
+      .main-container{ margin:0 !important; box-shadow:none !important; border-radius:0 !important; width:100% !important; }
+      header{ background:#fff !important; color:#000 !important; border-bottom:2px solid #333 !important; }
+      header h2{ opacity:1 !important; }
+      .doctor-tag{ background:#fff !important; color:#000 !important; border:1px solid #333 !important; }
+      .amh-logo{ filter:none !important; }
+      a{ color:#000 !important; text-decoration:underline !important; }
+    }
+  </style>
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+
+<body>
+  <div class="main-container" id="pdf-root" role="document">
+    <header>
+      <div class="amh-logo-wrap">
+        <img class="amh-logo" src="https://docbraymd.github.io/amh/AMHLogo.png" alt="Archangel Michael Health logo" />
+      </div>
+
+      <div class="doctor-tag">Archangel Michael Health</div>
+
+      <h1 id="page-title">Elevated hsCRP: The Hidden Risk</h1>
+
+      <h2>Patient Guide: Inflammation, Calcium Scores &amp; Root Cause Resolution</h2>
+
+      <div class="byline">by Christopher L. Bray MD PhD</div>
+
+      <div class="action-bar no-print" aria-label="Actions">
+        <button class="amh-btn secondary" type="button" onclick="window.print()">
+          Print / Save as PDF
+        </button>
+        <button class="amh-btn" id="downloadPdfBtn" type="button">
+          Download PDF
+        </button>
+      </div>
+    </header>
+
+    <div class="content-body">
+      <p>
+        At Archangel Michael Health, we view an elevated high-sensitivity C-Reactive Protein (hsCRP) as a "check engine" light for your blood vessels. Unlike standard CRP which detects acute infection, hsCRP detects the low-grade, simmering inflammation that drives heart disease. This guide explains the risks, how to rule out hidden infections, and the specific root causes we can reverse together.
+      </p>
+
+      <div class="toc no-print" aria-label="On this page">
+        <h4>On this page</h4>
+        <ul>
+          <li><button type="button" class="toc-btn" data-scroll="section-1">1. Risks &amp; Calcium Score</button></li>
+          <li><button type="button" class="toc-btn" data-scroll="section-2">2. Active Surveillance</button></li>
+          <li><button type="button" class="toc-btn" data-scroll="section-3">3. Root Causes &amp; Plans</button></li>
+          <li><button type="button" class="toc-btn" data-scroll="section-4">4. Conventional Treatments</button></li>
+          <li><button type="button" class="toc-btn" data-scroll="section-5">5. Integrative Options</button></li>
+          <li><button type="button" class="toc-btn" data-scroll="section-6">6. Recheck Strategy</button></li>
+          <li><button type="button" class="toc-btn" data-scroll="references">7. References</button></li>
+        </ul>
+      </div>
+
+      <h3 id="section-1">1. Risks &amp; Calcium Score</h3>
+      <p>
+        Cardiovascular disease is driven by two main forces: <strong>Cholesterol (The Fuel)</strong> and <strong>Inflammation (The Fire)</strong>. You can have high cholesterol, but without inflammation, the plaque often remains stable. However, when hsCRP is elevated (> 1.0 mg/L), it indicates active inflammation that weakens the plaque wall, making it prone to rupture.
+      </p>
+      <ul class="symptom-list">
+        <li><strong>Long-term risks:</strong> Heart attack, stroke, peripheral artery disease, insulin resistance, and accelerated aging.</li>
+        <li><strong>Diagnostic Reality:</strong> In the absence of specific symptoms, extensive testing for "hidden" pathology is rarely useful. We use the Calcium Score to stratify risk.</li>
+      </ul>
+
+      <p>
+        If your hsCRP is elevated and you are in an "intermediate" risk category, the AHA/ACC guidelines recommend a <strong>CT Calcium Score</strong> to act as a "tie-breaker."
+      </p>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Coronary Calcium Score (CAC)</div>
+          <div class="rx-type">DIAGNOSTICS</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">What it is</div>
+          <div>A 5-minute, non-invasive CT scan (no dye) that detects calcified plaque. It distinguishes <strong>Active Risk</strong> (hsCRP) from <strong>Historical Damage</strong> (Calcium).</div>
+
+          <div class="rx-label">Score 0</div>
+          <div><strong>No Plaque.</strong> Very low risk. Even with high hsCRP, we have time to focus aggressively on lifestyle before meds.</div>
+
+          <div class="rx-label">Score 1-99</div>
+          <div><strong>Mild Plaque.</strong> Early disease. Strict lifestyle changes mandatory; medication discussed based on other factors.</div>
+
+          <div class="rx-label">Score >100</div>
+          <div><strong>Moderate/High.</strong> Significant damage exists. Statins are usually recommended to stabilize plaque.</div>
+        </div>
+      </div>
+
+      <h3 id="section-2">2. Active Surveillance: Infection &amp; Autoimmune</h3>
+      <div class="clinical-note">
+        <h4>Patient Action Required</h4>
+        <p>
+          Before attributing your elevated hsCRP solely to lifestyle, you must monitor your body for signs of occult (hidden) infection or autoimmune disease. <strong>If you experience any of the following, please notify the practice immediately</strong>, as this requires specific workup rather than lifestyle changes.
+        </p>
+      </div>
+
+      <div class="alert-box">
+        <h4>Signs of Occult Infection</h4>
+        <p>Be attentive to:</p>
+        <ul class="symptom-list" style="margin-bottom:0;">
+          <li><strong>Systemic:</strong> Low-grade fevers (>100.4°F), chills, or night sweats.</li>
+          <li><strong>Respiratory:</strong> Persistent cough, sore throat, or sinus pain/pressure.</li>
+          <li><strong>Digestive:</strong> Persistent diarrhea, loose stools, or abdominal cramping.</li>
+          <li><strong>Urinary/Reproductive:</strong> Urinary irritation/burning, urgency, vaginal/penile discharge or pain.</li>
+        </ul>
+      </div>
+
+      <div class="alert-box">
+        <h4>Signs of Autoimmune Disease</h4>
+        <p>Be attentive to:</p>
+        <ul class="symptom-list" style="margin-bottom:0;">
+          <li><strong>Joints:</strong> Morning stiffness lasting >1 hour; joint swelling or redness.</li>
+          <li><strong>Skin:</strong> Unexplained rashes (especially sun-sensitive or butterfly rash on face).</li>
+          <li><strong>Other:</strong> Profound fatigue not relieved by sleep; dry eyes/mouth.</li>
+        </ul>
+      </div>
+
+      <h3 id="section-3">3. Root Causes &amp; Plans</h3>
+      <p>
+        If the above infections and autoimmune conditions are ruled out, your elevated hsCRP is likely driven by one of these 11 factors.
+      </p>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">1. Inflammatory Diet</div>
+          <div class="rx-type">NUTRITION</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Mechanism</div>
+          <div>
+            The primary driver of modern inflammation. It involves four key pathways:
+            <ul style="margin:5px 0 0 15px; padding:0; font-size:0.9em;">
+              <li><strong>Heat Toxins (AGEs):</strong> Fried and grilled/charred foods contain Advanced Glycation End-products that act as vascular irritants.</li>
+              <li><strong>Damaged Fats:</strong> Industrial seed oils (corn, soy, canola) oxidize easily, damaging cell membranes.</li>
+              <li><strong>Saturated Fats:</strong> Excessive long-chain saturated fats (palmitic acid from processed meats), especially in the absence of fiber, activate the TLR4 immune pathway.</li>
+              <li><strong>Vegetable Deficit:</strong> Insufficient phytonutrients means the body lacks the "coolant" to quell metabolic fire.</li>
+            </ul>
+          </div>
+          <div class="rx-label">Plan</div>
+          <div>
+            1. <strong>Eliminate Deep Fried Foods.</strong><br>
+            2. <strong>Oil Change:</strong> Switch exclusively to Olive Oil, Avocado Oil, or Ghee.<br>
+            3. <strong>Volume:</strong> Aim for 5+ servings of vegetables daily.<br>
+            4. <strong>Cooking:</strong> Use slow cooking, poaching, or baking rather than high-heat grilling.
+          </div>
+          <div class="rx-label">Supplement</div>
+          <div><strong>Omega-3</strong> (2-4g EPA/DHA daily). Produces "resolvins" to counter dietary inflammation.</div>
+          <div class="rx-label">Side Effects</div>
+          <div>Mild blood thinning. Stop 1 week before surgery.</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">2. Visceral Adiposity (TOFI)</div>
+          <div class="rx-type">METABOLIC</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Mechanism</div>
+          <div>"Thin Outside, Fat Inside." Fat deep in the abdomen releases IL-6 directly to the liver, triggering CRP.</div>
+          <div class="rx-label">Plan</div>
+          <div>Intermittent Fasting (14-16hr). Target waist < 40" (men), < 35" (women).</div>
+          <div class="rx-label">Supplement</div>
+          <div><strong>Berberine Phytosome</strong> (500mg 2x/day). Activates metabolic switches. Cost: ~$30/mo.</div>
+          <div class="rx-label">Side Effects</div>
+          <div>GI upset (nausea/diarrhea). Avoid in pregnancy.</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">3. Sedentary Lifestyle</div>
+          <div class="rx-type">LIFESTYLE</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Mechanism</div>
+          <div>Muscle contraction releases "myokines" that lower inflammation. Inactivity leads to stagnation.</div>
+          <div class="rx-label">Plan</div>
+          <div>150 mins/week Zone 2 cardio. "Exercise snacks": 2 min walk per hour of sitting.</div>
+          <div class="rx-label">Supplement</div>
+          <div><strong>Creatine</strong> (5g daily). Supports muscle hydration. Cost: ~$20/mo.</div>
+          <div class="rx-label">Side Effects</div>
+          <div>Water retention (mild/temporary). Very safe.</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">4. Glycemic Variability</div>
+          <div class="rx-type">METABOLIC</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Mechanism</div>
+          <div>Rapid sugar spikes cause oxidative stress in vessels, even in non-diabetics.</div>
+          <div class="rx-label">Plan</div>
+          <div>"Clothe Your Carbs": Fiber/protein first, carbs last. 10-min walk after meals.</div>
+          <div class="rx-label">Supplement</div>
+          <div><strong>Apple Cider Vinegar</strong> (1 tbsp pre-meal). Slows gastric emptying. Cost: Low.</div>
+          <div class="rx-label">Side Effects</div>
+          <div>Tooth enamel erosion if undiluted (drink with straw/water).</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">5. Chronic Stress</div>
+          <div class="rx-type">PSYCHOSOCIAL</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Mechanism</div>
+          <div>Stress causes "Glucocorticoid Resistance"—immune cells stop listening to cortisol.</div>
+          <div class="rx-label">Plan</div>
+          <div>4-7-8 Breathing. Nature immersion ("Forest Bathing").</div>
+          <div class="rx-label">Supplement</div>
+          <div><strong>Ashwagandha</strong> (300-600mg KSM-66). Lowers cortisol. Cost: ~$20/mo.</div>
+          <div class="rx-label">Side Effects</div>
+          <div>Drowsiness. Potential thyroid interaction (monitor TSH).</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">6. Sleep Deprivation</div>
+          <div class="rx-type">RECOVERY</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Mechanism</div>
+          <div>< 6 hours sleep prevents nightly immune cleanup, raising cytokines (TNF-alpha).</div>
+          <div class="rx-label">Plan</div>
+          <div>Strict hygiene: Cool room, blackout curtains, no screens 1hr before bed.</div>
+          <div class="rx-label">Supplement</div>
+          <div><strong>Magnesium Glycinate</strong> (200-400mg). Calms nervous system. Cost: ~$20/mo.</div>
+          <div class="rx-label">Side Effects</div>
+          <div>Loose stools (rare with glycinate form).</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">7. Sleep Apnea (OSA)</div>
+          <div class="rx-type">RECOVERY</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Mechanism</div>
+          <div>Airway collapse causes oxygen drops (hypoxia), generating massive oxidative stress.</div>
+          <div class="rx-label">Plan</div>
+          <div>Home Sleep Study if you snore. CPAP or Dental Appliance.</div>
+          <div class="rx-label">Action</div>
+          <div>Avoid alcohol within 3 hours of bed (it relaxes airway muscles).</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">8. Periodontal Disease</div>
+          <div class="rx-type">ORAL-SYSTEMIC</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Mechanism</div>
+          <div>Bleeding gums allow bacteria into the blood, settling in heart plaque.</div>
+          <div class="rx-label">Plan</div>
+          <div>Deep cleaning (Scaling/Root Planing) if indicated. Daily flossing.</div>
+          <div class="rx-label">Supplement</div>
+          <div><strong>Oral Probiotics</strong> (S. salivarius K12). Restores oral flora. Cost: ~$25/mo.</div>
+          <div class="rx-label">Side Effects</div>
+          <div>None significant.</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">9. Gut Dysbiosis</div>
+          <div class="rx-type">GUT HEALTH</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Mechanism</div>
+          <div>"Leaky Gut" allows bacterial toxins (LPS) into blood, triggering systemic alarms.</div>
+          <div class="rx-label">Plan</div>
+          <div>Remove NSAIDs/Alcohol. Eat fermented foods daily.</div>
+          <div class="rx-label">Supplement</div>
+          <div><strong>L-Glutamine</strong> (5g powder). Fuels gut lining repair. Cost: ~$20/mo.</div>
+          <div class="rx-label">Side Effects</div>
+          <div>Generally safe. Caution in severe liver disease.</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">10. Toxins &amp; Smoking</div>
+          <div class="rx-type">ENVIRONMENTAL</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Mechanism</div>
+          <div>Smoking injects free radicals. Heavy metals/plastics act as immune agitators.</div>
+          <div class="rx-label">Plan</div>
+          <div>Smoking cessation non-negotiable. HEPA air filters in bedroom.</div>
+          <div class="rx-label">Supplement</div>
+          <div><strong>NAC</strong> (600mg 2x/day). Boosts detoxification (Glutathione). Cost: ~$25/mo.</div>
+          <div class="rx-label">Side Effects</div>
+          <div>GI upset. Safe for most.</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">11. Nutrient Deficiency</div>
+          <div class="rx-type">NUTRITION</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Mechanism</div>
+          <div>Deficiency in Vitamin D or Zinc removes the "brakes" from the immune system.</div>
+          <div class="rx-label">Plan</div>
+          <div>Test Vitamin D. Aim for 50–70 ng/mL.</div>
+          <div class="rx-label">Supplement</div>
+          <div><strong>Vitamin D3 + K2</strong> (2000-5000 IU). Cost: ~$15/mo.</div>
+          <div class="rx-label">Side Effects</div>
+          <div>Toxicity rare at these doses; monitor levels annually.</div>
+        </div>
+      </div>
+
+      <h3 id="section-4">4. Conventional Treatments</h3>
+      <p>
+        These are used when risk is high (Calcium Score > 100 or hsCRP > 3.0) to stabilize plaque.
+      </p>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Statins (Rosuvastatin)</div>
+          <div class="rx-type">STANDARD</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Role</div>
+          <div>Potently reduces inflammation in the artery wall (JUPITER Trial).</div>
+          <div class="rx-label">Typical use</div>
+          <div>Daily oral dosing. Recommended if Calcium Score > 100.</div>
+          <div class="rx-label">Side Effects</div>
+          <div>Muscle aches (myalgia) in 5-10%. Mild blood sugar elevation.</div>
+          <div class="rx-label">Cost</div>
+          <div>Generic ~$4–15/month.</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Colchicine (Low Dose)</div>
+          <div class="rx-type">STANDARD</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Role</div>
+          <div>Inhibits NLRP3 inflammasome. FDA-approved for CV risk reduction.</div>
+          <div class="rx-label">Typical use</div>
+          <div>0.5 mg daily.</div>
+          <div class="rx-label">Side Effects</div>
+          <div>GI upset (diarrhea).</div>
+          <div class="rx-label">Cost</div>
+          <div>Variable ($20-60/mo).</div>
+        </div>
+      </div>
+
+      <h3 id="section-5">5. Integrative Options</h3>
+      <p>
+        Beyond the targeted supplements in the plans above, these evidence-based options have broad anti-inflammatory effects.
+      </p>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Bioavailable Curcumin</div>
+          <div class="rx-type">INTEGRATIVE</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Rationale</div>
+          <div>Inhibits NF-kB (inflammation switch). Use Meriva or BCM-95 forms.</div>
+          <div class="rx-label">Typical use</div>
+          <div>500–1000 mg daily.</div>
+          <div class="rx-label">Side Effects</div>
+          <div>Caution with gallstones or blood thinners.</div>
+          <div class="rx-label">Cost</div>
+          <div>~$45/mo.</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Specialized Pro-Resolving Mediators (SPMs)</div>
+          <div class="rx-type">ADVANCED</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Rationale</div>
+          <div>Concentrated metabolites of Omega-3s that actively <em>resolve</em> inflammation rather than just blocking it.</div>
+          <div class="rx-label">Typical use</div>
+          <div>1-2 softgels daily during active flares or high hsCRP.</div>
+          <div class="rx-label">Side Effects</div>
+          <div>Very safe; similar to fish oil.</div>
+          <div class="rx-label">Cost</div>
+          <div>High (~$60-80/mo).</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Resveratrol</div>
+          <div class="rx-type">INTEGRATIVE</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Rationale</div>
+          <div>Activates Sirtuins (longevity genes) and mimics the anti-inflammatory effects of fasting.</div>
+          <div class="rx-label">Typical use</div>
+          <div>250–500 mg daily (trans-resveratrol).</div>
+          <div class="rx-label">Side Effects</div>
+          <div>Generally mild; potential interaction with blood thinners.</div>
+          <div class="rx-label">Cost</div>
+          <div>~$30/mo.</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Ginger Root Extract</div>
+          <div class="rx-type">INTEGRATIVE</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Rationale</div>
+          <div>Contains gingerols which inhibit COX enzymes (similar mechanism to aspirin but milder).</div>
+          <div class="rx-label">Typical use</div>
+          <div>1,000–2,000 mg extract daily.</div>
+          <div class="rx-label">Side Effects</div>
+          <div>Heartburn/reflux in some patients.</div>
+          <div class="rx-label">Cost</div>
+          <div>~$15/mo.</div>
+        </div>
+      </div>
+
+      <h3 id="section-6">6. Recheck Strategy</h3>
+      <div class="success-box">
+        <h4>Target Goal: &lt; 1.0 mg/L</h4>
+        <p>
+          We identify the most likely lifestyle factors (Causes 1-11), implement changes, and <strong>recheck hsCRP in 3 to 6 months</strong>.
+        </p>
+        <p>
+          If your Calcium Score is 0 and hsCRP drops below 1.0, you are in the best possible position for prevention.
+        </p>
+      </div>
+
+      <h3 id="references">7. References</h3>
+      <p class="references-block">
+        <strong>References &amp; Resources:</strong><br />
+        1. JUPITER Trial (Rosuvastatin & hsCRP): <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa0807646" target="_blank" rel="noopener">NEJM 2008</a><br />
+        2. Periodontal Disease & CV Risk: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4389485/" target="_blank" rel="noopener">PMC4389485</a><br />
+        3. AHA Guidelines on Calcium Scoring: <a href="https://www.jacc.org/doi/10.1016/j.jcmg.2018.09.023" target="_blank" rel="noopener">JACC Img</a><br />
+        4. Visceral Fat & Inflammation: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7595183/" target="_blank" rel="noopener">PMC7595183</a><br />
+        5. Ginger & Inflammation: <a href="https://pubmed.ncbi.nlm.nih.gov/34857250/" target="_blank" rel="noopener">PubMed 34857250</a><br />
+        6. AGEs & Diet: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3704564/" target="_blank" rel="noopener">J Am Diet Assoc</a>
+      </p>
+    </div>
+
+    <footer>
+      <div class="medical-disclaimer">
+        <p><strong>Medical disclaimer:</strong> The information on this page is provided for general educational purposes only and is not medical advice. It is not intended to diagnose, treat, cure, or prevent any disease, and it does not establish a physician–patient relationship.</p>
+        <p>Do not apply this information to your specific situation without the oversight of a qualified clinician who can consider your full health history, medications, goals, preferences, and limitations. If you have urgent or severe symptoms, seek emergency care.</p>
+      </div>
+
+      <p><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine</p>
+      <p style="margin: 0; font-size: 0.9rem; color: #666;"><strong>Copyright:</strong> © Dr. Bray at Archangel Michael Health 2025</p>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      // ---- TOC scrolling (no #hash links; avoids GoDaddy frame-in-frame behavior) ----
+      function scrollToId(id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+
+        // Nudge resize after scroll to reduce clipping in some wrappers
+        if (typeof window.AMH_resizeIfFramed === "function") {
+          setTimeout(window.AMH_resizeIfFramed, 250);
+          setTimeout(window.AMH_resizeIfFramed, 900);
+        }
+      }
+
+      document.addEventListener("click", function (e) {
+        var btn = e.target.closest(".toc-btn[data-scroll]");
+        if (!btn) return;
+        e.preventDefault();
+        var target = btn.getAttribute("data-scroll");
+        if (target) scrollToId(target);
+      });
+
+      // ---- Auto-resize if GoDaddy renders this inside an iframe-like container ----
+      function getDocHeight() {
+        var body = document.body;
+        var html = document.documentElement;
+        return Math.max(
+          body.scrollHeight, body.offsetHeight,
+          html.clientHeight, html.scrollHeight, html.offsetHeight
+        );
+      }
+
+      function resizeIfFramed() {
+        if (!window.frameElement) return;
+        var h = getDocHeight() + 24; // buffer
+        window.frameElement.style.height = h + "px";
+        window.frameElement.style.width = "100%";
+        window.frameElement.style.border = "0";
+        window.frameElement.setAttribute("scrolling", "no");
+      }
+
+      window.AMH_resizeIfFramed = resizeIfFramed;
+
+      window.addEventListener("load", resizeIfFramed);
+      window.addEventListener("resize", resizeIfFramed);
+
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(resizeIfFramed).catch(function(){});
+      }
+
+      if (window.ResizeObserver) {
+        var ro = new ResizeObserver(function () { resizeIfFramed(); });
+        ro.observe(document.documentElement);
+      } else {
+        setInterval(resizeIfFramed, 1200);
+      }
+
+      // ---- PDF Download logic ----
+      var pdfBtn = document.getElementById("downloadPdfBtn");
+      if (pdfBtn) {
+        pdfBtn.addEventListener("click", function () {
+          if (typeof html2pdf === "undefined") {
+            alert("PDF generator is still loading. Please try again later.");
+            return;
+          }
+          pdfBtn.disabled = true;
+          pdfBtn.textContent = "Preparing PDF...";
+
+          var title = (document.getElementById("page-title") && document.getElementById("page-title").textContent) || "Patient Guide";
+          var filename = title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "") + ".pdf";
+
+          var source = document.getElementById("pdf-root").cloneNode(true);
+          source.querySelectorAll(".no-print").forEach(function (el) { el.remove(); });
+
+          var wrapper = document.createElement("div");
+          wrapper.style.background = "#ffffff";
+          wrapper.appendChild(source);
+
+          var opt = {
+            margin: [0.5, 0.5, 0.6, 0.5],
+            filename: filename,
+            image: { type: "jpeg", quality: 0.98 },
+            html2canvas: { scale: 2, useCORS: true, letterRendering: true },
+            jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+            pagebreak: { mode: ["css", "legacy"] }
+          };
+
+          html2pdf().set(opt).from(wrapper).save()
+            .catch(function (err) { console.error(err); alert("Error generating PDF."); })
+            .finally(function () { pdfBtn.disabled = false; pdfBtn.textContent = "Download PDF"; });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
