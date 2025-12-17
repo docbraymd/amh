@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Migraine Mastery | Archangel Michael Health</title>
+
+  <link rel="stylesheet" href="https://docbraymd.github.io/amh/style.css" />
+
+  <style>
+    /* Header logo */
+    .amh-logo-wrap{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      margin: 0 0 14px 0;
+    }
+    .amh-logo{
+      width: 110px;
+      height: auto;
+      display:block;
+      filter: drop-shadow(0 8px 18px rgba(0,0,0,0.22));
+    }
+
+    /* Action bar */
+    .action-bar{
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      align-items:center;
+      margin-top:18px;
+      flex-wrap:wrap;
+    }
+    .amh-btn{
+      appearance:none;
+      border:1px solid rgba(255,255,255,0.35);
+      background:#16a085;
+      color:#fff;
+      padding:10px 14px;
+      border-radius:10px;
+      font-weight:700;
+      cursor:pointer;
+      transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+    .amh-btn:hover{ transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,0.18); }
+    .amh-btn.secondary{
+      background:#34495e;
+      border-color: rgba(255,255,255,0.25);
+    }
+    .amh-btn:disabled{
+      opacity:0.65;
+      cursor:not-allowed;
+      transform:none;
+      box-shadow:none;
+    }
+    .no-print{ display:block; }
+
+    /* Print: hide action UI; remove background gradients for clean PDF */
+    @media print{
+      .no-print{ display:none !important; }
+      body{ background:#fff !important; }
+      .main-container{ margin:0 !important; box-shadow:none !important; border-radius:0 !important; }
+      header{ background:#fff !important; color:#000 !important; border-bottom:2px solid #333 !important; }
+      header h2{ opacity:1 !important; }
+      .doctor-tag{ background:#fff !important; color:#000 !important; border:1px solid #333 !important; }
+      .amh-logo{ filter:none !important; }
+      a{ color:#000 !important; text-decoration:underline !important; }
+    }
+  </style>
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+
+<body>
+  <div class="main-container" id="pdf-root" role="document">
+    <header>
+      <div class="amh-logo-wrap">
+        <img class="amh-logo" src="https://docbraymd.github.io/amh/AMHLogo.png" alt="Archangel Michael Health logo" />
+      </div>
+
+      <div class="doctor-tag">Archangel Michael Health</div>
+
+      <h1 id="page-title">Migraine Mastery</h1>
+
+      <h2>Patient Guide: Lifestyle, Integrative &amp; Conventional Care</h2>
+
+      <div class="byline">by Christopher L. Bray MD PhD</div>
+
+      <div class="action-bar no-print" aria-label="Actions">
+        <button class="amh-btn secondary" type="button" onclick="window.print()">
+          Print / Save as PDF
+        </button>
+        <button class="amh-btn" id="downloadPdfBtn" type="button">
+          Download PDF
+        </button>
+      </div>
+    </header>
+
+    <div class="content-body">
+      <p>
+        Migraine is not "just a bad headache"; it is a complex, genetic neurological disease characterized by a hyperexcitable brain. At Archangel Michael Health, we believe the most effective management combines rigorous internal medicine with the common-sense wisdom of lifestyle and integrative care. This guide is designed to help you move from passive suffering to active management by understanding your unique threshold for attacks and building physiological resilience.
+      </p>
+
+      <div class="toc no-print" aria-label="On this page">
+        <h4>On this page</h4>
+        <ul>
+          <li><a href="#overview">Overview: The Migraine Brain</a></li>
+          <li><a href="#symptoms">Phases, Symptoms & Red Flags</a></li>
+          <li><a href="#drivers">Root Causes & Threshold Theory</a></li>
+          <li><a href="#diet">Dietary Triggers: MSG, Cheese & Wine</a></li>
+          <li><a href="#plan">The "SEEDS" Improvement Plan</a></li>
+          <li><a href="#acute">Acute Medications (Abortive)</a></li>
+          <li><a href="#moh">Medication Overuse Headache</a></li>
+          <li><a href="#preventative">Preventative Medications</a></li>
+          <li><a href="#devices">Bioenergetic Devices</a></li>
+          <li><a href="#integrative">Integrative Options & Supplements</a></li>
+          <li><a href="#references">References</a></li>
+        </ul>
+      </div>
+
+      <h3 id="overview">Overview: The Migraine Brain</h3>
+      <p>
+        Current science views migraine as a state of sensory processing sensitivity. The migraine brain does not filter stimuli—light, sound, smell—as effectively as a non-migraine brain. This "hyperexcitability" means your threshold for a neurological event is lower. [cite_start]When that threshold is crossed, the trigeminovascular system activates, releasing inflammatory chemicals like CGRP (Calcitonin Gene-Related Peptide) that cause pain signals to bombard the brainstem[cite: 7, 10, 11].
+      </p>
+      <ul class="symptom-list">
+        [cite_start]<li><strong>Key point:</strong> Migraine is a genetic "hardware" issue, often involving ion channel variances that affect how nerves fire[cite: 7, 427].</li>
+        [cite_start]<li><strong>Key point:</strong> Treatment is not just about killing pain; it is about raising your threshold so attacks occur less often[cite: 433].</li>
+        <li><strong>Key point:</strong> "Treat Early" is the golden rule. [cite_start]Treating during the mild headache phase is far more effective than waiting for severe pain[cite: 73, 540].</li>
+      </ul>
+
+      <h3 id="symptoms">Phases, Symptoms & Red Flags</h3>
+      <h4>The Four Phases</h4>
+      <p>A migraine attack is a dynamic event that can span days. Recognizing the early phases allows you to intervene before the pain becomes disabling.</p>
+      <ul class="symptom-list">
+        <li><strong>1. Prodrome (The Warning):</strong> Occurs 24–48 hours before pain. [cite_start]Symptoms include frequent yawning, neck stiffness, food cravings (sweets/carbs), mood changes, and increased urination[cite: 21, 24].</li>
+        <li><strong>2. Aura:</strong> Occurs in 25–30% of patients, typically lasting 5–60 minutes. [cite_start]Visual auras (zigzag lines, blind spots) are most common, but sensory aura (tingling hand/face) or speech difficulty can occur[cite: 28, 30].</li>
+        <li><strong>3. Headache (The Attack):</strong> Lasts 4–72 hours. Pain is often one-sided and throbbing, worsened by movement. [cite_start]Nausea and sensitivity to light/sound are hallmarks[cite: 34, 36].</li>
+        <li><strong>4. Postdrome (The Hangover):</strong> Lasts 24–48 hours after pain stops. [cite_start]Characterized by "brain fog," fatigue, and scalp tenderness[cite: 38, 40].</li>
+      </ul>
+
+      <div class="alert-box">
+        <h4>Red Flags (SNOOP10 Criteria)</h4>
+        <p>
+          [cite_start]While migraines are not dangerous, certain headaches require urgent evaluation to rule out strokes, aneurysms, or infections[cite: 60]. Seek immediate care for:
+        </p>
+        <ul class="symptom-list" style="margin-top:10px;">
+            [cite_start]<li><strong>Thunderclap Headache:</strong> Sudden, severe pain reaching maximum intensity in seconds ("worst of life")[cite: 61, 63].</li>
+            [cite_start]<li><strong>Systemic symptoms:</strong> Headache accompanied by fever, stiff neck, or weight loss[cite: 64].</li>
+            [cite_start]<li><strong>Neurological deficits:</strong> Weakness, confusion, seizure, or vision loss that does not resolve within 60 minutes[cite: 65].</li>
+            [cite_start]<li><strong>Older Onset:</strong> New headache pattern starting after age 50[cite: 66].</li>
+            [cite_start]<li><strong>Positional:</strong> Pain triggers specifically when standing up or lying down[cite: 68].</li>
+        </ul>
+      </div>
+
+      <h3 id="drivers">Root Causes & Threshold Theory</h3>
+      <p>
+        We use the <strong>Threshold Theory</strong> to explain attacks. Imagine a bucket. Your genetics determine the size of the bucket. Triggers are the water filling it. [cite_start]When the bucket overflows, you get a migraine[cite: 161, 429]. You cannot change your genetics, but you can stop the bucket from overflowing by managing these drivers.
+      </p>
+      
+      <div class="rx-card">
+        <div class="rx-header">
+            <div class="rx-name">Common Triggers (The "Water")</div>
+            <div class="rx-type">MODIFIABLE</div>
+        </div>
+        <div class="rx-grid">
+            <div class="rx-label">Stress Physiology</div>
+            <div>The "Let-down" headache often occurs on weekends when cortisol drops rapidly after a stressful week. [cite_start]Consistency in stress management is key[cite: 144, 146].</div>
+
+            <div class="rx-label">Sleep</div>
+            <div>The migraine brain craves routine. [cite_start]Too little sleep, too much sleep, or irregular wake times (even on weekends) are potent triggers[cite: 133].</div>
+
+            <div class="rx-label">Medications</div>
+            <div>Certain medications can lower the threshold. [cite_start]<strong>Oral Contraceptives:</strong> Estrogen-containing birth control can trigger attacks and increase stroke risk in aura patients[cite: 291]. [cite_start]<strong>Vasodilators:</strong> Drugs like nitroglycerin or PDE5 inhibitors (Viagra/Cialis) are known triggers[cite: 1126].</div>
+
+            <div class="rx-label">Hormones</div>
+            [cite_start]<div>Estrogen withdrawal just before menstruation triggers "menstrual migraine," which is often more severe and resistant to treatment[cite: 56, 495].</div>
+        </div>
+      </div>
+
+      <h3 id="diet">Dietary Triggers: MSG, Cheese & Wine</h3>
+      <p>
+        [cite_start]While some food "triggers" (like chocolate) are actually prodrome cravings, certain chemical compounds in food are well-documented triggers for susceptible patients[cite: 25, 642]. Identifying and limiting these can significantly raise your migraine threshold.
+      </p>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Key Chemical Triggers</div>
+          <div class="rx-type">DIET</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Tyramine (Aged Foods)</div>
+          <div>
+            <strong>What it is:</strong> A compound found in foods that have been aged, fermented, or stored for long periods.<br>
+            <strong>Common Sources:</strong> Aged cheeses (Blue, Cheddar, Swiss, Parmesan), cured or smoked meats (salami, pepperoni), fermented soy (miso, tofu, soy sauce), and tap beer.<br>
+            [cite_start]<strong>Mechanism:</strong> Tyramine can cause the release of norepinephrine, leading to vasoconstriction followed by rebound dilation and pain[cite: 643].
+          </div>
+
+          <div class="rx-label">MSG (Monosodium Glutamate)</div>
+          <div>
+            <strong>What it is:</strong> A flavor enhancer used in processed foods and some restaurant cooking.<br>
+            <strong>Common Sources:</strong> Canned soups, processed snacks (chips, flavored crackers), fast food, seasoning blends, and soy sauce.<br>
+            <strong>Mechanism:</strong> Glutamate is an excitatory neurotransmitter. [cite_start]In a hyperexcitable migraine brain, excess glutamate can trigger the electrical cascade of an attack[cite: 292, 645].
+          </div>
+
+          <div class="rx-label">Alcohol & Nitrates</div>
+          <div>
+            <strong>Alcohol:</strong> Red wine is the most frequent culprit due to tannins, sulfites, and phenolic flavonoids. Clear spirits (vodka, gin) are often better tolerated. Alcohol also causes dehydration.<br>
+            <strong>Nitrates:</strong> Found in bacon, hot dogs, and deli meats. [cite_start]They are direct vasodilators that can immediately trigger vascular headaches[cite: 152, 644].
+          </div>
+
+           <div class="rx-label">Aspartame</div>
+          <div>
+            <strong>What it is:</strong> An artificial sweetener found in "diet" sodas and sugar-free snacks.<br>
+             [cite_start]<strong>Action:</strong> A reported trigger for many patients; consider switching to natural sweeteners or water if you consume high amounts of diet soda[cite: 292, 646].
+          </div>
+        </div>
+      </div>
+
+      <div class="clinical-note">
+        <h4>Clinical Strategy</h4>
+        <p>
+          Do not restrict all these foods at once forever. We recommend a <strong>4-6 week elimination period</strong> of high-risk items (Tyramine, MSG, Nitrates). Reintroduce them one by one to see which specific chemical affects <em>your</em> brain. [cite_start]Hydration and stable blood sugar (never skipping meals) are just as important as avoiding specific foods[cite: 649].
+        </p>
+      </div>
+
+      <h3 id="plan">The "SEEDS" Improvement Plan</h3>
+      <div class="success-box">
+        <h4>What "Better" Looks Like</h4>
+        <p>
+          [cite_start]We define success as a 50% reduction in headache days, reduced attack severity, and improved response to acute medication[cite: 109]. Complete cure is rarely the goal; management and resilience are.
+        </p>
+      </div>
+
+      [cite_start]<p>Implementing the <strong>SEEDS</strong> protocol is the foundation of preventative care[cite: 293].</p>
+      <ul class="symptom-list">
+        <li><strong>S - Sleep:</strong> Wake up and go to bed at the same time every day. [cite_start]Screen for sleep apnea if you snore[cite: 134].</li>
+        [cite_start]<li><strong>E - Exercise:</strong> Moderate aerobic exercise (30-50 mins, 3x/week) acts like a "natural beta-blocker" by burning off excess adrenaline[cite: 139].</li>
+        <li><strong>E - Eat/Hydrate:</strong> Eat protein-rich meals every 3-4 hours to stabilize blood sugar. [cite_start]Drink 2-3L of water daily, adding electrolytes if you sweat[cite: 153].</li>
+        [cite_start]<li><strong>D - Diary:</strong> Track attacks to identify patterns (weather, hormones, food) rather than guessing[cite: 165].</li>
+        [cite_start]<li><strong>S - Stress:</strong> Use biofeedback or diaphragmatic breathing (4-7-8 method) to dampen the sympathetic nervous system[cite: 660].</li>
+      </ul>
+
+      <h3 id="acute">Acute Medications (Abortive)</h3>
+      <p>
+        Acute medications are taken to stop an attack that has already started. [cite_start]The most common error is waiting too long; treating while pain is mild significantly increases success[cite: 73, 540].
+      </p>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Triptans</div>
+          <div class="rx-type">GOLD STANDARD</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Formulations</div>
+          <div>
+            <strong>Tablets:</strong> Sumatriptan, Eletriptan, Rizatriptan.<br>
+            <strong>ODT (Dissolvable):</strong> Rizatriptan (Maxalt-MLT) and Zolmitriptan (Zomig ZMT). [cite_start]These dissolve on the tongue but are still absorbed in the stomach; useful if you cannot swallow pills[cite: 79, 547].<br>
+            <strong>Nasal Spray:</strong> Sumatriptan and Zolmitriptan. [cite_start]Faster onset (15 mins) and bypasses the stomach[cite: 77, 549].<br>
+            <strong>Injection:</strong> Sumatriptan SC. [cite_start]The fastest option (10 mins)[cite: 78].
+          </div>
+
+          <div class="rx-label">Why Use Non-Oral?</div>
+          <div>Migraines cause "gastric stasis" (stomach paralysis), meaning pills may sit in the stomach for hours without working. [cite_start]Nasal sprays and injections bypass the gut to work faster and are essential if you are vomiting[cite: 582, 583].</div>
+
+          <div class="rx-label">Mechanism</div>
+          <div>Serotonin (5-HT1B/1D) agonists. [cite_start]They constrict dilated blood vessels and block the release of CGRP[cite: 76, 542].</div>
+
+          <div class="rx-label">Side Effects</div>
+          <div>Flushing, tingling, and "triptan chest" (tightness in chest/throat). [cite_start]Contraindicated in patients with history of stroke, heart attack, or uncontrolled hypertension[cite: 81].</div>
+
+          <div class="rx-label">Cost</div>
+          <div>Low ($). Most are generic and covered by insurance ($10–$30/month).</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Gepants (Oral CGRP Antagonists)</div>
+          <div class="rx-type">MODERN / CV SAFE</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Common Options</div>
+          <div><strong>Ubrogepant (Ubrelvy), Rimegepant (Nurtec ODT), Zavegepant (Zavzpret - Nasal).</strong></div>
+
+          <div class="rx-label">Mechanism</div>
+          [cite_start]<div>Blocks the CGRP receptor directly without constricting blood vessels[cite: 84].</div>
+
+          <div class="rx-label">Efficacy</div>
+          <div>Effective for pain and associated symptoms (nausea, light sensitivity). [cite_start]Can be taken late in an attack and still work[cite: 562].</div>
+
+          <div class="rx-label">Side Effects</div>
+          <div>Very well tolerated. Mild nausea or dry mouth. [cite_start]No cardiovascular risk, making them safe for patients who cannot take Triptans[cite: 84, 979].</div>
+
+          <div class="rx-label">Cost</div>
+          <div>High ($$$). Brand name only. Often requires prior authorization or manufacturer savings cards (~$0–$50 with card, >$900 retail).</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Ditans</div>
+          <div class="rx-type">ALTERNATIVE</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Common Options</div>
+          <div><strong>Lasmiditan (Reyvow).</strong></div>
+
+          <div class="rx-label">Mechanism</div>
+          <div>Selectively targets the 5-HT1F receptor on nerves (not blood vessels). [cite_start]No vasoconstriction[cite: 90].</div>
+
+          <div class="rx-label">Efficacy</div>
+          <div>Effective for pain freedom.</div>
+
+          <div class="rx-label">Side Effects</div>
+          <div>Significant dizziness and sedation. <strong>Driving restriction:</strong> You must not drive for 8 hours after taking a dose. [cite_start]Controlled substance (Schedule V)[cite: 91, 567].</div>
+
+          <div class="rx-label">Cost</div>
+          <div>High ($$$). Brand name only.</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Ergots</div>
+          <div class="rx-type">RESCUE</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Common Options</div>
+          <div><strong>Dihydroergotamine (DHE) - Migranal, Trudhesa.</strong></div>
+
+          <div class="rx-label">Mechanism</div>
+          <div>Broad spectrum serotonin agonist. [cite_start]Very potent vasoconstrictor[cite: 572].</div>
+
+          <div class="rx-label">Efficacy</div>
+          <div>Often used for "status migrainosus" (attacks lasting >3 days) or when triptans fail. [cite_start]Nasal spray or injection only[cite: 95].</div>
+
+          <div class="rx-label">Side Effects</div>
+          <div>Nausea is common (often given with anti-nausea meds). [cite_start]Strong vasoconstriction—strictly contraindicated in cardiovascular disease[cite: 987].</div>
+
+          <div class="rx-label">Cost</div>
+          <div>High ($$$). Trudhesa is brand name; DHE ampules vary.</div>
+        </div>
+      </div>
+
+      <h3 id="moh">Medication Overuse Headache (Rebound)</h3>
+      <div class="amh-disclaimer" style="border-left-color: var(--danger);">
+        <p><strong>The "Vicious Cycle" of Treatment:</strong> Paradoxically, the medications used to treat migraines can <em>cause</em> migraines if used too frequently. [cite_start]This is the most common cause of chronic daily headache[cite: 104].</p>
+      </div>
+      <p>
+        Medication Overuse Headache (MOH) occurs when acute painkillers are taken so often that the brain becomes sensitized, leading to a "rebound" headache as soon as the medication wears off. [cite_start]This traps the patient in a cycle of taking more medication to treat the pain caused by the medication itself[cite: 104, 536].
+      </p>
+      <ul class="symptom-list">
+        [cite_start]<li><strong>The Limit:</strong> To prevent MOH, you must strictly limit acute medications (Triptans, Excedrin, NSAIDs, Opiates) to <strong>fewer than 10 days per month</strong> (or 2 days per week)[cite: 105, 1341].</li>
+        <li><strong>Why it happens:</strong> Frequent exposure to analgesics downregulates pain receptors, lowering your pain threshold.</li>
+        <li><strong>Difficulty to Treat:</strong> MOH is notoriously difficult because the only cure is stopping the offending medication. [cite_start]This often leads to a temporary, but significant, worsening of headaches ("withdrawal") before improvement occurs[cite: 1343].</li>
+      </ul>
+      <div class="clinical-note">
+        <h4>Treatment Strategy</h4>
+        <p>
+          Managing MOH requires a "washout" period where acute medications are stopped. [cite_start]We often use a "bridge therapy" (such as a short course of steroids) to help you survive the withdrawal week while simultaneously starting a robust <strong>preventative medication</strong> to rebuild your threshold[cite: 994, 1343].
+        </p>
+      </div>
+
+      <h3 id="preventative">Preventative Medications</h3>
+      <p>
+        Indicated if you experience 4 or more migraine days per month or significant disability. [cite_start]These are taken daily (or injected monthly) to prevent attacks from starting[cite: 108].
+      </p>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">CGRP Monoclonal Antibodies</div>
+          <div class="rx-type">TARGETED BIOLOGIC</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Common Options</div>
+          <div><strong>Erenumab (Aimovig), Fremanezumab (Ajovy), Galcanezumab (Emgality).</strong></div>
+
+          <div class="rx-label">Mechanism</div>
+          <div>Injectable antibodies that neutralize CGRP or block its receptor. [cite_start]The only preventative designed specifically for migraine[cite: 113, 596].</div>
+
+          <div class="rx-label">Efficacy</div>
+          <div>~50% of patients see a 50% reduction in migraine days. [cite_start]High adherence due to monthly dosing[cite: 115].</div>
+
+          <div class="rx-label">Side Effects</div>
+          <div>Injection site reactions. [cite_start]Aimovig specifically is associated with constipation[cite: 117].</div>
+
+          <div class="rx-label">Cost</div>
+          <div>High ($$$). Requires insurance approval, usually after failing 2 oral generics.</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Oral Preventatives (Generic Standards)</div>
+          <div class="rx-type">FIRST LINE</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Beta-Blockers</div>
+          <div><strong>Propranolol, Metoprolol.</strong><br><em>Pros:</em> Good for anxiety/high BP.<br><em>Cons:</em> Fatigue, exercise intolerance, depression. [cite_start]<br><em>Cost:</em> Low ($)[cite: 124, 614].</div>
+
+          <div class="rx-label">Anticonvulsants</div>
+          [cite_start]<div><strong>Topiramate (Topamax).</strong><br><em>Pros:</em> Effective, weight loss.<br><em>Cons:</em> "Brain fog," tingling fingers, kidney stones, taste perversion (soda tastes flat).<br><em>Cost:</em> Low ($)[cite: 122, 618].</div>
+
+          <div class="rx-label">Antidepressants</div>
+          [cite_start]<div><strong>Amitriptyline, Nortriptyline.</strong><br><em>Pros:</em> Helps sleep and neck pain.<br><em>Cons:</em> Dry mouth, weight gain, sedation.<br><em>Cost:</em> Low ($)[cite: 125, 621].</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Botox</div>
+          <div class="rx-type">PROCEDURAL</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Indication</div>
+          <div><strong>Chronic Migraine Only</strong> (15+ headache days/month). [cite_start]Not for episodic migraine[cite: 121, 609].</div>
+
+          <div class="rx-label">Mechanism</div>
+          <div>31 micro-injections into head/neck muscles every 12 weeks. [cite_start]Blocks pain transmission from nerve endings[cite: 610].</div>
+
+          <div class="rx-label">Efficacy</div>
+          <div>Highly effective for chronic sufferers; often reduces severity significantly.</div>
+
+          <div class="rx-label">Side Effects</div>
+          <div>Neck pain, temporary eyebrow droop (rare).</div>
+
+          <div class="rx-label">Cost</div>
+          <div>High ($$$). Covered by insurance for chronic migraine.</div>
+        </div>
+      </div>
+
+      <h3 id="devices">Bioenergetic & Neuromodulation Devices</h3>
+      <p>
+        FDA-cleared neuromodulation devices use electrical or magnetic currents to alter nerve activity. [cite_start]These are excellent "non-drug" options for patients who cannot tolerate medications or want to avoid systemic side effects[cite: 204, 1305].
+      </p>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Cefaly (e-TNS)</div>
+          <div class="rx-type">DEVICE</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">What it is</div>
+          <div>External Trigeminal Nerve Stimulation. [cite_start]An electrode worn on the forehead[cite: 205].</div>
+          <div class="rx-label">Use</div>
+          <div><strong>Acute:</strong> 60-min session to abort attack. [cite_start]<strong>Preventative:</strong> 20-min daily session[cite: 588, 1296].</div>
+          <div class="rx-label">Cost</div>
+          <div>~$379 (One-time purchase). [cite_start]Available OTC[cite: 206].</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Nerivio (REN)</div>
+          <div class="rx-type">DEVICE</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">What it is</div>
+          <div>Remote Electrical Neuromodulation. [cite_start]A wearable armband controlled by smartphone[cite: 209].</div>
+          <div class="rx-label">Use</div>
+          <div>Worn for 45 mins at onset of migraine. [cite_start]Triggers "Conditioned Pain Modulation" (distracting the brain from head pain)[cite: 587, 1304].</div>
+          <div class="rx-label">Cost</div>
+          <div>Requires prescription. [cite_start]Costs vary by insurance (~$50-$100 per 12 treatments)[cite: 209].</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">gammaCore (nVNS)</div>
+          <div class="rx-type">DEVICE</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">What it is</div>
+          <div>Non-invasive Vagus Nerve Stimulator. [cite_start]Handheld device placed against the neck[cite: 207].</div>
+          <div class="rx-label">Use</div>
+          [cite_start]<div>Used twice daily for prevention or multiple times to abort acute attacks[cite: 590, 1298].</div>
+          <div class="rx-label">Cost</div>
+          <div>~$450 per 3-month supply (refillable card). [cite_start]Requires prescription[cite: 208].</div>
+        </div>
+      </div>
+      
+       <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">SAVI Dual (SpringTMS)</div>
+          <div class="rx-type">DEVICE</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">What it is</div>
+          <div>Transcranial Magnetic Stimulation. [cite_start]Device held to the back of the head[cite: 210].</div>
+          <div class="rx-label">Use</div>
+          [cite_start]<div>Delivers a magnetic pulse to disrupt Cortical Spreading Depression (aura)[cite: 1301].</div>
+          <div class="rx-label">Cost</div>
+          <div>High rental fee; coverage varies.</div>
+        </div>
+      </div>
+
+      <h3 id="integrative">Integrative Options & Supplements</h3>
+      <p>
+        These options raise the migraine threshold naturally. They often take 2–3 months of consistent use to show full benefit. [cite_start]We avoid Butterbur due to liver toxicity concerns[cite: 188].
+      </p>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Acute Integrative Rescue</div>
+          <div class="rx-type">SYMPTOM MANAGEMENT</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Rest & Environment</div>
+          [cite_start]<div>Resting in a dark, quiet, and cool room is often essential to reduce sensory input and allow the nervous system to calm down[cite: 997, 1150].</div>
+          
+          <div class="rx-label">Cold Therapy</div>
+          [cite_start]<div>Applying ice packs or a cool cloth to the forehead or back of the neck can numb pain and constrict blood vessels[cite: 214, 998].</div>
+          
+          <div class="rx-label">Hydration</div>
+          [cite_start]<div>Drinking water or electrolyte fluids at the onset of an attack can help, provided nausea is controlled[cite: 999].</div>
+        </div>
+      </div>
+      
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Ginger</div>
+          <div class="rx-type">HERBAL ACUTE</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Rationale</div>
+          <div>Potent anti-inflammatory and anti-nausea properties. [cite_start]A 2014 double-blind study compared Ginger to Sumatriptan[cite: 680, 1281].</div>
+          <div class="rx-label">Evidence</div>
+          [cite_start]<div><strong>Study Result:</strong> Ginger (250mg dried powder) was statistically as effective as Sumatriptan 50mg for achieving pain relief at 2 hours, with significantly fewer side effects[cite: 1281].</div>
+          <div class="rx-label">Dose</div>
+          [cite_start]<div>500–1000mg dried ginger powder (capsule or tea) at onset[cite: 680].</div>
+          <div class="rx-label">Cost</div>
+          <div>Very Low ($).</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Magnesium</div>
+          <div class="rx-type">ESSENTIAL</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Rationale</div>
+          <div>Stabilizes nerve cell membranes; 50% of sufferers are deficient. [cite_start]Especially helpful for aura and menstrual migraine[cite: 169, 1185].</div>
+          <div class="rx-label">Dose/Form</div>
+          <div>400–600mg daily. <strong>Magnesium Glycinate</strong> is preferred for absorption and stomach tolerance. (Oxide often causes diarrhea) [cite_start][cite: 171, 671].</div>
+          <div class="rx-label">Cost</div>
+          <div>Low (~$15–20/month).</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Riboflavin (Vitamin B2)</div>
+          <div class="rx-type">MITOCHONDRIAL SUPPORT</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Rationale</div>
+          <div>Boosts mitochondrial energy production in the brain. [cite_start]Level B evidence for efficacy[cite: 173, 1190].</div>
+          <div class="rx-label">Dose</div>
+          <div>400mg daily. [cite_start]Safe, but causes harmless bright yellow urine[cite: 174].</div>
+          <div class="rx-label">Cost</div>
+          <div>Low (~$15/month).</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Coenzyme Q10</div>
+          <div class="rx-type">ENERGY</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Rationale</div>
+          <div>Supports cellular energy metabolism. [cite_start]48% of patients achieve >50% reduction in attacks[cite: 177, 1194].</div>
+          <div class="rx-label">Dose</div>
+          <div>100–300mg daily. [cite_start]<strong>Ubiquinol</strong> form is better absorbed than ubiquinone[cite: 178, 674].</div>
+          <div class="rx-label">Cost</div>
+          <div>Moderate (~$30–50/month).</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Non-Pharmacologic Therapies</div>
+          <div class="rx-type">LIFESTYLE</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Biofeedback</div>
+          <div>Level A evidence. [cite_start]Trains you to warm your hands or relax muscles, reducing autonomic arousal[cite: 192, 1138].</div>
+
+          <div class="rx-label">Acupuncture</div>
+          [cite_start]<div>Proven superior to no treatment; effective for reducing frequency with fewer side effects than drugs[cite: 202, 1219].</div>
+
+          <div class="rx-label">Light Therapy</div>
+          [cite_start]<div><strong>FL-41 Glasses:</strong> Rose-tinted lenses block painful blue light [cite: 212][cite_start].<br><strong>Green Light:</strong> Narrow-band green light exposure (1-2 hrs) can reduce headache intensity[cite: 683, 1259].</div>
+        </div>
+      </div>
+
+      <h3 id="references">References & Resources</h3>
+      <p>
+        [1] Pescador Ruschel MA, De Jesus O. Migraine Headache. StatPearls [Internet]. StatPearls Publishing; 2024. <a href="https://www.ncbi.nlm.nih.gov/books/NBK560787/" target="_blank" rel="noopener">Link to Source</a><br>
+        [2] American Headache Society. Red Flags in Headache - What if it isn't Migraine? AHS Research Library. <a href="https://americanheadachesociety.org/research/library/red-flags-in-headache-what-if-it-isnt-migraine/" target="_blank" rel="noopener">Link to Source</a><br>
+        [3] Mayo Clinic Staff. Migraine Diagnosis & Treatment. Mayo Clinic. <a href="https://www.mayoclinic.org/diseases-conditions/migraine-headache/diagnosis-treatment/drc-20360207" target="_blank" rel="noopener">Link to Source</a><br>
+        [4] American Headache Society. Incorporating Nutraceuticals for Migraine Prevention. AHS Primary Care Migraine. <a href="https://americanheadachesociety.org/news/incorporating-nutraceuticals-for-migraine-prevention" target="_blank" rel="noopener">Link to Source</a><br>
+        [5] Comparison between the efficacy of ginger and sumatriptan in the ablative treatment of the common migraine. Phytother Res. 2014. <a href="https://pubmed.ncbi.nlm.nih.gov/23657930/" target="_blank" rel="noopener">Link to Study</a><br>
+        [6] University of Arizona Health Sciences. Green Light Therapy Shown to Reduce Migraine Frequency, Intensity. <a href="https://healthsciences.arizona.edu/news/releases/green-light-therapy-shown-reduce-migraine-frequency-intensity-0" target="_blank" rel="noopener">Link to Source</a><br>
+        [7] International Classification of Headache Disorders 3rd Edition (ICHD-3). <a href="https://ichd-3.org" target="_blank" rel="noopener">https://ichd-3.org</a><br>
+        [8] American Migraine Foundation. <a href="https://americanmigrainefoundation.org" target="_blank" rel="noopener">https://americanmigrainefoundation.org</a><br>
+        [9] National Headache Foundation. <a href="https://headaches.org" target="_blank" rel="noopener">https://headaches.org</a>
+      </p>
+
+      <footer>
+        <div class="medical-disclaimer">
+          <p><strong>Medical disclaimer:</strong> The information on this page is provided for general educational purposes only and is not medical advice. It is not intended to diagnose, treat, cure, or prevent any disease, and it does not establish a physician–patient relationship.</p>
+          <p>Do not apply this information to your specific situation without the oversight of a qualified clinician who can consider your full health history, medications, goals, preferences, and limitations. If you have urgent or severe symptoms, seek emergency care.</p>
+          <p style="margin: 0;"><strong>Copyright:</strong> © Dr. Bray at Archangel Michael Health 2025</p>
+        </div>
+
+        <p><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine</p>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      // Download PDF using html2pdf.js
+      var btn = document.getElementById("downloadPdfBtn");
+      if (!btn) return;
+
+      function safeFilename(title) {
+        return (title || "patient-guide")
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/(^-|-$)/g, "");
+      }
+
+      btn.addEventListener("click", function () {
+        if (typeof html2pdf === "undefined") {
+          alert("PDF generator is still loading. Please try again in a moment, or use Print / Save as PDF.");
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = "Preparing PDF...";
+
+        var title = (document.getElementById("page-title") && document.getElementById("page-title").textContent) || "Patient Guide";
+        var filename = safeFilename(title) + ".pdf";
+
+        // Clone content for PDF and remove UI elements
+        var source = document.getElementById("pdf-root").cloneNode(true);
+        source.querySelectorAll(".no-print").forEach(function (el) { el.remove(); });
+
+        var wrapper = document.createElement("div");
+        wrapper.style.background = "#ffffff";
+        wrapper.appendChild(source);
+
+        var opt = {
+          margin: [0.5, 0.5, 0.6, 0.5], // inches
+          filename: filename,
+          image: { type: "jpeg", quality: 0.98 },
+          html2canvas: { scale: 2, useCORS: true, letterRendering: true },
+          jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+          pagebreak: { mode: ["css", "legacy"] }
+        };
+
+        html2pdf()
+          .set(opt)
+          .from(wrapper)
+          .save()
+          .catch(function (err) {
+            console.error(err);
+            alert("Could not generate the PDF in this browser. Please use Print / Save as PDF.");
+          })
+          .finally(function () {
+            btn.disabled = false;
+            btn.textContent = "Download PDF";
+          });
+      });
+    })();
+  </script>
+</body>
+</html>
