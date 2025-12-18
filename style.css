@@ -1,344 +1,391 @@
-:root {
-  --primary-dark: #2c3e50;
-  --primary-light: #34495e;
-  --accent-teal: #16a085;
-  --accent-indigo: #667eea;
+:root{
+  /* Primary */
+  --primary-1:#2c3e50;
+  --primary-2:#34495e;
+  --white:#ffffff;
 
-  --bg-light: #f8f9fa;
-  --bg-instruction: #ecf0f1;
-  --bg-success: #d5f4e6;
+  /* Accents */
+  --accent-teal:#16a085;
+  --accent-indigo:#667eea;
 
-  --text-main: #333333;
-  --text-light: #ffffff;
+  /* Neutrals */
+  --bg-verylight:#f8f9fa;
+  --bg-light:#ecf0f1;
+  --border:#e0e0e0;
+  --text:#333;
 
-  --alert-red: #dc3545;
-  --alert-warning: #f39c12;
+  /* Status */
+  --danger:#e74c3c;
+  --warning:#f39c12;
+  --success:#28a745;
 
-  --border-color: #e0e0e0;
-  --shadow: 0 10px 25px rgba(0,0,0,0.3);
+  /* Effects */
+  --shadow: 0 8px 24px rgba(0,0,0,0.18);
 }
 
-* { box-sizing: border-box; }
+*{ box-sizing:border-box; }
+html, body{ height:100%; }
 
-body {
-  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
-  color: var(--text-main);
-  line-height: 1.6;
+body{
+  margin:0;
+  color:var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+  /* For iframe embedding: keep the background neutral and let the container carry styling */
+  background: transparent;
 }
 
-.main-container {
-  max-width: 900px;
-  margin: 40px auto;
-  background-color: var(--text-light);
+a{ color: var(--accent-indigo); text-decoration: none; }
+a:hover{ text-decoration: underline; }
+
+.amh-page{
+  width: min(980px, calc(100% - 32px));
+  margin: 18px auto 28px;
+  background: var(--white);
+  border-radius: 18px;
   box-shadow: var(--shadow);
-  border-radius: 8px;
   overflow: hidden;
 }
 
-/* HEADER */
-header {
-  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
-  color: var(--text-light);
-  padding: 40px;
-  text-align: center;
-  border-bottom: 5px solid var(--accent-teal);
+.amh-header{
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary-1) 0%, var(--primary-2) 100%);
+  padding: 18px 18px 16px;
 }
 
-header h1 {
+.amh-header-inner{
+  display:flex;
+  gap:18px;
+  align-items:flex-start;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+
+.amh-logo{
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  background: rgba(255,255,255,0.15);
+  border-radius: 12px;
+  padding: 8px;
+}
+
+.amh-practice{
+  font-weight: 800;
+  letter-spacing: .2px;
+  opacity: .95;
+}
+
+.amh-title{
+  margin: 6px 0 6px;
+  font-size: 1.55rem;
+  line-height: 1.2;
+}
+
+.amh-tagline{
   margin: 0;
-  font-size: 2.5rem;
-  font-weight: 700;
-  letter-spacing: 1px;
+  opacity: .9;
+  max-width: 72ch;
 }
 
-header h2 {
-  margin: 10px 0 0 0;
-  font-size: 1.15rem;
-  font-weight: 300;
-  opacity: 0.92;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  line-height: 1.35;
+.amh-actions{
+  margin-left:auto;
+  display:flex;
+  align-items:center;
 }
 
-header .doctor-tag {
-  background-color: var(--accent-teal);
-  color: var(--text-light);
-  padding: 5px 15px;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: bold;
-  display: inline-block;
-  margin-top: 15px;
-}
-
-header .byline {
-  margin-top: 12px;
-  font-size: 0.95rem;
-  opacity: 0.95;
-  letter-spacing: 0.5px;
-}
-
-/* CONTENT */
-.content-body {
-  padding: 50px;
-}
-
-/* TYPOGRAPHY */
-h3 {
-  color: var(--primary-dark);
-  font-size: 1.8rem;
-  margin-top: 40px;
-  margin-bottom: 20px;
-  border-left: 6px solid var(--accent-teal);
-  padding-left: 15px;
-}
-
-h4 {
-  color: var(--accent-teal);
-  font-size: 1.3rem;
-  margin-top: 25px;
-  margin-bottom: 10px;
-  font-weight: 700;
-}
-
-p {
-  margin-bottom: 1.2rem;
-  font-size: 1.05rem;
-  color: #444;
-}
-
-/* SPECIAL SECTIONS */
-.clinical-note {
-  background-color: var(--bg-instruction);
-  border-left: 4px solid var(--primary-light);
-  padding: 20px;
-  margin: 25px 0;
-  border-radius: 0 4px 4px 0;
-}
-
-.alert-box {
-  background-color: #fff5f5;
-  border-left: 4px solid var(--alert-red);
-  padding: 20px;
-  margin: 25px 0;
-  color: #c0392b;
-}
-
-.success-box {
-  background-color: var(--bg-success);
-  border-left: 4px solid var(--accent-teal);
-  padding: 20px;
-  margin: 25px 0;
-  color: #2c3e50;
-}
-
-/* RX CARDS */
-.rx-card {
-  background-color: var(--bg-light);
-  border: 1px solid var(--border-color);
-  border-top: 5px solid var(--accent-indigo);
-  border-radius: 6px;
-  padding: 25px;
-  margin-bottom: 30px;
-  transition: transform 0.2s;
-}
-
-.rx-card:hover {
-  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
-  transform: translateY(-2px);
-}
-
-.rx-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 15px;
-  margin-bottom: 15px;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.rx-name {
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: var(--primary-dark);
-}
-
-.rx-type {
-  background-color: var(--accent-indigo);
-  color: white;
-  padding: 4px 12px;
-  border-radius: 15px;
-  font-size: 0.75rem;
-  font-weight: bold;
-  text-transform: uppercase;
+.amh-btn{
+  border-radius: 999px;
+  padding: 10px 16px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-weight: 800;
+  transition: all .2s ease;
+  user-select: none;
   white-space: nowrap;
 }
 
-.rx-grid {
+.amh-btn-primary{
+  background: var(--accent-teal);
+  color: #fff;
+}
+
+.amh-btn-primary:hover{
+  filter: brightness(1.05);
+  box-shadow: 0 10px 18px rgba(102,126,234,0.35);
+}
+
+.amh-content{
+  padding: 18px;
+  background: var(--white);
+}
+
+.amh-card{
+  background: var(--bg-verylight);
+  border: 1px solid var(--border);
+  border-left: 6px solid var(--accent-teal);
+  border-radius: 14px;
+  padding: 16px;
+  margin: 14px 0;
+}
+
+.amh-card h2{
+  margin: 0 0 10px;
+  color: var(--primary-1);
+  font-size: 1.15rem;
+}
+
+.amh-card h3{
+  margin: 14px 0 8px;
+  color: var(--primary-1);
+  font-size: 1.02rem;
+}
+
+.amh-card p{
+  margin: 0 0 10px;
+  line-height: 1.55;
+}
+
+.amh-list{
+  margin: 8px 0 0 18px;
+  padding: 0;
+}
+.amh-list li{
+  margin: 6px 0;
+  line-height: 1.45;
+}
+
+.amh-grid{
   display: grid;
-  grid-template-columns: 150px 1fr;
-  gap: 15px;
-  font-size: 0.95rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+@media (max-width: 720px){
+  .amh-grid{ grid-template-columns: 1fr; }
 }
 
-.rx-label {
-  font-weight: bold;
-  color: var(--primary-light);
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  padding-top: 4px;
+.amh-box{
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
 }
 
-/* LISTS */
-ul.symptom-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 1.2rem 0;
+.amh-alert{
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #fff;
+}
+.amh-alert-info{ border-left: 6px solid var(--accent-indigo); }
+.amh-alert-warning{ border-left: 6px solid var(--warning); }
+.amh-alert-success{ border-left: 6px solid var(--success); }
+
+.amh-rx{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+@media (max-width: 720px){
+  .amh-rx{ grid-template-columns: 1fr; }
 }
 
-ul.symptom-list li {
-  position: relative;
-  padding-left: 30px;
-  margin-bottom: 12px;
+.amh-rx-card{
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
 }
-
-ul.symptom-list li::before {
-  content: "•";
-  color: var(--accent-teal);
-  font-weight: bold;
-  font-size: 1.5em;
-  position: absolute;
-  left: 0;
-  top: -5px;
-}
-
-/* TOC (no hash links) */
-.toc {
-  background-color: var(--bg-light);
-  border: 1px solid var(--border-color);
-  border-left: 4px solid var(--accent-teal);
-  padding: 20px;
-  margin: 25px 0;
-  border-radius: 0 4px 4px 0;
-}
-
-.toc h4 {
+.amh-rx-card h3{
   margin-top: 0;
-}
-
-.toc ul {
-  list-style: none;
-  padding: 0;
-  margin: 10px 0 0 0;
-}
-
-.toc li {
-  margin: 10px 0;
-}
-
-.toc button {
-  all: unset;
-  cursor: pointer;
-  display: inline;
-  color: var(--primary-dark);
-  font-weight: 600;
-  border-bottom: 1px dashed rgba(44, 62, 80, 0.35);
-}
-
-.toc button:hover {
   color: var(--accent-teal);
-  border-bottom-color: var(--accent-teal);
 }
 
-/* FOOTER */
-footer {
-  background-color: var(--bg-instruction);
-  padding: 40px;
-  text-align: center;
+.amh-footer{
+  margin-top: 16px;
+  padding-top: 8px;
+}
+
+.amh-disclaimer{
+  background: #fff;
+  border: 1px solid var(--border);
+  border-left: 6px solid var(--warning);
+  border-radius: 14px;
+  padding: 14px;
+  margin: 0 0 14px;
+}
+.amh-disclaimer p{
+  margin: 0 0 10px;
   font-size: 0.95rem;
-  color: var(--primary-light);
-  border-top: 1px solid var(--border-color);
 }
 
-footer a {
-  color: var(--accent-teal);
-  text-decoration: none;
-  font-weight: bold;
+.amh-references a{
   word-break: break-word;
 }
 
-footer a:hover {
-  text-decoration: underline;
-}
-
-.medical-disclaimer {
-  text-align: left;
-  margin: 0 auto 18px auto;
-  max-width: 820px;
-  background: #ffffff;
-  border: 1px solid var(--border-color);
-  border-left: 5px solid var(--alert-warning);
-  border-radius: 6px;
-  padding: 18px 20px;
-  color: #333;
-}
-
-.medical-disclaimer p {
-  margin: 0 0 10px 0;
-  font-size: 0.95rem;
-  color: #333;
-}
-
-.references-block {
-  font-size: 0.9rem;
+.amh-footer-meta{
   margin-top: 14px;
-  text-align: left;
-  max-width: 820px;
-  margin-left: auto;
-  margin-right: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  color: #555;
+  font-size: 0.92rem;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
 }
+.amh-dot{ opacity: .7; }
 
-/* RESPONSIVE */
-@media (max-width: 600px) {
-  .content-body { padding: 25px; }
-  .rx-grid { grid-template-columns: 1fr; }
-  header h1 { font-size: 1.8rem; }
-  .rx-label { color: var(--accent-teal); margin-top: 10px; }
-  header h2 { letter-spacing: 1.5px; }
-}
-
-/* PRINT */
-@media print {
-  body {
-    background: #fff !important;
-    color: #000 !important;
+/* Print / PDF output */
+@media print{
+  body{
+    background:#fff !important;
+    color:#000 !important;
   }
-  .main-container {
+  .amh-page{
+    width: 100% !important;
     margin: 0 !important;
     box-shadow: none !important;
     border-radius: 0 !important;
   }
-  header {
+  .amh-header{
     background: #fff !important;
     color: #000 !important;
     border-bottom: 2px solid #333 !important;
   }
-  header .doctor-tag {
-    background: #fff !important;
-    color: #000 !important;
-    border: 1px solid #333 !important;
-  }
-  .rx-card, .clinical-note, .alert-box, .success-box, .medical-disclaimer, .toc {
+  .amh-card, .amh-box, .amh-rx-card, .amh-alert, .amh-disclaimer{
     background: #fff !important;
     border-color: #333 !important;
     break-inside: avoid;
     page-break-inside: avoid;
   }
-  a { color: #000 !important; }
+  a{ color:#000 !important; }
+  .no-print{ display:none !important; }
+  h1, h2, h3{ break-after: avoid; page-break-after: avoid; }
+  p, li{ orphans: 3; widows: 3; }
+}
+/* =========================
+   Template alignment helpers
+   ========================= */
+
+/* Centered header variant (used by test.html template) */
+.amh-header-centered{
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+.amh-logo-wrap{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin: 0 0 14px 0;
+}
+
+/* Override the default small boxed logo when using the centered header layout */
+.amh-header-centered .amh-logo{
+  width: 110px;
+  height: auto;
+  object-fit: contain;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  filter: drop-shadow(0 8px 18px rgba(0,0,0,0.22));
+}
+
+.amh-header .amh-practice{
+  display:inline-block;
+  margin-top: 2px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.28);
+  font-weight: 800;
+}
+
+.amh-header .byline{
+  margin-top: 8px;
+  opacity: .92;
+}
+
+.amh-header-centered .amh-actions{
+  margin-left: 0;
+  margin-top: 18px;
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+/* Button styling for the header action buttons (scoped to avoid changing other button contexts) */
+.amh-header .amh-actions .amh-btn{
+  appearance:none;
+  border:1px solid rgba(255,255,255,0.35);
+  color:#fff;
+  padding:10px 14px;
+  border-radius:10px;
+  font-weight:800;
+  cursor:pointer;
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease, filter .15s ease;
+}
+.amh-header .amh-actions .amh-btn:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+}
+.amh-header .amh-actions .amh-btn:disabled{
+  opacity:0.65;
+  cursor:not-allowed;
+  transform:none;
+  box-shadow:none;
+}
+
+/* Secondary button variant used by the template */
+.amh-btn-secondary{
+  background: var(--primary-2);
+  border-color: rgba(255,255,255,0.25);
+}
+
+/* Add a 'danger' alert variant to match the template's red-flag block */
+.amh-alert-danger{ border-left: 6px solid var(--danger); }
+
+/* Rx card internal layout helpers (used by template blocks) */
+.rx-header{
+  display:flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.rx-name{
+  font-weight: 900;
+  color: var(--accent-teal);
+}
+.rx-type{
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: .3px;
+  color: var(--primary-1);
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+.rx-grid{
+  display:grid;
+  grid-template-columns: 160px 1fr;
+  gap: 8px 14px;
+}
+@media (max-width: 720px){
+  .rx-grid{ grid-template-columns: 1fr; }
+}
+.rx-label{
+  font-weight: 900;
+  color: var(--primary-1);
 }
