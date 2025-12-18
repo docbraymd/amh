@@ -1,0 +1,490 @@
+/*
+  Archangel Michael Health (AMH) — Patient Education Stylesheet
+  Goals:
+  - Consistent look across condition pages
+  - Minimal/zero page-local CSS
+  - Backward compatible with existing pages that use: main-container, content-body, doctor-tag, byline, toc, rx-card, etc.
+*/
+
+/* ============ Design tokens ============ */
+:root {
+  /* Brand */
+  --amh-primary-dark: #2c3e50;
+  --amh-primary-light: #34495e;
+  --amh-accent-teal: #16a085;
+  --amh-accent-indigo: #667eea;
+
+  /* Surfaces */
+  --amh-bg-page: linear-gradient(135deg, var(--amh-primary-dark) 0%, var(--amh-primary-light) 100%);
+  --amh-bg-card: #ffffff;
+  --amh-bg-soft: #f8f9fa;
+  --amh-bg-muted: #ecf0f1;
+  --amh-bg-success: #d5f4e6;
+  --amh-bg-warning: #fff7e6;
+  --amh-bg-danger: #fff5f5;
+
+  /* Text */
+  --amh-text: #333333;
+  --amh-text-soft: #444444;
+  --amh-text-invert: #ffffff;
+
+  /* Alerts */
+  --amh-alert-danger: #dc3545;
+  --amh-alert-warning: #f39c12;
+  --amh-alert-success: #16a085;
+
+  /* Layout */
+  --amh-max-width: 920px;
+  --amh-radius: 10px;
+  --amh-radius-sm: 8px;
+  --amh-border: #e0e0e0;
+  --amh-shadow: 0 10px 25px rgba(0, 0, 0, 0.30);
+  --amh-shadow-soft: 0 8px 18px rgba(0, 0, 0, 0.18);
+
+  /* Typography */
+  --amh-font: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* ============ Base ============ */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--amh-font);
+  margin: 0;
+  padding: 0;
+  background: var(--amh-bg-page);
+  color: var(--amh-text);
+  line-height: 1.65;
+}
+img { max-width: 100%; }
+a {
+  color: var(--amh-accent-teal);
+  text-decoration: none;
+  word-break: break-word;
+}
+a:hover { text-decoration: underline; }
+:focus-visible {
+  outline: 3px solid rgba(22, 160, 133, 0.35);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+
+/* Helps headings not hide behind header when using #anchors */
+h2[id], h3[id], h4[id], section[id] { scroll-margin-top: 96px; }
+
+/* ============ Page container ============ */
+/* Backward compatible: existing pages use .main-container */
+.main-container,
+.amh-page {
+  max-width: var(--amh-max-width);
+  margin: 40px auto;
+  background: var(--amh-bg-card);
+  box-shadow: var(--amh-shadow);
+  border-radius: var(--amh-radius);
+  overflow: hidden;
+}
+
+/* ============ Header ============ */
+/* Backward compatible: existing pages style <header> directly */
+header,
+.amh-header {
+  background: var(--amh-bg-page);
+  color: var(--amh-text-invert);
+  padding: 40px 26px;
+  text-align: center;
+  border-bottom: 5px solid var(--amh-accent-teal);
+}
+.amh-header-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+.amh-header-centered { text-align: center; }
+
+/* Logo */
+.amh-logo-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 14px 0;
+}
+.amh-logo {
+  width: 110px;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.22));
+}
+
+/* Practice pill */
+header .doctor-tag,
+.amh-practice {
+  background: var(--amh-accent-teal);
+  color: var(--amh-text-invert);
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 0.86rem;
+  font-weight: 800;
+  display: inline-block;
+  margin-top: 12px;
+  letter-spacing: 0.2px;
+}
+
+/* Titles */
+header h1,
+.amh-title {
+  margin: 12px 0 0 0;
+  font-size: 2.35rem;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+}
+header h2,
+.amh-tagline {
+  margin: 10px 0 0 0;
+  font-size: 1.05rem;
+  font-weight: 300;
+  opacity: 0.94;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  line-height: 1.35;
+}
+header .byline {
+  margin-top: 12px;
+  font-size: 0.96rem;
+  opacity: 0.96;
+  letter-spacing: 0.4px;
+}
+
+/* Actions */
+.action-bar,
+.amh-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+.amh-btn {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: var(--amh-accent-teal);
+  color: #ffffff;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, opacity 0.15s ease;
+}
+.amh-btn:hover { transform: translateY(-1px); box-shadow: var(--amh-shadow-soft); }
+.amh-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+/* Backward compatible: older pages use .secondary */
+.amh-btn.secondary,
+.amh-btn.amh-btn-secondary {
+  background: #34495e;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+.amh-btn.amh-btn-primary {
+  background: var(--amh-accent-teal);
+}
+
+/* ============ Content body ============ */
+.content-body,
+.amh-content {
+  padding: 46px;
+}
+/* Typography */
+p {
+  margin: 0 0 1.15rem 0;
+  font-size: 1.05rem;
+  color: var(--amh-text-soft);
+}
+h3 {
+  color: var(--amh-primary-dark);
+  font-size: 1.75rem;
+  margin-top: 40px;
+  margin-bottom: 18px;
+  border-left: 6px solid var(--amh-accent-teal);
+  padding-left: 15px;
+}
+h4 {
+  color: var(--amh-accent-teal);
+  font-size: 1.22rem;
+  margin-top: 22px;
+  margin-bottom: 10px;
+  font-weight: 800;
+}
+hr {
+  border: none;
+  border-top: 1px solid var(--amh-border);
+  margin: 26px 0;
+}
+
+/* ============ Generic cards & callouts ============ */
+.amh-card,
+.clinical-note,
+.alert-box,
+.success-box {
+  border-radius: 0 8px 8px 0;
+  padding: 18px 20px;
+  margin: 22px 0;
+  border: 1px solid var(--amh-border);
+  background: var(--amh-bg-soft);
+}
+.clinical-note {
+  background: var(--amh-bg-muted);
+  border-left: 4px solid var(--amh-primary-light);
+}
+.alert-box {
+  background: var(--amh-bg-danger);
+  border-left: 4px solid var(--amh-alert-danger);
+  color: #8a1f1f;
+}
+.success-box {
+  background: var(--amh-bg-success);
+  border-left: 4px solid var(--amh-alert-success);
+  color: var(--amh-primary-dark);
+}
+
+/* ============ Lists ============ */
+/* Backward compatible: pages use ul.symptom-list; template uses .amh-list */
+ul.symptom-list,
+ul.amh-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.2rem 0;
+}
+ul.symptom-list li,
+ul.amh-list li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 12px;
+}
+ul.symptom-list li::before,
+ul.amh-list li::before {
+  content: "•";
+  color: var(--amh-accent-teal);
+  font-weight: 900;
+  font-size: 1.5em;
+  position: absolute;
+  left: 0;
+  top: -5px;
+}
+/* Plain lists without special class should still look clean */
+.content-body ul:not(.symptom-list):not(.amh-list),
+.content-body ol:not(.ref-list) {
+  margin: 0 0 1.2rem 1.25rem;
+}
+.content-body li { margin-bottom: 8px; }
+
+/* ============ TOC ============ */
+.toc {
+  background: var(--amh-bg-soft);
+  border: 1px solid var(--amh-border);
+  border-left: 4px solid var(--amh-accent-teal);
+  padding: 18px 20px;
+  margin: 24px 0;
+  border-radius: 0 8px 8px 0;
+}
+/* Supports both: <h4>On this page</h4> and <h2>On this page</h2> */
+.toc h2,
+.toc h3,
+.toc h4 {
+  margin: 0 0 10px 0;
+  border: none;
+  padding: 0;
+  color: var(--amh-primary-dark);
+  font-size: 1.15rem;
+  text-transform: none;
+  letter-spacing: 0.3px;
+}
+.toc ul { list-style: none; padding: 0; margin: 8px 0 0 0; }
+.toc li { margin: 10px 0; }
+
+/* Supports both hash-links and TOC buttons */
+.toc a,
+.toc button,
+.toc .toc-btn {
+  all: unset;
+  cursor: pointer;
+  display: inline;
+  color: var(--amh-primary-dark);
+  font-weight: 700;
+  border-bottom: 1px dashed rgba(44, 62, 80, 0.35);
+}
+.toc a:hover,
+.toc button:hover,
+.toc .toc-btn:hover {
+  color: var(--amh-accent-teal);
+  border-bottom-color: var(--amh-accent-teal);
+}
+
+/* ============ RX Cards ============ */
+.rx-card,
+.amh-rx-card {
+  background: var(--amh-bg-soft);
+  border: 1px solid var(--amh-border);
+  border-top: 5px solid var(--amh-accent-indigo);
+  border-radius: var(--amh-radius-sm);
+  padding: 22px;
+  margin: 0 0 26px 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.rx-card:hover,
+.amh-rx-card:hover {
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.20);
+  transform: translateY(-2px);
+}
+.rx-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--amh-border);
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.rx-name {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--amh-primary-dark);
+}
+.rx-type {
+  background: var(--amh-accent-indigo);
+  color: #ffffff;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.rx-grid {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 14px;
+  font-size: 0.98rem;
+}
+.rx-label {
+  font-weight: 900;
+  color: var(--amh-primary-light);
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  padding-top: 4px;
+  letter-spacing: 0.3px;
+}
+
+/* ============ References ============ */
+.references-block,
+.amh-references {
+  font-size: 0.95rem;
+  margin-top: 14px;
+  text-align: left;
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.ref-list {
+  margin: 10px 0 0 1.2rem;
+  padding: 0;
+}
+.ref-list li { margin-bottom: 8px; }
+.references-block a,
+.ref-list a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ============ Footer ============ */
+/* Backward compatible: existing pages use <footer> without class */
+footer,
+.amh-footer {
+  background: var(--amh-bg-muted);
+  padding: 36px 20px;
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--amh-primary-light);
+  border-top: 1px solid var(--amh-border);
+}
+.amh-disclaimer,
+.medical-disclaimer {
+  text-align: left;
+  margin: 0 auto 16px auto;
+  max-width: 860px;
+  background: #ffffff;
+  border: 1px solid var(--amh-border);
+  border-left: 5px solid var(--amh-alert-warning);
+  border-radius: var(--amh-radius-sm);
+  padding: 16px 18px;
+  color: #333;
+}
+.medical-disclaimer p {
+  margin: 0 0 10px 0;
+  font-size: 0.95rem;
+  color: #333;
+}
+.amh-footer-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  font-size: 0.92rem;
+  color: #666;
+}
+.amh-dot { opacity: 0.65; }
+
+/* ============ Utility ============ */
+.no-print { display: block; }
+.amh-muted { color: #666; }
+.amh-small { font-size: 0.92rem; }
+
+/* ============ Responsive ============ */
+@media (max-width: 700px) {
+  .content-body, .amh-content { padding: 26px; }
+  header, .amh-header { padding: 32px 18px; }
+  header h1, .amh-title { font-size: 1.85rem; }
+  header h2, .amh-tagline { letter-spacing: 1.2px; }
+  .rx-grid { grid-template-columns: 1fr; }
+  .rx-label { color: var(--amh-accent-teal); margin-top: 10px; }
+}
+
+/* ============ Print / PDF ============ */
+@media print {
+  .no-print { display: none !important; }
+  body { background: #ffffff !important; color: #000000 !important; }
+  .main-container, .amh-page {
+    margin: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    max-width: none !important;
+  }
+  header, .amh-header {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border-bottom: 2px solid #333333 !important;
+  }
+  header h2, .amh-tagline { opacity: 1 !important; }
+  header .doctor-tag, .amh-practice {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #333333 !important;
+  }
+  .amh-logo { filter: none !important; }
+  a { color: #000000 !important; text-decoration: underline !important; }
+  .rx-card, .clinical-note, .alert-box, .success-box, .medical-disclaimer, .toc, .amh-card {
+    background: #ffffff !important;
+    border-color: #333333 !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
