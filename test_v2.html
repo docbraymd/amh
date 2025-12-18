@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Patient Education Template | Archangel Michael Health</title>
+
+  <!-- Shared stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- html2pdf for one-click PDF download -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+
+<body>
+  <div class="amh-page main-container" id="pdf-root" role="document">
+    <header class="amh-header">
+      <div class="amh-header-inner amh-header-centered">
+        <div class="amh-logo-wrap">
+          <img class="amh-logo" src="https://docbraymd.github.io/amh/AMHLogo.png" alt="Archangel Michael Health logo" />
+        </div>
+
+        <div class="amh-practice doctor-tag">Archangel Michael Health</div>
+
+        <h1 class="amh-title" id="page-title">Condition Title</h1>
+        <h2 class="amh-tagline">Patient Guide: Lifestyle, Integrative &amp; Conventional Care</h2>
+        <div class="byline">by Christopher L. Bray MD PhD</div>
+
+        <div class="action-bar amh-actions no-print" aria-label="Actions">
+          <button class="amh-btn amh-btn-secondary" type="button" onclick="window.print()">
+            Print / Save as PDF
+          </button>
+          <button class="amh-btn amh-btn-primary" id="downloadPdfBtn" type="button">
+            Download PDF
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="amh-content content-body">
+      <p>
+        Replace this introduction with a concise, patient-friendly explanation of what the condition is, why it matters,
+        and how this guide is structured. Avoid inline citations and links in the body; place references only in the
+        <strong>References</strong> section.
+      </p>
+
+      <div class="toc no-print" aria-label="On this page">
+        <h2>On this page</h2>
+        <ul class="amh-list">
+          <li><a href="#overview">Overview and key points</a></li>
+          <li><a href="#symptoms">Symptoms and red flags</a></li>
+          <li><a href="#diagnosis">Diagnosis and what to test</a></li>
+          <li><a href="#drivers">Root causes and contributing factors</a></li>
+          <li><a href="#plan">Step-by-step improvement plan</a></li>
+          <li><a href="#treatments">Conventional treatments</a></li>
+          <li><a href="#integrative">Integrative options</a></li>
+          <li><a href="#costs">Cost considerations</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#references">References</a></li>
+        </ul>
+      </div>
+
+      <h3 id="overview">Overview and key points</h3>
+      <p>
+        Provide a high-yield overview. For sophisticated readers: include core physiology/pathophysiology in plain medical language,
+        with clear boundaries about what is established versus evolving evidence.
+      </p>
+
+      <div class="clinical-note">
+        <strong>Clinical note:</strong> Use this callout for “how clinicians think about this” or “how to interpret common labs.”
+      </div>
+
+      <h3 id="symptoms">Symptoms and red flags</h3>
+      <p>Summarize typical symptoms. Use an alert box for urgent “red flags.”</p>
+      <div class="alert-box">
+        <strong>Red flags:</strong> Add severe/urgent symptoms that warrant emergency care or urgent evaluation.
+      </div>
+
+      <h3 id="diagnosis">Diagnosis and what to test</h3>
+      <p>
+        Explain how diagnosis is made and which tests are appropriate (and why). Keep language precise and avoid over-testing.
+      </p>
+
+      <h3 id="drivers">Root causes and contributing factors</h3>
+      <ul class="amh-list symptom-list">
+        <li><strong>Foundations:</strong> sleep, circadian rhythm, activity, diet quality, stress load.</li>
+        <li><strong>Medical drivers:</strong> comorbidities, medications, deficiencies, inflammation, infections (if relevant).</li>
+        <li><strong>Context:</strong> work schedule, environment, trauma, social determinants, substance exposures.</li>
+      </ul>
+
+      <h3 id="plan">Step-by-step improvement plan</h3>
+      <div class="success-box">
+        <strong>Practical plan:</strong> A staged approach usually works best: foundations first, then targeted interventions,
+        then selective testing or escalation if needed.
+      </div>
+
+      <h3 id="treatments">Conventional treatments</h3>
+      <p>
+        Provide standard-of-care options with mechanism, typical usage patterns (non-prescriptive), common side effects,
+        serious risks, monitoring needs, and cost ranges (generic vs brand).
+      </p>
+
+      <div class="rx-card amh-rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Medication class / option</div>
+          <div class="rx-type">STANDARD</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">What it is</div>
+          <div>Medication class and typical role in care.</div>
+
+          <div class="rx-label">How it works</div>
+          <div>Mechanism explained clearly.</div>
+
+          <div class="rx-label">Typical use</div>
+          <div>General patterns for when it’s used; what to monitor; when to re-evaluate.</div>
+
+          <div class="rx-label">Side effects</div>
+          <div>Common vs serious; who needs caution.</div>
+
+          <div class="rx-label">Cost</div>
+          <div>Typical out-of-pocket range; generic vs brand considerations.</div>
+        </div>
+      </div>
+
+      <h3 id="integrative">Integrative options</h3>
+      <p>
+        Include evidence strength, plausible mechanisms, safety/interaction cautions, and realistic cost. Avoid overpromising.
+      </p>
+
+      <div class="rx-card amh-rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Supplement / herb</div>
+          <div class="rx-type">INTEGRATIVE</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Rationale</div>
+          <div>Mechanism + evidence strength (and limitations).</div>
+
+          <div class="rx-label">Typical use</div>
+          <div>General patterns (non-prescriptive) and expected timeframe to benefit.</div>
+
+          <div class="rx-label">Safety</div>
+          <div>Interactions (e.g., anticoagulants, SSRIs), pregnancy, liver/kidney cautions.</div>
+
+          <div class="rx-label">Cost</div>
+          <div>Approximate monthly range.</div>
+        </div>
+      </div>
+
+      <h3 id="costs">Cost considerations</h3>
+      <ul class="amh-list symptom-list">
+        <li>Prioritize the highest ROI interventions first (sleep, triggers, foundations).</li>
+        <li>Prefer generics when appropriate; avoid duplicative supplements.</li>
+        <li>Reserve testing for decisions that change management.</li>
+      </ul>
+
+      <h3 id="faq">FAQ</h3>
+      <h4>Question 1?</h4>
+      <p>Answer with clear boundaries and when to seek clinician oversight.</p>
+
+      <h4>Question 2?</h4>
+      <p>Answer…</p>
+
+      <h3 id="references">References</h3>
+      <p class="amh-muted amh-small">Place references only here (not inline in the body).</p>
+
+      <ol class="ref-list">
+        <li>Reference title: <a href="https://example.com" target="_blank" rel="noopener">https://example.com</a></li>
+        <li>Reference title: <a href="https://example.com" target="_blank" rel="noopener">https://example.com</a></li>
+      </ol>
+
+      <footer class="amh-footer">
+        <div class="amh-disclaimer medical-disclaimer">
+          <p><strong>Medical disclaimer:</strong> The information on this page is provided for general educational purposes only and is not medical advice. It is not intended to diagnose, treat, cure, or prevent any disease, and it does not establish a physician–patient relationship.</p>
+          <p>Do not apply this information to your specific situation without the oversight of a qualified clinician who can consider your full health history, medications, goals, preferences, and limitations. If you have urgent or severe symptoms, seek emergency care.</p>
+          <p style="margin: 0;"><strong>Copyright:</strong> © Dr. Bray at Archangel Michael Health <span id="amh-year">2025</span></p>
+        </div>
+
+        <div class="amh-footer-meta">
+          <span><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine</span>
+          <span class="amh-dot">•</span>
+          <span><strong>Last updated:</strong> <span id="amh-last-updated">—</span></span>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      // ---- Last updated + year ----
+      var yearEl = document.getElementById("amh-year");
+      if (yearEl) {
+        try { yearEl.textContent = String(new Date().getFullYear()); } catch (e) {}
+      }
+
+      var updatedEl = document.getElementById("amh-last-updated");
+      if (updatedEl) {
+        var lm = document.lastModified; // usually reflects server file Last-Modified (works well on GitHub Pages)
+        var d = lm ? new Date(lm) : null;
+        if (d && !isNaN(d.getTime())) {
+          // ISO-like YYYY-MM-DD
+          var yyyy = d.getFullYear();
+          var mm = String(d.getMonth() + 1).padStart(2, "0");
+          var dd = String(d.getDate()).padStart(2, "0");
+          updatedEl.textContent = yyyy + "-" + mm + "-" + dd;
+        } else {
+          updatedEl.textContent = "—";
+        }
+      }
+
+      // ---- TOC scrolling (support both anchor links and data-scroll buttons) ----
+      function scrollToId(id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      document.addEventListener("click", function (e) {
+        var btn = e.target.closest(".toc-btn[data-scroll]");
+        if (btn) {
+          e.preventDefault();
+          scrollToId(btn.getAttribute("data-scroll"));
+          return;
+        }
+
+        var link = e.target.closest('.toc a[href^="#"]');
+        if (link) {
+          var hash = link.getAttribute("href");
+          var target = hash && hash.length > 1 ? hash.slice(1) : null;
+          if (!target) return;
+          e.preventDefault();
+          scrollToId(target);
+          history.replaceState(null, "", hash);
+        }
+      });
+
+      // ---- Download PDF using html2pdf.js ----
+      var btn = document.getElementById("downloadPdfBtn");
+      if (!btn) return;
+
+      function safeFilename(title) {
+        return (title || "patient-guide")
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/(^-|-$)/g, "");
+      }
+
+      btn.addEventListener("click", function () {
+        if (typeof html2pdf === "undefined") {
+          alert("PDF generator is still loading. Please try again in a moment, or use Print / Save as PDF.");
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = "Preparing PDF...";
+
+        var title = (document.getElementById("page-title") && document.getElementById("page-title").textContent) || "Patient Guide";
+        var filename = safeFilename(title) + ".pdf";
+
+        // Clone content for PDF and remove UI elements
+        var source = document.getElementById("pdf-root").cloneNode(true);
+        source.querySelectorAll(".no-print").forEach(function (el) { el.remove(); });
+
+        var wrapper = document.createElement("div");
+        wrapper.style.background = "#ffffff";
+        wrapper.appendChild(source);
+
+        var opt = {
+          margin: [0.5, 0.5, 0.6, 0.5], // inches
+          filename: filename,
+          image: { type: "jpeg", quality: 0.98 },
+          html2canvas: { scale: 2, useCORS: true, letterRendering: true },
+          jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+          pagebreak: { mode: ["css", "legacy"] }
+        };
+
+        html2pdf()
+          .set(opt)
+          .from(wrapper)
+          .save()
+          .catch(function (err) {
+            console.error(err);
+            alert("Could not generate the PDF in this browser. Please use Print / Save as PDF.");
+          })
+          .finally(function () {
+            btn.disabled = false;
+            btn.textContent = "Download PDF";
+          });
+      });
+    })();
+  </script>
+</body>
+</html>
