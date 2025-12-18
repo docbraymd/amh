@@ -111,8 +111,6 @@ header,
   align-items: center;
   margin: 0 0 14px 0;
 }
-
-strong { font-weight: 600; }
 .amh-logo {
   width: 110px;
   height: auto;
@@ -216,7 +214,12 @@ h3 {
   border-left: 6px solid var(--amh-accent-teal);
   padding-left: 15px;
 }
-p0;
+h4 {
+  color: var(--amh-accent-teal);
+  font-size: 1.22rem;
+  margin-top: 22px;
+  margin-bottom: 10px;
+  font-weight: 700;
 }
 hr {
   border: none;
@@ -298,6 +301,7 @@ ul.amh-list li::before {
   border: none;
   padding: 0;
   color: var(--amh-accent-teal);
+  font-weight: 700;
   font-size: 1.15rem;
   text-transform: none;
   letter-spacing: 0.3px;
@@ -349,7 +353,9 @@ ul.amh-list li::before {
   gap: 12px;
   flex-wrap: wrap;
 }
-x0;
+.rx-name {
+  font-size: 1.25rem;
+  font-weight: 700;
   color: var(--amh-primary-dark);
 }
 .rx-type {
@@ -358,7 +364,7 @@ x0;
   padding: 4px 12px;
   border-radius: 999px;
   font-size: 0.75rem;
-  font-weight: 900;
+  font-weight: 800;
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -368,7 +374,8 @@ x0;
   gap: 14px;
   font-size: 0.98rem;
 }
-x0;
+.rx-label {
+  font-weight: 700;
   color: var(--amh-primary-light);
   text-transform: uppercase;
   font-size: 0.78rem;
