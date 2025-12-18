@@ -1,298 +1,534 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The DASH Protocol | Archangel Michael Health</title>
-    <style>
-        :root {
-            --primary-color: #003366; /* Deep Navy Blue */
-            --secondary-color: #C5A059; /* Muted Gold/Bronze */
-            --accent-color: #F4F4F4; /* Light Gray/Off-White */
-            --text-color: #333333;
-            --white: #FFFFFF;
-            --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            --spacing-unit: 1.5rem;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: var(--font-main);
-            color: var(--text-color);
-            line-height: 1.6;
-            background-color: var(--accent-color);
-        }
-
-        /* Header Styles */
-        header {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 2rem 5%;
-            text-align: center;
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            font-weight: 300;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-        }
-
-        header p {
-            color: var(--secondary-color);
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        /* Navigation (Simulated) */
-        nav {
-            background-color: #002244;
-            padding: 0.5rem 5%;
-            text-align: center;
-        }
-
-        nav a {
-            color: var(--white);
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 0.9rem;
-            opacity: 0.8;
-            transition: opacity 0.3s;
-        }
-
-        nav a:hover {
-            opacity: 1;
-            color: var(--secondary-color);
-        }
-
-        /* Main Container */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background-color: var(--white);
-            padding: 4rem 5%;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        }
-
-        /* Typography */
-        h2 {
-            color: var(--primary-color);
-            font-size: 1.8rem;
-            margin-top: 3rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 0.5rem;
-            font-weight: 400;
-        }
-
-        h3 {
-            color: var(--primary-color);
-            font-size: 1.4rem;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        p {
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
-        }
-
-        ul, ol {
-            margin-bottom: 1.5rem;
-            padding-left: 2rem;
-        }
-
-        li {
-            margin-bottom: 0.8rem;
-        }
-
-        /* Callout Boxes */
-        .callout {
-            background-color: #f9f9f9;
-            border-left: 5px solid var(--secondary-color);
-            padding: 1.5rem;
-            margin: 2rem 0;
-            border-radius: 0 4px 4px 0;
-        }
-
-        .callout h4 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-        }
-
-        /* Disclaimer & Footer */
-        .disclaimer {
-            font-size: 0.85rem;
-            color: #666;
-            border-top: 1px solid #ddd;
-            padding-top: 2rem;
-            margin-top: 4rem;
-            font-style: italic;
-        }
-
-        footer {
-            text-align: center;
-            padding: 3rem 5%;
-            background-color: var(--primary-color);
-            color: var(--white);
-            font-size: 0.9rem;
-            margin-top: 0;
-        }
-        
-        footer a {
-            color: var(--secondary-color);
-            text-decoration: none;
-        }
-
-        .references {
-            font-size: 0.85rem;
-            background-color: #f0f0f0;
-            padding: 2rem;
-            margin-top: 3rem;
-            border-radius: 4px;
-        }
-
-        .references h3 {
-            margin-top: 0;
-        }
-        
-        .references li {
-            word-break: break-all;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            header h1 { font-size: 2rem; }
-            .container { padding: 2rem 5%; }
-        }
-    </style>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>DASH Diet Guide | Archangel Michael Health</title>
+<!-- Shared stylesheet -->
+<link href="https://docbraymd.github.io/amh/style_v2.css" rel="stylesheet"/>
+<!-- html2pdf for one-click PDF download -->
+<script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
-
-<header>
-    <h1>The DASH Protocol</h1>
-    <p>Metabolic Calibration for Vascular Health</p>
-</header>
-
-<nav>
-    <a href="https://archangelmichaelhealth.com/">Home</a>
-    <a href="https://archangelmichaelhealth.com/services">Services</a>
-    <a href="https://archangelmichaelhealth.com/about">Dr. Bray</a>
-    <a href="https://archangelmichaelhealth.com/contact">Contact</a>
-</nav>
-
-<div class="container">
-
-    <div class="callout">
-        <h4>A Note from Dr. Bray</h4>
-        <p>At Archangel Michael Health, we view high blood pressure not merely as a hydraulic issue to be suppressed with medication, but as a mismatch between our evolutionary biology and our modern environment. The protocol detailed below is an advanced, evidence-based intervention designed to restore metabolic homeostasis. It is one of the most powerful tools we have to prevent the need for lifelong pharmaceuticals.</p>
-    </div>
-
-    <h2>The Paradigm Shift: From "Diet" to Metabolic Intervention</h2>
-    <p>The Dietary Approaches to Stop Hypertension (DASH) protocol is often reduced in public health pamphlets to generic advice about eating more fruits and vegetables. However, for the sophisticated patient, it is critical to understand that DASH is a calculated clinical intervention. Originating from landmark NIH research in 1997, it was engineered to replicate the "mineral density" found in vegetarian populations who historically maintained low blood pressure throughout their lives.</p>
-    <p>The diet works by manipulating the body's fundamental electrochemical gradients. By drastically increasing the intake of potassium, magnesium, and calcium while optionally reducing sodium, we do not just suppress symptoms; we recalibrate the kidneys and the endothelium (the lining of the blood vessels) to function as designed.</p>
-
-    <h2>Symptoms, Diagnosis, and Root Causes</h2>
-    
-    <h3>The Silent Dissonance</h3>
-    <p>Hypertension is famously termed the "silent killer" because it rarely presents symptoms until significant damage has occurred. Occasionally, patients may experience headaches, shortness of breath, or nosebleeds, but these are non-specific. Diagnosis requires consistent readings above 130/80 mmHg. However, at Archangel Michael Health, we look beyond the number to the "metabolic dissonance" causing it.</p>
-
-    <h3>Root Causes: The Evolutionary Mismatch</h3>
-    <p>While genetics play a role, the primary driver of modern hypertension is environmental. Our bodies evolved on a Paleolithic diet that was extremely high in potassium (from plants) and very low in sodium. The modern diet inverts this ratio. This inversion confuses the kidneys, which are programmed to hoard sodium and dump potassium. The result is fluid retention, increased blood volume, and stiffened arteries.</p>
-    
-    <h3>Consequences of Inaction</h3>
-    <p>Uncontrolled hypertension acts as a mechanical stressor on the entire vascular tree. It is the leading risk factor for stroke and heart failure. It damages the delicate filtration units of the kidneys, leading to Chronic Kidney Disease (CKD), and contributes to vascular dementia by damaging the small vessels of the brain. Treating this early prevents the cascade of organ damage that leads to specialists and surgeries later in life.</p>
-
-    <h2>The Physiological Mechanisms: How It Works</h2>
-    <p>The DASH protocol operates through three primary molecular mechanisms:</p>
-    <ul>
-        <li><strong>Natriuresis (The Diuretic Effect):</strong> High intake of dietary potassium triggers the kidneys to excrete excess sodium. This naturally reduces blood volume without the metabolic side effects of diuretic drugs.</li>
-        <li><strong>Endothelial Hyperpolarization:</strong> Potassium and magnesium act directly on the smooth muscle cells of the arteries, causing them to relax (vasodilate). This lowers the resistance against which the heart must pump.</li>
-        <li><strong>Sympathetic Downregulation:</strong> The mineral matrix of the diet helps calm the "fight or flight" nervous system, reducing the neuro-hormonal drive that constricts blood vessels.</li>
-    </ul>
-
-    <h2>The Archangel Michael Protocol: Optimizing DASH</h2>
-    <p>The original DASH studies included dairy and some refined grains to make the diet "palatable" to the average American in the 1990s. For our patients, we recommend an optimized, "Advanced Consumer" version that aligns with modern integrative science.</p>
-
-    <h3>1. The Grain Revolution: Intact vs. Pulverized</h3>
-    <p>Standard DASH allows whole wheat bread. We recommend shifting to "intact" grains. Pulverizing grain into flour—even whole wheat flour—increases the surface area for digestion, causing insulin spikes that can trigger sodium retention. We focus on "bowl foods" using grains that still look like seeds: steel-cut oats, quinoa, brown rice, and barley.</p>
-
-    <h3>2. The Protein Shift: Legumes Over Meat</h3>
-    <p>While lean meats are permitted, plant protein sources (lentils, beans, chickpeas) provide the highest payload of potassium and magnesium. We encourage replacing 3-4 meat servings per week with legume-based dishes to maximize the therapeutic mineral load.</p>
-
-    <h3>3. The Dairy Modification</h3>
-    <p>Dairy was originally included for calcium. For patients who avoid dairy due to inflammation or intolerance, we substitute with calcium-fortified soy milk, calcium-set tofu, and low-oxalate greens (like kale and bok choy). The goal is calcium intake, not necessarily cow's milk.</p>
-
-    <h2>Phased Implementation Plan</h2>
-    <p>Sudden adoption of a high-fiber DASH diet can cause digestive distress. We recommend a phased approach over 8 weeks to allow your microbiome and taste buds to adapt.</p>
-
-    <h3>Phase 1: The Potassium Add-In (Weeks 1-2)</h3>
-    <p>Do not restrict salt yet. Focus solely on adding. Include one serving of high-potassium fruit (banana, apricot, melon) and one serving of vegetables to every meal. This initiates the natriuretic (sodium-dumping) process.</p>
-
-    <h3>Phase 2: The Sodium Swap (Weeks 3-4)</h3>
-    <p>Begin to remove the "Salty Six": bread/rolls, cured meats, pizza, poultry (processed), soup (canned), and sandwiches. Replace processed meats with fresh options. Replace salt in cooking with lemon juice, garlic, and vinegar. Your taste buds will adapt to lower salt levels within 14 days.</p>
-
-    <h3>Phase 3: The Grain & Protein Upgrade (Weeks 5-8)</h3>
-    <p>Transition from breads to intact grains. Begin swapping dinner meats for legume-based stews or curries. By this stage, blood pressure reductions of 8-14 mmHg are common, often rivaling the effect of medication.</p>
-
-    <h2>Integrative Support: Supplements and Medications</h2>
-    <p>While food is the primary intervention, targeted supplementation can amplify results. <strong>Always consult Dr. Bray before starting these, especially if you are on medication.</strong></p>
-
-    <h3>Magnesium (Glycinate or Citrate)</h3>
-    <p><strong>Mechanism:</strong> Acts as a natural calcium channel blocker, relaxing smooth muscle vessels.</p>
-    <p><strong>Usage:</strong> typically 200-400 mg at night. Magnesium Glycinate is preferred for better absorption and less bowel irritation.</p>
-    <p><strong>Cost/Sources:</strong> Affordable ($15-$25/month). Available at most health food stores.</p>
-
-    <h3>Coenzyme Q10 (CoQ10/Ubiquinol)</h3>
-    <p><strong>Mechanism:</strong> Improves endothelial function and reduces oxidative stress in the blood vessels.</p>
-    <p><strong>Usage:</strong> 100-200 mg daily. Ubiquinol is the active, more absorbable form.</p>
-    <p><strong>Note:</strong> Essential for patients taking statins, as statins deplete natural CoQ10 levels.</p>
-
-    <h3>A Note on Potassium Supplements</h3>
-    <p><strong>Avoid Potassium Pills:</strong> We generally do NOT recommend over-the-counter potassium pills. They do not provide the alkaline buffer (citrate/bicarbonate) found in fruit and can damage the stomach lining. The "food matrix" is essential for the benefit. Get your potassium from food.</p>
-
-    <h3>Medication Interactions</h3>
-    <p>If you are taking ACE Inhibitors (e.g., Lisinopril) or ARBs (e.g., Losartan), these drugs cause your body to retain potassium. Adopting a high-potassium DASH diet while on these drugs can cause potassium levels to rise too high (hyperkalemia). This requires monitoring. We will typically check a basic metabolic panel (BMP) one week after you start the diet to ensure safety. Often, we can lower your medication dose as the diet takes effect.</p>
-
-    <h2>Lifestyle Synergy</h2>
-    <p>The DASH protocol works best when "stacked" with other lifestyle changes:</p>
-    <ul>
-        <li><strong>Sleep:</strong> Aim for 7-9 hours. Sleep deprivation keeps the sympathetic nervous system active overnight, preventing the natural "dipping" of blood pressure.</li>
-        <li><strong>Exercise:</strong> 150 minutes of Zone 2 (moderate) cardio weekly helps keep arteries flexible.</li>
-        <li><strong>Stress Management:</strong> Breathwork or meditation can lower systolic pressure by 5-10 mmHg by reducing cortisol and adrenaline.</li>
-    </ul>
-
-    <div class="references">
-        <h3>References & Further Reading</h3>
-        <ol>
-            <li>Appel LJ, Moore TJ, Obarzanek E, et al. A Clinical Trial of the Effects of Dietary Patterns on Blood Pressure. <em>New England Journal of Medicine</em>. 1997;336(16):1117-1124. <a href="https://www.nejm.org/doi/full/10.1056/NEJM199704173361601" target="_blank">Link</a></li>
-            <li>Sacks FM, Svetkey LP, Vollmer WM, et al. Effects on Blood Pressure of Reduced Dietary Sodium and the Dietary Approaches to Stop Hypertension (DASH) Diet. <em>New England Journal of Medicine</em>. 2001;344(1):3-10. <a href="https://www.nejm.org/doi/full/10.1056/NEJM200101043440101" target="_blank">Link</a></li>
-            <li>Joshi S, Ettinger L, Liebman SE. Plant-Based Diets and Hypertension. <em>American Journal of Lifestyle Medicine</em>. 2019;14(4):397-405. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7692016/" target="_blank">Link</a></li>
-            <li>Blumenthal JA, Babyak MA, Hinderliter A, et al. Effects of the DASH Diet Alone and in Combination With Exercise and Weight Loss on Blood Pressure. <em>Archives of Internal Medicine</em>. 2010;170(2):126-135. <a href="https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/415605" target="_blank">Link</a></li>
-            <li>National Heart, Lung, and Blood Institute. DASH Eating Plan. <a href="https://www.nhlbi.nih.gov/education/dash-eating-plan" target="_blank">Link</a></li>
-            <li>Role of potassium in regulating blood flow and blood pressure. <em>American Journal of Physiology</em>. 2006. <a href="https://journals.physiology.org/doi/full/10.1152/ajpregu.00491.2005" target="_blank">Link</a></li>
-        </ol>
-    </div>
-
-    <div class="disclaimer">
-        <p><strong>Medical Disclaimer:</strong> The information provided on this page is for educational purposes only and does not constitute medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition. Never disregard professional medical advice or delay in seeking it because of something you have read on this website. If you are a patient of Archangel Michael Health, please message Dr. Bray directly through the portal for personalized guidance.</p>
-    </div>
-
+<div class="amh-page main-container" id="pdf-root" role="document">
+<header class="amh-header">
+<div class="amh-header-inner amh-header-centered">
+<div class="amh-logo-wrap">
+<img alt="Archangel Michael Health logo" class="amh-logo" src="https://docbraymd.github.io/amh/AMHLogo.png"/>
 </div>
+<div class="amh-practice doctor-tag">Archangel Michael Health</div>
+<h1 class="amh-title" id="page-title">DASH Diet: A Practical Plant‑Strong Guide</h1>
+<h2 class="amh-tagline">Patient Guide: Lifestyle, Integrative &amp; Conventional Care</h2>
+<div class="byline">by Christopher L. Bray MD PhD</div>
+<div aria-label="Actions" class="action-bar amh-actions no-print">
+<button class="amh-btn amh-btn-secondary" onclick="window.print()" type="button">
+            Print / Save as PDF
+          </button>
+<button class="amh-btn amh-btn-primary" id="downloadPdfBtn" type="button">
+            Download PDF
+          </button>
+</div>
+</div>
+</header>
+<div class="amh-content content-body">
+<p>
+  The <strong>DASH diet</strong>  is best understood as a
+  <strong>nutrient pattern</strong>: high in potassium, magnesium, calcium, fiber, and phytonutrients;
+  low in excess sodium, added sugars, and saturated fat. Most people get the strongest real‑world results when they
+  implement DASH as a <strong>whole‑food, plant‑strong</strong> eating pattern (vegetables, fruit, beans, intact whole grains, nuts, and seeds),
+  using <strong>dairy as optional</strong> (not mandatory) and treating <strong>sodium reduction</strong> as a non‑negotiable skill.
+</p>
+<div class="clinical-note">
+<strong>How to use this guide:</strong> Start with the “Core food elements” and “Sodium strategy.”
+  Then use the “Grocery store playbook,” “Meal templates,” and “Recipes” sections to build repeatable habits.
+  This page intentionally focuses on the DASH diet itself (food choices, shopping, cooking, and implementation),
+  not the diagnosis or treatment of high blood pressure.
+</div>
+<div aria-label="Table of contents" class="toc">
+<div class="toc-title">On this page</div>
+<ul class="toc-list">
+<li><a href="#overview">Overview and key points</a></li>
+<li><a href="#what-is-dash">What DASH is (and what it is not)</a></li>
+<li><a href="#plant-strong">DASH as a whole‑food, plant‑strong pattern</a></li>
+<li><a href="#core-elements">Core food elements</a></li>
+<li><a href="#limit-avoid">What to limit or avoid</a></li>
+<li><a href="#sodium">Sodium: the lever that amplifies DASH</a></li>
+<li><a href="#dairy">Dairy: optional tool, not a requirement</a></li>
+<li><a href="#shopping">Grocery store playbook</a></li>
+<li><a href="#kitchen">Kitchen setup and batch-cook system</a></li>
+<li><a href="#meal-templates">Meal templates (mix‑and‑match)</a></li>
+<li><a href="#recipes">Recipe library (many formats)</a></li>
+<li><a href="#eating-out">Eating out and travel</a></li>
+<li><a href="#personalize">Personalizing DASH</a></li>
+<li><a href="#faq">FAQ</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+</div>
+<h3 id="overview">Overview and key points</h3>
+<ul>
+<li><strong>DASH is a pattern, not a product.</strong> If most of your calories come from minimally processed plants, you are doing DASH well.</li>
+<li><strong>Cook more; “salt less.”</strong> In the modern food environment, sodium mainly comes from packaged and restaurant foods, not the salt shaker.</li>
+<li><strong>Make beans and intact grains your default proteins/carbs.</strong> This is the simplest way to raise potassium and fiber while lowering saturated fat.</li>
+<li><strong>Use “flavor architecture” instead of salt.</strong> Acids (lemon/vinegar), aromatics (garlic/onion), herbs/spices, and umami (mushrooms, tomato paste) create satisfaction with far less sodium.</li>
+<li><strong>Consistency beats perfection.</strong> A “90% DASH pantry” with simple meal templates outperforms complex meal plans that you cannot sustain.</li>
+</ul>
+<div class="rx-card amh-rx-card">
+<div class="rx-header">
+<div class="rx-name">The DASH Targets (practical translation)</div>
+<div class="rx-type">STANDARD</div>
+</div>
+<div class="rx-grid">
+<div class="rx-label">Primary foods</div>
+<div>Vegetables, fruit, beans/lentils, intact whole grains, nuts/seeds, herbs/spices; optional dairy or fortified alternatives.</div>
+<div class="rx-label">Primary limits</div>
+<div>Ultra‑processed foods, refined grains/sugars, high‑sodium packaged foods, and high saturated fat (especially processed meats and full‑fat dairy).</div>
+<div class="rx-label">The “big 3” nutrients</div>
+<div><strong>Potassium</strong> (plants), <strong>fiber</strong> (plants), and <strong>lower sodium</strong> (less processed food + smarter cooking).</div>
+<div class="rx-label">Success metric</div>
+<div>Most meals are built from whole plants; packaged foods are chosen intentionally for low sodium and high fiber.</div>
+<div class="rx-label">Time horizon</div>
+<div>Expect noticeable improvements in energy, satiety, and food control within 1–2 weeks. Most cardiometabolic benefits accumulate over months.</div>
+</div>
+</div>
+<h3 id="what-is-dash">What DASH is (and what it is not)</h3>
+<p>
+  DASH is a research‑tested eating pattern that emphasizes <strong>fruits, vegetables, and other plant foods</strong>, with a structure
+  that supports higher intakes of potassium, magnesium, and calcium while reducing saturated fat and excess sodium.
+</p>
+<p>
+  DASH is <strong>not</strong> a mandate to eat specific branded foods, drink milk if you do not tolerate it, or follow a rigid macro ratio.
+  The most useful way to think about DASH is: <strong>“Build meals from plants, and make sodium reduction a skill.”</strong>
+</p>
+<h3 id="plant-strong">DASH as a whole‑food, plant‑strong pattern</h3>
+<p>
+  Many people assume DASH is “moderate everything” with a heavy emphasis on dairy. In practice, the strongest and easiest‑to‑execute version of DASH is
+  typically <strong>plant‑strong</strong>:
+</p>
+<ul>
+<li><strong>Most plates</strong> are vegetables + beans/lentils + intact whole grains.</li>
+<li><strong>Fruit</strong> is used as a default snack and dessert.</li>
+<li><strong>Nuts and seeds</strong> provide satiety and replace many refined snacks.</li>
+<li><strong>Dairy</strong> (if used) is chosen for function (calcium/protein) and kept low‑sodium; otherwise you use fortified alternatives and plant calcium sources.</li>
+</ul>
+<div class="clinical-note">
+<strong>Practical point:</strong> If you focus on “plant‑strong + low sodium,” the rest of the DASH pattern tends to fall into place automatically.
+</div>
+<h3 id="core-elements">Core food elements</h3>
+<h4>1) Vegetables: the non‑negotiable foundation</h4>
+<ul>
+<li><strong>Goal:</strong> include vegetables at <em>every</em> meal (raw, roasted, steamed, sautéed, or in soups/stews).</li>
+<li><strong>Best buys:</strong> leafy greens, crucifers (broccoli/cauliflower), peppers, carrots, tomatoes, onions, mushrooms, squash, frozen mixed vegetables.</li>
+<li><strong>How to make it easy:</strong> use frozen vegetables for speed; roast sheet pans; keep salad kits as “emergency produce.”</li>
+</ul>
+<h4>2) Fruit: the default snack and “sweet”</h4>
+<ul>
+<li><strong>Goal:</strong> 2–4 servings/day for most people; more is fine if it replaces ultra‑processed snacks.</li>
+<li><strong>Best buys:</strong> berries (fresh or frozen), apples, citrus, bananas, kiwi, grapes; dried fruit in small portions (watch added sugar).</li>
+<li><strong>Pattern:</strong> pair fruit with nuts or unsweetened yogurt (dairy or plant) for better satiety.</li>
+</ul>
+<h4>3) Beans and lentils: the DASH “power protein”</h4>
+<ul>
+<li><strong>Goal:</strong> most days. Even ½–1 cup/day is a meaningful step.</li>
+<li><strong>Best buys:</strong> dry lentils (fast), canned no‑salt‑added beans, chickpeas, black beans, white beans; hummus (watch sodium).</li>
+<li><strong>How to reduce sodium:</strong> choose “no salt added” when possible; otherwise rinse canned beans well.</li>
+</ul>
+<h4>4) Intact whole grains: stable energy + fiber</h4>
+<ul>
+<li><strong>Prefer:</strong> oats, brown rice, quinoa, barley, farro, bulgur, whole‑grain pasta, 100% whole‑grain bread (low‑sodium when possible).</li>
+<li><strong>Limit:</strong> refined grains (white bread/pasta), sugary cereals, pastries.</li>
+</ul>
+<h4>5) Nuts and seeds: satiety and mineral support</h4>
+<ul>
+<li><strong>Goal:</strong> small daily portions (e.g., a small handful) or several times weekly.</li>
+<li><strong>Best buys:</strong> unsalted almonds, walnuts, pistachios; chia/flax/hemp; pumpkin/sunflower seeds; nut butters with minimal ingredients.</li>
+<li><strong>Watch:</strong> “seasoned” nuts can be very high in sodium.</li>
+</ul>
+<h4>6) Healthy fats: use intentionally</h4>
+<ul>
+<li><strong>Default:</strong> extra‑virgin olive oil, avocado, tahini, nuts/seeds.</li>
+<li><strong>Avoid making fat the center of the diet:</strong> DASH works best when plants remain the main calorie source.</li>
+</ul>
+<div class="rx-card amh-rx-card">
+<div class="rx-header">
+<div class="rx-name">Optional “bridge tools” to make DASH easier</div>
+<div class="rx-type">INTEGRATIVE</div>
+</div>
+<div class="rx-grid">
+<div class="rx-label">Psyllium husk (fiber)</div>
+<div>
+      A practical add‑on when your current diet is low in fiber. Can improve satiety and bowel regularity and may modestly support lipids and glucose.
+      Typical use is a small dose once daily with water, increasing gradually. Main side effect is bloating/gas if increased too quickly.
+      Separate from medications by at least 2 hours. Choose unsweetened, simple products.
+      <strong>Cost:</strong> usually low to moderate per month.
+    </div>
+<div class="rx-label">Magnesium (food first)</div>
+<div>
+      DASH is naturally magnesium‑rich when plant‑strong. If a clinician recommends a supplement, common forms include glycinate or citrate.
+      Potential side effect is diarrhea (more common with citrate). Use caution in significant kidney disease unless supervised.
+      <strong>Cost:</strong> low to moderate.
+    </div>
+<div class="rx-label">Herb &amp; spice upgrades</div>
+<div>
+      Not “supplements,” but this is where DASH succeeds. Keep a strong spice rack and use acids/umami to replace salt.
+      <strong>Cost:</strong> moderate upfront, then low ongoing.
+    </div>
+</div>
+</div>
+<h3 id="limit-avoid">What to limit or avoid</h3>
+<ul>
+<li><strong>Ultra‑processed foods</strong> (chips, packaged snacks, fast food, frozen entrées, boxed meals): usually the largest sodium source.</li>
+<li><strong>Processed meats</strong> (deli meats, bacon, sausage): high sodium and often high saturated fat.</li>
+<li><strong>High‑sodium condiments</strong> (soy sauce, many salad dressings, bottled marinades, spice blends with salt): these can undo an otherwise great meal.</li>
+<li><strong>Cheese</strong> (if used): often a sodium “bomb.” Treat as a garnish, not a protein source.</li>
+<li><strong>Sugary beverages and desserts</strong>: displace nutrient‑dense foods and can worsen hunger swings.</li>
+</ul>
+<h3 id="sodium">Sodium: the lever that amplifies DASH</h3>
+<p>
+  DASH works best when <strong>sodium intake is intentionally reduced</strong>.
+  Many DASH resources use daily sodium targets of <strong>~2,300 mg/day</strong> (standard) or <strong>~1,500 mg/day</strong> (more intensive). A practical budgeting approach is to aim for <strong>~400–600 mg sodium per meal</strong> (with room for snacks), knowing that restaurant meals and packaged foods can exceed an entire day’s target in one sitting.
+</p>
+<div class="clinical-note">
+<strong>Label shortcuts:</strong> Food labels often use standardized terms. “<strong>Low sodium</strong>” generally means about <strong>140 mg or less per serving</strong>; “<strong>very low sodium</strong>” about <strong>35 mg or less</strong>; “<strong>sodium free</strong>” about <strong>5 mg or less</strong>. “Reduced sodium” typically means the product has less sodium than a reference version—so it can still be quite salty.
+</div>
+<p>
+ Many people “eat DASH foods” but still feel stuck because
+  their sodium intake remains high due to restaurant meals, breads, sauces, packaged snacks, and convenience foods.
+</p>
+<div class="rx-card amh-rx-card">
+<div class="rx-header">
+<div class="rx-name">Your sodium strategy (step‑by‑step)</div>
+<div class="rx-type">STANDARD</div>
+</div>
+<div class="rx-grid">
+<div class="rx-label">Step 1: Know your main sources</div>
+<div>
+      For most people, the biggest contributors are: restaurant meals, bread/tortillas, soups, sauces/condiments, (A key reality: most sodium comes from packaged, prepared, and restaurant foods—not from the salt shaker),
+      cheese, deli meats, packaged snacks, and frozen entrées.
+    </div>
+<div class="rx-label">Step 2: Use label triage</div>
+<div>
+      Use the Nutrition Facts label to compare products. A practical rule: choose options with <strong>lower sodium per serving</strong>,
+      and pay attention to the number of servings. As a second check, use <strong>% Daily Value</strong>:
+      around <strong>5% DV or less</strong> per serving is a “low” sodium choice, while <strong>20% DV or more</strong> is “high.”
+    </div>
+<div class="rx-label">Step 3: Default to “no‑salt‑added” staples</div>
+<div>
+      Stock no‑salt‑added canned beans, tomatoes, broth, and vegetables; choose unsalted nuts; buy plain oats and intact grains.
+      These create a low‑sodium baseline where flavor is built with herbs/spices and acids rather than salt.
+    </div>
+<div class="rx-label">Step 4: Make sauces at home</div>
+<div>
+      Homemade vinaigrette, salsa, hummus, and “no‑salt” seasoning blends can reduce sodium dramatically and make plant meals satisfying.
+      This single habit often produces the biggest practical sodium reduction.
+    </div>
+<div class="rx-label">Step 5: Reduce gradually</div>
+<div>
+      Taste adapts. If your current diet is high in sodium, reduce in stages over 2–4 weeks. Your palate will recalibrate.
+    </div>
+</div>
+</div>
+<div class="clinical-note">
+<strong>Potassium “salt substitutes” (important safety note):</strong>
+  Many salt substitutes use potassium chloride. They can be helpful for some people, but can be unsafe in advanced kidney disease
+  and can interact with certain medications that raise potassium. If you have kidney disease or take prescription medications that affect potassium,
+  discuss this with your clinician before using potassium‑based salt substitutes.
+</div>
+<h3 id="dairy">Dairy: optional tool, not a requirement</h3>
+<p>
+  In the original DASH trials, the “combination” diet pattern included <strong>low‑fat dairy</strong> as one way to help meet calcium and protein targets. Importantly, the study diet was designed to be realistic for the general public; including dairy (and allowing modest animal foods in some implementations) was a practical choice to support palatability and adherence for non‑vegetarians—not proof that dairy is required for the core DASH effect.
+  In real life, dairy is best viewed as <strong>one optional approach</strong>—use it if it works for you, tolerate it well, and it helps you adhere to the pattern.
+</p>
+<ul>
+<li><strong>If you include dairy:</strong> prefer plain low‑fat yogurt/kefir and low‑fat milk; watch sodium in cheese and flavored products.</li>
+<li><strong>If you avoid dairy:</strong> use fortified unsweetened plant milks/yogurts (calcium + vitamin D), tofu set with calcium, leafy greens, beans,
+      almonds/tahini, and other calcium‑rich plant foods.</li>
+<li><strong>Key principle:</strong> do not let “dairy servings” crowd out vegetables/beans/whole grains. Plants are the core of DASH’s nutrient density.</li>
+</ul>
+<h3 id="shopping">Grocery store playbook</h3>
+<p>
+  Your goal is to build a cart where <strong>most items are “ingredients”</strong>, not “products.” The simplest DASH grocery trip is a repeatable loop:
+  produce → frozen vegetables/fruit → beans/grains → nuts/seeds/spices → optional dairy/fortified alternatives.
+</p>
+<h4>Produce department (buy first)</h4>
+<ul>
+<li><strong>Leafy greens:</strong> spinach, kale, arugula, mixed greens (fresh or frozen)</li>
+<li><strong>Crucifers:</strong> broccoli, cauliflower, cabbage, Brussels sprouts</li>
+<li><strong>Color:</strong> bell peppers, carrots, tomatoes, berries, citrus</li>
+<li><strong>Aromatics:</strong> onions, garlic, ginger, scallions</li>
+<li><strong>Easy fruit:</strong> apples, bananas, oranges, grapes</li>
+</ul>
+<h4>Frozen aisle (your “consistency insurance”)</h4>
+<ul>
+<li>Frozen mixed vegetables, broccoli florets, cauliflower rice, spinach</li>
+<li>Frozen berries and cherries (for oats/smoothies)</li>
+<li>Edamame (check sodium), veggie blends for stir‑fries</li>
+</ul>
+<h4>Beans, lentils, and canned goods</h4>
+<ul>
+<li><strong>Dry:</strong> red lentils (fast), green/brown lentils, split peas, chickpeas, black beans</li>
+<li><strong>Canned:</strong> <em>no‑salt‑added</em> beans, tomatoes, tomato paste; low‑sodium broths</li>
+<li><strong>Tip:</strong> keep at least 3 “weeknight rescue” proteins: canned beans, lentils, and tofu/tempeh.</li>
+</ul>
+<h4>Whole grains</h4>
+<ul>
+<li>Old‑fashioned oats, brown rice, quinoa, barley, farro, bulgur</li>
+<li>Whole‑grain pasta; 100% whole‑grain bread/tortillas (compare sodium)</li>
+</ul>
+<h4>Nuts, seeds, and healthy fats</h4>
+<ul>
+<li>Unsalted nuts; chia/flax; tahini; natural nut butters</li>
+<li>Extra‑virgin olive oil; avocados</li>
+</ul>
+<h4>Spice rack and “flavor builders” (the DASH secret weapon)</h4>
+<ul>
+<li>Black pepper, cumin, smoked paprika, turmeric, cinnamon, chili flakes, oregano, thyme, rosemary</li>
+<li>Vinegars (balsamic, apple cider), lemons/limes, mustard (check sodium), nutritional yeast (optional)</li>
+<li>Low‑sodium or salt‑free seasoning blends; make your own blends to avoid hidden salt</li>
+</ul>
+<h3 id="kitchen">Kitchen setup and batch-cook system</h3>
+<ul>
+<li><strong>Batch-cook 1 grain + 1 legume weekly:</strong> e.g., quinoa + lentils, brown rice + black beans.</li>
+<li><strong>Roast a vegetable tray:</strong> sheet‑pan broccoli/cauliflower/carrots/onions for fast meal assembly.</li>
+<li><strong>Make 1 sauce:</strong> vinaigrette, salsa, tahini‑lemon sauce, or “no‑salt” marinara.</li>
+<li><strong>Keep “grab-and-go”</strong> produce washed and ready (prepped vegetables, fruit bowl).</li>
+</ul>
+<div class="clinical-note">
+<strong>Implementation tip:</strong> If you can assemble meals in 10 minutes, you will do DASH even on chaotic days. Aim for “assembly cooking,” not constant complex recipes.
+</div>
+<h3 id="meal-templates">Meal templates (mix‑and‑match)</h3>
+<h4>The DASH Plate (default dinner)</h4>
+<ul>
+<li><strong>½ plate:</strong> vegetables (cooked or salad)</li>
+<li><strong>¼ plate:</strong> beans/lentils/tofu/tempeh</li>
+<li><strong>¼ plate:</strong> intact whole grains or starchy vegetables (brown rice, quinoa, oats, potatoes)</li>
+<li><strong>Flavor:</strong> olive oil + acid + spices; add nuts/seeds for crunch</li>
+</ul>
+<h4>Breakfast templates</h4>
+<ul>
+<li><strong>Oats + fruit + seeds:</strong> add chia/flax, cinnamon, and berries; finish with walnuts</li>
+<li><strong>Greek-style bowl (dairy or plant):</strong> plain yogurt + fruit + unsalted nuts + cinnamon</li>
+<li><strong>Savory breakfast:</strong> tofu scramble + vegetables + whole‑grain toast (watch sodium)</li>
+</ul>
+<h4>Lunch templates</h4>
+<ul>
+<li><strong>Big salad + beans:</strong> greens + chopped vegetables + chickpeas/beans + vinaigrette</li>
+<li><strong>Soup + salad:</strong> lentil/vegetable soup (low‑sodium) + side salad</li>
+<li><strong>Grain bowl:</strong> cooked grain + roasted vegetables + beans + sauce</li>
+</ul>
+<h4>Snack templates</h4>
+<ul>
+<li>Fruit + unsalted nuts</li>
+<li>Vegetables + hummus (choose low‑sodium or make your own)</li>
+<li>Air‑popped popcorn (season with spices, not salt)</li>
+</ul>
+<h3 id="recipes">Recipe library (many formats)</h3>
+<p>
+  These recipes are designed to be <strong>DASH‑aligned by structure</strong>: whole foods, plant‑forward, and naturally lower in sodium.
+  Adjust salt intentionally (or omit) and build flavor with acids and spices.
+</p>
+<h4>Breakfast</h4>
+<ul>
+<li><strong>Overnight oats:</strong> oats + unsweetened milk (dairy or fortified plant) + chia + berries + cinnamon; top with walnuts.</li>
+<li><strong>Steel‑cut oats “savory bowl”:</strong> oats cooked with mushrooms/spinach; finish with pepper, lemon, and a drizzle of olive oil.</li>
+<li><strong>Tofu scramble:</strong> crumbled tofu + turmeric + onion/peppers/spinach; serve with avocado and fruit.</li>
+<li><strong>Chia pudding:</strong> chia + unsweetened milk + vanilla/cinnamon; add berries; keep sweeteners minimal.</li>
+<li><strong>Smoothie (DASH version):</strong> frozen berries + spinach + ground flax + unsweetened milk; optional plain yogurt for protein.</li>
+</ul>
+<h4>Soups and stews (batch-cook friendly)</h4>
+<ul>
+<li><strong>Lentil vegetable soup:</strong> onion/garlic/carrots/celery + lentils + crushed tomatoes + cumin + bay leaf; use low‑sodium broth or water; finish with lemon.</li>
+<li><strong>White bean &amp; kale soup:</strong> white beans + kale + carrots + rosemary; finish with olive oil and vinegar.</li>
+<li><strong>Chickpea “tomato‑spinach” stew:</strong> chickpeas + tomato paste + spices + spinach; serve over brown rice.</li>
+<li><strong>Vegetable chili:</strong> beans + tomatoes + peppers + onions + chili powder + cumin; top with avocado and chopped cilantro.</li>
+<li><strong>Miso-style vegetable soup (lower sodium):</strong> use small amounts of miso; load the bowl with vegetables and tofu; taste before adding more.</li>
+</ul>
+<h4>Bowls (the fastest DASH dinners)</h4>
+<ul>
+<li><strong>Mediterranean bowl:</strong> quinoa + chickpeas + cucumber/tomato + greens + olives (small amount) + lemon‑tahini sauce.</li>
+<li><strong>Taco bowl:</strong> brown rice + black beans + sautéed peppers/onions + salsa + avocado + lime.</li>
+<li><strong>Roasted vegetable bowl:</strong> farro + roasted broccoli/cauliflower + lentils + balsamic vinaigrette + pumpkin seeds.</li>
+<li><strong>“Sushi” bowl:</strong> brown rice + edamame + cucumber + carrots + nori + sesame + low‑sodium sauce (use diluted soy or coconut aminos sparingly).</li>
+</ul>
+<h4>Salads (for people who “don’t like salads”)</h4>
+<ul>
+<li><strong>Bean salad:</strong> chickpeas + cucumber + tomato + red onion + parsley + lemon/olive oil; no cheese required.</li>
+<li><strong>Warm salad:</strong> roasted sweet potato + kale + lentils + tahini‑lemon dressing.</li>
+<li><strong>Crunch salad:</strong> shredded cabbage + carrots + edamame + sunflower seeds + rice vinegar + ginger + sesame.</li>
+<li><strong>Fruit-forward salad:</strong> greens + berries + walnuts + balsamic; optional yogurt-based dressing.</li>
+</ul>
+<h4>Main dishes (plant‑forward)</h4>
+<ul>
+<li><strong>Sheet‑pan vegetables + chickpeas:</strong> roast vegetables with chickpeas; finish with lemon and spices; serve over quinoa.</li>
+<li><strong>Stir‑fry:</strong> frozen veg blend + tofu/tempeh + ginger/garlic; use low‑sodium sauce; finish with lime.</li>
+<li><strong>Stuffed sweet potatoes:</strong> bake sweet potatoes; fill with black beans + sautéed greens + salsa; top with avocado.</li>
+<li><strong>Whole‑grain pasta “Mediterranean”:</strong> pasta + tomatoes + spinach + white beans + herbs; keep cheese optional and minimal.</li>
+<li><strong>Veggie burgers (DASH approach):</strong> choose lower‑sodium options; serve with a large side salad and roasted vegetables.</li>
+</ul>
+<h4>Sides and add-ons (high leverage)</h4>
+<ul>
+<li><strong>No‑salt seasoning blend:</strong> mix garlic powder + onion powder + paprika + pepper + oregano + cumin.</li>
+<li><strong>Quick pickled onions:</strong> red onion + vinegar + lime + pepper (no salt needed).</li>
+<li><strong>Roasted vegetables:</strong> broccoli/cauliflower/carrots with olive oil + pepper + spices.</li>
+<li><strong>Homemade vinaigrette:</strong> 3 parts olive oil + 1 part vinegar/lemon + mustard + pepper; skip added salt.</li>
+<li><strong>Tahini‑lemon sauce:</strong> tahini + lemon + water + garlic + pepper; adjust thickness.</li>
+</ul>
+<h4>Desserts (DASH‑aligned)</h4>
+<ul>
+<li><strong>Fruit + cinnamon:</strong> baked apples or pears; optional plain yogurt.</li>
+<li><strong>Frozen berry bowl:</strong> thawed berries + crushed walnuts + cinnamon.</li>
+<li><strong>Dark chocolate (small portion):</strong> use intentionally; do not let it replace fruit as your default sweet.</li>
+</ul>
+<h3 id="eating-out">Eating out and travel</h3>
+<ul>
+<li><strong>Assume restaurant meals are high sodium.</strong> Choose simpler preparations (grilled/steamed/roasted) and request sauces on the side.</li>
+<li><strong>Build a DASH plate:</strong> vegetables + beans/lean protein + plain grain or potato; avoid soups and heavy sauces unless clearly low‑sodium.</li>
+<li><strong>Fast options:</strong> salad bowls with beans, burrito bowls without cheese/salty extras, oatmeal/fruit, and unsalted nuts.</li>
+<li><strong>Travel kit:</strong> unsalted nuts, fruit, instant oats, single‑serve nut butter, and a salt‑free seasoning blend.</li>
+</ul>
+<h3 id="personalize">Personalizing DASH</h3>
+<ul>
+<li><strong>Weight loss goal:</strong> keep nuts/oils portions intentional; increase vegetables and beans for satiety.</li>
+<li><strong>Athletic training:</strong> increase intact grains and starchy vegetables; keep sodium strategy smart (sports may require individualized guidance).</li>
+<li><strong>Diabetes/insulin resistance:</strong> emphasize beans, vegetables, intact grains; limit refined carbs and sugary drinks.</li>
+<li><strong>Kidney disease:</strong> DASH can still be helpful, but potassium/phosphorus and salt substitutes may require individualized medical guidance.</li>
+<li><strong>Gastrointestinal sensitivity:</strong> build fiber gradually; use cooked vegetables and lentils; consider a short “gentle DASH” phase.</li>
+</ul>
+<h3 id="faq">FAQ</h3>
+<h4>Do I have to count servings?</h4>
+<p>
+  Not usually. If most of your meals look like the “DASH Plate” and you are reducing sodium from packaged/restaurant foods,
+  you are already aligning with the core targets. Counting can be useful for 1–2 weeks as a learning tool.
+</p>
+<h4>Is the DASH diet vegetarian?</h4>
+<p>
+  It can be. DASH is easiest to implement as plant‑strong. If you choose to include animal foods, keep portions modest and prioritize minimally processed options.
+  Avoid processed meats and watch sodium in deli meats and cheeses.
+</p>
+<h4>What is the fastest way to lower sodium without eating bland food?</h4>
+<p>
+  Reduce restaurant meals, replace bottled sauces/dressings with homemade versions, and build flavor with acids, aromatics, spices, and umami.
+  Your palate adapts over 2–4 weeks.
+</p>
+<h4>Do I need dairy to “do DASH correctly”?</h4>
+<p>
+  No. Dairy is optional. If you avoid dairy, choose fortified unsweetened alternatives and include calcium‑rich plant foods.
+  The “correctness” of DASH is determined by overall nutrient pattern and sodium strategy, not by one food group.
+</p>
+<h3 id="references">References</h3>
+<ul>
+<li>National Heart, Lung, and Blood Institute (NHLBI). DASH Eating Plan. https://www.nhlbi.nih.gov/education/dash-eating-plan</li>
+<li>Appel LJ, et al. A clinical trial of the effects of dietary patterns on blood pressure. <em>New England Journal of Medicine</em>. 1997. https://www.nejm.org/doi/full/10.1056/NEJM199704173361601</li>
+<li>Sacks FM, et al. Effects on blood pressure of reduced dietary sodium and the DASH diet (DASH‑Sodium). <em>New England Journal of Medicine</em>. 2001. https://www.nejm.org/doi/full/10.1056/NEJM200101043440101</li>
+<li>American Heart Association. How much sodium should I eat per day? https://www.heart.org/en/healthy-living/healthy-eating/eat-smart/sodium/how-much-sodium-should-i-eat-per-day</li>
+<li>U.S. Food &amp; Drug Administration (FDA). Sodium in Your Diet. https://www.fda.gov/food/nutrition-education-resources-materials/sodium-your-diet</li>
+<li>MedlinePlus. DASH Eating Plan. https://medlineplus.gov/dasheatingplan.html</li>
+</ul>
+</div>
+</div>
+<script>
+    (function () {
+      // ---- Last updated + year ----
+      var yearEl = document.getElementById("amh-year");
+      if (yearEl) {
+        try { yearEl.textContent = String(new Date().getFullYear()); } catch (e) {}
+      }
 
-<footer>
-    <p>&copy; 2025 Archangel Michael Health. All Rights Reserved.</p>
-    <p>Direct Primary Care | Internal & Integrative Medicine</p>
-    <p><a href="https://archangelmichaelhealth.com/">www.archangelmichaelhealth.com</a></p>
-</footer>
+      var updatedEl = document.getElementById("amh-last-updated");
+      if (updatedEl) {
+        var lm = document.lastModified; // usually reflects server file Last-Modified (works well on GitHub Pages)
+        var d = lm ? new Date(lm) : null;
+        if (d && !isNaN(d.getTime())) {
+          // ISO-like YYYY-MM-DD
+          var yyyy = d.getFullYear();
+          var mm = String(d.getMonth() + 1).padStart(2, "0");
+          var dd = String(d.getDate()).padStart(2, "0");
+          updatedEl.textContent = yyyy + "-" + mm + "-" + dd;
+        } else {
+          updatedEl.textContent = "—";
+        }
+      }
 
+      // ---- TOC scrolling (support both anchor links and data-scroll buttons) ----
+      function scrollToId(id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      document.addEventListener("click", function (e) {
+        var btn = e.target.closest(".toc-btn[data-scroll]");
+        if (btn) {
+          e.preventDefault();
+          scrollToId(btn.getAttribute("data-scroll"));
+          return;
+        }
+
+        var link = e.target.closest('.toc a[href^="#"]');
+        if (link) {
+          var hash = link.getAttribute("href");
+          var target = hash && hash.length > 1 ? hash.slice(1) : null;
+          if (!target) return;
+          e.preventDefault();
+          scrollToId(target);
+          history.replaceState(null, "", hash);
+        }
+      });
+
+      // ---- Download PDF using html2pdf.js ----
+      var btn = document.getElementById("downloadPdfBtn");
+      if (!btn) return;
+
+      function safeFilename(title) {
+        return (title || "patient-guide")
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/(^-|-$)/g, "");
+      }
+
+      btn.addEventListener("click", function () {
+        if (typeof html2pdf === "undefined") {
+          alert("PDF generator is still loading. Please try again in a moment, or use Print / Save as PDF.");
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = "Preparing PDF...";
+
+        var title = (document.getElementById("page-title") && document.getElementById("page-title").textContent) || "Patient Guide";
+        var filename = safeFilename(title) + ".pdf";
+
+        // Clone content for PDF and remove UI elements
+        var source = document.getElementById("pdf-root").cloneNode(true);
+        source.querySelectorAll(".no-print").forEach(function (el) { el.remove(); });
+
+        var wrapper = document.createElement("div");
+        wrapper.style.background = "#ffffff";
+        wrapper.appendChild(source);
+
+        var opt = {
+          margin: [0.5, 0.5, 0.6, 0.5], // inches
+          filename: filename,
+          image: { type: "jpeg", quality: 0.98 },
+          html2canvas: { scale: 2, useCORS: true, letterRendering: true },
+          jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+          pagebreak: { mode: ["css", "legacy"] }
+        };
+
+        html2pdf()
+          .set(opt)
+          .from(wrapper)
+          .save()
+          .catch(function (err) {
+            console.error(err);
+            alert("Could not generate the PDF in this browser. Please use Print / Save as PDF.");
+          })
+          .finally(function () {
+            btn.disabled = false;
+            btn.textContent = "Download PDF";
+          });
+      });
+    })();
+  </script>
 </body>
 </html>
