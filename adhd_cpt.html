@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Attention Diagnostics Simulation (TOVA-Style)</title>
+  <meta name="description" content="Educational Continuous Performance Test (CPT) simulation inspired by TOVA-style paradigms. Not a medical device." />
+  <style>
+    :root{
+      --bg:#000;
+      --panel:#0f0f0f;
+      --panel2:#141414;
+      --text:#e8e8e8;
+      --muted:#9a9a9a;
+      --muted2:#6c6c6c;
+      --line:#2a2a2a;
+      --ok:#4CAF50;
+      --warn:#ffb300;
+      --bad:#f44336;
+      --btn:#ffffff;
+      --btnText:#000000;
+      --focus:#66b3ff;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    html, body{
+      width:100%;
+      height:100%;
+      margin:0;
+      padding:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:var(--sans);
+      overflow:hidden;
+      user-select:none;
+      cursor:default;
+    }
+    .screen{
+      display:none;
+      width:100%;
+      height:100%;
+      box-sizing:border-box;
+      padding:22px;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      text-align:center;
+      animation: fade 0.25s ease;
+    }
+    .screen.active{ display:flex; }
+    @keyframes fade { from { opacity:0; transform: translateY(6px);} to { opacity:1; transform: translateY(0);} }
+
+    h1{
+      font-weight:300;
+      letter-spacing:3px;
+      margin:0 0 6px 0;
+      color:#fff;
+    }
+    h2{
+      font-weight:400;
+      font-size:1.05rem;
+      color:var(--muted);
+      margin:0 0 18px 0;
+    }
+    .panel{
+      width:min(760px, 92vw);
+      background:linear-gradient(180deg, var(--panel), var(--panel2));
+      border:1px solid var(--line);
+      border-radius:10px;
+      box-shadow:0 14px 40px rgba(0,0,0,0.55);
+      padding:22px;
+      box-sizing:border-box;
+      text-align:left;
+    }
+    .row{ display:flex; gap:14px; flex-wrap:wrap; }
+    .col{ flex:1 1 240px; }
+    .divider{ height:1px; background:var(--line); margin:16px 0; }
+    .hint{ color:var(--muted); font-size:0.92rem; line-height:1.55; }
+    .tiny{ color:var(--muted2); font-size:0.78rem; line-height:1.5; }
+
+    label{
+      display:block;
+      margin:0 0 8px 0;
+      font-size:0.86rem;
+      color:#bdbdbd;
+      letter-spacing:0.3px;
+      text-transform:uppercase;
+    }
+    select, input{
+      width:100%;
+      padding:10px 12px;
+      background:#070707;
+      border:1px solid #3a3a3a;
+      border-radius:6px;
+      color:#fff;
+      outline:none;
+      font-size:1rem;
+      box-sizing:border-box;
+    }
+    select:focus, input:focus{
+      border-color:var(--focus);
+      box-shadow:0 0 0 3px rgba(102,179,255,0.16);
+    }
+
+    .btnRow{ display:flex; gap:12px; flex-wrap:wrap; margin-top:16px; }
+    .btn{
+      appearance:none;
+      border:2px solid var(--btn);
+      background:transparent;
+      color:var(--btn);
+      padding:12px 22px;
+      border-radius:8px;
+      font-weight:700;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      cursor:pointer;
+      transition: all 0.16s ease;
+    }
+    .btn:hover{ background:var(--btn); color:var(--btnText); }
+    .btn:focus{ outline:none; box-shadow:0 0 0 3px rgba(102,179,255,0.18); }
+    .btn.secondary{
+      border-color:#666;
+      color:#cfcfcf;
+    }
+    .btn.secondary:hover{
+      background:#1c1c1c;
+      color:#fff;
+      border-color:#8a8a8a;
+    }
+    .pill{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      background:#141414;
+      border:1px solid #2c2c2c;
+      font-size:0.78rem;
+      color:#bdbdbd;
+      letter-spacing:0.3px;
+      margin-right:6px;
+      margin-top:6px;
+      font-family:var(--mono);
+    }
+    .statusLine{
+      font-family:var(--mono);
+      font-size:0.82rem;
+      color:#a7a7a7;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .statusDot{
+      display:inline-block;
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      margin-right:6px;
+      background:#444;
+      vertical-align:middle;
+    }
+    .ok{ color:var(--ok); }
+    .warn{ color:var(--warn); }
+    .bad{ color:var(--bad); }
+    .ok .statusDot{ background:var(--ok); }
+    .warn .statusDot{ background:var(--warn); }
+    .bad .statusDot{ background:var(--bad); }
+
+    /* Test view */
+    #testWrap{
+      position:relative;
+      width:100%;
+      height:100%;
+    }
+    canvas{ display:block; position:absolute; inset:0; width:100%; height:100%; pointer-events:none; z-index:1; }
+    #hud{
+      position:absolute;
+      z-index:5;
+      left:18px;
+      top:18px;
+      font-family:var(--mono);
+      font-size:0.82rem;
+      color:#8c8c8c;
+      opacity:0.85;
+      pointer-events:none;
+    }
+    #hud b{ color:#e6e6e6; font-weight:600; }
+    #countdown{
+      position:absolute;
+      z-index:6;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family:var(--mono);
+      font-size:4.2rem;
+      color:#fff;
+      opacity:0;
+      transition: opacity 0.15s ease;
+      pointer-events:none;
+    }
+    #countdown.show{ opacity:1; }
+    #audioViz{
+      position:absolute;
+      z-index:5;
+      right:18px;
+      top:16px;
+      font-size:2.2rem;
+      opacity:0.2;
+      transition: opacity 0.08s;
+      pointer-events:none;
+    }
+    #audioViz.active{ opacity:1; color:var(--ok); }
+
+
+    #feedbackFlash{
+      position:absolute;
+      inset:0;
+      background:transparent;
+      opacity:0;
+      transition: opacity 0.12s linear;
+      pointer-events:none;
+      z-index:4;
+    }
+    #feedbackFlash.on{ opacity:1; }
+
+    #exitBar{
+      position:absolute;
+      z-index:6;
+      right:18px;
+      bottom:18px;
+      display:flex;
+      gap:10px;
+      pointer-events:auto;
+    }
+    #exitBar .btn{
+      padding:10px 14px;
+      font-size:0.78rem;
+      border-width:1px;
+      border-radius:8px;
+      letter-spacing:0.6px;
+    }
+
+    /* Results */
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:12px;
+      font-size:0.92rem;
+    }
+    th, td{
+      padding:12px 10px;
+      border-bottom:1px solid var(--line);
+      text-align:right;
+      font-family:var(--mono);
+    }
+    th{
+      text-align:left;
+      color:var(--muted);
+      font-weight:500;
+      font-size:0.78rem;
+      text-transform:uppercase;
+      letter-spacing:0.6px;
+      font-family:var(--sans);
+    }
+    td:first-child{
+      text-align:left;
+      font-family:var(--sans);
+      font-weight:600;
+      color:#d8d8d8;
+    }
+    .monoBlock{
+      font-family:var(--mono);
+      font-size:0.82rem;
+      color:#c9c9c9;
+      background:#0a0a0a;
+      border:1px solid #262626;
+      padding:12px;
+      border-radius:8px;
+      overflow:auto;
+      max-height: 210px;
+      white-space: pre;
+    }
+    .legend{
+      font-size:0.86rem;
+      color:var(--muted);
+      line-height:1.55;
+      margin-top:14px;
+    }
+
+    /* Small */
+    @media (max-width: 520px){
+      h1{ letter-spacing:2px; }
+      #countdown{ font-size:3.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- INTRO -->
+  <div id="screenIntro" class="screen active">
+    <h1>ATTENTION DIAGNOSTICS</h1>
+    <h2>Continuous Performance Test (CPT) Simulation</h2>
+
+    <div class="panel">
+      <div class="hint">
+        <p style="margin-top:0;">
+          This application provides an <strong>educational</strong> software experience inspired by “TOVA-style” CPT paradigms: repeated target / non-target stimuli with precise reaction-time logging to quantify sustained attention and inhibitory control.
+        </p>
+        <p>
+          The <strong>Test of Variables of Attention (TOVA)</strong> is a separate commercial, FDA-cleared CPT that includes normative databases (ages 4–80+) and clinical reporting. This simulator does <strong>not</strong> reproduce TOVA’s validated norms or diagnostic scoring and is <strong>not</strong> a medical device.
+        </p>
+        <div class="divider"></div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label for="modality">Test modality</label>
+          <select id="modality">
+            <option value="visual">Visual (square stimulus)</option>
+            <option value="auditory">Auditory (tone stimulus)</option>
+          </select>
+          <div class="tiny" style="margin-top:8px;">
+            Visual: respond to TOP target. Auditory: respond to HIGH target.
+          </div>
+        </div>
+        <div class="col">
+          <label for="duration">Duration</label>
+          <select id="duration">
+            <option value="demo">Demo (2 minutes)</option>
+            <option value="full">Extended (≈21.6 minutes)</option>
+          </select>
+          <div class="tiny" style="margin-top:8px;">
+            2.0 s inter-stimulus interval (ISI), 100 ms stimulus.
+          </div>
+        </div>
+        <div class="col">
+          <label for="practice">Practice</label>
+          <select id="practice">
+            <option value="on">On (recommended)</option>
+            <option value="off">Off</option>
+          </select>
+          <div class="tiny" style="margin-top:8px;">
+            Practice provides immediate feedback; the main test does not.
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="row">
+        <div class="col">
+          <label for="participantId">Participant ID (optional)</label>
+          <input id="participantId" placeholder="e.g., Patient-001" autocomplete="off" />
+        </div>
+        <div class="col">
+          <label for="handedness">Handedness (optional)</label>
+          <select id="handedness">
+            <option value="">Prefer not to say</option>
+            <option value="right">Right</option>
+            <option value="left">Left</option>
+            <option value="ambi">Ambidextrous</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="hint" style="margin-bottom:10px;">
+        <strong style="color:#fff;">Instructions</strong>
+        <ul style="margin:10px 0 0 18px; padding:0; color:#bdbdbd; line-height:1.6;">
+          <li><span class="pill">Respond</span> Press <strong>SPACE</strong> (or click) for <strong>targets</strong> only.</li>
+          <li><span class="pill">Ignore</span> Do not respond to <strong>non-targets</strong>.</li>
+          <li>Respond as quickly and accurately as possible, while staying consistent for the full session.</li>
+          <li>For best timing stability: close other tabs, disable battery-saver modes, and avoid Bluetooth keyboards/mice when possible.</li>
+        </ul>
+      </div>
+
+      <div class="statusLine" id="preflightStatus">
+        <span class="warn"><span class="statusDot"></span>Preflight: not started</span>
+        <span class="warn"><span class="statusDot"></span>Fullscreen: not requested</span>
+        <span class="warn"><span class="statusDot"></span>Audio: not initialized</span>
+      </div>
+
+      <div class="btnRow">
+        <button class="btn" id="btnPreflight">Run Preflight</button>
+        <button class="btn secondary" id="btnFullscreen">Enter Fullscreen</button>
+        <button class="btn secondary" id="btnStart">Start Session</button>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="tiny">
+        DISCLAIMER: Educational simulation only. Not FDA-cleared. Not a diagnostic test. Timing accuracy depends on browser, hardware, OS scheduling, display refresh rate, and input devices.
+      </div>
+    </div>
+  </div>
+
+  <!-- PREFLIGHT / PRACTICE -->
+  <div id="screenReady" class="screen">
+    <h1>SESSION READY</h1>
+    <h2>Preflight results and practice (optional)</h2>
+
+    <div class="panel">
+      <div class="hint" style="margin-top:0;">
+        <p style="margin-top:0;">
+          Preflight estimates animation-frame jitter and input latency variability. This helps you interpret reaction-time variability results (RTV) with appropriate caution.
+        </p>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label>Frame timing (requestAnimationFrame)</label>
+          <div class="monoBlock" id="preflightReport">Pending…</div>
+        </div>
+        <div class="col">
+          <label>Recommended actions</label>
+          <div class="hint" id="preflightAdvice" style="margin-top:0;">
+            Run preflight, then proceed. If jitter is high, close background apps and retest.
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="hint">
+        <strong style="color:#fff;">Practice</strong>
+        <p style="margin:8px 0 0 0;">
+          Practice uses a short set of trials and provides immediate “Correct / Incorrect” feedback. The main test will not provide feedback (to preserve a CPT-like experience).
+        </p>
+      </div>
+
+      <div class="btnRow">
+        <button class="btn" id="btnPractice">Practice (≈45 seconds)</button>
+        <button class="btn secondary" id="btnSkipPractice">Skip Practice</button>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="btnRow">
+        <button class="btn" id="btnBeginTest">Begin Main Test</button>
+        <button class="btn secondary" id="btnBack">Back</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEST -->
+  <div id="screenTest" class="screen">
+    <div id="testWrap">
+      <canvas id="cvs"></canvas>
+      <div id="feedbackFlash" aria-hidden="true"></div>
+
+      <div id="hud">
+        <div><b id="hudMode">VISUAL</b> | ISI <span id="hudISI">2000</span> ms | Stim <span id="hudStim">100</span> ms</div>
+        <div>Half <b id="hudHalf">1</b> | Trial <b id="hudTrial">0</b>/<span id="hudTotal">0</span></div>
+      </div>
+
+      <div id="audioViz" style="display:none;">🔊</div>
+      <div id="countdown">3</div>
+
+      <div id="exitBar">
+        <button class="btn secondary" id="btnAbort">Abort</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div id="screenResults" class="screen">
+    <h1>SESSION COMPLETE</h1>
+    <h2>Performance summary (educational)</h2>
+
+    <div class="panel">
+      <div class="hint" style="margin-top:0;">
+        <p style="margin-top:0;">
+          The metrics below quantify sustained attention and inhibitory control in a CPT-like task. They are <strong>not diagnostic</strong> without validated norms and clinical interpretation.
+        </p>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Half 1 (Vigilance)</th>
+            <th>Half 2 (Impulse)</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody id="resultsBody"></tbody>
+      </table>
+
+      <div class="legend">
+        <div><strong>Omission errors</strong>: missed targets (inattention / lapses).</div>
+        <div><strong>Commission errors</strong>: responses to non-targets (inhibitory control).</div>
+        <div><strong>Mean RT</strong>: average response time for valid hits (ms).</div>
+        <div><strong>RT variability (SD)</strong>: consistency of reaction time; high variability is a common objective signal in attentional disorders, but can be inflated by device / browser jitter.</div>
+        <div><strong>d′</strong>: signal detection sensitivity derived from hit and false-alarm rates (higher is better).</div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="row">
+        <div class="col">
+          <label>Session notes</label>
+          <div class="monoBlock" id="sessionNotes"></div>
+        </div>
+        <div class="col">
+          <label>Export</label>
+          <div class="hint" style="margin-top:0;">
+            You can export raw trial-by-trial data for further analysis.
+          </div>
+          <div class="btnRow">
+            <button class="btn" id="btnExport">Download CSV</button>
+            <button class="btn secondary" id="btnRestart">Restart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="tiny">
+        Interpretation note: Objective CPT metrics are best understood alongside symptoms, collateral history, standardized rating scales, comorbidity screening (sleep disorders, mood/anxiety, substance use, TBI), and medication / stimulant effects.
+      </div>
+    </div>
+  </div>
+
+<script>
+(() => {
+  "use strict";
+
+  // -----------------------------
+  // Config (TOVA-style parameters)
+  // -----------------------------
+  const CFG = {
+    isiMs: 2000,             // trial window
+    stimMs: 100,             // stimulus duration
+    toneTargetHz: 392.0,     // Target (higher tone)
+    toneNonTargetHz: 261.6,  // Non-target (lower tone)
+    ratioInfrequent: 0.225,  // Half 1: infrequent targets (vigilance)
+    ratioFrequent: 0.775,    // Half 2: frequent targets (impulse)
+    anticipatoryCutoffMs: 150,
+    practiceTrials: 24,
+    countdownSeconds: 3,
+  };
+
+  // -----------------------------
+  // DOM helpers
+  // -----------------------------
+  const $ = (id) => document.getElementById(id);
+  const Screens = {
+    intro: $("screenIntro"),
+    ready: $("screenReady"),
+    test: $("screenTest"),
+    results: $("screenResults"),
+  };
+
+  function switchScreen(screenEl){
+    Object.values(Screens).forEach(s => s.classList.remove("active"));
+    screenEl.classList.add("active");
+  }
+
+  // -----------------------------
+  // State
+  // -----------------------------
+  const State = {
+    running: false,
+    inPractice: false,
+    modality: "visual",
+    duration: "demo",
+    practice: "on",
+    participantId: "",
+    handedness: "",
+    trials: [],
+    responses: [],
+    preflight: null,
+    audioCtx: null,
+    audioInit: false,
+    startPerfTs: 0,
+    startDelayMs: 0,
+    lastTrialIndex: -1,
+    stimOnsetActual: new Map(), // trialId -> perf timestamp when stimulus first rendered/triggered
+    listeners: [],
+    aborted: false,
+  };
+
+  // -----------------------------
+  // Preflight (frame timing jitter)
+  // -----------------------------
+  async function runPreflight(){
+    const samples = 240; // ~4 seconds at 60Hz
+    const deltas = [];
+    let last = performance.now();
+
+    await new Promise((resolve) => {
+      let n = 0;
+      function step(ts){
+        const d = ts - last;
+        last = ts;
+        if (n > 0) deltas.push(d);
+        n++;
+        if (n >= samples) resolve();
+        else requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+
+    deltas.sort((a,b)=>a-b);
+    const mean = deltas.reduce((a,b)=>a+b,0) / deltas.length;
+    const p50 = deltas[Math.floor(deltas.length * 0.50)];
+    const p90 = deltas[Math.floor(deltas.length * 0.90)];
+    const p99 = deltas[Math.floor(deltas.length * 0.99)];
+    const max = deltas[deltas.length - 1];
+    const variance = deltas.reduce((a,b)=>a + Math.pow(b-mean,2),0) / Math.max(1,(deltas.length-1));
+    const sd = Math.sqrt(variance);
+
+    const refreshGuess = mean ? Math.round(1000/mean) : 0;
+
+    const jitterTag =
+      (p99 <= 24 && max <= 40) ? "OK" :
+      (p99 <= 40 && max <= 80) ? "MODERATE" : "HIGH";
+
+    State.preflight = { mean, sd, p50, p90, p99, max, refreshGuess, jitterTag };
+    renderPreflight();
+    updatePreflightStatus();
+  }
+
+  function renderPreflight(){
+    const p = State.preflight;
+    if (!p){
+      $("preflightReport").textContent = "Pending…";
+      $("preflightAdvice").innerHTML = "Run preflight, then proceed.";
+      return;
+    }
+    $("preflightReport").textContent =
+`Samples: ${240}
+Estimated refresh: ~${p.refreshGuess || "?"} Hz
+Mean frame: ${p.mean.toFixed(2)} ms
+SD (jitter): ${p.sd.toFixed(2)} ms
+p50: ${p.p50.toFixed(2)} ms
+p90: ${p.p90.toFixed(2)} ms
+p99: ${p.p99.toFixed(2)} ms
+Max: ${p.max.toFixed(2)} ms
+Rating: ${p.jitterTag}`;
+
+    const advice = [];
+    if (p.jitterTag === "OK"){
+      advice.push("<span class='ok'><span class='statusDot'></span>Frame timing looks stable.</span>");
+    } else if (p.jitterTag === "MODERATE"){
+      advice.push("<span class='warn'><span class='statusDot'></span>Moderate jitter detected. Results may show inflated RT variability.</span>");
+      advice.push("<div class='tiny'>Consider closing other applications/tabs, disabling overlays, and re-running preflight.</div>");
+    } else {
+      advice.push("<span class='bad'><span class='statusDot'></span>High jitter detected. RT variability may be dominated by system timing instability.</span>");
+      advice.push("<div class='tiny'>Try a different browser, disable power-saving modes, and avoid remote desktop / VM sessions.</div>");
+    }
+    $("preflightAdvice").innerHTML = advice.join("<br/>");
+  }
+
+  function updatePreflightStatus(){
+    const s = $("preflightStatus");
+    const parts = [];
+    parts.push(State.preflight
+      ? `<span class="ok"><span class="statusDot"></span>Preflight: completed (${State.preflight.jitterTag})</span>`
+      : `<span class="warn"><span class="statusDot"></span>Preflight: not started</span>`
+    );
+    parts.push(document.fullscreenElement
+      ? `<span class="ok"><span class="statusDot"></span>Fullscreen: active</span>`
+      : `<span class="warn"><span class="statusDot"></span>Fullscreen: not requested</span>`
+    );
+    parts.push(State.audioInit || $("modality").value === "visual"
+      ? `<span class="ok"><span class="statusDot"></span>Audio: ready</span>`
+      : `<span class="warn"><span class="statusDot"></span>Audio: not initialized</span>`
+    );
+    s.innerHTML = parts.join(" ");
+  }
+
+  async function enterFullscreen(){
+    try{
+      if (!document.fullscreenElement){
+        await document.documentElement.requestFullscreen({ navigationUI: "hide" });
+      }
+    } catch(e){
+      // ignore; user gesture / permissions differ by browser
+    } finally {
+      updatePreflightStatus();
+    }
+  }
+
+  // -----------------------------
+  // Audio (initialized only after user gesture)
+  // -----------------------------
+  function initAudioIfNeeded(){
+    if ($("modality").value !== "auditory") return;
+    if (State.audioInit) return;
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
+    try{
+      State.audioCtx = new AC({ latencyHint: "interactive" });
+      State.audioInit = true;
+      $("audioViz").style.display = "block";
+    } catch(e){
+      State.audioInit = false;
+    } finally{
+      updatePreflightStatus();
+    }
+  }
+
+  function scheduleTone(freqHz, delayMs){
+    if (!State.audioCtx) return;
+    const osc = State.audioCtx.createOscillator();
+    const gain = State.audioCtx.createGain();
+
+    osc.type = "sine";
+    osc.frequency.value = freqHz;
+
+    const now = State.audioCtx.currentTime;
+    const startAt = now + Math.max(0, delayMs) / 1000;
+
+    // Simple envelope: quick attack, short sustain, release
+    gain.gain.setValueAtTime(0.0, startAt);
+    gain.gain.linearRampToValueAtTime(0.30, startAt + 0.010);
+    gain.gain.setValueAtTime(0.30, startAt + 0.080);
+    gain.gain.linearRampToValueAtTime(0.0, startAt + 0.110);
+
+    osc.connect(gain);
+    gain.connect(State.audioCtx.destination);
+
+    osc.start(startAt);
+    osc.stop(startAt + 0.15);
+  }
+
+  // -----------------------------
+  // Trial generation
+  // -----------------------------
+  function generateTrials(totalTrials){
+    const halfCount = totalTrials / 2;
+
+    const createHalf = (isFrequent) => {
+      const ratio = isFrequent ? CFG.ratioFrequent : CFG.ratioInfrequent;
+      const targetCount = Math.round(halfCount * ratio);
+      const nonTargetCount = halfCount - targetCount;
+
+      const arr = Array(targetCount).fill("target").concat(Array(nonTargetCount).fill("nontarget"));
+
+      // Fisher-Yates shuffle
+      for (let i = arr.length - 1; i > 0; i--){
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    };
+
+    const half1 = createHalf(false); // vigilance
+    const half2 = createHalf(true);  // impulse
+
+    return [...half1, ...half2].map((type, index) => ({
+      id: index,
+      type,
+      half: (index < halfCount) ? 1 : 2,
+      onsetMs: index * CFG.isiMs,
+      endMs: index * CFG.isiMs + CFG.stimMs,
+      responded: false,
+      processedStim: false, // for audio scheduling / first render
+    }));
+  }
+
+  function getTotalTrials(){
+    // Extended approximates the classic 21.6-minute / 648-trial CPT structure.
+    return (State.duration === "full") ? 648 : 60;
+  }
+
+  // -----------------------------
+  // Rendering
+  // -----------------------------
+  function resizeCanvas(){
+    const c = $("cvs");
+    c.width = window.innerWidth;
+    c.height = window.innerHeight;
+  }
+
+  function drawVisualStimulus(visible, trial){
+    const c = $("cvs");
+    const ctx = c.getContext("2d");
+    const cx = c.width / 2;
+    const cy = c.height / 2;
+
+    ctx.fillStyle = "#000";
+    ctx.fillRect(0, 0, c.width, c.height);
+
+    if (!visible) return;
+
+    const size = 180;
+    const inner = 45;
+    const pad = 20;
+
+    // outer white square
+    ctx.fillStyle = "#fff";
+    ctx.fillRect(cx - size/2, cy - size/2, size, size);
+
+    // inner black square: target=TOP, non-target=BOTTOM
+    ctx.fillStyle = "#000";
+    let innerY;
+    if (trial.type === "target"){
+      innerY = (cy - size/2) + pad + (inner/2);
+    } else {
+      innerY = (cy + size/2) - pad - (inner/2);
+    }
+    ctx.fillRect(cx - inner/2, innerY - inner/2, inner, inner);
+  }
+
+  function showCountdown(n){
+    const el = $("countdown");
+    el.textContent = String(n);
+    el.classList.add("show");
+  }
+  function hideCountdown(){
+    $("countdown").classList.remove("show");
+  }
+
+  // -----------------------------
+  // Practice (feedback-enabled)
+  // -----------------------------
+  async function runPractice(){
+    State.inPractice = true;
+    State.aborted = false;
+
+    // practice uses shorter session, but same ISI/stim timings
+    State.trials = generateTrials(CFG.practiceTrials);
+    State.responses = [];
+    State.stimOnsetActual.clear();
+    State.lastTrialIndex = -1;
+
+    await startSessionLoop({ feedback: true });
+    State.inPractice = false;
+  }
+
+  // -----------------------------
+  // Main session
+  // -----------------------------
+  async function runMainTest(){
+    State.inPractice = false;
+    State.aborted = false;
+
+    const totalTrials = getTotalTrials();
+    State.trials = generateTrials(totalTrials);
+    State.responses = [];
+    State.stimOnsetActual.clear();
+    State.lastTrialIndex = -1;
+
+    await startSessionLoop({ feedback: false });
+
+    if (!State.aborted){
+      endSession();
+    }
+  }
+
+  // -----------------------------
+  // Input handling
+  // -----------------------------
+  function bindInput(){
+    const onKey = (e) => {
+      if (!State.running) return;
+
+      // Emergency abort (does not record a response)
+      if (e.code === "Escape" || e.code === "KeyA"){
+        e.preventDefault();
+        abortSession();
+        return;
+      }
+
+      if (e.code !== "Space") return;
+      e.preventDefault();
+      registerResponse("Space", e.timeStamp);
+    };
+
+    const onMouse = (e) => {
+      if (!State.running) return;
+      // left-click only
+      if (typeof e.button === "number" && e.button !== 0) return;
+      registerResponse("Click", e.timeStamp);
+    };
+
+    window.addEventListener("keydown", onKey, { passive:false });
+    window.addEventListener("mousedown", onMouse, { passive:true });
+
+    State.listeners.push(() => window.removeEventListener("keydown", onKey));
+    State.listeners.push(() => window.removeEventListener("mousedown", onMouse));
+  }
+
+  function unbindAll(){
+    State.listeners.forEach(fn => fn());
+    State.listeners = [];
+  }
+
+  function registerResponse(source, eventTs){
+    // eventTs is relative to page load; performance.now() is also relative to timeOrigin
+    const nowPerf = performance.now();
+
+    const elapsed = nowPerf - State.startPerfTs;
+    const trialIndex = Math.floor(elapsed / CFG.isiMs);
+
+    if (trialIndex < 0 || trialIndex >= State.trials.length) return;
+    const trial = State.trials[trialIndex];
+    if (trial.responded) return;
+
+    // Allow response anywhere in the ISI window
+    const rt = elapsed - trial.onsetMs;
+    if (rt < 0) return;
+
+    trial.responded = true;
+
+    const stimActual = State.stimOnsetActual.has(trial.id)
+      ? State.stimOnsetActual.get(trial.id)
+      : null;
+
+    State.responses.push({
+      trialId: trial.id,
+      half: trial.half,
+      stimType: trial.type,
+      respondedTo: trial.type,
+      source,
+      rtMs: rt,
+      anticipatory: rt < CFG.anticipatoryCutoffMs,
+      correct: (trial.type === "target"),
+      perfNow: nowPerf,
+      stimOnsetActualPerf: stimActual,
+      // drift estimate: difference between planned onset and when we first rendered/triggered
+      onsetDriftMs: (stimActual != null) ? (stimActual - (State.startPerfTs + trial.onsetMs)) : null,
+      eventTimeStamp: eventTs,
+    });
+
+    // practice feedback
+    if (State.inPractice){
+      flashFeedback(trial.type === "target");
+    }
+  }
+
+  function flashFeedback(isCorrect){
+    const el = $("feedbackFlash");
+    if (!el) return;
+
+    el.style.background = isCorrect
+      ? "rgba(76, 175, 80, 0.28)"
+      : "rgba(244, 67, 54, 0.28)";
+
+    // restart animation reliably (handles rapid key presses)
+    el.classList.remove("on");
+    void el.offsetWidth; // force reflow
+    el.classList.add("on");
+
+    if (State.flashTO) clearTimeout(State.flashTO);
+    State.flashTO = setTimeout(() => el.classList.remove("on"), 120);
+  }
+
+  // -----------------------------
+  // Session loop
+  // -----------------------------
+  async function startSessionLoop({ feedback }){
+    switchScreen(Screens.test);
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+    State.listeners.push(() => window.removeEventListener("resize", resizeCanvas));
+
+    // Hide cursor for test-like experience
+    document.body.style.cursor = "none";
+
+    // Initialize audio if needed
+    initAudioIfNeeded();
+    $("audioViz").style.display = (State.modality === "auditory") ? "block" : "none";
+
+    // HUD
+    $("hudMode").textContent = State.modality.toUpperCase();
+    $("hudISI").textContent = String(CFG.isiMs);
+    $("hudStim").textContent = String(CFG.stimMs);
+    $("hudTotal").textContent = String(State.trials.length);
+    $("hudTrial").textContent = "0";
+    $("hudHalf").textContent = "1";
+
+    // Countdown
+    for (let i = CFG.countdownSeconds; i >= 1; i--){
+      showCountdown(i);
+      await wait(1000);
+    }
+    hideCountdown();
+
+    // Start time reference (with small delay to prevent early responses)
+    State.startDelayMs = 250;
+    State.startPerfTs = performance.now() + State.startDelayMs;
+
+    // Bind inputs
+    bindInput();
+
+    // Run animation loop
+    State.running = true;
+    return new Promise((resolve) => {
+      const step = (ts) => {
+        if (!State.running){
+          resolve();
+          return;
+        }
+
+        const elapsed = ts - State.startPerfTs;
+        const trialIndex = Math.floor(elapsed / CFG.isiMs);
+
+        // Not started yet
+        if (trialIndex < 0){
+          requestAnimationFrame(step);
+          return;
+        }
+
+        // End
+        if (trialIndex >= State.trials.length){
+          State.running = false;
+          resolve();
+          return;
+        }
+
+        const trial = State.trials[trialIndex];
+        const timeInTrial = elapsed - trial.onsetMs;
+        const visible = (timeInTrial >= 0 && timeInTrial < CFG.stimMs);
+
+        // Update HUD
+        $("hudTrial").textContent = String(trialIndex + 1);
+        $("hudHalf").textContent = String(trial.half);
+
+        // Stimulus onset actual capture (first time we render/trigger within this trial)
+        if (visible && !State.stimOnsetActual.has(trial.id)){
+          State.stimOnsetActual.set(trial.id, ts);
+        }
+
+        // Audio scheduling: schedule once at trial boundary (not on each visible frame)
+        if (State.modality === "auditory"){
+          if (trialIndex !== State.lastTrialIndex){
+            // schedule tone at the planned onset; if we're late, schedule immediately
+            const msUntilOnset = (trial.onsetMs - elapsed);
+            const freq = (trial.type === "target") ? CFG.toneTargetHz : CFG.toneNonTargetHz;
+            scheduleTone(freq, msUntilOnset);
+            trial.processedStim = true;
+          }
+          // visualizer pulse while stimulus window is active (approx)
+          if (visible){
+            $("audioViz").classList.add("active");
+          } else {
+            $("audioViz").classList.remove("active");
+          }
+        } else {
+          drawVisualStimulus(visible, trial);
+        }
+
+        State.lastTrialIndex = trialIndex;
+        requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+  }
+
+  function abortSession(){
+    if (!State.running) return;
+    State.aborted = true;
+    State.running = false;
+  }
+
+  // -----------------------------
+  // End session + results
+  // -----------------------------
+  function endSession(){
+    document.body.style.cursor = "default";
+    unbindAll();
+    switchScreen(Screens.results);
+    renderResults();
+  }
+
+  function safeZ(p){
+    // clamp to avoid +/-inf
+    const eps = 1e-5;
+    const pp = Math.min(1 - eps, Math.max(eps, p));
+    // inverse normal approx (Acklam)
+    // https://web.archive.org/web/20150910044729/http://home.online.no/~pjacklam/notes/invnorm/
+    const a = [-3.969683028665376e+01,  2.209460984245205e+02, -2.759285104469687e+02,  1.383577518672690e+02, -3.066479806614716e+01,  2.506628277459239e+00];
+    const b = [-5.447609879822406e+01,  1.615858368580409e+02, -1.556989798598866e+02,  6.680131188771972e+01, -1.328068155288572e+01];
+    const c = [-7.784894002430293e-03, -3.223964580411365e-01, -2.400758277161838e+00, -2.549732539343734e+00,  4.374664141464968e+00,  2.938163982698783e+00];
+    const d = [ 7.784695709041462e-03,  3.224671290700398e-01,  2.445134137142996e+00,  3.754408661907416e+00];
+
+    const plow = 0.02425;
+    const phigh = 1 - plow;
+    let q, r;
+
+    if (pp < plow){
+      q = Math.sqrt(-2*Math.log(pp));
+      return (((((c[0]*q + c[1])*q + c[2])*q + c[3])*q + c[4])*q + c[5]) /
+             ((((d[0]*q + d[1])*q + d[2])*q + d[3])*q + 1);
+    }
+    if (pp > phigh){
+      q = Math.sqrt(-2*Math.log(1-pp));
+      return -(((((c[0]*q + c[1])*q + c[2])*q + c[3])*q + c[4])*q + c[5]) /
+              ((((d[0]*q + d[1])*q + d[2])*q + d[3])*q + 1);
+    }
+    q = pp - 0.5;
+    r = q*q;
+    return (((((a[0]*r + a[1])*r + a[2])*r + a[3])*r + a[4])*r + a[5]) * q /
+           (((((b[0]*r + b[1])*r + b[2])*r + b[3])*r + b[4])*r + 1);
+  }
+
+  function analyzeHalf(halfNum){
+    const trials = State.trials.filter(t => t.half === halfNum);
+    const res = State.responses.filter(r => r.half === halfNum);
+
+    const targets = trials.filter(t => t.type === "target");
+    const nontargets = trials.filter(t => t.type === "nontarget");
+
+    const targetRes = res.filter(r => r.stimType === "target");
+    const nontargetRes = res.filter(r => r.stimType === "nontarget");
+
+    const omissions = targets.length - targetRes.length;
+    const commissions = nontargetRes.length;
+
+    const anticip = res.filter(r => r.anticipatory).length;
+
+    // valid hits: target responses with RT above cutoff
+    const validHits = targetRes.filter(r => r.rtMs >= CFG.anticipatoryCutoffMs);
+    const rts = validHits.map(r => r.rtMs);
+    const mean = rts.length ? (rts.reduce((a,b)=>a+b,0)/rts.length) : 0;
+
+    let sd = 0;
+    if (rts.length > 1){
+      const varr = rts.reduce((a,b)=>a + Math.pow(b-mean,2),0) / (rts.length - 1);
+      sd = Math.sqrt(varr);
+    }
+
+    // signal detection d'
+    // hit rate = hits/targets; false alarm rate = commissions/nontargets
+    const hitRate = (targets.length > 0) ? (targetRes.length / targets.length) : 0;
+    const faRate  = (nontargets.length > 0) ? (commissions / nontargets.length) : 0;
+    const dprime = safeZ(hitRate) - safeZ(faRate);
+
+    return {
+      trials: trials.length,
+      targets: targets.length,
+      nontargets: nontargets.length,
+      omissions,
+      commissions,
+      omissionRate: targets.length ? (omissions/targets.length) : 0,
+      commissionRate: nontargets.length ? (commissions/nontargets.length) : 0,
+      meanRT: mean,
+      sdRT: sd,
+      anticip,
+      hitRate,
+      faRate,
+      dprime
+    };
+  }
+
+  function analyzeTotal(){
+    const h1 = analyzeHalf(1);
+    const h2 = analyzeHalf(2);
+
+    // recompute total using pooled valid target RTs
+    const allValidTarget = State.responses
+      .filter(r => r.stimType === "target" && r.rtMs >= CFG.anticipatoryCutoffMs)
+      .map(r => r.rtMs);
+
+    const mean = allValidTarget.length ? allValidTarget.reduce((a,b)=>a+b,0)/allValidTarget.length : 0;
+    let sd = 0;
+    if (allValidTarget.length > 1){
+      const varr = allValidTarget.reduce((a,b)=>a + Math.pow(b-mean,2),0) / (allValidTarget.length - 1);
+      sd = Math.sqrt(varr);
+    }
+
+    // total rates
+    const targets = State.trials.filter(t => t.type === "target").length;
+    const nontargets = State.trials.filter(t => t.type === "nontarget").length;
+    const targetRes = State.responses.filter(r => r.stimType === "target").length;
+    const commissions = State.responses.filter(r => r.stimType === "nontarget").length;
+    const omissions = targets - targetRes;
+
+    const hitRate = targets ? (targetRes/targets) : 0;
+    const faRate = nontargets ? (commissions/nontargets) : 0;
+    const dprime = safeZ(hitRate) - safeZ(faRate);
+
+    const anticip = State.responses.filter(r => r.anticipatory).length;
+
+    return {
+      ...h1, // not used directly; but keeps structure if needed
+      total: {
+        trials: State.trials.length,
+        targets,
+        nontargets,
+        omissions,
+        commissions,
+        omissionRate: targets ? (omissions/targets) : 0,
+        commissionRate: nontargets ? (commissions/nontargets) : 0,
+        meanRT: mean,
+        sdRT: sd,
+        anticip,
+        hitRate,
+        faRate,
+        dprime
+      },
+      h1,
+      h2
+    };
+  }
+
+  function fmtMs(x){
+    if (!isFinite(x) || x === 0) return "—";
+    return Math.round(x).toString();
+  }
+  function fmtPct(x){
+    if (!isFinite(x)) return "—";
+    return (x*100).toFixed(1) + "%";
+  }
+  function fmtNum(x){
+    if (!isFinite(x)) return "—";
+    return x.toFixed(2);
+  }
+
+  function renderResults(){
+    const { h1, h2, total } = analyzeTotal();
+
+    const rows = [
+      ["Omission errors", `${h1.omissions} (${fmtPct(h1.omissionRate)})`, `${h2.omissions} (${fmtPct(h2.omissionRate)})`, `${total.omissions} (${fmtPct(total.omissionRate)})`],
+      ["Commission errors", `${h1.commissions} (${fmtPct(h1.commissionRate)})`, `${h2.commissions} (${fmtPct(h2.commissionRate)})`, `${total.commissions} (${fmtPct(total.commissionRate)})`],
+      ["Mean RT (valid hits)", `${fmtMs(h1.meanRT)}`, `${fmtMs(h2.meanRT)}`, `${fmtMs(total.meanRT)}`],
+      ["RT variability (SD)", `${fmtMs(h1.sdRT)}`, `${fmtMs(h2.sdRT)}`, `${fmtMs(total.sdRT)}`],
+      ["Anticipatory (<" + CFG.anticipatoryCutoffMs + " ms)", `${h1.anticip}`, `${h2.anticip}`, `${total.anticip}`],
+      ["Hit rate", `${fmtPct(h1.hitRate)}`, `${fmtPct(h2.hitRate)}`, `${fmtPct(total.hitRate)}`],
+      ["False-alarm rate", `${fmtPct(h1.faRate)}`, `${fmtPct(h2.faRate)}`, `${fmtPct(total.faRate)}`],
+      ["d′ (sensitivity)", `${fmtNum(h1.dprime)}`, `${fmtNum(h2.dprime)}`, `${fmtNum(total.dprime)}`],
+    ];
+
+    $("resultsBody").innerHTML = rows.map(r => (
+      `<tr>
+        <td>${r[0]}</td>
+        <td>${r[1]}</td>
+        <td>${r[2]}</td>
+        <td style="font-weight:700; color:#fff;">${r[3]}</td>
+      </tr>`
+    )).join("");
+
+    const p = State.preflight;
+    const notes = [];
+    notes.push(`Participant ID: ${State.participantId || "—"}`);
+    notes.push(`Handedness: ${State.handedness || "—"}`);
+    notes.push(`Modality: ${State.modality}`);
+    notes.push(`Duration: ${State.duration} (${State.trials.length} trials)`);
+    notes.push(`Practice: ${State.practice}`);
+    notes.push(`ISI: ${CFG.isiMs} ms; Stimulus: ${CFG.stimMs} ms; Anticipatory cutoff: ${CFG.anticipatoryCutoffMs} ms`);
+    notes.push(`Responses logged: ${State.responses.length}`);
+    if (p){
+      notes.push(`Preflight: mean frame ${p.mean.toFixed(2)} ms; SD ${p.sd.toFixed(2)} ms; p99 ${p.p99.toFixed(2)} ms; max ${p.max.toFixed(2)} ms; rating ${p.jitterTag}`);
+    } else {
+      notes.push(`Preflight: not run`);
+    }
+
+    // drift summary (visual: draw onset; auditory: scheduling still depends on AudioContext)
+    const drifts = State.responses
+      .map(r => r.onsetDriftMs)
+      .filter(x => typeof x === "number" && isFinite(x));
+
+    if (drifts.length){
+      drifts.sort((a,b)=>a-b);
+      const meanD = drifts.reduce((a,b)=>a+b,0)/drifts.length;
+      const p95 = drifts[Math.floor(drifts.length * 0.95)];
+      const p99 = drifts[Math.floor(drifts.length * 0.99)];
+      notes.push(`Stimulus onset drift (captured on first visible frame): mean ${meanD.toFixed(2)} ms; p95 ${p95.toFixed(2)} ms; p99 ${p99.toFixed(2)} ms`);
+    }
+
+    $("sessionNotes").textContent = notes.join("\n");
+  }
+
+  // -----------------------------
+  // CSV export
+  // -----------------------------
+  function downloadCSV(){
+    const headers = [
+      "participantId","handedness","modality","duration",
+      "trialId","half","stimType","source",
+      "rtMs","anticipatory","correct",
+      "perfNow","stimOnsetActualPerf","onsetDriftMs"
+    ];
+
+    const rows = State.responses.map(r => ([
+      State.participantId || "",
+      State.handedness || "",
+      State.modality,
+      State.duration,
+      r.trialId,
+      r.half,
+      r.stimType,
+      r.source,
+      r.rtMs.toFixed(3),
+      r.anticipatory ? "1" : "0",
+      r.correct ? "1" : "0",
+      r.perfNow != null ? r.perfNow.toFixed(3) : "",
+      r.stimOnsetActualPerf != null ? r.stimOnsetActualPerf.toFixed(3) : "",
+      r.onsetDriftMs != null ? r.onsetDriftMs.toFixed(3) : ""
+    ]));
+
+    const csv = [headers.join(","), ...rows.map(r => r.map(cell => {
+      const s = String(cell);
+      if (s.includes(",") || s.includes('"') || s.includes("\n")){
+        return '"' + s.replaceAll('"','""') + '"';
+      }
+      return s;
+    }).join(","))].join("\n");
+
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    const stamp = new Date().toISOString().replaceAll(":","-").slice(0,19);
+    a.href = url;
+    a.download = `cpt-simulation-${stamp}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  // -----------------------------
+  // Utilities
+  // -----------------------------
+  function wait(ms){ return new Promise(res => setTimeout(res, ms)); }
+
+  // -----------------------------
+  // UI wiring
+  // -----------------------------
+  $("btnPreflight").addEventListener("click", async () => {
+    initAudioIfNeeded(); // ensure audio context can be created from user gesture if needed
+    $("btnPreflight").disabled = true;
+    await runPreflight();
+    $("btnPreflight").disabled = false;
+  });
+
+  $("btnFullscreen").addEventListener("click", async () => {
+    initAudioIfNeeded();
+    await enterFullscreen();
+  });
+
+  $("btnStart").addEventListener("click", () => {
+    // Capture settings
+    State.modality = $("modality").value;
+    State.duration = $("duration").value;
+    State.practice = $("practice").value;
+    State.participantId = $("participantId").value.trim();
+    State.handedness = $("handedness").value;
+
+    initAudioIfNeeded();
+    updatePreflightStatus();
+    switchScreen(Screens.ready);
+
+    // If practice is off, change button emphasis
+    $("btnPractice").style.display = (State.practice === "on") ? "inline-block" : "none";
+    $("btnSkipPractice").textContent = (State.practice === "on") ? "Skip Practice" : "Proceed";
+  });
+
+  $("modality").addEventListener("change", () => {
+    // If user switches to auditory, audio can only be initialized via user gesture;
+    // we defer actual initialization to button clicks.
+    updatePreflightStatus();
+  });
+
+  $("btnPractice").addEventListener("click", async () => {
+    // ensure audio is initialized on gesture if needed
+    initAudioIfNeeded();
+    State.modality = $("modality").value; // keep current
+    State.duration = $("duration").value;
+    await runPractice();
+    // After practice, return to ready screen
+    document.body.style.cursor = "default";
+    unbindAll();
+    switchScreen(Screens.ready);
+  });
+
+  $("btnSkipPractice").addEventListener("click", async () => {
+    // No-op: user simply proceeds
+  });
+
+  $("btnBeginTest").addEventListener("click", async () => {
+    initAudioIfNeeded();
+    State.modality = $("modality").value;
+    State.duration = $("duration").value;
+
+    // Run main test
+    await runMainTest();
+
+    if (State.aborted){
+      // aborted: return to intro with note
+      document.body.style.cursor = "default";
+      unbindAll();
+      switchScreen(Screens.intro);
+      updatePreflightStatus();
+    }
+  });
+
+  $("btnBack").addEventListener("click", () => {
+    switchScreen(Screens.intro);
+    updatePreflightStatus();
+  });
+
+  $("btnAbort").addEventListener("click", () => {
+    abortSession();
+  });
+
+  $("btnExport").addEventListener("click", downloadCSV);
+  $("btnRestart").addEventListener("click", () => location.reload());
+
+  // First render of preflight block
+  renderPreflight();
+  updatePreflightStatus();
+
+})();
+</script>
+</body>
+</html>
