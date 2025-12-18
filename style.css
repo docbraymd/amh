@@ -267,125 +267,143 @@ a:hover{ text-decoration: underline; }
   h1, h2, h3{ break-after: avoid; page-break-after: avoid; }
   p, li{ orphans: 3; widows: 3; }
 }
-/* =========================
-   Template alignment helpers
-   ========================= */
+/* --------------------------------------------------------------------------
+   Compatibility + Template helpers
+   Goal: allow pages to keep content-focused HTML while style.css controls layout
+   -------------------------------------------------------------------------- */
 
-/* Centered header variant (used by test.html template) */
+/* Legacy container aliases (safe) */
+.main-container{ /* alias of .amh-page */
+  width: min(980px, calc(100% - 32px));
+  margin: 18px auto 28px;
+  background: var(--white);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.content-body{ /* alias of .amh-content */
+  padding: 18px;
+  background: var(--white);
+}
+
+/* Centered header variant (matches existing template feel) */
 .amh-header-centered{
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   text-align: center;
-  width: 100%;
+}
+.amh-header-centered h1,
+.amh-header-centered h2,
+.amh-header-centered .byline{
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .amh-logo-wrap{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  margin: 0 0 14px 0;
+  display: flex;
+  justify-content: center;
+  margin: 0 0 6px;
 }
-
-/* Override the default small boxed logo when using the centered header layout */
-.amh-header-centered .amh-logo{
+.amh-logo-wrap .amh-logo{
   width: 110px;
   height: auto;
-  object-fit: contain;
-  background: transparent;
-  border-radius: 0;
+  background: none;
   padding: 0;
-  filter: drop-shadow(0 8px 18px rgba(0,0,0,0.22));
+  border-radius: 0;
 }
 
-.amh-header .amh-practice{
-  display:inline-block;
-  margin-top: 2px;
-  padding: 6px 12px;
+/* Practice pill (template) */
+.doctor-tag{
+  display: inline-block;
+  background: var(--accent-teal);
+  color: #fff;
+  padding: 8px 14px;
   border-radius: 999px;
-  background: rgba(255,255,255,0.18);
-  border: 1px solid rgba(255,255,255,0.28);
   font-weight: 800;
+  margin: 10px auto 8px;
 }
 
-.amh-header .byline{
-  margin-top: 8px;
-  opacity: .92;
+/* Action buttons row (template) */
+.action-bar{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
 }
 
-.amh-header-centered .amh-actions{
-  margin-left: 0;
-  margin-top: 18px;
-  display:flex;
-  gap:12px;
-  justify-content:center;
-  align-items:center;
-  flex-wrap:wrap;
+/* Button variants: support both “plain” .amh-btn and .amh-btn.secondary */
+.amh-btn{
+  background: var(--accent-teal);
+  color: #fff;
+  box-shadow: 0 10px 18px rgba(102,126,234,0.35);
 }
-
-/* Button styling for the header action buttons (scoped to avoid changing other button contexts) */
-.amh-header .amh-actions .amh-btn{
-  appearance:none;
-  border:1px solid rgba(255,255,255,0.35);
-  color:#fff;
-  padding:10px 14px;
-  border-radius:10px;
-  font-weight:800;
-  cursor:pointer;
-  transition: transform .15s ease, box-shadow .15s ease, background .15s ease, filter .15s ease;
-}
-.amh-header .amh-actions .amh-btn:hover{
+.amh-btn:hover{
   transform: translateY(-1px);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.18);
 }
-.amh-header .amh-actions .amh-btn:disabled{
-  opacity:0.65;
-  cursor:not-allowed;
-  transform:none;
-  box-shadow:none;
+.amh-btn.secondary{
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.55);
+  color: #fff;
+  box-shadow: none;
 }
-
-/* Secondary button variant used by the template */
-.amh-btn-secondary{
-  background: var(--primary-2);
+.amh-btn.secondary:hover{
+  background: rgba(255,255,255,0.12);
   border-color: rgba(255,255,255,0.25);
+  transform: translateY(-1px);
+}
+.amh-btn:disabled{
+  opacity: .55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
-/* Add a 'danger' alert variant to match the template's red-flag block */
-.amh-alert-danger{ border-left: 6px solid var(--danger); }
+/* TOC block: when combined with .amh-card it will look consistent; add minor polish */
+.toc h4{
+  margin-top: 0;
+}
+.toc a{
+  display: inline-block;
+  padding: 2px 0;
+}
 
-/* Rx card internal layout helpers (used by template blocks) */
+/* Structured “grid cards” inside content (used heavily on ADHD page) */
 .rx-header{
   display:flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 10px;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:12px;
   margin-bottom: 10px;
-  flex-wrap: wrap;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
 }
 .rx-name{
   font-weight: 900;
-  color: var(--accent-teal);
+  color: var(--primary-1);
 }
 .rx-type{
-  font-size: 0.78rem;
-  font-weight: 900;
-  letter-spacing: .3px;
-  color: var(--primary-1);
-  background: var(--bg-light);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 4px 10px;
+  font-size: .78rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  opacity: .75;
 }
 .rx-grid{
   display:grid;
-  grid-template-columns: 160px 1fr;
-  gap: 8px 14px;
+  grid-template-columns: 190px minmax(0, 1fr);
+  gap: 10px 14px;
+}
+.rx-label{
+  font-weight: 800;
+  color: var(--primary-2);
 }
 @media (max-width: 720px){
   .rx-grid{ grid-template-columns: 1fr; }
+  .rx-label{ margin-top: 6px; }
 }
-.rx-label{
-  font-weight: 900;
-  color: var(--primary-1);
+
+/* Footer metadata */
+.last-updated{
+  margin: 10px 0 0;
+  font-size: .9rem;
+  opacity: .85;
 }
