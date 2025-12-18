@@ -489,3 +489,139 @@ footer,
     page-break-inside: avoid;
   }
 }
+
+/*
+  Tables: category + evidence (used by hypertension page; reusable)
+*/
+/* ========= AMH table components ========= */
+
+    /* BP category definition table (visual, color-coded) */
+    .bp-category-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 18px 0 26px 0;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.10);
+      border: 1px solid #e0e0e0;
+    }
+    .bp-category-table th,
+    .bp-category-table td {
+      padding: 14px 12px;
+      border-right: 4px solid #ffffff;
+      border-bottom: 4px solid #ffffff;
+      vertical-align: middle;
+      text-align: center;
+      font-size: 0.98rem;
+    }
+    .bp-category-table thead th {
+      background: #4a4a4a;
+      color: #ffffff;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      font-size: 0.92rem;
+    }
+    .bp-category-table thead th small {
+      display: block;
+      text-transform: none;
+      font-weight: 600;
+      opacity: 0.9;
+      letter-spacing: 0;
+      font-size: 0.85rem;
+      margin-top: 2px;
+    }
+    .bp-category-table .bp-cat {
+      text-align: left;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      font-size: 0.95rem;
+    }
+    .bp-andor { width: 80px; font-weight: 900; }
+
+    /* Color bands — aligned with common public-facing BP charts */
+    .bp-normal   td { background: #a7d63b; color: #111; }
+    .bp-elevated td { background: #f2e20b; color: #111; }
+    .bp-stage1   td { background: #f5b11b; color: #111; }
+    .bp-stage2   td { background: #c0392b; color: #fff; }
+    .bp-crisis   td { background: #8b1e1e; color: #fff; }
+
+    /* Ensure left column text stays readable */
+    .bp-stage2 .bp-cat, .bp-crisis .bp-cat { color: #fff; }
+
+    /* Lifestyle BP-lowering table (3-column, grouped) */
+    .lifestyle-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 18px 0 26px 0;
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.10);
+      background: #ffffff;
+    }
+    .lifestyle-table th,
+    .lifestyle-table td {
+      padding: 14px 14px;
+      border-bottom: 1px solid #eaeaea;
+      vertical-align: top;
+      font-size: 1.0rem;
+      text-align: left;
+    }
+    .lifestyle-table thead th {
+      background: #ffffff;
+      font-weight: 900;
+      border-bottom: 2px solid #2c3e50;
+      color: #2c3e50;
+    }
+    .lifestyle-table .lt-sbp {
+      width: 160px;
+      font-weight: 800;
+      color: #2c3e50;
+      white-space: nowrap;
+    }
+    .lifestyle-table .lt-change {
+      width: 240px;
+      font-weight: 900;
+      color: #2c3e50;
+    }
+
+    /* Group header rows */
+    .lifestyle-table .lt-group td {
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      font-size: 0.92rem;
+      color: #ffffff;
+      border-bottom: none;
+      padding: 10px 14px;
+    }
+    .lt-manage-weight td { background: #2f4a7a; }
+    .lt-eat-better td    { background: #b71c1c; }
+    .lt-be-active td     { background: #0b5d4a; }
+    .lt-lower-alcohol td { background: #c7782a; }
+    .lt-manage-stress td { background: #6d4c2f; }
+
+    /* Row separators to mimic the “banded” chart look */
+    .lifestyle-table tbody tr.lt-row td {
+      border-bottom: 2px solid #ffffff;
+    }
+    .lifestyle-table tbody tr.lt-row:nth-child(even) td {
+      background: #fafafa;
+    }
+
+    /* Mobile: allow wrapping without breaking layout */
+    @media (max-width: 700px) {
+      .bp-category-table th, .bp-category-table td { font-size: 0.92rem; padding: 12px 10px; }
+      .bp-andor { width: 60px; }
+      .lifestyle-table thead { display: none; }
+      .lifestyle-table, .lifestyle-table tbody, .lifestyle-table tr, .lifestyle-table td { display: block; width: 100%; }
+      .lifestyle-table tr.lt-row { margin-bottom: 12px; border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden; }
+      .lifestyle-table td { border-bottom: 1px solid #eaeaea; }
+      .lifestyle-table td.lt-change::before { content: "Lifestyle change"; display: block; font-weight: 900; color: #666; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+      .lifestyle-table td.lt-sbp::before { content: "Approx SBP lowering"; display: block; font-weight: 900; color: #666; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+      .lifestyle-table td.lt-rec::before { content: "Recommendation"; display: block; font-weight: 900; color: #666; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+    }
