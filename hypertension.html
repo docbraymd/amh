@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hypertension Guide | Archangel Michael Health</title>
+
+  <!-- Shared stylesheet (recommended to publish as .css) -->
+  <link rel="stylesheet" href="https://docbraymd.github.io/amh/style_v2.css" />
+
+  
+  <!-- Page-specific styles for Hypertension (tables + category color blocks) -->
+  <style>
+    /* ========= Hypertension page-specific components ========= */
+
+    /* BP category definition table (visual, color-coded) */
+    .bp-category-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 18px 0 26px 0;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.10);
+      border: 1px solid #e0e0e0;
+    }
+    .bp-category-table th,
+    .bp-category-table td {
+      padding: 14px 12px;
+      border-right: 4px solid #ffffff;
+      border-bottom: 4px solid #ffffff;
+      vertical-align: middle;
+      text-align: center;
+      font-size: 0.98rem;
+    }
+    .bp-category-table thead th {
+      background: #4a4a4a;
+      color: #ffffff;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      font-size: 0.92rem;
+    }
+    .bp-category-table thead th small {
+      display: block;
+      text-transform: none;
+      font-weight: 600;
+      opacity: 0.9;
+      letter-spacing: 0;
+      font-size: 0.85rem;
+      margin-top: 2px;
+    }
+    .bp-category-table .bp-cat {
+      text-align: left;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      font-size: 0.95rem;
+    }
+    .bp-andor { width: 80px; font-weight: 900; }
+
+    /* Color bands — aligned with common public-facing BP charts */
+    .bp-normal   td { background: #a7d63b; color: #111; }
+    .bp-elevated td { background: #f2e20b; color: #111; }
+    .bp-stage1   td { background: #f5b11b; color: #111; }
+    .bp-stage2   td { background: #c0392b; color: #fff; }
+    .bp-crisis   td { background: #8b1e1e; color: #fff; }
+
+    /* Ensure left column text stays readable */
+    .bp-stage2 .bp-cat, .bp-crisis .bp-cat { color: #fff; }
+
+    /* Lifestyle BP-lowering table (3-column, grouped) */
+    .lifestyle-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 18px 0 26px 0;
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.10);
+      background: #ffffff;
+    }
+    .lifestyle-table th,
+    .lifestyle-table td {
+      padding: 14px 14px;
+      border-bottom: 1px solid #eaeaea;
+      vertical-align: top;
+      font-size: 1.0rem;
+      text-align: left;
+    }
+    .lifestyle-table thead th {
+      background: #ffffff;
+      font-weight: 900;
+      border-bottom: 2px solid #2c3e50;
+      color: #2c3e50;
+    }
+    .lifestyle-table .lt-sbp {
+      width: 160px;
+      font-weight: 800;
+      color: #2c3e50;
+      white-space: nowrap;
+    }
+    .lifestyle-table .lt-change {
+      width: 240px;
+      font-weight: 900;
+      color: #2c3e50;
+    }
+
+    /* Group header rows */
+    .lifestyle-table .lt-group td {
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      font-size: 0.92rem;
+      color: #ffffff;
+      border-bottom: none;
+      padding: 10px 14px;
+    }
+    .lt-manage-weight td { background: #2f4a7a; }
+    .lt-eat-better td    { background: #b71c1c; }
+    .lt-be-active td     { background: #0b5d4a; }
+    .lt-lower-alcohol td { background: #c7782a; }
+    .lt-manage-stress td { background: #6d4c2f; }
+
+    /* Row separators to mimic the “banded” chart look */
+    .lifestyle-table tbody tr.lt-row td {
+      border-bottom: 2px solid #ffffff;
+    }
+    .lifestyle-table tbody tr.lt-row:nth-child(even) td {
+      background: #fafafa;
+    }
+
+    /* Mobile: allow wrapping without breaking layout */
+    @media (max-width: 700px) {
+      .bp-category-table th, .bp-category-table td { font-size: 0.92rem; padding: 12px 10px; }
+      .bp-andor { width: 60px; }
+      .lifestyle-table thead { display: none; }
+      .lifestyle-table, .lifestyle-table tbody, .lifestyle-table tr, .lifestyle-table td { display: block; width: 100%; }
+      .lifestyle-table tr.lt-row { margin-bottom: 12px; border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden; }
+      .lifestyle-table td { border-bottom: 1px solid #eaeaea; }
+      .lifestyle-table td.lt-change::before { content: "Lifestyle change"; display: block; font-weight: 900; color: #666; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+      .lifestyle-table td.lt-sbp::before { content: "Approx SBP lowering"; display: block; font-weight: 900; color: #666; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+      .lifestyle-table td.lt-rec::before { content: "Recommendation"; display: block; font-weight: 900; color: #666; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+    }
+  </style>
+<!-- html2pdf for one-click PDF download -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+
+<body>
+  <div class="amh-page main-container" id="pdf-root" role="document">
+    <header class="amh-header">
+      <div class="amh-header-inner amh-header-centered">
+        <div class="amh-logo-wrap">
+          <img class="amh-logo" src="https://docbraymd.github.io/amh/AMHLogo.png" alt="Archangel Michael Health logo" />
+        </div>
+
+        <div class="amh-practice doctor-tag">Archangel Michael Health</div>
+
+        <h1 class="amh-title" id="page-title">Vascular Vitality: Hypertension Protocol</h1>
+        <h2 class="amh-tagline">Advanced Protocol: Lifestyle, Medication &amp; Integrative Care</h2>
+        <div class="byline">by Dr. Bray, Internal &amp; Integrative Medicine</div>
+
+        <div class="action-bar amh-actions no-print" aria-label="Actions">
+          <button class="amh-btn amh-btn-secondary" type="button" onclick="window.print()">
+            Print / Save as PDF
+          </button>
+          <button class="amh-btn amh-btn-primary" id="downloadPdfBtn" type="button">
+            Download PDF
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="amh-content content-body">
+      <p>High blood pressure (hypertension) is not merely a number to be suppressed; it is a signal of metabolic distress, endothelial dysfunction, and vascular inflammation. My goal is to treat these problems early with common-sense steps before expensive medications or specialists are required. This guide pairs standard-of-care internal medicine with effective integrative approaches.</p>
+
+      <div class="toc no-print" aria-label="On this page">
+        <h2>On this page</h2>
+        <ul class="amh-list">
+          <li><a href="#definitions">Definitions &amp; Measurement</a></li>
+          <li><a href="#drivers">Root Causes &amp; Drivers</a></li>
+          <li><a href="#lifestyle">Proven Lifestyle Modifications</a></li>
+          <li><a href="#dash">The DASH Diet &amp; Potassium</a></li>
+          <li><a href="#treatments">Conventional Treatments</a></li>
+          <li><a href="#integrative">Integrative Options</a></li>
+          <li><a href="#plan">30-Day Action Plan</a></li>
+          <li><a href="#references">References</a></li>
+        </ul>
+      </div>
+
+      <h3 id="definitions">Definitions &amp; Measurement</h3>
+      <p>The 2025 AHA/ACC guidelines emphasize that "lower is better" to protect the brain, kidneys, and heart. We use strict categories to identify risk early.</p>
+
+            <div class="amh-card">
+        <h4>Blood pressure categories (home or clinic)</h4>
+        <p class="amh-muted amh-small">
+          Categories below are consistent with widely used AHA/ACC thresholds. If readings are very high, or you have severe symptoms,
+          seek urgent medical attention.
+        </p>
+
+        <table class="bp-category-table" aria-label="Blood pressure categories table">
+          <thead>
+            <tr>
+              <th>Blood Pressure Category</th>
+              <th>Systolic <small>mm Hg (top number)</small></th>
+              <th class="bp-andor">and/or</th>
+              <th>Diastolic <small>mm Hg (bottom number)</small></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bp-normal">
+              <td class="bp-cat">Normal</td>
+              <td><strong>&lt; 120</strong></td>
+              <td class="bp-andor">and</td>
+              <td><strong>&lt; 80</strong></td>
+            </tr>
+            <tr class="bp-elevated">
+              <td class="bp-cat">Elevated</td>
+              <td><strong>120–129</strong></td>
+              <td class="bp-andor">and</td>
+              <td><strong>&lt; 80</strong></td>
+            </tr>
+            <tr class="bp-stage1">
+              <td class="bp-cat">Stage 1 Hypertension</td>
+              <td><strong>130–139</strong></td>
+              <td class="bp-andor">or</td>
+              <td><strong>80–89</strong></td>
+            </tr>
+            <tr class="bp-stage2">
+              <td class="bp-cat">Stage 2 Hypertension</td>
+              <td><strong>&ge; 140</strong></td>
+              <td class="bp-andor">or</td>
+              <td><strong>&ge; 90</strong></td>
+            </tr>
+            <tr class="bp-crisis">
+              <td class="bp-cat">Hypertensive Crisis</td>
+              <td><strong>&gt; 180</strong></td>
+              <td class="bp-andor">and/or</td>
+              <td><strong>&gt; 120</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="clinical-note">
+        <h4>Accurate measurement is critical</h4>
+        <p>Use a validated upper-arm cuff. Avoid wrist cuffs. Follow the <strong>"Rule of 3s"</strong>: Sit quietly for 5 minutes. Take 3 readings, 1 minute apart. Discard the first. Average the last two. Do this twice daily for 7 days to get a true baseline.</p>
+      </div>
+
+      <h3 id="drivers">Root Causes &amp; Drivers</h3>
+      <p>Hypertension is often asymptomatic ("The Silent Killer"), but specific drivers can be identified and treated:</p>
+      <ul class="symptom-list">
+        <li><strong>Insulin Resistance:</strong> High insulin levels cause the kidneys to retain sodium and the nervous system to stay in "fight or flight" mode.</li>
+<li><strong>Endothelial Dysfunction:</strong> The lining of your arteries stops producing Nitric Oxide, causing vessels to stiffen.</li>
+<li><strong>Uric Acid:</strong> Elevated uric acid (from sugar/fructose) inhibits blood vessel relaxation.</li>
+<li><strong>Sympathetic Overdrive:</strong> Chronic stress or Sleep Apnea prevents the normal "dipping" of blood pressure during sleep.</li>
+      </ul>
+
+      <h3 id="lifestyle">Proven Lifestyle Modifications</h3>
+      <p>The American Heart Association identifies these key interventions as the foundation of treatment. They can lower blood pressure as effectively as medication when combined.</p>
+
+            <div class="amh-card">
+        <h4>Evidence-based lifestyle steps (approximate SBP reduction)</h4>
+        <p class="amh-muted amh-small">
+          Ranges are approximate and depend on baseline blood pressure, adherence, and comorbidities. The “best” plan is the one you can sustain.
+          We typically layer 2–4 interventions rather than chasing perfection in one area.
+        </p>
+
+        <table class="lifestyle-table" aria-label="Lifestyle changes and expected systolic blood pressure reduction">
+          <thead>
+            <tr>
+              <th>Lifestyle Change</th>
+              <th>Approximate SBP Lowering Range</th>
+              <th>Recommendation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="lt-group lt-manage-weight"><td colspan="3">Manage weight</td></tr>
+            <tr class="lt-row">
+              <td class="lt-change">Manage weight</td>
+              <td class="lt-sbp">6–8 mm Hg</td>
+              <td class="lt-rec">Maintain healthy body weight (BMI ≈ 18.5–24.9 kg/m²) when feasible and safe.</td>
+            </tr>
+
+            <tr class="lt-group lt-eat-better"><td colspan="3">Eat better</td></tr>
+            <tr class="lt-row">
+              <td class="lt-change">Follow a DASH-style eating plan</td>
+              <td class="lt-sbp">5–8 mm Hg</td>
+              <td class="lt-rec">Emphasize fruits, vegetables, beans/lentils, whole grains; minimize ultra-processed foods and excess saturated fat.</td>
+            </tr>
+            <tr class="lt-row">
+              <td class="lt-change">Lower sodium intake</td>
+              <td class="lt-sbp">6–8 mm Hg</td>
+              <td class="lt-rec">Reduce sodium to &lt; 2,300 mg/day, moving toward ~1,500 mg/day when appropriate.</td>
+            </tr>
+            <tr class="lt-row">
+              <td class="lt-change">Consider salt substitutes</td>
+              <td class="lt-sbp">5–7 mm Hg</td>
+              <td class="lt-rec">Some people benefit from potassium-based salt substitutes. Avoid if you have kidney disease or take medications that raise potassium (e.g., ACE inhibitors/ARBs, spironolactone) unless supervised.</td>
+            </tr>
+            <tr class="lt-row">
+              <td class="lt-change">Increase potassium intake</td>
+              <td class="lt-sbp">~6 mm Hg</td>
+              <td class="lt-rec">Aim for 3,500–5,000 mg/day from food (greens, beans, squash, potatoes, avocado) unless you have kidney disease or are on potassium-raising meds.</td>
+            </tr>
+
+            <tr class="lt-group lt-be-active"><td colspan="3">Be more active</td></tr>
+            <tr class="lt-row">
+              <td class="lt-change">Aerobic exercise</td>
+              <td class="lt-sbp">4–8 mm Hg</td>
+              <td class="lt-rec">Target at least 150 minutes/week moderate-intensity activity (brisk walking, cycling, swimming).</td>
+            </tr>
+            <tr class="lt-row">
+              <td class="lt-change">Dynamic resistance</td>
+              <td class="lt-sbp">2–7 mm Hg</td>
+              <td class="lt-rec">2–3 days/week resistance training (full-body emphasis). Consistency matters more than intensity.</td>
+            </tr>
+            <tr class="lt-row">
+              <td class="lt-change">Isometric resistance</td>
+              <td class="lt-sbp">5–10 mm Hg</td>
+              <td class="lt-rec">Short, low-intensity isometrics (e.g., wall sit/handgrip) 3 days/week can help some patients.</td>
+            </tr>
+
+            <tr class="lt-group lt-lower-alcohol"><td colspan="3">Lower alcohol</td></tr>
+            <tr class="lt-row">
+              <td class="lt-change">Lower or avoid alcohol</td>
+              <td class="lt-sbp">4–6 mm Hg</td>
+              <td class="lt-rec">No more than 2 drinks/day for men and 1 drink/day for women; less is often better for BP.</td>
+            </tr>
+
+            <tr class="lt-group lt-manage-stress"><td colspan="3">Manage stress</td></tr>
+            <tr class="lt-row">
+              <td class="lt-change">Meditation</td>
+              <td class="lt-sbp">5–7 mm Hg</td>
+              <td class="lt-rec">Aim for two ~20-minute sessions/day while seated comfortably. Use the simplest practice you will actually do.</td>
+            </tr>
+            <tr class="lt-row">
+              <td class="lt-change">Breathing control</td>
+              <td class="lt-sbp">~5 mm Hg</td>
+              <td class="lt-rec">Slow breathing (e.g., &lt;10 breaths/min) for ~15 minutes/day can reduce sympathetic tone in some individuals.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 id="dash">The DASH Diet &amp; Sodium/Potassium Balance</h3>
+
+      <div class="amh-card">
+        <h4>The DASH diet: a plant-forward approach</h4>
+        <p>
+          The <strong>Dietary Approaches to Stop Hypertension (DASH)</strong> diet is a gold-standard dietary pattern for blood pressure control.
+          The core benefit is a <strong>whole-food, minimally processed</strong> foundation that increases potassium, magnesium, and fiber.
+        </p>
+        <ul class="amh-list">
+          <li><strong>Plants are the medicine:</strong> DASH effectiveness is strongly tied to mineral and fiber density from fruits, vegetables, beans, and whole grains.</li>
+          <li><strong>Whole foods focus:</strong> Aim to crowd out ultra-processed food with 4–5 servings of vegetables and 4–5 servings of fruit daily.</li>
+          <li><strong>Dairy note:</strong> DASH can be done with or without dairy if calcium intake is adequate (leafy greens, almonds, calcium-set tofu).</li>
+        </ul>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Sodium strategy</div>
+          <div class="rx-type">PRACTICAL</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Target</div>
+          <div>Reduce sodium to <strong>&lt; 2,300 mg/day</strong> (and lower when feasible and safe).</div>
+          <div class="rx-label">Where it hides</div>
+          <div>Most sodium (often 70%+) comes from processed foods, not the salt shaker. Prioritize label-reading and simplify ingredients.</div>
+          <div class="rx-label">Common culprits</div>
+          <div>Bread/rolls, pizza, sandwiches/cured meats, poultry (often injected), soups, burritos/tacos.</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Potassium strategy</div>
+          <div class="rx-type">PRACTICAL</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Target</div>
+          <div>Aim for <strong>3,500–5,000 mg/day</strong>, preferably from food.</div>
+          <div class="rx-label">Why it helps</div>
+          <div>Potassium supports vasodilation and helps kidneys excrete sodium.</div>
+          <div class="rx-label">Food examples</div>
+          <div>Avocado, spinach, Swiss chard, beans, squash, potatoes, bananas. <em>Consult us first if you have kidney disease.</em></div>
+        </div>
+      </div>
+
+      <h3 id="treatments">Conventional Treatments</h3>
+      <p>
+        Medications are often necessary to prevent organ damage while lifestyle changes take effect. We utilize the following classes,
+        often in combination.
+      </p>
+
+      <p>
+    Medications are often necessary to prevent organ damage while lifestyle changes take effect. We utilize the following classes, often in combination.
+</p>
+
+<div class="rx-card">
+<div class="rx-header">
+<div class="rx-name">Thiazide Diuretics</div>
+<div class="rx-type">FIRST LINE</div>
+</div>
+<div class="rx-grid">
+<div class="rx-label">Examples</div>
+<div><strong>Chlorthalidone</strong>, Hydrochlorothiazide (HCTZ).</div>
+<div class="rx-label">Mechanism</div>
+<div>Promotes excretion of sodium and water by the kidneys; relaxes blood vessels over long-term use.</div>
+<div class="rx-label">Specific Use</div>
+<div>Excellent for salt-sensitive hypertension and older adults. Chlorthalidone is preferred for its longer duration.</div>
+<div class="rx-label">Side Effects</div>
+<div>Low potassium (hypokalemia), low sodium, increased uric acid (gout risk), increased blood sugar.</div>
+<div class="rx-label">Monitoring</div>
+<div>Check kidney function and electrolytes 2 weeks after starting.</div>
+</div>
+</div>
+
+<div class="rx-card">
+<div class="rx-header">
+<div class="rx-name">ACE Inhibitors (ACEIs)</div>
+<div class="rx-type">FIRST LINE</div>
+</div>
+<div class="rx-grid">
+<div class="rx-label">Examples</div>
+<div><strong>Lisinopril</strong>, Enalapril, Ramipril.</div>
+<div class="rx-label">Mechanism</div>
+<div>Blocks the formation of Angiotensin II, a potent hormone that constricts arteries.</div>
+<div class="rx-label">Specific Use</div>
+<div>Preferred for patients with diabetes or kidney disease (protects kidneys).</div>
+<div class="rx-label">Side Effects</div>
+<div>Dry, hacking cough (up to 20%), elevated potassium, angioedema (swelling of lips/tongue - rare but serious).</div>
+<div class="rx-label">Monitoring</div>
+<div>Kidney function and potassium. Stop immediately if pregnancy occurs.</div>
+</div>
+</div>
+
+<div class="rx-card">
+<div class="rx-header">
+<div class="rx-name">Angiotensin Receptor Blockers (ARBs)</div>
+<div class="rx-type">FIRST LINE</div>
+</div>
+<div class="rx-grid">
+<div class="rx-label">Examples</div>
+<div><strong>Losartan</strong>, Valsartan, Telmisartan.</div>
+<div class="rx-label">Mechanism</div>
+<div>Blocks the action of Angiotensin II at the receptor site. Similar benefit to ACEIs but without the cough.</div>
+<div class="rx-label">Specific Use</div>
+<div>Used if patient develops a cough on ACE Inhibitors. Telmisartan has unique metabolic benefits.</div>
+<div class="rx-label">Side Effects</div>
+<div>Elevated potassium, dizziness. Angioedema is very rare.</div>
+<div class="rx-label">Monitoring</div>
+<div>Kidney function and potassium.</div>
+</div>
+</div>
+
+<div class="rx-card">
+<div class="rx-header">
+<div class="rx-name">Calcium Channel Blockers (CCBs)</div>
+<div class="rx-type">FIRST LINE</div>
+</div>
+<div class="rx-grid">
+<div class="rx-label">Examples</div>
+<div><strong>Amlodipine</strong>, Nifedipine ER.</div>
+<div class="rx-label">Mechanism</div>
+<div>Prevents calcium from entering muscle cells of heart and arteries, causing them to relax and widen.</div>
+<div class="rx-label">Specific Use</div>
+<div>Very effective in African American patients and older adults. Metabolically neutral.</div>
+<div class="rx-label">Side Effects</div>
+<div><strong>Peripheral edema</strong> (swelling in ankles), constipation, flushing.</div>
+<div class="rx-label">Monitoring</div>
+<div>Watch for leg swelling.</div>
+</div>
+</div>
+
+<div class="rx-card">
+<div class="rx-header">
+<div class="rx-name">Beta Blockers</div>
+<div class="rx-type">SECOND LINE</div>
+</div>
+<div class="rx-grid">
+<div class="rx-label">Examples</div>
+<div><strong>Metoprolol</strong>, Carvedilol, Atenolol.</div>
+<div class="rx-label">Mechanism</div>
+<div>Blocks adrenaline (epinephrine); slows heart rate and reduces pumping force.</div>
+<div class="rx-label">Specific Use</div>
+<div><strong>Not first line</strong> for uncomplicated HTN. Used if patient has heart failure, past heart attack, or atrial fibrillation.</div>
+<div class="rx-label">Side Effects</div>
+<div>Fatigue, reduced exercise tolerance, weight gain, depression, sexual dysfunction.</div>
+<div class="rx-label">Monitoring</div>
+<div>Heart rate and blood pressure.</div>
+</div>
+</div>
+
+      <h3 id="integrative">Integrative Options</h3>
+      <p>
+        For the advanced consumer, these options can support endothelial function and address inflammatory drivers. Safety and interactions matter—especially with anticoagulants and kidney disease.
+      </p>
+
+      <p>
+    For the advanced consumer, these options address endothelial dysfunction and inflammation.
+</p>
+
+<div class="rx-card">
+<div class="rx-header">
+<div class="rx-name">Magnesium Taurate</div>
+<div class="rx-type">INTEGRATIVE</div>
+</div>
+<div class="rx-grid">
+<div class="rx-label">Rationale</div>
+<div>Magnesium acts as a natural calcium channel blocker. Taurine calms the sympathetic nervous system.</div>
+<div class="rx-label">Typical Use</div>
+<div>400–600 mg daily (evening). Avoid Oxide/Citrate to minimize loose stools.</div>
+<div class="rx-label">Safety</div>
+<div>Caution in advanced kidney failure.</div>
+</div>
+</div>
+
+<div class="rx-card">
+<div class="rx-header">
+<div class="rx-name">Aged Garlic Extract (Kyolic)</div>
+<div class="rx-type">INTEGRATIVE</div>
+</div>
+<div class="rx-grid">
+<div class="rx-label">Rationale</div>
+<div>Improves arterial elasticity and lowers BP by 10+ mmHg in responders.</div>
+<div class="rx-label">Typical Use</div>
+<div>1,200 mg daily of standardized extract.</div>
+<div class="rx-label">Safety</div>
+<div>Blood thinning effect—caution if taking Warfarin/Eliquis.</div>
+</div>
+</div>
+
+<div class="rx-card">
+<div class="rx-header">
+<div class="rx-name">Hibiscus Tea</div>
+<div class="rx-type">BOTANICAL</div>
+</div>
+<div class="rx-grid">
+<div class="rx-label">Rationale</div>
+<div>Contains anthocyanins that act as mild ACE inhibitors.</div>
+<div class="rx-label">Typical Use</div>
+<div>3 cups strong brewed tea daily.</div>
+<div class="rx-label">Safety</div>
+<div>Safe. Mild diuretic effect.</div>
+</div>
+</div>
+
+      <div class="alert-box">
+        <h4>A note on mouthwash</h4>
+        <p>Consider limiting or avoiding frequent use of strong antiseptic/antibacterial mouthwashes (especially chlorhexidine-based), particularly if blood pressure is difficult to control. This is because some antiseptic rinses can suppress oral nitrate-reducing bacteria that support nitric-oxide biology and vascular tone. See Kapil et al. (open-access full text) here: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3605573/" target="_blank" rel="noopener">PMC3605573</a>.</p>
+      </div>
+
+      <h3 id="plan">Step-by-Step Improvement Plan</h3>
+      <div class="success-box">
+        <h4>The 30-day vascular reset</h4>
+        <p>
+          <strong>Weeks 0–2:</strong> Establish baseline with home monitoring (AM/PM). Eliminate liquid sugars (soda/juice) and begin a DASH-style pattern (add 1 serving of greens per meal).<br />
+          <strong>Weeks 2–4:</strong> Add isometric handgrip training (3x/week). Begin magnesium/garlic if approved.<br />
+          <strong>Week 4+:</strong> Re-measure BP. If not at goal (&lt;130/80), we will discuss medication initiation or adjustment.
+        </p>
+      </div>
+
+      <h3 id="references">References</h3>
+      <ol class="ref-list">
+        <li>AHA BP Log: <a href="https://www.heart.org/-/media/files/health-topics/high-blood-pressure/my-blood-pressure-log.pdf" rel="noopener" target="_blank">Download PDF</a></li><li>AHA High Blood Pressure Tools: <a href="https://www.heart.org/en/health-topics/high-blood-pressure/find-high-blood-pressure-tools--resources" rel="noopener" target="_blank">Access Resources</a></li><li>Measuring Blood Pressure: <a href="https://www.heart.org/-/media/Files/Health-Topics/High-Blood-Pressure/How_to_Measure_Your_Blood_Pressure_Letter_Size.pdf" rel="noopener" target="_blank">Download Guide</a></li><li>AHA PREVENT Risk Calculator: <a href="https://professional.heart.org/en/guidelines-and-statements/about-prevent-calculator" rel="noopener" target="_blank">Online Calculator</a></li><li>Lifestyle Interventions: <a href="https://www.heart.org/-/media/Files/Health-Topics/High-Blood-Pressure/Steps-To-Improve-High-BP.pdf?sc_lang=en" rel="noopener" target="_blank">AHA Steps to Improve BP</a></li><li>Life's Essential 8: <a href="https://www.heart.org/en/healthy-living/healthy-lifestyle/lifes-essential-8" rel="noopener" target="_blank">Healthy Living Guide</a></li><li>Mayo Clinic Decision Aid: <a href="https://shareddecisions.mayoclinic.org/cvpreventiondecisionaid/" rel="noopener" target="_blank">Prevention Tool</a>
+</li>
+      </ol>
+
+      <footer class="amh-footer">
+        <div class="amh-disclaimer medical-disclaimer">
+          <p><strong>Medical disclaimer:</strong> The information on this page is provided for general educational purposes only and is not medical advice. It is not intended to diagnose, treat, cure, or prevent any disease, and it does not establish a physician–patient relationship.</p>
+          <p>Do not apply this information to your specific situation without the oversight of a qualified clinician who can consider your full health history, medications, goals, preferences, and limitations. Lifestyle changes, particularly dietary restriction and supplements, can rapidly lower blood pressure; if you are on medication, you may require a medically supervised dosage reduction to prevent hypotension.</p>
+          <p><strong>Copyright:</strong> © Dr. Bray at Archangel Michael Health <span id="amh-year">2025</span></p>
+        </div>
+
+        <div class="amh-footer-meta">
+          <span><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine</span>
+          <span class="amh-dot">•</span>
+          <span><strong>Last updated:</strong> <span id="amh-last-updated">—</span></span>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      // ---- Last updated + year ----
+      var yearEl = document.getElementById("amh-year");
+      if (yearEl) {
+        try { yearEl.textContent = String(new Date().getFullYear()); } catch (e) {}
+      }
+
+      var updatedEl = document.getElementById("amh-last-updated");
+      if (updatedEl) {
+        var lm = document.lastModified; // usually reflects server file Last-Modified (works well on GitHub Pages)
+        var d = lm ? new Date(lm) : null;
+        if (d && !isNaN(d.getTime())) {
+          var yyyy = d.getFullYear();
+          var mm = String(d.getMonth() + 1).padStart(2, "0");
+          var dd = String(d.getDate()).padStart(2, "0");
+          updatedEl.textContent = yyyy + "-" + mm + "-" + dd;
+        } else {
+          updatedEl.textContent = "—";
+        }
+      }
+
+      // ---- Download PDF using html2pdf.js ----
+      var btn = document.getElementById("downloadPdfBtn");
+      if (!btn) return;
+
+      function safeFilename(title) {
+        return (title || "patient-guide")
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/(^-|-$)/g, "");
+      }
+
+      btn.addEventListener("click", function () {
+        if (typeof html2pdf === "undefined") {
+          alert("PDF generator is still loading. Please try again in a moment, or use Print / Save as PDF.");
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = "Preparing PDF...";
+
+        var title = (document.getElementById("page-title") && document.getElementById("page-title").textContent) || "Patient Guide";
+        var filename = safeFilename(title) + ".pdf";
+
+        // Clone content for PDF and remove UI elements
+        var source = document.getElementById("pdf-root").cloneNode(true);
+        source.querySelectorAll(".no-print").forEach(function (el) { el.remove(); });
+
+        var wrapper = document.createElement("div");
+        wrapper.style.background = "#ffffff";
+        wrapper.appendChild(source);
+
+        var opt = {
+          margin: [0.5, 0.5, 0.6, 0.5], // inches
+          filename: filename,
+          image: { type: "jpeg", quality: 0.98 },
+          html2canvas: { scale: 2, useCORS: true, letterRendering: true },
+          jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+          pagebreak: { mode: ["css", "legacy"] }
+        };
+
+        html2pdf()
+          .set(opt)
+          .from(wrapper)
+          .save()
+          .catch(function (err) {
+            console.error(err);
+            alert("Could not generate the PDF in this browser. Please use Print / Save as PDF.");
+          })
+          .finally(function () {
+            btn.disabled = false;
+            btn.textContent = "Download PDF";
+          });
+      });
+    })();
+  </script>
+</body>
+</html>
