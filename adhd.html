@@ -1,526 +1,493 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Adult ADHD: An Integrative & Functional Approach | Archangel Michael Health</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Adult ADHD: An Integrative Guide | Archangel Michael Health</title>
 
-  <link rel="stylesheet" href="https://docbraymd.github.io/amh/style.css" />
+  <!-- Shared stylesheet (v2) -->
+  <link rel="stylesheet" href="https://docbraymd.github.io/amh/style_v2.css" />
 
-  <style>
-    :root {
-      --primary-1: #2c3e50;
-      --accent-teal: #16a085;
-      --accent-indigo: #667eea;
-    }
-  </style>
+  <!-- html2pdf for one-click PDF download -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 
 <body>
-  <div class="main-container">
-    <header>
-      <div class="doctor-tag">Dr. Bray | Archangel Michael Health</div>
-      <h1 id="page-title">Adult ADHD: An Integrative Guide</h1>
-      <h2>Optimization Beyond the Diagnosis: A Functional & Neurobiological Approach</h2>
-      <div class="byline">by Christopher L. Bray MD PhD</div>
+  <div class="amh-page main-container" id="pdf-root" role="document">
+    <header class="amh-header">
+      <div class="amh-header-inner amh-header-centered">
+        <div class="amh-logo-wrap">
+          <img class="amh-logo" src="https://docbraymd.github.io/amh/AMHLogo.png" alt="Archangel Michael Health logo" />
+        </div>
+
+        <div class="amh-practice doctor-tag">Archangel Michael Health</div>
+
+        <h1 class="amh-title" id="page-title">Adult ADHD: An Integrative Guide</h1>
+        <h2 class="amh-tagline">Optimization Beyond the Diagnosis: A Functional &amp; Neurobiological Approach</h2>
+        <div class="byline">by Christopher L. Bray MD PhD</div>
+
+        <div class="action-bar amh-actions no-print" aria-label="Actions">
+          <button class="amh-btn amh-btn-secondary" type="button" onclick="window.print()">
+            Print / Save as PDF
+          </button>
+          <button class="amh-btn amh-btn-primary" id="downloadPdfBtn" type="button">
+            Download PDF
+          </button>
+        </div>
+      </div>
     </header>
 
-    <div class="content-body">
-      <p>
-        <strong>ADHD is not merely a childhood behavioral disorder; it is a lifespan neurobiological condition affecting executive function.</strong> 
+    <div class="amh-content content-body">
+
+<p>
+<strong>ADHD is not merely a childhood behavioral disorder; it is a lifespan neurobiological condition affecting executive function.</strong> 
         For decades, the "standard of care" has been reductive: a brief symptom checklist followed by a stimulant prescription. 
         At Archangel Michael Health, we view ADHD through a wider lens—identifying unique brain patterns (phenotypes) and addressing 
         root causes such as inflammation, nutrient deficiencies, and hormonal dysregulation before resorting to medication.
       </p>
-
-      <div class="toc" aria-label="On this page">
-        <h4>On this page</h4>
-        <ul>
-          <li><button type="button" class="toc-btn" data-scroll="section-1">1. The 7 Types & Neurobiology</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="section-2">2. Symptoms & Red Flags</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="section-3">3. Diagnosis & Testing</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="section-4">4. The "Common Sense" Protocol</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="section-5">5. Environmental Toxins & Substance Factors</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="section-6">6. Conventional Medications</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="section-7">7. General Integrative Supplements</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="section-8">8. Treatment Protocols by Brain Type</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="references">References</button></li>
-        </ul>
-      </div>
-
-      <h3 id="section-1">1. The 7 Types & Neurobiology</h3>
-      <p>
+<div aria-label="On this page" class="toc no-print">
+<h2>On this page</h2>
+<ul class="amh-list">
+<li><a href="#section-1">1. The 7 Types &amp; Neurobiology</a></li>
+<li><a href="#section-2">2. Symptoms &amp; Red Flags</a></li>
+<li><a href="#section-3">3. Diagnosis &amp; Testing</a></li>
+<li><a href="#section-4">4. The "Common Sense" Protocol</a></li>
+<li><a href="#section-5">5. Environmental Toxins &amp; Substance Factors</a></li>
+<li><a href="#section-6">6. Conventional Medications</a></li>
+<li><a href="#section-7">7. General Integrative Supplements</a></li>
+<li><a href="#section-8">8. Treatment Protocols by Brain Type</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+</div>
+<h3 id="section-1">1. The 7 Types &amp; Neurobiology</h3>
+<p>
         The DSM-5 treats ADHD as a single diagnosis, but functional brain imaging (SPECT) research by Dr. Daniel Amen suggests at least seven distinct brain patterns. 
         Understanding your "type" is critical because a treatment that helps one type (e.g., stimulants) may worsen another.
       </p>
-      
-      <div class="rx-card">
-        <div class="rx-header">
-            <div class="rx-name">The 7 Brain Types</div>
-            <div class="rx-type">PHENOTYPES</div>
-        </div>
-        <div class="rx-grid">
-            <div class="rx-label">1. Classic</div>
-            <div><strong>Symptoms:</strong> Inattention, distractibility, hyperactivity (restlessness), impulsivity.<br><strong>Biology:</strong> Low dopamine; reduced blood flow in Prefrontal Cortex (PFC), Cerebellum, and Basal Ganglia.</div>
-
-            <div class="rx-label">2. Inattentive</div>
-            <div><strong>Symptoms:</strong> Spacey, low energy, couch potato, procrastination, disorganized. Not hyperactive.<br><strong>Biology:</strong> Low dopamine; reduced activity in PFC.</div>
-
-            <div class="rx-label">3. Overfocused</div>
-            <div><strong>Symptoms:</strong> Trouble shifting attention, stuck in loops of negative thought, rigid, argumentative.<br><strong>Biology:</strong> Overactive Anterior Cingulate Gyrus (the brain's "gear shifter"); low serotonin and dopamine.</div>
-
-            <div class="rx-label">4. Temporal Lobe</div>
-            <div><strong>Symptoms:</strong> Temper issues, mood instability, memory problems, history of head injury.<br><strong>Biology:</strong> Abnormalities in Temporal Lobes; GABA issues.</div>
-
-            <div class="rx-label">5. Limbic</div>
-            <div><strong>Symptoms:</strong> Chronic low-grade sadness/negativity (dysthymia), low energy, low self-esteem.<br><strong>Biology:</strong> Overactive deep limbic system; low PFC activity.</div>
-
-            <div class="rx-label">6. Ring of Fire</div>
-            <div><strong>Symptoms:</strong> Hypersensitive to noise/light/touch, cyclic moodiness, unpredictable behavior, "busy brain."<br><strong>Biology:</strong> Global brain overactivity (inflammation). <strong>Caution:</strong> Stimulants often worsen this type.</div>
-
-            <div class="rx-label">7. Anxious</div>
-            <div><strong>Symptoms:</strong> Anxious, tense, freezes in social situations, predicts the worst.<br><strong>Biology:</strong> Low PFC activity combined with <em>overactive</em> Basal Ganglia.</div>
-        </div>
-      </div>
-
-      <h3 id="section-2">2. Symptoms & Red Flags</h3>
-      <p>
+<div class="rx-card">
+<div class="rx-header">
+<div class="rx-name">The 7 Brain Types</div>
+<div class="rx-type">PHENOTYPES</div>
+</div>
+<div class="rx-grid">
+<div class="rx-label">1. Classic</div>
+<div><strong>Symptoms:</strong> Inattention, distractibility, hyperactivity (restlessness), impulsivity.<br/><strong>Biology:</strong> Low dopamine; reduced blood flow in Prefrontal Cortex (PFC), Cerebellum, and Basal Ganglia.</div>
+<div class="rx-label">2. Inattentive</div>
+<div><strong>Symptoms:</strong> Spacey, low energy, couch potato, procrastination, disorganized. Not hyperactive.<br/><strong>Biology:</strong> Low dopamine; reduced activity in PFC.</div>
+<div class="rx-label">3. Overfocused</div>
+<div><strong>Symptoms:</strong> Trouble shifting attention, stuck in loops of negative thought, rigid, argumentative.<br/><strong>Biology:</strong> Overactive Anterior Cingulate Gyrus (the brain's "gear shifter"); low serotonin and dopamine.</div>
+<div class="rx-label">4. Temporal Lobe</div>
+<div><strong>Symptoms:</strong> Temper issues, mood instability, memory problems, history of head injury.<br/><strong>Biology:</strong> Abnormalities in Temporal Lobes; GABA issues.</div>
+<div class="rx-label">5. Limbic</div>
+<div><strong>Symptoms:</strong> Chronic low-grade sadness/negativity (dysthymia), low energy, low self-esteem.<br/><strong>Biology:</strong> Overactive deep limbic system; low PFC activity.</div>
+<div class="rx-label">6. Ring of Fire</div>
+<div><strong>Symptoms:</strong> Hypersensitive to noise/light/touch, cyclic moodiness, unpredictable behavior, "busy brain."<br/><strong>Biology:</strong> Global brain overactivity (inflammation). <strong>Caution:</strong> Stimulants often worsen this type.</div>
+<div class="rx-label">7. Anxious</div>
+<div><strong>Symptoms:</strong> Anxious, tense, freezes in social situations, predicts the worst.<br/><strong>Biology:</strong> Low PFC activity combined with <em>overactive</em> Basal Ganglia.</div>
+</div>
+</div>
+<h3 id="section-2">2. Symptoms &amp; Red Flags</h3>
+<p>
         In adults, hyperactivity often internalizes as a racing mind or inability to relax, rather than the overt running/climbing seen in children.
       </p>
-
-      <h4>Core Adult Symptoms</h4>
-      <ul class="symptom-list">
-        <li><strong>Executive Dysfunction:</strong> Difficulty organizing tasks, poor time management ("time blindness"), and chronic procrastination.</li>
-        <li><strong>Emotional Dysregulation:</strong> Low frustration tolerance, quick temper, or rejection sensitivity (RSD).</li>
-        <li><strong>Working Memory Deficits:</strong> Walking into a room and forgetting why; difficulty holding multi-step instructions in mind.</li>
-        <li><strong>Sleep Disturbance:</strong> "Revenge bedtime procrastination," racing thoughts at night, or Delayed Sleep Phase Syndrome (night owl).</li>
-      </ul>
-
-      <div class="alert-box">
-        <h4>Urgent Red Flags</h4>
-        <p>
+<h4>Core Adult Symptoms</h4>
+<ul class="symptom-list">
+<li><strong>Executive Dysfunction:</strong> Difficulty organizing tasks, poor time management ("time blindness"), and chronic procrastination.</li>
+<li><strong>Emotional Dysregulation:</strong> Low frustration tolerance, quick temper, or rejection sensitivity (RSD).</li>
+<li><strong>Working Memory Deficits:</strong> Walking into a room and forgetting why; difficulty holding multi-step instructions in mind.</li>
+<li><strong>Sleep Disturbance:</strong> "Revenge bedtime procrastination," racing thoughts at night, or Delayed Sleep Phase Syndrome (night owl).</li>
+</ul>
+<div class="alert-box">
+<h4>Urgent Red Flags</h4>
+<p>
           Seek immediate evaluation if you experience:
-          <br>• <strong>Suicidal ideation</strong> or severe hopelessness (Call 988).
-          <br>• <strong>Manic symptoms:</strong> Decreased need for sleep, grandiosity, or rapid pressured speech (may indicate Bipolar Disorder, which requires different stabilization).
-          <br>• <strong>Sudden onset:</strong> Attention problems beginning suddenly in adulthood without childhood history (may indicate thyroid, sleep apnea, or neurological issues).
-        </p>
-      </div>
-
-      <h3 id="section-3">3. Diagnosis & Testing</h3>
-      <div class="clinical-note">
-        <h4>The Integrative Workup</h4>
-        <p>
+          </p><ul class="amh-list"><li><strong>Suicidal ideation</strong> or severe hopelessness (Call 988).</li><li><strong>Manic symptoms:</strong> Decreased need for sleep, grandiosity, or rapid pressured speech (may indicate Bipolar Disorder, which requires different stabilization).</li><li><strong>Sudden onset:</strong> Attention problems beginning suddenly in adulthood without childhood history (may indicate thyroid, sleep apnea, or neurological issues).</li></ul>
+</div>
+<h3 id="section-3">3. Diagnosis &amp; Testing</h3>
+<div class="clinical-note">
+<h4>The Integrative Workup</h4>
+<p>
           We do not rely solely on a checklist. We must rule out "ADHD mimics"—conditions that cause brain fog and fatigue but are not primary dopamine deficits.
         </p>
-      </div>
-
-      <div class="rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Diagnostic Approach</div>
-          <div class="rx-type">TESTING</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">Clinical Interview</div>
-          <div>Detailed history of childhood vs. adult symptoms; ruling out Bipolar Disorder, PTSD, and Anxiety Disorders. Standard tools: ASRS v1.1, DIVA-5.</div>
-
-          <div class="rx-label">Lab Panels</div>
-          <div>
-            <strong>Thyroid:</strong> TSH, Free T3, Free T4 (hypothyroidism mimics inattention).<br>
-            <strong>Ferritin:</strong> Goal >50-70 ng/mL (low iron impairs dopamine synthesis).<br>
-            <strong>Vitamin D:</strong> Essential for brain health.<br>
-            <strong>hs-CRP:</strong> To assess systemic inflammation.
+</div>
+<div class="rx-card">
+<div class="rx-header">
+<div class="rx-name">Diagnostic Approach</div>
+<div class="rx-type">TESTING</div>
+</div>
+<div class="rx-grid">
+<div class="rx-label">Clinical Interview</div>
+<div>Detailed history of childhood vs. adult symptoms; ruling out Bipolar Disorder, PTSD, and Anxiety Disorders. Standard tools: ASRS v1.1, DIVA-5.</div>
+<div class="rx-label">Lab Panels</div>
+<div>
+<strong>Thyroid:</strong> TSH, Free T3, Free T4 (hypothyroidism mimics inattention).<br/>
+<strong>Ferritin:</strong> Goal &gt;50-70 ng/mL (low iron impairs dopamine synthesis).<br/>
+<strong>Vitamin D:</strong> Essential for brain health.<br/>
+<strong>hs-CRP:</strong> To assess systemic inflammation.
           </div>
-
-          <div class="rx-label">Functional Tests</div>
-          <div>
-            <strong>Omega-3 Index:</strong> Assessing EPA/DHA levels.<br>
-            <strong>Gut Health:</strong> Screening for dysbiosis if digestive symptoms are present (gut-brain axis).<br>
-            <strong>Hormones:</strong> Estrogen/Testosterone levels (estrogen drops can crash dopamine in women).
+<div class="rx-label">Functional Tests</div>
+<div>
+<strong>Omega-3 Index:</strong> Assessing EPA/DHA levels.<br/>
+<strong>Gut Health:</strong> Screening for dysbiosis if digestive symptoms are present (gut-brain axis).<br/>
+<strong>Hormones:</strong> Estrogen/Testosterone levels (estrogen drops can crash dopamine in women).
           </div>
-
-          <div class="rx-label">Objective Measures</div>
-          <div>
-            <strong>CPT (Continuous Performance Test):</strong> Computerized testing (TOVA-style) to measure sustained attention and inhibitory control.<br>
-            <a href="https://docbraymd.github.io/amh/adhd_cpt.html" target="_blank" rel="noopener"><strong>Click here to try a CPT Demo</strong></a>
-          </div>
-        </div>
-      </div>
-
-      <h3 id="section-4">4. The "Common Sense" Protocol</h3>
-      <p>
+<div class="rx-label">Objective Measures</div>
+<div>
+<strong>CPT (Continuous Performance Test):</strong> Computerized testing (TOVA-style) to measure sustained attention and inhibitory control.<br/>
+<a href="https://docbraymd.github.io/amh/adhd_cpt.html" rel="noopener" target="_blank"><strong>Click here to try a CPT Demo</strong></a>
+</div>
+</div>
+</div>
+<h3 id="section-4">4. The "Common Sense" Protocol</h3>
+<p>
         Before considering pharmaceuticals, we must optimize the brain's biological environment. A strictly pharmaceutical approach often fails if the brain is inflamed or exhausted.
       </p>
-
-      <div class="success-box">
-        <h4>What "Better" Looks Like</h4>
-        <p>
+<div class="success-box">
+<h4>What "Better" Looks Like</h4>
+<p>
           Success is not just "focus." It is the ability to initiate tasks without dread, regulate emotions during conflict, and maintain energy throughout the day without crashing.
         </p>
-      </div>
-
-      <ul class="symptom-list">
-        <li><strong>Step 1: Sleep Hygiene (The Foundation).</strong> The ADHD brain is often a "night owl" brain. 
-            <br><em>Action:</em> Aim for 7-8 hours. Use "Brown Noise" (lower frequency than white noise) to quiet internal monologues. Get 10 minutes of sunlight within 30 minutes of waking to anchor circadian rhythm.</li>
-        
-        <li><strong>Step 2: Nutrition by Type.</strong>
-            <br><em>Classic/Inattentive:</em> High-Protein, Low-Carb breakfast (30-40g protein) to supply dopamine precursors (Tyrosine).
-            <br><em>Overfocused:</em> Complex carbohydrates (sweet potatoes, oats) may be needed to boost Serotonin and aid flexibility.
-            <br><em>Ring of Fire:</em> Strict Elimination Diet (removing gluten, dairy, dyes, corn, soy) to reduce neuroinflammation.</li>
-        
-        <li><strong>Step 3: Exercise ("The Natural Ritalin").</strong> 
-            <br><em>Action:</em> 30-45 minutes of daily aerobic exercise increases BDNF and dopamine. Intense cardio in the morning can provide 3-4 hours of improved focus.</li>
-            
-        <li><strong>Step 4: Environment.</strong> Externalize executive function. Use visual timers (Time Timer), body-doubling (working alongside someone), and "landing strips" for keys/wallet.</li>
-      </ul>
-
-      <h3 id="section-5">5. Environmental Toxins & Substance Factors</h3>
-      <p>
+</div>
+<ul class="symptom-list">
+<li><strong>Step 1: Sleep Hygiene (The Foundation).</strong> The ADHD brain is often a "night owl" brain. 
+            <br/><em>Action:</em> Aim for 7-8 hours. Use "Brown Noise" (lower frequency than white noise) to quiet internal monologues. Get 10 minutes of sunlight within 30 minutes of waking to anchor circadian rhythm.</li>
+<li><strong>Step 2: Nutrition by Type.</strong>
+<br/><em>Classic/Inattentive:</em> High-Protein, Low-Carb breakfast (30-40g protein) to supply dopamine precursors (Tyrosine).
+            <br/><em>Overfocused:</em> Complex carbohydrates (sweet potatoes, oats) may be needed to boost Serotonin and aid flexibility.
+            <br/><em>Ring of Fire:</em> Strict Elimination Diet (removing gluten, dairy, dyes, corn, soy) to reduce neuroinflammation.</li>
+<li><strong>Step 3: Exercise ("The Natural Ritalin").</strong>
+<br/><em>Action:</em> 30-45 minutes of daily aerobic exercise increases BDNF and dopamine. Intense cardio in the morning can provide 3-4 hours of improved focus.</li>
+<li><strong>Step 4: Environment.</strong> Externalize executive function. Use visual timers (Time Timer), body-doubling (working alongside someone), and "landing strips" for keys/wallet.</li>
+</ul>
+<h3 id="section-5">5. Environmental Toxins &amp; Substance Factors</h3>
+<p>
         Chronic exposure to environmental toxins and the misuse of certain substances can mimic or significantly worsen ADHD symptoms by causing neuroinflammation and disrupting neurotransmitter regulation. Addressing these "hidden" drivers is essential for long-term control.
       </p>
-
-      <div class="rx-card">
-        <div class="rx-header">
-            <div class="rx-name">The Toxic Load</div>
-            <div class="rx-type">ENVIRONMENTAL TRIGGERS</div>
-        </div>
-        <div class="rx-grid">
-            <div class="rx-label">Mold & Mycotoxins</div>
-            <div><strong>Impact:</strong> Chronic exposure to mold toxins (mycotoxins) triggers systemic inflammation and "leaky gut," leading to profound brain fog, memory issues, and cognitive impairment that mimics Inattentive ADHD.<br><strong>Strategy:</strong> Inspect living spaces for water damage; consider remediation if history suggests exposure.</div>
-
-            <div class="rx-label">Heavy Metals</div>
-            <div><strong>Impact:</strong> Lead and mercury can impair cognitive function and attention. Sources include old plumbing/paint (lead) or high-consumption of predatory fish (mercury).<br><strong>Strategy:</strong> Test blood lead levels if in an older home; choose low-mercury fish (salmon, sardines) over tuna/swordfish.</div>
-
-            <div class="rx-label">Food Additives</div>
-            <div><strong>Impact:</strong> Artificial colors (Red Dye 40, Yellow 5) and preservatives (sodium benzoate) can trigger hyperactivity and allergic-style brain reactions, especially in the "Ring of Fire" type.<br><strong>Strategy:</strong> A 3-week elimination trial of processed foods and dyes.</div>
-
-            <div class="rx-label">Everyday Chemicals</div>
-            <div><strong>Impact:</strong> Pesticides on non-organic produce and harsh household cleaning chemicals can act as neurotoxins.<br><strong>Strategy:</strong> Prioritize organic for the "Dirty Dozen" produce; use natural cleaning products.</div>
-        </div>
-      </div>
-
-      <div class="alert-box">
-        <h4>Substance Use & Medications</h4>
-        <p>
-            <strong>Alcohol & Cannabis:</strong> While patients often use these to "self-medicate" anxiety or sleep, they ultimately worsen executive function. Alcohol disrupts sleep architecture (glutamate rebound), and chronic cannabis use can impair working memory and motivation.
-            <br>
-            <strong>Nicotine:</strong> Often used for a quick focus boost, but chronic use disrupts sleep and increases baseline anxiety.
-            <br>
-            <strong>Medication Conflicts:</strong> Certain medications (e.g., anticholinergics, some sedatives) can dull cognition. "Stimulants" prescribed for the wrong ADHD type (e.g., Ring of Fire) can aggressively worsen irritability and instability.
-        </p>
-      </div>
-
-      <h3 id="section-6">6. Conventional Medications</h3>
-      <p>
+<div class="rx-card">
+<div class="rx-header">
+<div class="rx-name">The Toxic Load</div>
+<div class="rx-type">ENVIRONMENTAL TRIGGERS</div>
+</div>
+<div class="rx-grid">
+<div class="rx-label">Mold &amp; Mycotoxins</div>
+<div><strong>Impact:</strong> Chronic exposure to mold toxins (mycotoxins) triggers systemic inflammation and "leaky gut," leading to profound brain fog, memory issues, and cognitive impairment that mimics Inattentive ADHD.<br/><strong>Strategy:</strong> Inspect living spaces for water damage; consider remediation if history suggests exposure.</div>
+<div class="rx-label">Heavy Metals</div>
+<div><strong>Impact:</strong> Lead and mercury can impair cognitive function and attention. Sources include old plumbing/paint (lead) or high-consumption of predatory fish (mercury).<br/><strong>Strategy:</strong> Test blood lead levels if in an older home; choose low-mercury fish (salmon, sardines) over tuna/swordfish.</div>
+<div class="rx-label">Food Additives</div>
+<div><strong>Impact:</strong> Artificial colors (Red Dye 40, Yellow 5) and preservatives (sodium benzoate) can trigger hyperactivity and allergic-style brain reactions, especially in the "Ring of Fire" type.<br/><strong>Strategy:</strong> A 3-week elimination trial of processed foods and dyes.</div>
+<div class="rx-label">Everyday Chemicals</div>
+<div><strong>Impact:</strong> Pesticides on non-organic produce and harsh household cleaning chemicals can act as neurotoxins.<br/><strong>Strategy:</strong> Prioritize organic for the "Dirty Dozen" produce; use natural cleaning products.</div>
+</div>
+</div>
+<div class="alert-box">
+<h4>Substance Use &amp; Medications</h4>
+<ul class="amh-list"><li>
+<strong>Alcohol &amp; Cannabis:</strong> While patients often use these to "self-medicate" anxiety or sleep, they ultimately worsen executive function. Alcohol disrupts sleep architecture (glutamate rebound), and chronic cannabis use can impair working memory and motivation.
+            </li><li>
+<strong>Nicotine:</strong> Often used for a quick focus boost, but chronic use disrupts sleep and increases baseline anxiety.
+            </li><li>
+<strong>Medication Conflicts:</strong> Certain medications (e.g., anticholinergics, some sedatives) can dull cognition. "Stimulants" prescribed for the wrong ADHD type (e.g., Ring of Fire) can aggressively worsen irritability and instability.
+        </li></ul>
+</div>
+<h3 id="section-6">6. Conventional Medications</h3>
+<p>
         Medication is a tool, not a cure. When used correctly, it acts as "glasses for the brain," allowing you to implement lifestyle changes effectively.
       </p>
-
-      <div class="rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Stimulants</div>
-          <div class="rx-type">FIRST LINE</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">Classes</div>
-          <div><strong>Methylphenidates:</strong> Ritalin, Concerta, Focalin.<br><strong>Amphetamines:</strong> Adderall, Vyvanse.</div>
-          
-          <div class="rx-label">Mechanism</div>
-          <div>Increases dopamine and norepinephrine availability in the PFC.</div>
-          
-          <div class="rx-label">Best For</div>
-          <div>Classic (Type 1) and Inattentive (Type 2). <strong>Warning:</strong> Can worsen Ring of Fire (Type 6), Anxious (Type 7), or Overfocused (Type 3).</div>
-          
-          <div class="rx-label">Side Effects</div>
-          <div>Insomnia, appetite suppression, dry mouth, increased heart rate, anxiety.</div>
-        </div>
-      </div>
-
-      <div class="rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Non-Stimulants</div>
-          <div class="rx-type">ALTERNATIVE</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">Options</div>
-          <div><strong>Atomoxetine (Strattera):</strong> NRI. Good for anxiety.<br><strong>Bupropion (Wellbutrin):</strong> NDRI. Good for Limbic type/depression.<br><strong>Guanfacine (Intuniv):</strong> Alpha-agonist. Calms hyperactivity/RSD.</div>
-          
-          <div class="rx-label">Mechanism</div>
-          <div>Modulates norepinephrine (and dopamine indirectly) without direct stimulation.</div>
-          
-          <div class="rx-label">Best For</div>
-          <div>Anxious types, Tic disorders, or those with history of substance abuse.</div>
-          
-          <div class="rx-label">Timeline</div>
-          <div>Takes 4–6 weeks for full effect (unlike stimulants which work immediately).</div>
-        </div>
-      </div>
-
-      <h3 id="section-7">7. General Integrative Supplements</h3>
-      <p>
+<div class="rx-card">
+<div class="rx-header">
+<div class="rx-name">Stimulants</div>
+<div class="rx-type">FIRST LINE</div>
+</div>
+<div class="rx-grid">
+<div class="rx-label">Classes</div>
+<div><strong>Methylphenidates:</strong> Ritalin, Concerta, Focalin.<br/><strong>Amphetamines:</strong> Adderall, Vyvanse.</div>
+<div class="rx-label">Mechanism</div>
+<div>Increases dopamine and norepinephrine availability in the PFC.</div>
+<div class="rx-label">Best For</div>
+<div>Classic (Type 1) and Inattentive (Type 2). <strong>Warning:</strong> Can worsen Ring of Fire (Type 6), Anxious (Type 7), or Overfocused (Type 3).</div>
+<div class="rx-label">Side Effects</div>
+<div>Insomnia, appetite suppression, dry mouth, increased heart rate, anxiety.</div>
+</div>
+</div>
+<div class="rx-card">
+<div class="rx-header">
+<div class="rx-name">Non-Stimulants</div>
+<div class="rx-type">ALTERNATIVE</div>
+</div>
+<div class="rx-grid">
+<div class="rx-label">Options</div>
+<div><strong>Atomoxetine (Strattera):</strong> NRI. Good for anxiety.<br/><strong>Bupropion (Wellbutrin):</strong> NDRI. Good for Limbic type/depression.<br/><strong>Guanfacine (Intuniv):</strong> Alpha-agonist. Calms hyperactivity/RSD.</div>
+<div class="rx-label">Mechanism</div>
+<div>Modulates norepinephrine (and dopamine indirectly) without direct stimulation.</div>
+<div class="rx-label">Best For</div>
+<div>Anxious types, Tic disorders, or those with history of substance abuse.</div>
+<div class="rx-label">Timeline</div>
+<div>Takes 4–6 weeks for full effect (unlike stimulants which work immediately).</div>
+</div>
+</div>
+<h3 id="section-7">7. General Integrative Supplements</h3>
+<p>
         Supplements can be powerful catalysts for brain optimization. Quality matters—use pharmaceutical-grade products.
       </p>
-
-      <div class="rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Saffron (Crocus sativus)</div>
-          <div class="rx-type">MOOD & FOCUS</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">Rationale</div>
-          <div>Boosts dopamine and serotonin. Studies show efficacy comparable to Methylphenidate in children for some symptoms, with fewer side effects.</div>
-          <div class="rx-label">Typical Use</div>
-          <div>30 mg daily (standardized extract). Best for <strong>Overfocused</strong> or <strong>Limbic</strong> types.</div>
-          <div class="rx-label">Safety</div>
-          <div>Generally safe. High doses can be toxic. Avoid in bipolar disorder without mood stabilizers (potential mania risk).</div>
-          <div class="rx-label">Cost</div>
-          <div>$20–$40/month.</div>
-        </div>
-      </div>
-
-      <div class="rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Omega-3 Fatty Acids</div>
-          <div class="rx-type">FOUNDATION</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">Rationale</div>
-          <div>Critical for cell membrane fluidity and reducing neuroinflammation. Low Omega-3 status is common in ADHD.</div>
-          <div class="rx-label">Typical Use</div>
-          <div><strong>Goal:</strong> 2,000mg - 3,000mg of combined EPA/DHA daily. Look for <strong>High-EPA</strong> formulations (EPA:DHA ratio > 2:1).</div>
-          <div class="rx-label">Safety</div>
-          <div>Mild blood thinning effect (stop before surgery). Fishy burps (freeze capsules to prevent).</div>
-          <div class="rx-label">Cost</div>
-          <div>$30–$60/month.</div>
-        </div>
-      </div>
-      
-      <div class="rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Magnesium</div>
-          <div class="rx-type">BRAIN STABILITY</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">Rationale</div>
-          <div>Essential for stabilizing neuronal firing and relaxing the nervous system. Up to 80% of the population is deficient, and stimulants can deplete levels further.</div>
-          <div class="rx-label">Preferred Forms</div>
-          <div><strong>Magnesium Glycinate:</strong> Highly absorbable and calming. Best for anxiety and sleep issues.<br><strong>Magnesium L-Threonate:</strong> Uniquely crosses the blood-brain barrier to support synaptic density and working memory.</div>
-          <div class="rx-label">Typical Use</div>
-          <div>200–400 mg at bedtime (Glycinate) or split doses (Threonate).</div>
-          <div class="rx-label">Cost</div>
-          <div>$15–$40/month.</div>
-        </div>
-      </div>
-
-      <div class="rx-card">
-        <div class="rx-header">
-          <div class="rx-name">L-Theanine</div>
-          <div class="rx-type">CALM FOCUS</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">Rationale</div>
-          <div>An amino acid found in green tea that increases alpha brain waves (associated with relaxed alertness) and boosts GABA/serotonin without sedation.</div>
-          <div class="rx-label">Benefits</div>
-          <div>Reduces mental chatter and anxiety while maintaining focus. Often used to neutralize the "jitters" from caffeine or stimulants.</div>
-          <div class="rx-label">Typical Use</div>
-          <div>100–200 mg taken in the morning or as needed for acute stress. Best for <strong>Anxious</strong> types.</div>
-          <div class="rx-label">Cost</div>
-          <div>$15–$30/month.</div>
-        </div>
-      </div>
-
-      <div class="rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Additional Supports</div>
-          <div class="rx-type">TARGETED</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">Zinc</div>
-          <div>Modulates dopamine transport. 15-30mg daily (balance with copper). Helpful if alkaline phosphatase is low.</div>
-          
-          <div class="rx-label">L-Tyrosine</div>
-          <div>Dopamine precursor. 500-1500mg on empty stomach. <em>Caution:</em> Avoid if history of melanoma or high blood pressure; may trigger headaches.</div>
-          
-          <div class="rx-label">Pycnogenol</div>
-          <div>French Maritime Pine Bark. Improves cerebral blood flow and attention. Slower onset (3-4 weeks).</div>
-        </div>
-      </div>
-
-      <h3 id="section-8">8. Treatment Protocols by Brain Type</h3>
-      <p>
+<div class="rx-card">
+<div class="rx-header">
+<div class="rx-name">Saffron (Crocus sativus)</div>
+<div class="rx-type">MOOD &amp; FOCUS</div>
+</div>
+<div class="rx-grid">
+<div class="rx-label">Rationale</div>
+<div>Boosts dopamine and serotonin. Studies show efficacy comparable to Methylphenidate in children for some symptoms, with fewer side effects.</div>
+<div class="rx-label">Typical Use</div>
+<div>30 mg daily (standardized extract). Best for <strong>Overfocused</strong> or <strong>Limbic</strong> types.</div>
+<div class="rx-label">Safety</div>
+<div>Generally safe. High doses can be toxic. Avoid in bipolar disorder without mood stabilizers (potential mania risk).</div>
+<div class="rx-label">Cost</div>
+<div>$20–$40/month.</div>
+</div>
+</div>
+<div class="rx-card">
+<div class="rx-header">
+<div class="rx-name">Omega-3 Fatty Acids</div>
+<div class="rx-type">FOUNDATION</div>
+</div>
+<div class="rx-grid">
+<div class="rx-label">Rationale</div>
+<div>Critical for cell membrane fluidity and reducing neuroinflammation. Low Omega-3 status is common in ADHD.</div>
+<div class="rx-label">Typical Use</div>
+<div><strong>Goal:</strong> 2,000mg - 3,000mg of combined EPA/DHA daily. Look for <strong>High-EPA</strong> formulations (EPA:DHA ratio &gt; 2:1).</div>
+<div class="rx-label">Safety</div>
+<div>Mild blood thinning effect (stop before surgery). Fishy burps (freeze capsules to prevent).</div>
+<div class="rx-label">Cost</div>
+<div>$30–$60/month.</div>
+</div>
+</div>
+<div class="rx-card">
+<div class="rx-header">
+<div class="rx-name">Magnesium</div>
+<div class="rx-type">BRAIN STABILITY</div>
+</div>
+<div class="rx-grid">
+<div class="rx-label">Rationale</div>
+<div>Essential for stabilizing neuronal firing and relaxing the nervous system. Up to 80% of the population is deficient, and stimulants can deplete levels further.</div>
+<div class="rx-label">Preferred Forms</div>
+<div><strong>Magnesium Glycinate:</strong> Highly absorbable and calming. Best for anxiety and sleep issues.<br/><strong>Magnesium L-Threonate:</strong> Uniquely crosses the blood-brain barrier to support synaptic density and working memory.</div>
+<div class="rx-label">Typical Use</div>
+<div>200–400 mg at bedtime (Glycinate) or split doses (Threonate).</div>
+<div class="rx-label">Cost</div>
+<div>$15–$40/month.</div>
+</div>
+</div>
+<div class="rx-card">
+<div class="rx-header">
+<div class="rx-name">L-Theanine</div>
+<div class="rx-type">CALM FOCUS</div>
+</div>
+<div class="rx-grid">
+<div class="rx-label">Rationale</div>
+<div>An amino acid found in green tea that increases alpha brain waves (associated with relaxed alertness) and boosts GABA/serotonin without sedation.</div>
+<div class="rx-label">Benefits</div>
+<div>Reduces mental chatter and anxiety while maintaining focus. Often used to neutralize the "jitters" from caffeine or stimulants.</div>
+<div class="rx-label">Typical Use</div>
+<div>100–200 mg taken in the morning or as needed for acute stress. Best for <strong>Anxious</strong> types.</div>
+<div class="rx-label">Cost</div>
+<div>$15–$30/month.</div>
+</div>
+</div>
+<div class="rx-card">
+<div class="rx-header">
+<div class="rx-name">Additional Supports</div>
+<div class="rx-type">TARGETED</div>
+</div>
+<div class="rx-grid">
+<div class="rx-label">Zinc</div>
+<div>Modulates dopamine transport. 15-30mg daily (balance with copper). Helpful if alkaline phosphatase is low.</div>
+<div class="rx-label">L-Tyrosine</div>
+<div>Dopamine precursor. 500-1500mg on empty stomach. <em>Caution:</em> Avoid if history of melanoma or high blood pressure; may trigger headaches.</div>
+<div class="rx-label">Pycnogenol</div>
+<div>French Maritime Pine Bark. Improves cerebral blood flow and attention. Slower onset (3-4 weeks).</div>
+</div>
+</div>
+<h3 id="section-8">8. Treatment Protocols by Brain Type</h3>
+<p>
         Daniel Amen, a psychiatrist known for using SPECT brain imaging, identifies seven distinct types of ADHD (which he often refers to as ADD) based on brain patterns, symptoms, and neurotransmitter imbalances involving dopamine, serotonin, and GABA. This approach emphasizes that ADHD isn't a one-size-fits-all disorder, and treatments should be tailored to the specific type for optimal results. Diagnosis typically involves brain scans, clinical history, and symptom evaluation. General principles include starting with natural interventions like diet, exercise, supplements, and neurofeedback before medications; avoiding treatments that could worsen symptoms; and addressing co-occurring issues like anxiety or mood instability. Below are the seven types, including key symptoms and optimal treatment algorithms.
       </p>
+<div class="rx-card">
+<div class="rx-header">
+<div class="rx-name">1. Classic ADD</div>
+<div class="rx-type">TYPE 1</div>
+</div>
+<div class="rx-grid">
+<div class="rx-label">Symptoms</div>
+<div>Inattentiveness, distractibility, hyperactivity, disorganization, and impulsivity. Brain imaging often shows decreased activity in the prefrontal cortex during concentration, along with reduced blood flow in the prefrontal cortex, cerebellum, and basal ganglia (linked to low dopamine).</div>
+<div class="rx-label">Optimal Treatment Algorithm</div>
+<div>
+<ul class="amh-list">
+<li>Focus on boosting dopamine to enhance focus and reduce hyperactivity.</li>
+<li>Start with lifestyle changes: Increase physical exercise and consume a diet higher in protein.</li>
+<li>Add supplements: Rhodiola, green tea, ginseng, or L-tyrosine (amino acid precursor to dopamine). Include fish oil with higher EPA than DHA for brain support.</li>
+<li>If needed, prescribe stimulating medications like Ritalin, Adderall, Vyvanse, or Concerta to increase dopamine availability.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="rx-card">
+<div class="rx-header">
+<div class="rx-name">2. Inattentive ADD</div>
+<div class="rx-type">TYPE 2</div>
+</div>
+<div class="rx-grid">
+<div class="rx-label">Symptoms</div>
+<div>Short attention span, distractibility, procrastination, and disorganization without hyperactivity or impulsivity. Often presents as introversion or daydreaming. More common in females, with low prefrontal cortex activity and dopamine levels.</div>
+<div class="rx-label">Optimal Treatment Algorithm</div>
+<div>
+<ul class="amh-list">
+<li>Prioritize dopamine enhancement for better attention and motivation.</li>
+<li>Implement a high-protein, lower-carbohydrate diet and regular exercise to support brain function.</li>
+<li>Use supplements: L-tyrosine (taken on an empty stomach) as a starting point.</li>
+<li>Escalate to stimulant medications such as Adderall, Vyvanse, or Concerta if supplements are insufficient.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="rx-card">
+<div class="rx-header">
+<div class="rx-name">3. Over-Focused ADD</div>
+<div class="rx-type">TYPE 3</div>
+</div>
+<div class="rx-grid">
+<div class="rx-label">Symptoms</div>
+<div>Core ADHD symptoms plus difficulty shifting attention, getting stuck in negative thoughts or behaviors, and inflexibility. Linked to deficiencies in serotonin and dopamine, with excessive activity in the anterior cingulate gyrus (the brain's "gear shifter").</div>
+<div class="rx-label">Optimal Treatment Algorithm</div>
+<div>
+<ul class="amh-list">
+<li>Target both serotonin and dopamine to promote flexibility and reduce rumination.</li>
+<li>Begin with supplements: L-tryptophan, 5-HTP, saffron, or inositol to boost serotonin.</li>
+<li>Avoid high-protein diets, as they may increase irritability; opt for balanced nutrition instead.</li>
+<li>If supplements aren't enough, use antidepressants like Effexor, Pristiq, or Cymbalta (avoid stimulants alone, as they can heighten anxiety). Incorporate neurofeedback to train brain flexibility.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="rx-card">
+<div class="rx-header">
+<div class="rx-name">4. Temporal Lobe ADD</div>
+<div class="rx-type">TYPE 4</div>
+</div>
+<div class="rx-grid">
+<div class="rx-label">Symptoms</div>
+<div>Standard ADHD traits combined with temporal lobe issues like memory problems, quick temper, aggression, learning difficulties, and mild paranoia. Brain scans reveal temporal lobe abnormalities and reduced prefrontal cortex activity.</div>
+<div class="rx-label">Optimal Treatment Algorithm</div>
+<div>
+<ul class="amh-list">
+<li>Calm neuronal overfiring with GABA support while addressing memory and mood.</li>
+<li>Start with supplements: GABA amino acid and magnesium (to reduce anxiety and irritability; note that many people are magnesium-deficient).</li>
+<li>For mood instability, prescribe anticonvulsant medications.</li>
+<li>Enhance learning and memory with ginkgo or vinpocetine supplements.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="rx-card">
+<div class="rx-header">
+<div class="rx-name">5. Limbic ADD</div>
+<div class="rx-type">TYPE 5</div>
+</div>
+<div class="rx-grid">
+<div class="rx-label">Symptoms</div>
+<div>ADHD symptoms overlapping with chronic low-level sadness (dysthymia-like), including moodiness, low energy, helplessness, guilt, and poor self-esteem. Caused by excessive limbic system activity (mood regulation) and decreased prefrontal cortex function.</div>
+<div class="rx-label">Optimal Treatment Algorithm</div>
+<div>
+<ul class="amh-list">
+<li>Boost dopamine and address mood through targeted interventions.</li>
+<li>Use supplements: DL-phenylalanine (DLPA), L-tyrosine, or SAMe to elevate mood and focus.</li>
+<li>Preferred medication: Wellbutrin to increase dopamine; alternatively, Imipramine.</li>
+<li>Support with exercise, fish oil, and a balanced diet to manage overall symptoms.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="rx-card">
+<div class="rx-header">
+<div class="rx-name">6. Ring of Fire ADD (also called "ADD Plus")</div>
+<div class="rx-type">TYPE 6</div>
+</div>
+<div class="rx-grid">
+<div class="rx-label">Symptoms</div>
+<div>Widespread brain overactivity without prefrontal underactivity, leading to sensitivity to stimuli (noise, light, touch), mean or unpredictable behavior, rapid speech, anxiety, and fearfulness. Brain imaging shows a "ring" of hyperactivity across the cortex.</div>
+<div class="rx-label">Optimal Treatment Algorithm</div>
+<div>
+<ul class="amh-list">
+<li>Calm overall hyperactivity by enhancing GABA and serotonin; avoid stimulants alone as they may exacerbate symptoms.</li>
+<li>Begin with an elimination diet to rule out allergies or sensitivities.</li>
+<li>Add supplements: GABA, 5-HTP, and L-tyrosine for balance.</li>
+<li>If medications are required, use anticonvulsants or blood pressure drugs like guanfacine or clonidine to reduce overactivity.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="rx-card">
+<div class="rx-header">
+<div class="rx-name">7. Anxious ADD</div>
+<div class="rx-type">TYPE 7</div>
+</div>
+<div class="rx-grid">
+<div class="rx-label">Symptoms</div>
+<div>Core ADHD issues plus anxiety, tension, physical stress symptoms (e.g., headaches, stomachaches), worst-case thinking, and freezing under pressure. High basal ganglia activity (which produces dopamine) distinguishes it from other types.</div>
+<div class="rx-label">Optimal Treatment Algorithm</div>
+<div>
+<ul class="amh-list">
+<li>Promote relaxation and boost GABA and dopamine without increasing anxiety.</li>
+<li>Avoid stimulants in isolation, as they can worsen anxiety.</li>
+<li>Start with calming supplements: L-theanine, relora, magnesium, or holy basil.</li>
+<li>Prescribe tricyclic antidepressants like imipramine or desipramine to lower anxiety.</li>
+<li>Incorporate neurofeedback to target prefrontal cortex and reduce anxiety responses.</li>
+</ul>
+</div>
+</div>
+</div>
+<h3 id="references">References</h3>
+<ol class="ref-list"><li>Amen Clinics. "7 Types of ADHD." <a href="https://www.amenclinics.com/conditions/adhd-add/" rel="noopener" target="_blank">https://www.amenclinics.com</a></li><li>Centers for Disease Control and Prevention (CDC). "ADHD Diagnosis." <a href="https://www.cdc.gov/adhd/diagnosis/index.html" rel="noopener" target="_blank">https://www.cdc.gov</a></li><li>National Center for Complementary and Integrative Health (NCCIH). "ADHD: In Depth." <a href="https://www.nccih.nih.gov/health/adhd" rel="noopener" target="_blank">https://www.nccih.nih.gov</a></li><li>Mayo Clinic. "Adult ADHD: Diagnosis &amp; Treatment." <a href="https://www.mayoclinic.org/diseases-conditions/adult-adhd/diagnosis-treatment/drc-20350883" rel="noopener" target="_blank">https://www.mayoclinic.org</a></li><li>ADDitude Magazine. "Integrative Medicine and ADHD." <a href="https://www.additudemag.com/" rel="noopener" target="_blank">https://www.additudemag.com</a>
+</li></ol>
 
-      <div class="rx-card">
-        <div class="rx-header">
-          <div class="rx-name">1. Classic ADD</div>
-          <div class="rx-type">TYPE 1</div>
+      <footer class="amh-footer">
+        <div class="amh-disclaimer medical-disclaimer">
+          <p><strong>Medical disclaimer:</strong> The information on this page is provided for general educational purposes only and is not medical advice. It is not intended to diagnose, treat, cure, or prevent any disease, and it does not establish a physician–patient relationship.</p>
+          <p>Do not apply this information to your specific situation without the oversight of a qualified clinician who can consider your full health history, medications, goals, preferences, and limitations. If you have urgent or severe symptoms, seek emergency care.</p>
+          <p style="margin: 0;"><strong>Copyright:</strong> © Dr. Bray at Archangel Michael Health <span id="amh-year">2025</span></p>
         </div>
-        <div class="rx-grid">
-          <div class="rx-label">Symptoms</div>
-          <div>Inattentiveness, distractibility, hyperactivity, disorganization, and impulsivity. Brain imaging often shows decreased activity in the prefrontal cortex during concentration, along with reduced blood flow in the prefrontal cortex, cerebellum, and basal ganglia (linked to low dopamine).</div>
-          
-          <div class="rx-label">Optimal Treatment Algorithm</div>
-          <div>
-            <ul style="margin:0; padding-left:1em;">
-              <li>Focus on boosting dopamine to enhance focus and reduce hyperactivity.</li>
-              <li>Start with lifestyle changes: Increase physical exercise and consume a diet higher in protein.</li>
-              <li>Add supplements: Rhodiola, green tea, ginseng, or L-tyrosine (amino acid precursor to dopamine). Include fish oil with higher EPA than DHA for brain support.</li>
-              <li>If needed, prescribe stimulating medications like Ritalin, Adderall, Vyvanse, or Concerta to increase dopamine availability.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
 
-      <div class="rx-card">
-        <div class="rx-header">
-          <div class="rx-name">2. Inattentive ADD</div>
-          <div class="rx-type">TYPE 2</div>
+        <div class="amh-footer-meta">
+          <span><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine</span>
+          <span class="amh-dot">•</span>
+          <span><strong>Last updated:</strong> <span id="amh-last-updated">—</span></span>
         </div>
-        <div class="rx-grid">
-          <div class="rx-label">Symptoms</div>
-          <div>Short attention span, distractibility, procrastination, and disorganization without hyperactivity or impulsivity. Often presents as introversion or daydreaming. More common in females, with low prefrontal cortex activity and dopamine levels.</div>
-          
-          <div class="rx-label">Optimal Treatment Algorithm</div>
-          <div>
-            <ul style="margin:0; padding-left:1em;">
-              <li>Prioritize dopamine enhancement for better attention and motivation.</li>
-              <li>Implement a high-protein, lower-carbohydrate diet and regular exercise to support brain function.</li>
-              <li>Use supplements: L-tyrosine (taken on an empty stomach) as a starting point.</li>
-              <li>Escalate to stimulant medications such as Adderall, Vyvanse, or Concerta if supplements are insufficient.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="rx-card">
-        <div class="rx-header">
-          <div class="rx-name">3. Over-Focused ADD</div>
-          <div class="rx-type">TYPE 3</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">Symptoms</div>
-          <div>Core ADHD symptoms plus difficulty shifting attention, getting stuck in negative thoughts or behaviors, and inflexibility. Linked to deficiencies in serotonin and dopamine, with excessive activity in the anterior cingulate gyrus (the brain's "gear shifter").</div>
-          
-          <div class="rx-label">Optimal Treatment Algorithm</div>
-          <div>
-            <ul style="margin:0; padding-left:1em;">
-              <li>Target both serotonin and dopamine to promote flexibility and reduce rumination.</li>
-              <li>Begin with supplements: L-tryptophan, 5-HTP, saffron, or inositol to boost serotonin.</li>
-              <li>Avoid high-protein diets, as they may increase irritability; opt for balanced nutrition instead.</li>
-              <li>If supplements aren't enough, use antidepressants like Effexor, Pristiq, or Cymbalta (avoid stimulants alone, as they can heighten anxiety). Incorporate neurofeedback to train brain flexibility.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="rx-card">
-        <div class="rx-header">
-          <div class="rx-name">4. Temporal Lobe ADD</div>
-          <div class="rx-type">TYPE 4</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">Symptoms</div>
-          <div>Standard ADHD traits combined with temporal lobe issues like memory problems, quick temper, aggression, learning difficulties, and mild paranoia. Brain scans reveal temporal lobe abnormalities and reduced prefrontal cortex activity.</div>
-          
-          <div class="rx-label">Optimal Treatment Algorithm</div>
-          <div>
-            <ul style="margin:0; padding-left:1em;">
-              <li>Calm neuronal overfiring with GABA support while addressing memory and mood.</li>
-              <li>Start with supplements: GABA amino acid and magnesium (to reduce anxiety and irritability; note that many people are magnesium-deficient).</li>
-              <li>For mood instability, prescribe anticonvulsant medications.</li>
-              <li>Enhance learning and memory with ginkgo or vinpocetine supplements.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="rx-card">
-        <div class="rx-header">
-          <div class="rx-name">5. Limbic ADD</div>
-          <div class="rx-type">TYPE 5</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">Symptoms</div>
-          <div>ADHD symptoms overlapping with chronic low-level sadness (dysthymia-like), including moodiness, low energy, helplessness, guilt, and poor self-esteem. Caused by excessive limbic system activity (mood regulation) and decreased prefrontal cortex function.</div>
-          
-          <div class="rx-label">Optimal Treatment Algorithm</div>
-          <div>
-            <ul style="margin:0; padding-left:1em;">
-              <li>Boost dopamine and address mood through targeted interventions.</li>
-              <li>Use supplements: DL-phenylalanine (DLPA), L-tyrosine, or SAMe to elevate mood and focus.</li>
-              <li>Preferred medication: Wellbutrin to increase dopamine; alternatively, Imipramine.</li>
-              <li>Support with exercise, fish oil, and a balanced diet to manage overall symptoms.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="rx-card">
-        <div class="rx-header">
-          <div class="rx-name">6. Ring of Fire ADD (also called "ADD Plus")</div>
-          <div class="rx-type">TYPE 6</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">Symptoms</div>
-          <div>Widespread brain overactivity without prefrontal underactivity, leading to sensitivity to stimuli (noise, light, touch), mean or unpredictable behavior, rapid speech, anxiety, and fearfulness. Brain imaging shows a "ring" of hyperactivity across the cortex.</div>
-          
-          <div class="rx-label">Optimal Treatment Algorithm</div>
-          <div>
-            <ul style="margin:0; padding-left:1em;">
-              <li>Calm overall hyperactivity by enhancing GABA and serotonin; avoid stimulants alone as they may exacerbate symptoms.</li>
-              <li>Begin with an elimination diet to rule out allergies or sensitivities.</li>
-              <li>Add supplements: GABA, 5-HTP, and L-tyrosine for balance.</li>
-              <li>If medications are required, use anticonvulsants or blood pressure drugs like guanfacine or clonidine to reduce overactivity.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="rx-card">
-        <div class="rx-header">
-          <div class="rx-name">7. Anxious ADD</div>
-          <div class="rx-type">TYPE 7</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">Symptoms</div>
-          <div>Core ADHD issues plus anxiety, tension, physical stress symptoms (e.g., headaches, stomachaches), worst-case thinking, and freezing under pressure. High basal ganglia activity (which produces dopamine) distinguishes it from other types.</div>
-          
-          <div class="rx-label">Optimal Treatment Algorithm</div>
-          <div>
-            <ul style="margin:0; padding-left:1em;">
-              <li>Promote relaxation and boost GABA and dopamine without increasing anxiety.</li>
-              <li>Avoid stimulants in isolation, as they can worsen anxiety.</li>
-              <li>Start with calming supplements: L-theanine, relora, magnesium, or holy basil.</li>
-              <li>Prescribe tricyclic antidepressants like imipramine or desipramine to lower anxiety.</li>
-              <li>Incorporate neurofeedback to target prefrontal cortex and reduce anxiety responses.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <h3 id="references">References</h3>
-      <p>
-        1. Amen Clinics. "7 Types of ADHD." <a href="https://www.amenclinics.com/conditions/adhd-add/" target="_blank" rel="noopener">https://www.amenclinics.com</a><br>
-        2. Centers for Disease Control and Prevention (CDC). "ADHD Diagnosis." <a href="https://www.cdc.gov/adhd/diagnosis/index.html" target="_blank" rel="noopener">https://www.cdc.gov</a><br>
-        3. National Center for Complementary and Integrative Health (NCCIH). "ADHD: In Depth." <a href="https://www.nccih.nih.gov/health/adhd" target="_blank" rel="noopener">https://www.nccih.nih.gov</a><br>
-        4. Mayo Clinic. "Adult ADHD: Diagnosis & Treatment." <a href="https://www.mayoclinic.org/diseases-conditions/adult-adhd/diagnosis-treatment/drc-20350883" target="_blank" rel="noopener">https://www.mayoclinic.org</a><br>
-        5. ADDitude Magazine. "Integrative Medicine and ADHD." <a href="https://www.additudemag.com/" target="_blank" rel="noopener">https://www.additudemag.com</a>
-      </p>
-
+      </footer>
     </div>
-
-    <footer>
-      <div class="medical-disclaimer">
-        <p><strong>Medical disclaimer:</strong> The information on this page is provided for general educational purposes only and is not medical advice. It is not intended to diagnose, treat, cure, or prevent any disease, and it does not establish a physician–patient relationship.</p>
-        <p>Do not apply this information to your specific situation without the oversight of a qualified clinician who can consider your full health history, medications, goals, preferences, and limitations. If you have urgent or severe symptoms, seek emergency care.</p>
-        <p style="margin: 0;"><strong>Copyright:</strong> © Dr. Bray at Archangel Michael Health 2025</p>
-      </div>
-
-      <p><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine</p>
-    </footer>
   </div>
 
   <script>
     (function () {
+      // ---- Last updated + year ----
+      var yearEl = document.getElementById("amh-year");
+      if (yearEl) {
+        try { yearEl.textContent = String(new Date().getFullYear()); } catch (e) {}
+      }
+
+      var updatedEl = document.getElementById("amh-last-updated");
+      if (updatedEl) {
+        var lm = document.lastModified; // usually reflects server file Last-Modified (works well on GitHub Pages)
+        var d = lm ? new Date(lm) : null;
+        if (d && !isNaN(d.getTime())) {
+          var yyyy = d.getFullYear();
+          var mm = String(d.getMonth() + 1).padStart(2, "0");
+          var dd = String(d.getDate()).padStart(2, "0");
+          updatedEl.textContent = yyyy + "-" + mm + "-" + dd;
+        } else {
+          updatedEl.textContent = "—";
+        }
+      }
+
+      // ---- TOC scrolling (supports both anchor links and data-scroll buttons) ----
       function scrollToId(id) {
         var el = document.getElementById(id);
         if (!el) return;
@@ -529,12 +496,77 @@
 
       document.addEventListener("click", function (e) {
         var btn = e.target.closest(".toc-btn[data-scroll]");
-        if (!btn) return;
-        e.preventDefault();
-        var target = btn.getAttribute("data-scroll");
-        if (target) scrollToId(target);
+        if (btn) {
+          e.preventDefault();
+          scrollToId(btn.getAttribute("data-scroll"));
+          return;
+        }
+
+        var link = e.target.closest('.toc a[href^="#"]');
+        if (link) {
+          var hash = link.getAttribute("href");
+          var target = hash && hash.length > 1 ? hash.slice(1) : null;
+          if (!target) return;
+          e.preventDefault();
+          scrollToId(target);
+          history.replaceState(null, "", hash);
+        }
+      });
+
+      // ---- Download PDF using html2pdf.js ----
+      var btn = document.getElementById("downloadPdfBtn");
+      if (!btn) return;
+
+      function safeFilename(title) {
+        return (title || "patient-guide")
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/(^-|-$)/g, "");
+      }
+
+      btn.addEventListener("click", function () {
+        if (typeof html2pdf === "undefined") {
+          alert("PDF generator is still loading. Please try again in a moment, or use Print / Save as PDF.");
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = "Preparing PDF...";
+
+        var title = (document.getElementById("page-title") && document.getElementById("page-title").textContent) || "Patient Guide";
+        var filename = safeFilename(title) + ".pdf";
+
+        // Clone content for PDF and remove UI elements
+        var source = document.getElementById("pdf-root").cloneNode(true);
+        source.querySelectorAll(".no-print").forEach(function (el) { el.remove(); });
+
+        var wrapper = document.createElement("div");
+        wrapper.style.background = "#ffffff";
+        wrapper.appendChild(source);
+
+        var opt = {
+          margin: [0.5, 0.5, 0.6, 0.5], // inches
+          filename: filename,
+          image: { type: "jpeg", quality: 0.98 },
+          html2canvas: { scale: 2, useCORS: true, letterRendering: true },
+          jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+          pagebreak: { mode: ["css", "legacy"] }
+        };
+
+        html2pdf()
+          .set(opt)
+          .from(wrapper)
+          .save()
+          .catch(function (err) {
+            console.error(err);
+            alert("Could not generate the PDF in this browser. Please use Print / Save as PDF.");
+          })
+          .finally(function () {
+            btn.disabled = false;
+            btn.textContent = "Download PDF";
+          });
       });
     })();
   </script>
 </body>
-  </html>
+</html>
