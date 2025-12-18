@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Test Patient Education Page | Archangel Michael Health</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Patient Education | Archangel Michael Health</title>
 
+  <!-- Shared stylesheet (GitHub Pages) -->
   <link rel="stylesheet" href="https://docbraymd.github.io/amh/style.css" />
 
+  <!-- Minimal page-local styles for logo + action buttons + print behavior -->
   <style>
     /* Header logo */
     .amh-logo-wrap{
@@ -55,42 +57,42 @@
     }
     .no-print{ display:block; }
 
-    /* --- PRINT STYLES: Low Profile Header for Ctrl+P --- */
+    /* Print: hide action UI; remove background gradients for clean PDF */
     @media print{
       .no-print{ display:none !important; }
       body{ background:#fff !important; }
       .main-container{ margin:0 !important; box-shadow:none !important; border-radius:0 !important; }
-      
-      /* Force header to be low-profile (white bg, black text, border) */
-      header{ background:#fff !important; color:#000 !important; border-bottom:2px solid #333 !important; padding: 10px 18px !important; }
-      header h2{ opacity:1 !important; color:#333 !important; }
+      header{ background:#fff !important; color:#000 !important; border-bottom:2px solid #333 !important; }
+      header h2{ opacity:1 !important; }
       .doctor-tag{ background:#fff !important; color:#000 !important; border:1px solid #333 !important; }
-      
-      /* Force logo to be small */
-      .amh-logo{ filter:none !important; width: 60px !important; height:auto !important; }
-      
+      .amh-logo{ filter:none !important; }
       a{ color:#000 !important; text-decoration:underline !important; }
     }
   </style>
 
+  <!-- html2pdf for one-click PDF download -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 
 <body>
   <div class="main-container" id="pdf-root" role="document">
     <header>
+      <!-- Logo -->
       <div class="amh-logo-wrap">
         <img class="amh-logo" src="https://docbraymd.github.io/amh/AMHLogo.png" alt="Archangel Michael Health logo" />
       </div>
 
-      <div class="doctor-tag">Dr. Bray | Archangel Michael Health</div>
-      
-      <h1 id="page-title">Test Page Title</h1>
-      
-      <h2>A Patient Guide to Lifestyle, Integrative and Conventional Treatment Options.</h2>
-      
+      <!-- Green pill: practice only -->
+      <div class="doctor-tag">Archangel Michael Health</div>
+
+      <h1 id="page-title">Condition Title</h1>
+
+      <!-- Shorter subtitle -->
+      <h2>Patient Guide: Lifestyle, Integrative &amp; Conventional Care</h2>
+
       <div class="byline">by Christopher L. Bray MD PhD</div>
 
+      <!-- Buttons -->
       <div class="action-bar no-print" aria-label="Actions">
         <button class="amh-btn secondary" type="button" onclick="window.print()">
           Print / Save as PDF
@@ -103,53 +105,56 @@
 
     <div class="content-body">
       <p>
-        This is a reusable template intended to render cleanly inside GoDaddy’s custom-code environment while maintaining
-        a consistent “house style” across all patient education pages.
+        Replace this intro with a concise explanation of what this condition is, why it matters, and how this guide is structured.
+        Avoid inline links; place references at the end.
       </p>
 
       <div class="toc no-print" aria-label="On this page">
         <h4>On this page</h4>
         <ul>
-          <li><button type="button" class="toc-btn" data-scroll="section-1">1. Overview and key points</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="section-2">2. Symptoms and red flags</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="section-3">3. Diagnosis and what to test</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="section-4">4. Treatment options</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="section-5">5. Action plan and tracking</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="references">References</button></li>
+          <li><a href="#overview">Overview and key points</a></li>
+          <li><a href="#symptoms">Symptoms and red flags</a></li>
+          <li><a href="#diagnosis">Diagnosis and what to test</a></li>
+          <li><a href="#drivers">Root causes and contributing factors</a></li>
+          <li><a href="#plan">Step-by-step improvement plan</a></li>
+          <li><a href="#treatments">Conventional treatments</a></li>
+          <li><a href="#integrative">Integrative options</a></li>
+          <li><a href="#costs">Cost considerations</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#references">References</a></li>
         </ul>
       </div>
 
-      <h3 id="section-1">1. Overview and key points</h3>
+      <h3 id="overview">Overview and key points</h3>
       <p>
-        Use this section for the condition overview: what it is, why it matters, common misconceptions, and what usually
-        works first. Avoid inline links; place references at the end.
+        Provide a high-yield overview here. For sophisticated readers: include core physiology/pathophysiology in plain medical language.
       </p>
       <ul class="symptom-list">
-        <li><strong>Key point:</strong> Brief, high-yield point written in patient-accessible medical language.</li>
-        <li><strong>Key point:</strong> Add risks/benefits framing when patients must make tradeoffs.</li>
-        <li><strong>Key point:</strong> Include “when to escalate care” language.</li>
+        <li><strong>Key point:</strong> What matters most clinically and practically.</li>
+        <li><strong>Key point:</strong> Common misconceptions and how to avoid them.</li>
+        <li><strong>Key point:</strong> When to escalate care and why.</li>
       </ul>
 
-      <h3 id="section-2">2. Symptoms and red flags</h3>
+      <h3 id="symptoms">Symptoms and red flags</h3>
       <h4>Common symptoms</h4>
       <ul class="symptom-list">
-        <li>Symptom 1 (add short description)</li>
-        <li>Symptom 2 (add short description)</li>
-        <li>Symptom 3 (add short description)</li>
+        <li>Symptom 1 (1–2 lines of context)</li>
+        <li>Symptom 2 (1–2 lines of context)</li>
+        <li>Symptom 3 (1–2 lines of context)</li>
       </ul>
 
       <div class="alert-box">
-        <h4>Urgent guidance (red flags)</h4>
+        <h4>Red flags (seek urgent evaluation)</h4>
         <p>
-          List symptoms that warrant urgent evaluation or emergency care (tailor per condition).
+          List urgent symptoms and what to do (urgent care vs ER vs same-day physician contact), tailored to the condition.
         </p>
       </div>
 
-      <h3 id="section-3">3. Diagnosis and what to test</h3>
+      <h3 id="diagnosis">Diagnosis and what to test</h3>
       <div class="clinical-note">
         <h4>Clinical note</h4>
         <p>
-          Use this block for nuance: overlapping conditions, common pitfalls, and how diagnosis changes management.
+          Add nuance: overlapping conditions, why correct diagnosis matters, and what a clinician is trying to rule in/out.
         </p>
       </div>
 
@@ -159,52 +164,55 @@
           <div class="rx-type">DIAGNOSTICS</div>
         </div>
         <div class="rx-grid">
-          <div class="rx-label">High-yield history</div>
-          <div>Key questions that change management.</div>
+          <div class="rx-label">History</div>
+          <div>Key questions that change management decisions.</div>
 
-          <div class="rx-label">Core testing</div>
-          <div>Minimum useful tests and what they show.</div>
+          <div class="rx-label">Exam</div>
+          <div>High-yield exam findings and what they imply.</div>
+
+          <div class="rx-label">Core tests</div>
+          <div>Minimum useful tests; what they show; common limitations.</div>
 
           <div class="rx-label">When to expand</div>
-          <div>Additional tests only if they change next-step decisions.</div>
-
-          <div class="rx-label">Limitations</div>
-          <div>False positives/negatives, confounders, and interpretation pitfalls.</div>
+          <div>Additional testing only if results will change next steps.</div>
         </div>
       </div>
 
-      <h3 id="section-4">4. Treatment options</h3>
+      <h3 id="drivers">Root causes and contributing factors</h3>
       <p>
-        Use RX cards for conventional medications, lifestyle changes, and integrative options. Keep dosing non-prescriptive
-        (general patterns), and include safety/interaction highlights.
+        Discuss lifestyle factors (sleep, nutrition, activity, stress physiology), exposures/irritants, comorbidities,
+        medications, and environmental contributors. Emphasize what is modifiable.
+      </p>
+      <ul class="symptom-list">
+        <li><strong>Sleep:</strong> Mechanisms, how to assess, practical first steps.</li>
+        <li><strong>Nutrition:</strong> Common patterns that worsen/improve symptoms; realistic adjustments.</li>
+        <li><strong>Stress physiology:</strong> Autonomic patterns; actionable interventions.</li>
+        <li><strong>Environment/exposures:</strong> Triggers and mitigation strategies.</li>
+      </ul>
+
+      <h3 id="plan">Step-by-step improvement plan</h3>
+      <div class="success-box">
+        <h4>What “better” looks like</h4>
+        <p>
+          Define measurable improvement: symptom frequency/severity, function, sleep, objective metrics when appropriate.
+        </p>
+      </div>
+
+      <ul class="symptom-list">
+        <li><strong>Weeks 0–2:</strong> Foundations + baseline tracking.</li>
+        <li><strong>Weeks 2–6:</strong> Add one targeted intervention at a time; reassess weekly.</li>
+        <li><strong>Weeks 6+:</strong> Adjust, consider selective testing, escalate if not improving.</li>
+      </ul>
+
+      <h3 id="treatments">Conventional treatments</h3>
+      <p>
+        Provide standard-of-care options with mechanism, typical usage patterns (non-prescriptive), common side effects, serious risks,
+        monitoring needs, and cost ranges (generic vs brand).
       </p>
 
       <div class="rx-card">
         <div class="rx-header">
-          <div class="rx-name">Lifestyle intervention</div>
-          <div class="rx-type">FOUNDATION</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">What it is</div>
-          <div>Sleep, nutrition, exercise, trigger reduction, stress physiology.</div>
-
-          <div class="rx-label">How it works</div>
-          <div>Mechanism and expected timeframe to see benefit.</div>
-
-          <div class="rx-label">Typical usage</div>
-          <div>Concrete plan with frequency/duration and a tracking metric.</div>
-
-          <div class="rx-label">Cost</div>
-          <div>Free/low-cost vs paid options.</div>
-
-          <div class="rx-label">Risks</div>
-          <div>Who should consult a clinician before starting.</div>
-        </div>
-      </div>
-
-      <div class="rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Conventional medication</div>
+          <div class="rx-name">Medication class / option</div>
           <div class="rx-type">STANDARD</div>
         </div>
         <div class="rx-grid">
@@ -212,188 +220,137 @@
           <div>Medication class and typical role in care.</div>
 
           <div class="rx-label">How it works</div>
-          <div>Mechanism at an advanced-patient level.</div>
+          <div>Mechanism explained clearly.</div>
+
+          <div class="rx-label">Typical use</div>
+          <div>General patterns for when it’s used; what to monitor; when to re-evaluate.</div>
 
           <div class="rx-label">Side effects</div>
-          <div>Common vs serious; monitoring considerations.</div>
+          <div>Common vs serious; who needs caution.</div>
 
           <div class="rx-label">Cost</div>
-          <div>Generic vs brand; typical out-of-pocket range.</div>
-
-          <div class="rx-label">Notes</div>
-          <div>Who benefits most; who should avoid.</div>
+          <div>Typical out-of-pocket range; generic vs brand considerations.</div>
         </div>
       </div>
 
-      <div class="success-box">
-        <h4>Practical success criteria</h4>
-        <p>
-          Define what “better” looks like using measurable metrics (symptom frequency, rescue use, BP, weight trend,
-          sleep quality, etc.), and when to reassess.
-        </p>
+      <h3 id="integrative">Integrative options</h3>
+      <p>
+        Include evidence strength, plausible mechanisms, safety/interaction cautions, and realistic cost. Avoid overpromising.
+      </p>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Supplement / herb</div>
+          <div class="rx-type">INTEGRATIVE</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Rationale</div>
+          <div>Mechanism + evidence strength (and limitations).</div>
+
+          <div class="rx-label">Typical use</div>
+          <div>General patterns (non-prescriptive) and expected timeframe to benefit.</div>
+
+          <div class="rx-label">Safety</div>
+          <div>Interactions (e.g., anticoagulants, SSRIs), pregnancy, liver/kidney cautions.</div>
+
+          <div class="rx-label">Cost</div>
+          <div>Approx monthly range.</div>
+        </div>
       </div>
 
-      <h3 id="section-5">5. Action plan and tracking</h3>
+      <h3 id="costs">Cost considerations</h3>
       <ul class="symptom-list">
-        <li><strong>Week 1–2:</strong> establish baseline and implement foundational changes.</li>
-        <li><strong>Week 3–6:</strong> add one focused intervention at a time; track response weekly.</li>
-        <li><strong>Week 6+:</strong> adjust, consider targeted testing, escalate care if not improving.</li>
+        <li>Prioritize highest ROI interventions first (sleep, triggers, basics).</li>
+        <li>Prefer generics when appropriate; avoid duplicative supplements.</li>
+        <li>Reserve testing for decisions that change management.</li>
       </ul>
 
+      <h3 id="faq">FAQ</h3>
+      <h4>Question 1?</h4>
+      <p>Answer with clear boundaries and when to seek clinician oversight.</p>
+
+      <h4>Question 2?</h4>
+      <p>Answer…</p>
+
       <h3 id="references">References</h3>
-      <p>References should appear only here (not inline in the body).</p>
-    </div>
-
-    <footer>
-      <div class="medical-disclaimer">
-        <p><strong>Medical disclaimer:</strong> The information on this page is provided for general educational purposes only and is not medical advice. It is not intended to diagnose, treat, cure, or prevent any disease, and it does not establish a physician–patient relationship.</p>
-        <p>Do not apply this information to your specific situation without the oversight of a qualified clinician who can consider your full health history, medications, goals, preferences, and limitations. If you have urgent or severe symptoms, seek emergency care.</p>
-      </div>
-
-      <p><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine</p>
+      <p>Place references only here (not inline in the body).</p>
 
       <p class="references-block">
-        <strong>References &amp; Resources:</strong><br>
-        1. Reference title (URL): <a href="https://example.com" target="_blank" rel="noopener">https://example.com</a><br>
-        2. Reference title (URL): <a href="https://example.com" target="_blank" rel="noopener">https://example.com</a>
-      </p>
-    </footer>
+                <strong>References &amp; Resources:</strong><br />
+                1. Reference title (URL): <a href="https://example.com" target="_blank" rel="noopener">https://example.com</a><br />
+                2. Reference title (URL): <a href="https://example.com" target="_blank" rel="noopener">https://example.com</a>
+              </p>
+
+      <footer>
+        <div class="medical-disclaimer">
+          <p><strong>Medical disclaimer:</strong> The information on this page is provided for general educational purposes only and is not medical advice. It is not intended to diagnose, treat, cure, or prevent any disease, and it does not establish a physician–patient relationship.</p>
+          <p>Do not apply this information to your specific situation without the oversight of a qualified clinician who can consider your full health history, medications, goals, preferences, and limitations. If you have urgent or severe symptoms, seek emergency care.</p>
+          <p style="margin: 0;"><strong>Copyright:</strong> © Dr. Bray at Archangel Michael Health 2025</p>
+        </div>
+
+        <p><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine</p>
+
+        <p style="margin: 10px 0 0; font-size: 0.92rem; color: #555;"><strong>Last updated:</strong> 2025-12-18</p>
+
+</footer>
+    </div>
   </div>
 
   <script>
     (function () {
-      // 1. TOC Scrolling
-      function scrollToId(id) {
-        var el = document.getElementById(id);
-        if (!el) return;
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
-        if (typeof window.AMH_resizeIfFramed === "function") {
-          setTimeout(window.AMH_resizeIfFramed, 250);
-          setTimeout(window.AMH_resizeIfFramed, 900);
-        }
-      }
-
-      document.addEventListener("click", function (e) {
-        var btn = e.target.closest(".toc-btn[data-scroll]");
-        if (!btn) return;
-        e.preventDefault();
-        var target = btn.getAttribute("data-scroll");
-        if (target) scrollToId(target);
-      });
-
-      // 2. GoDaddy Iframe Resizing
-      function getDocHeight() {
-        var body = document.body;
-        var html = document.documentElement;
-        return Math.max(
-          body.scrollHeight, body.offsetHeight,
-          html.clientHeight, html.scrollHeight, html.offsetHeight
-        );
-      }
-      function resizeIfFramed() {
-        if (!window.frameElement) return;
-        var h = getDocHeight() + 24; // buffer
-        window.frameElement.style.height = h + "px";
-        window.frameElement.style.width = "100%";
-        window.frameElement.style.border = "0";
-        window.frameElement.setAttribute("scrolling", "no");
-      }
-      window.AMH_resizeIfFramed = resizeIfFramed;
-      window.addEventListener("load", resizeIfFramed);
-      window.addEventListener("resize", resizeIfFramed);
-      if (document.fonts && document.fonts.ready) {
-        document.fonts.ready.then(resizeIfFramed).catch(function(){});
-      }
-      if (window.ResizeObserver) {
-        var ro = new ResizeObserver(function () { resizeIfFramed(); });
-        ro.observe(document.documentElement);
-      } else {
-        setInterval(resizeIfFramed, 1200);
-      }
-
-      // 3. Advanced Low-Profile PDF Generator
+      // Download PDF using html2pdf.js
       var btn = document.getElementById("downloadPdfBtn");
-      if (btn) {
-        function safeFilename(title) {
-          return (title || "patient-guide")
-            .toLowerCase()
-            .replace(/[^a-z0-9]+/g, "-")
-            .replace(/(^-|-$)/g, "");
+      if (!btn) return;
+
+      function safeFilename(title) {
+        return (title || "patient-guide")
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/(^-|-$)/g, "");
+      }
+
+      btn.addEventListener("click", function () {
+        if (typeof html2pdf === "undefined") {
+          alert("PDF generator is still loading. Please try again in a moment, or use Print / Save as PDF.");
+          return;
         }
 
-        btn.addEventListener("click", function () {
-          if (typeof html2pdf === "undefined") {
-            alert("PDF generator is still loading. Please try again in a moment, or use Print / Save as PDF.");
-            return;
-          }
+        btn.disabled = true;
+        btn.textContent = "Preparing PDF...";
 
-          btn.disabled = true;
-          btn.textContent = "Preparing PDF...";
+        var title = (document.getElementById("page-title") && document.getElementById("page-title").textContent) || "Patient Guide";
+        var filename = safeFilename(title) + ".pdf";
 
-          var title = (document.getElementById("page-title") && document.getElementById("page-title").textContent) || "Patient Guide";
-          var filename = safeFilename(title) + ".pdf";
+        // Clone content for PDF and remove UI elements
+        var source = document.getElementById("pdf-root").cloneNode(true);
+        source.querySelectorAll(".no-print").forEach(function (el) { el.remove(); });
 
-          // Clone the DOM node to modify it safely without affecting the screen view
-          var source = document.getElementById("pdf-root").cloneNode(true);
-          
-          // Remove no-print elements from the clone (Buttons, TOC)
-          source.querySelectorAll(".no-print").forEach(function (el) { el.remove(); });
+        var wrapper = document.createElement("div");
+        wrapper.style.background = "#ffffff";
+        wrapper.appendChild(source);
 
-          // MANIPULATE THE CLONE HEADER FOR LOW PROFILE
-          // This ensures the downloaded PDF looks like the "Print" version (White bg, small logo)
-          var header = source.querySelector("header");
-          if(header) {
-            header.style.background = "#fff";
-            header.style.color = "#000";
-            header.style.borderBottom = "2px solid #333";
-            header.style.padding = "10px 18px";
-            header.style.marginTop = "0";
-          }
-          
-          var logo = source.querySelector(".amh-logo");
-          if(logo) {
-            logo.style.width = "60px"; // Force small size
-            logo.style.height = "auto";
-            logo.style.filter = "none";
-          }
-          
-          var h1 = source.querySelector("h1");
-          if(h1) h1.style.color = "#000";
-          
-          var h2 = source.querySelector("h2");
-          if(h2) {
-            h2.style.color = "#333";
-            h2.style.opacity = "1";
-          }
-          
-          // Wrap it to ensure background color persists
-          var wrapper = document.createElement("div");
-          wrapper.style.background = "#ffffff";
-          wrapper.appendChild(source);
+        var opt = {
+          margin: [0.5, 0.5, 0.6, 0.5], // inches
+          filename: filename,
+          image: { type: "jpeg", quality: 0.98 },
+          html2canvas: { scale: 2, useCORS: true, letterRendering: true },
+          jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+          pagebreak: { mode: ["css", "legacy"] }
+        };
 
-          var opt = {
-            margin: [0.5, 0.5, 0.6, 0.5], // inches
-            filename: filename,
-            image: { type: "jpeg", quality: 0.98 },
-            html2canvas: { scale: 2, useCORS: true, letterRendering: true },
-            jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
-            pagebreak: { mode: ["css", "legacy"] }
-          };
-
-          html2pdf()
-            .set(opt)
-            .from(wrapper)
-            .save()
-            .catch(function (err) {
-              console.error(err);
-              alert("Could not generate the PDF in this browser. Please use Print / Save as PDF.");
-            })
-            .finally(function () {
-              btn.disabled = false;
-              btn.textContent = "Download PDF";
-            });
-        });
-      }
+        html2pdf()
+          .set(opt)
+          .from(wrapper)
+          .save()
+          .catch(function (err) {
+            console.error(err);
+            alert("Could not generate the PDF in this browser. Please use Print / Save as PDF.");
+          })
+          .finally(function () {
+            btn.disabled = false;
+            btn.textContent = "Download PDF";
+          });
+      });
     })();
   </script>
 </body>
