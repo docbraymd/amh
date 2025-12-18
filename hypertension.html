@@ -7,143 +7,6 @@
 
   <!-- Shared stylesheet (recommended to publish as .css) -->
   <link rel="stylesheet" href="https://docbraymd.github.io/amh/style_v2.css" />
-
-  
-  <!-- Page-specific styles for Hypertension (tables + category color blocks) -->
-  <style>
-    /* ========= Hypertension page-specific components ========= */
-
-    /* BP category definition table (visual, color-coded) */
-    .bp-category-table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0;
-      margin: 18px 0 26px 0;
-      overflow: hidden;
-      border-radius: 10px;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.10);
-      border: 1px solid #e0e0e0;
-    }
-    .bp-category-table th,
-    .bp-category-table td {
-      padding: 14px 12px;
-      border-right: 4px solid #ffffff;
-      border-bottom: 4px solid #ffffff;
-      vertical-align: middle;
-      text-align: center;
-      font-size: 0.98rem;
-    }
-    .bp-category-table thead th {
-      background: #4a4a4a;
-      color: #ffffff;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      font-size: 0.92rem;
-    }
-    .bp-category-table thead th small {
-      display: block;
-      text-transform: none;
-      font-weight: 600;
-      opacity: 0.9;
-      letter-spacing: 0;
-      font-size: 0.85rem;
-      margin-top: 2px;
-    }
-    .bp-category-table .bp-cat {
-      text-align: left;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.3px;
-      font-size: 0.95rem;
-    }
-    .bp-andor { width: 80px; font-weight: 900; }
-
-    /* Color bands — aligned with common public-facing BP charts */
-    .bp-normal   td { background: #a7d63b; color: #111; }
-    .bp-elevated td { background: #f2e20b; color: #111; }
-    .bp-stage1   td { background: #f5b11b; color: #111; }
-    .bp-stage2   td { background: #c0392b; color: #fff; }
-    .bp-crisis   td { background: #8b1e1e; color: #fff; }
-
-    /* Ensure left column text stays readable */
-    .bp-stage2 .bp-cat, .bp-crisis .bp-cat { color: #fff; }
-
-    /* Lifestyle BP-lowering table (3-column, grouped) */
-    .lifestyle-table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0;
-      margin: 18px 0 26px 0;
-      border: 1px solid #e0e0e0;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.10);
-      background: #ffffff;
-    }
-    .lifestyle-table th,
-    .lifestyle-table td {
-      padding: 14px 14px;
-      border-bottom: 1px solid #eaeaea;
-      vertical-align: top;
-      font-size: 1.0rem;
-      text-align: left;
-    }
-    .lifestyle-table thead th {
-      background: #ffffff;
-      font-weight: 900;
-      border-bottom: 2px solid #2c3e50;
-      color: #2c3e50;
-    }
-    .lifestyle-table .lt-sbp {
-      width: 160px;
-      font-weight: 800;
-      color: #2c3e50;
-      white-space: nowrap;
-    }
-    .lifestyle-table .lt-change {
-      width: 240px;
-      font-weight: 900;
-      color: #2c3e50;
-    }
-
-    /* Group header rows */
-    .lifestyle-table .lt-group td {
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.7px;
-      font-size: 0.92rem;
-      color: #ffffff;
-      border-bottom: none;
-      padding: 10px 14px;
-    }
-    .lt-manage-weight td { background: #2f4a7a; }
-    .lt-eat-better td    { background: #b71c1c; }
-    .lt-be-active td     { background: #0b5d4a; }
-    .lt-lower-alcohol td { background: #c7782a; }
-    .lt-manage-stress td { background: #6d4c2f; }
-
-    /* Row separators to mimic the “banded” chart look */
-    .lifestyle-table tbody tr.lt-row td {
-      border-bottom: 2px solid #ffffff;
-    }
-    .lifestyle-table tbody tr.lt-row:nth-child(even) td {
-      background: #fafafa;
-    }
-
-    /* Mobile: allow wrapping without breaking layout */
-    @media (max-width: 700px) {
-      .bp-category-table th, .bp-category-table td { font-size: 0.92rem; padding: 12px 10px; }
-      .bp-andor { width: 60px; }
-      .lifestyle-table thead { display: none; }
-      .lifestyle-table, .lifestyle-table tbody, .lifestyle-table tr, .lifestyle-table td { display: block; width: 100%; }
-      .lifestyle-table tr.lt-row { margin-bottom: 12px; border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden; }
-      .lifestyle-table td { border-bottom: 1px solid #eaeaea; }
-      .lifestyle-table td.lt-change::before { content: "Lifestyle change"; display: block; font-weight: 900; color: #666; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
-      .lifestyle-table td.lt-sbp::before { content: "Approx SBP lowering"; display: block; font-weight: 900; color: #666; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
-      .lifestyle-table td.lt-rec::before { content: "Recommendation"; display: block; font-weight: 900; color: #666; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
-    }
-  </style>
 <!-- html2pdf for one-click PDF download -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
@@ -180,11 +43,18 @@
         <h2>On this page</h2>
         <ul class="amh-list">
           <li><a href="#definitions">Definitions &amp; Measurement</a></li>
+          <li><a href="#why">Why Hypertension Matters (Organ Protection)</a></li>
+          <li><a href="#testing">Diagnostic Tests &amp; Monitoring</a></li>
+          <li><a href="#urgent">When to Seek Help (Urgent/Emergency)</a></li>
           <li><a href="#drivers">Root Causes &amp; Drivers</a></li>
           <li><a href="#lifestyle">Proven Lifestyle Modifications</a></li>
+          <li><a href="#sleep">Sleep Optimization</a></li>
+          <li><a href="#exercise">Exercise Prescription</a></li>
           <li><a href="#dash">The DASH Diet &amp; Potassium</a></li>
           <li><a href="#treatments">Conventional Treatments</a></li>
+          <li><a href="#meds">Medication Personalization &amp; Adherence</a></li>
           <li><a href="#integrative">Integrative Options</a></li>
+          <li><a href="#special">Special Populations</a></li>
           <li><a href="#plan">30-Day Action Plan</a></li>
           <li><a href="#references">References</a></li>
         </ul>
@@ -247,6 +117,115 @@
       <div class="clinical-note">
         <h4>Accurate measurement is critical</h4>
         <p>Use a validated upper-arm cuff. Avoid wrist cuffs. Follow the <strong>"Rule of 3s"</strong>: Sit quietly for 5 minutes. Take 3 readings, 1 minute apart. Discard the first. Average the last two. Do this twice daily for 7 days to get a true baseline.</p>
+      <h3 id="why">Why Hypertension Matters (Organ Protection)</h3>
+      <p>
+        Hypertension is often called “the silent killer” because you can feel well while microscopic injury accumulates in the background.
+        Over time, higher pressure accelerates <strong>arterial stiffening</strong>, promotes <strong>atherosclerosis</strong>, and forces the heart and kidneys
+        to function under chronic mechanical stress. The goal is not simply to “chase a number,” but to protect the brain, heart, kidneys, eyes,
+        and vascular system for decades.
+      </p>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">What hypertension damages (and how it shows up)</div>
+          <div class="rx-type">WHY THIS MATTERS</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Brain</div>
+          <div>Higher risk of stroke, “silent” small-vessel disease, and cognitive decline over time.</div>
+
+          <div class="rx-label">Heart</div>
+          <div>Left ventricular hypertrophy (thickened heart muscle), coronary disease, heart failure, atrial fibrillation.</div>
+
+          <div class="rx-label">Kidneys</div>
+          <div>Progressive loss of filtration (eGFR decline) and albumin leakage in urine (microalbuminuria).</div>
+
+          <div class="rx-label">Eyes</div>
+          <div>Hypertensive retinopathy—damage to delicate retinal vessels, sometimes causing vision changes.</div>
+
+          <div class="rx-label">Arteries</div>
+          <div>Endothelial dysfunction and plaque instability—raising risk of heart attack and peripheral artery disease.</div>
+        </div>
+      </div>
+
+      <div class="clinical-note">
+        <h4>Early control is compounding</h4>
+        <p>
+          Think in terms of “pressure-years.” Mild elevations sustained for years can be more harmful than brief spikes.
+          The earlier we normalize blood pressure and improve vascular biology (sleep, insulin sensitivity, inflammation, activity),
+          the more we reduce long-term risk.
+        </p>
+      </div>
+
+      <h3 id="testing">Diagnostic Tests &amp; Monitoring</h3>
+      <p>
+        We confirm the diagnosis, identify drivers, look for early organ stress, and choose treatments that fit your physiology and goals.
+        In many patients, <strong>home blood pressure monitoring</strong> is the most actionable tool because it separates true hypertension
+        from “white coat” elevation and provides rapid feedback when lifestyle changes are working.
+      </p>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Common tests (and why they matter)</div>
+          <div class="rx-type">WORKUP</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Basic metabolic panel</div>
+          <div>Electrolytes and kidney function (creatinine/eGFR). Also establishes a baseline before diuretics/ACEi/ARB therapy.</div>
+
+          <div class="rx-label">Urine albumin / creatinine</div>
+          <div>Detects early kidney stress and vascular injury even when creatinine is still normal.</div>
+
+          <div class="rx-label">Fasting glucose or A1c</div>
+          <div>Identifies insulin resistance/diabetes—a major driver of vascular dysfunction.</div>
+
+          <div class="rx-label">Lipid panel</div>
+          <div>Clarifies ASCVD risk and whether cholesterol management should be part of your plan.</div>
+
+          <div class="rx-label">TSH (selected patients)</div>
+          <div>Thyroid dysfunction can worsen blood pressure control and heart rhythm stability.</div>
+
+          <div class="rx-label">ECG (and sometimes echocardiogram)</div>
+          <div>Looks for LVH, prior silent injury, and rhythm issues. Echo is considered if long-standing hypertension or symptoms suggest cardiac strain.</div>
+        </div>
+      </div>
+
+      <div class="clinical-note">
+        <h4>When ambulatory monitoring is useful</h4>
+        <p>
+          <strong>24-hour ambulatory BP monitoring (ABPM)</strong> is the gold standard when diagnosis is uncertain or when blood pressure is resistant.
+          It helps identify white coat hypertension, masked hypertension (normal in clinic but high at home), and nocturnal hypertension (high at night),
+          which carries higher risk and may point toward sleep apnea or autonomic dysregulation.
+        </p>
+      </div>
+
+      <h3 id="urgent">Hypertensive Urgency, Emergency, and When to Seek Help</h3>
+      <p>
+        Not all high readings are emergencies—but some are. The key is the combination of the number <em>plus</em> symptoms and context.
+      </p>
+
+      <div class="alert-box">
+        <h4>Seek emergency care now</h4>
+        <ul class="amh-list symptom-list">
+          <li><strong>Chest pain, shortness of breath, fainting, or severe weakness</strong></li>
+          <li><strong>New neurologic symptoms</strong> (facial droop, one-sided weakness, trouble speaking, confusion)</li>
+          <li><strong>Severe headache</strong> with neurologic symptoms, stiff neck, or vision changes</li>
+          <li><strong>Repeated readings &gt; 180/120</strong> with any concerning symptoms</li>
+        </ul>
+        <p class="amh-muted amh-small">
+          If you get a very high reading at home, sit quietly for 5 minutes and repeat. If it remains very high or symptoms are present, treat it as urgent.
+        </p>
+      </div>
+
+      <div class="clinical-note">
+        <h4>Urgent (same-day) clinician call</h4>
+        <p>
+          If readings are repeatedly very high (for example, approaching crisis range) but you feel well, you may still need same-day guidance.
+          We will assess for secondary causes, medication issues, recent NSAID/decongestant use, alcohol withdrawal, stimulant exposure, and sleep deprivation.
+        </p>
+      </div>
+
+
       </div>
 
       <h3 id="drivers">Root Causes &amp; Drivers</h3>
@@ -343,9 +322,91 @@
             </tr>
           </tbody>
         </table>
+      <h3 id="sleep">Sleep Optimization &amp; Sleep Apnea Screening</h3>
+      <p>
+        Sleep is one of the highest-leverage (and most under-appreciated) blood pressure interventions. Short sleep, fragmented sleep,
+        alcohol-disrupted sleep, and untreated obstructive sleep apnea (OSA) all increase sympathetic tone, raise nighttime blood pressure,
+        and worsen insulin resistance.
+      </p>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Sleep checklist for blood pressure control</div>
+          <div class="rx-type">FOUNDATIONS</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Target</div>
+          <div>Most adults do best with <strong>7–9 hours</strong> of sleep opportunity nightly, with a consistent schedule.</div>
+
+          <div class="rx-label">Night routine</div>
+          <div>Dim lights 60 minutes before bed; avoid heavy meals late; reduce alcohol (it fragments sleep and raises BP).</div>
+
+          <div class="rx-label">Screens</div>
+          <div>Minimize bright screens at night. If unavoidable, use night mode and lower brightness.</div>
+
+          <div class="rx-label">Apnea clues</div>
+          <div>Loud snoring, witnessed apneas, choking/gasping, morning headaches, daytime sleepiness, resistant hypertension.</div>
+
+          <div class="rx-label">Next step</div>
+          <div>If OSA is likely, we can discuss home sleep testing. Treating OSA often improves blood pressure and daytime function.</div>
+        </div>
+      </div>
+
+      <h3 id="exercise">Exercise Prescription (Beginner to Advanced)</h3>
+      <p>
+        Exercise improves blood pressure through multiple pathways: better endothelial function, lower sympathetic tone, improved insulin sensitivity,
+        and healthier body composition. You do not need perfection—consistency is the main variable.
+      </p>
+
+      <div class="amh-card">
+        <h4>Practical starting points</h4>
+        <ul class="amh-list symptom-list">
+          <li><strong>After-meal walks:</strong> 10 minutes after lunch and dinner is an excellent “minimum viable” plan that improves glucose control and BP.</li>
+          <li><strong>Progressive aerobic plan:</strong> Start with 10–15 minutes/day and build toward 150 minutes/week (or more if tolerated).</li>
+          <li><strong>Resistance training:</strong> 2–3 days/week full-body. This supports long-term BP and metabolic health.</li>
+          <li><strong>Isometrics:</strong> Wall sits or handgrip protocols 3 days/week can help some patients who cannot run or have joint limitations.</li>
+        </ul>
+        <p class="amh-muted amh-small">
+          If you have chest pain with exertion, unexplained shortness of breath, fainting, or known heart disease, we will tailor the plan and may recommend evaluation before vigorous training.
+        </p>
+      </div>
+
+      <div class="clinical-note">
+        <h4>Stimulants, decongestants, NSAIDs, and “hidden” BP raisers</h4>
+        <p>
+          Blood pressure can be pushed upward by common exposures: <strong>NSAIDs</strong> (ibuprofen/naproxen), stimulant medications, high-dose caffeine,
+          nicotine, certain decongestants, chronic high alcohol intake, licorice root, and sleep deprivation. If blood pressure is resistant, we systematically review these.
+        </p>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Tracking &amp; goal setting</div>
+          <div class="rx-type">BEHAVIOR</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">The metric</div>
+          <div>Track home BP (AM/PM), weight (weekly), and one lifestyle target at a time (e.g., sodium or steps).</div>
+
+          <div class="rx-label">SMART goals</div>
+          <div>Example: “Reduce restaurant meals from 5/week to 2/week for the next 14 days,” or “Walk 10 minutes after dinner 5 days/week.”</div>
+
+          <div class="rx-label">Feedback loop</div>
+          <div>We adjust based on data: if BP improves, we reinforce the winning behaviors; if not, we evaluate adherence, sleep, medications, and secondary causes.</div>
+        </div>
+      </div>
+
+
       </div>
 
       <h3 id="dash">The DASH Diet &amp; Sodium/Potassium Balance</h3>
+      <div class="clinical-note">
+        <h4>DASH guide (expanded)</h4>
+        <p>
+          This page includes a practical DASH overview. A dedicated DASH guide will be added separately at
+          <strong><a href="https://docbraymd.github.io/amh/dash.html" target="_blank" rel="noopener">DASH Guide</a></strong>.
+        </p>
+      </div>
 
       <div class="amh-card">
         <h4>The DASH diet: a plant-forward approach</h4>
@@ -494,6 +555,44 @@
 <div>Heart rate and blood pressure.</div>
 </div>
 </div>
+      <h3 id="meds">Medication Personalization &amp; Combination Therapy</h3>
+      <p>
+        Medications can be life-saving and organ-protective. The goal is to use the lowest effective regimen while we also address the upstream drivers.
+        In practice, many patients do best with <strong>two complementary medications at lower doses</strong> rather than a single medication pushed to a high dose.
+      </p>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">How we choose medications (high-level)</div>
+          <div class="rx-type">PERSONALIZED</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Diabetes / kidney disease</div>
+          <div>ACE inhibitors or ARBs are often favored for kidney protection when appropriate and tolerated, with lab monitoring for potassium and creatinine.</div>
+
+          <div class="rx-label">Older adults</div>
+          <div>Calcium channel blockers and thiazide-type diuretics are commonly effective; we also watch for orthostatic symptoms and dehydration.</div>
+
+          <div class="rx-label">Salt sensitivity</div>
+          <div>Many patients respond strongly to sodium reduction and diuretics; we also assess processed food exposure and hidden sodium.</div>
+
+          <div class="rx-label">Side-effect strategy</div>
+          <div>If a medication causes a problem (e.g., ACE-inhibitor cough), we typically switch classes rather than “pushing through.”</div>
+
+          <div class="rx-label">Adherence</div>
+          <div>Once-daily dosing, combination pills when appropriate, and home BP feedback are the most effective adherence tools.</div>
+        </div>
+      </div>
+
+      <div class="clinical-note">
+        <h4>Monitoring while on therapy</h4>
+        <p>
+          Many antihypertensives require periodic lab checks (especially ACE inhibitors/ARBs, diuretics, and mineralocorticoid antagonists).
+          If lifestyle changes rapidly lower blood pressure, medication doses may need supervised reduction to prevent dizziness or falls.
+        </p>
+      </div>
+
+
 
       <h3 id="integrative">Integrative Options</h3>
       <p>
@@ -548,10 +647,140 @@
 <div>Safe. Mild diuretic effect.</div>
 </div>
 </div>
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Nitric oxide support (food-first)</div>
+          <div class="rx-type">ENDOTHELIUM</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Foods</div>
+          <div>Arugula, spinach, beets, celery, and other nitrate-rich vegetables support nitric-oxide biology and vascular tone.</div>
+
+          <div class="rx-label">Timing</div>
+          <div>Many patients do best with these foods earlier in the day and around exercise. Consistency matters more than “dose.”</div>
+
+          <div class="rx-label">Cautions</div>
+          <div>If you use nitrate medications for angina or have low blood pressure episodes, we tailor this plan carefully.</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Nutraceutical options (selected patients)</div>
+          <div class="rx-type">ADJUNCT</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Omega-3 fatty acids</div>
+          <div>May support triglycerides, inflammation, and vascular function. Food-first (fatty fish) is preferred; supplements vary widely in quality.</div>
+
+          <div class="rx-label">CoQ10</div>
+          <div>Consider in selected patients, especially those with muscle symptoms on statins or those seeking mitochondrial support. Evidence suggests modest BP benefit in some.</div>
+
+          <div class="rx-label">L-citrulline / L-arginine</div>
+          <div>Supports nitric-oxide pathways in some individuals. We screen for interactions and avoid “stacking” with vasodilators without supervision.</div>
+
+          <div class="rx-label">Hawthorn (Crataegus)</div>
+          <div>Traditional cardiotonic used as an adjunct in some systems; should be supervised if you are on cardiac medications.</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Mind–body therapies</div>
+          <div class="rx-type">AUTONOMIC</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Yoga / Tai Chi</div>
+          <div>Can lower sympathetic tone, improve flexibility, and support consistency with movement—often helpful for stress-linked hypertension.</div>
+
+          <div class="rx-label">Biofeedback</div>
+          <div>Selected patients benefit from guided breathing and HRV-based training to reduce autonomic “overdrive.”</div>
+
+          <div class="rx-label">Practical start</div>
+          <div>Pick a simple routine you will do 4–5 days/week for 10–20 minutes. Consistency beats complexity.</div>
+        </div>
+      </div>
+
+      <div class="clinical-note">
+        <h4>Microbiome &amp; gut health (emerging)</h4>
+        <p>
+          The gut microbiome influences vascular inflammation and metabolic function. A practical approach is food-first:
+          fiber-rich plants, fermented foods as tolerated (e.g., yogurt/kefir, sauerkraut, kimchi), and minimizing ultra-processed foods.
+          Probiotic supplements can help some individuals, but effects are strain-specific and not universal.
+        </p>
+      </div>
+
+      <div class="clinical-note">
+        <h4>Acupuncture and manual therapies</h4>
+        <p>
+          Acupuncture may reduce stress and autonomic activation for some patients and can be used as an adjunct—not a replacement—for lifestyle
+          changes and medication when needed. If you pursue it, use a licensed practitioner and track objective BP response over 4–8 weeks.
+        </p>
+      </div>
+
+
 
       <div class="alert-box">
         <h4>A note on mouthwash</h4>
         <p>Consider limiting or avoiding frequent use of strong antiseptic/antibacterial mouthwashes (especially chlorhexidine-based), particularly if blood pressure is difficult to control. This is because some antiseptic rinses can suppress oral nitrate-reducing bacteria that support nitric-oxide biology and vascular tone. See Kapil et al. (open-access full text) here: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3605573/" target="_blank" rel="noopener">PMC3605573</a>.</p>
+      <h3 id="special">Special Populations &amp; Common Complex Scenarios</h3>
+      <p>
+        Blood pressure targets and medication choices can differ based on physiology, comorbidities, and safety concerns. Below are common scenarios
+        where personalization matters.
+      </p>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Pregnancy and postpartum</div>
+          <div class="rx-type">HIGH PRIORITY</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Why it matters</div>
+          <div>Hypertension in pregnancy increases risk of preeclampsia and requires urgent, obstetric-guided management.</div>
+
+          <div class="rx-label">Medication note</div>
+          <div>Some BP medications are not used in pregnancy (e.g., ACE inhibitors/ARBs). Management must be individualized.</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Older adults and orthostatic symptoms</div>
+          <div class="rx-type">SAFETY</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Issue</div>
+          <div>Over-treatment can cause dizziness and falls. We assess seated and standing BP and symptoms (lightheadedness, near-fainting).</div>
+
+          <div class="rx-label">Approach</div>
+          <div>Start low, go slow. Focus on steady control, hydration, and avoiding unnecessary BP-raising medications.</div>
+        </div>
+      </div>
+
+      <div class="rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Diabetes, metabolic syndrome, and CKD</div>
+          <div class="rx-type">ORGAN PROTECTION</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Driver</div>
+          <div>Insulin resistance and kidney stress amplify hypertension and vascular inflammation.</div>
+
+          <div class="rx-label">What we do</div>
+          <div>We typically prioritize home monitoring, kidney-safe nutrition, sodium awareness, and medication classes that protect kidneys when appropriate.</div>
+        </div>
+      </div>
+
+      <div class="clinical-note">
+        <h4>Resistant hypertension</h4>
+        <p>
+          If BP remains above target despite three medications (including a diuretic) or despite excellent lifestyle adherence, we reassess:
+          measurement technique, sodium exposure, sleep apnea, alcohol, medication interactions, and secondary causes (renal artery disease,
+          primary aldosteronism, thyroid disease). Many “resistant” cases become controllable after these drivers are addressed.
+        </p>
+      </div>
+
+
       </div>
 
       <h3 id="plan">Step-by-Step Improvement Plan</h3>
@@ -563,12 +792,41 @@
           <strong>Week 4+:</strong> Re-measure BP. If not at goal (&lt;130/80), we will discuss medication initiation or adjustment.
         </p>
       </div>
+      <div class="success-box">
+        <h4>Beyond 30 days: the maintenance phase (3–12 months)</h4>
+        <p>
+          After the first month, we shift from “reset” to durable habits and long-term organ protection.
+          Typical next steps include: (1) confirming your true baseline with home averages, (2) tightening the one or two interventions that produce the biggest BP impact for you
+          (sleep, sodium exposure, alcohol, weight, activity), (3) monitoring labs as needed based on medications/supplements, and (4) revisiting cardiovascular risk
+          factors (lipids, glucose control, inflammation) so that blood pressure is treated as one part of total vascular health.
+        </p>
+        <ul class="amh-list symptom-list">
+          <li><strong>Follow-up cadence:</strong> every 4–8 weeks early, then every 3–6 months once stable.</li>
+          <li><strong>Targets:</strong> individualized, but commonly &lt;130/80 for many patients when safe and tolerated.</li>
+          <li><strong>De-escalation:</strong> if lifestyle changes substantially lower BP, we may reduce medication under supervision to prevent hypotension.</li>
+        </ul>
+      </div>
+
+
 
       <h3 id="references">References</h3>
       <ol class="ref-list">
         <li>AHA BP Log: <a href="https://www.heart.org/-/media/files/health-topics/high-blood-pressure/my-blood-pressure-log.pdf" rel="noopener" target="_blank">Download PDF</a></li><li>AHA High Blood Pressure Tools: <a href="https://www.heart.org/en/health-topics/high-blood-pressure/find-high-blood-pressure-tools--resources" rel="noopener" target="_blank">Access Resources</a></li><li>Measuring Blood Pressure: <a href="https://www.heart.org/-/media/Files/Health-Topics/High-Blood-Pressure/How_to_Measure_Your_Blood_Pressure_Letter_Size.pdf" rel="noopener" target="_blank">Download Guide</a></li><li>AHA PREVENT Risk Calculator: <a href="https://professional.heart.org/en/guidelines-and-statements/about-prevent-calculator" rel="noopener" target="_blank">Online Calculator</a></li><li>Lifestyle Interventions: <a href="https://www.heart.org/-/media/Files/Health-Topics/High-Blood-Pressure/Steps-To-Improve-High-BP.pdf?sc_lang=en" rel="noopener" target="_blank">AHA Steps to Improve BP</a></li><li>Life's Essential 8: <a href="https://www.heart.org/en/healthy-living/healthy-lifestyle/lifes-essential-8" rel="noopener" target="_blank">Healthy Living Guide</a></li><li>Mayo Clinic Decision Aid: <a href="https://shareddecisions.mayoclinic.org/cvpreventiondecisionaid/" rel="noopener" target="_blank">Prevention Tool</a>
 </li>
-      </ol>
+      
+        <li>2017 ACC/AHA Guideline for the Prevention, Detection, Evaluation, and Management of High Blood Pressure in Adults. <a href="https://www.ahajournals.org/doi/10.1161/HYP.0000000000000065" target="_blank" rel="noopener">https://www.ahajournals.org/doi/10.1161/HYP.0000000000000065</a></li>
+        <li>American Heart Association — High Blood Pressure (patient overview). <a href="https://www.heart.org/en/health-topics/high-blood-pressure" target="_blank" rel="noopener">https://www.heart.org/en/health-topics/high-blood-pressure</a></li>
+        <li>American Heart Association — Understanding Blood Pressure Readings. <a href="https://www.heart.org/en/health-topics/high-blood-pressure/understanding-blood-pressure-readings" target="_blank" rel="noopener">https://www.heart.org/en/health-topics/high-blood-pressure/understanding-blood-pressure-readings</a></li>
+        <li>NHLBI — DASH Eating Plan (National Institutes of Health). <a href="https://www.nhlbi.nih.gov/education/dash-eating-plan" target="_blank" rel="noopener">https://www.nhlbi.nih.gov/education/dash-eating-plan</a></li>
+        <li>USPSTF — Screening for Hypertension in Adults (recommendation statement). <a href="https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/hypertension-in-adults-screening" target="_blank" rel="noopener">https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/hypertension-in-adults-screening</a></li>
+        <li>AHA Scientific Statement — Resistant Hypertension (overview and approach). <a href="https://www.ahajournals.org/doi/10.1161/HYP.0000000000000084" target="_blank" rel="noopener">https://www.ahajournals.org/doi/10.1161/HYP.0000000000000084</a></li>
+        <li>National Heart, Lung, and Blood Institute — Sleep and Heart Health (sleep and BP background). <a href="https://www.nhlbi.nih.gov/health/sleep" target="_blank" rel="noopener">https://www.nhlbi.nih.gov/health/sleep</a></li>
+        <li>NCCIH (NIH) — Meditation: In Depth. <a href="https://www.nccih.nih.gov/health/meditation-in-depth" target="_blank" rel="noopener">https://www.nccih.nih.gov/health/meditation-in-depth</a></li>
+        <li>NCCIH (NIH) — Yoga: In Depth. <a href="https://www.nccih.nih.gov/health/yoga-in-depth" target="_blank" rel="noopener">https://www.nccih.nih.gov/health/yoga-in-depth</a></li>
+        <li>NCCIH (NIH) — Acupuncture: In Depth. <a href="https://www.nccih.nih.gov/health/acupuncture-in-depth" target="_blank" rel="noopener">https://www.nccih.nih.gov/health/acupuncture-in-depth</a></li>
+        <li>CDC — High Blood Pressure Facts. <a href="https://www.cdc.gov/bloodpressure/facts.htm" target="_blank" rel="noopener">https://www.cdc.gov/bloodpressure/facts.htm</a></li>
+        <li>AHA — Life’s Essential 8. <a href="https://www.heart.org/en/healthy-living/healthy-lifestyle/lifes-essential-8" target="_blank" rel="noopener">https://www.heart.org/en/healthy-living/healthy-lifestyle/lifes-essential-8</a></li>
+</ol>
 
       <footer class="amh-footer">
         <div class="amh-disclaimer medical-disclaimer">
