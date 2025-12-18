@@ -267,143 +267,284 @@ a:hover{ text-decoration: underline; }
   h1, h2, h3{ break-after: avoid; page-break-after: avoid; }
   p, li{ orphans: 3; widows: 3; }
 }
-/* --------------------------------------------------------------------------
-   Compatibility + Template helpers
-   Goal: allow pages to keep content-focused HTML while style.css controls layout
-   -------------------------------------------------------------------------- */
 
-/* Legacy container aliases (safe) */
-.main-container{ /* alias of .amh-page */
+/* =========================================================
+   Legacy / Default Template (ADHD-style) component classes
+   Goal: keep HTML content-centric, move presentation here.
+   ========================================================= */
+
+.main-container{
   width: min(980px, calc(100% - 32px));
   margin: 18px auto 28px;
   background: var(--white);
+  border: 1px solid var(--border);
   border-radius: 18px;
   box-shadow: var(--shadow);
   overflow: hidden;
 }
 
-.content-body{ /* alias of .amh-content */
-  padding: 18px;
-  background: var(--white);
+/* Header (no class in adhd.html) */
+.main-container > header{
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent-indigo) 0%, var(--primary-1) 0%, var(--primary-2) 100%);
+  padding: 18px 18px 16px;
+}
+.main-container > header h1{
+  margin: 10px 0 6px;
+  font-size: clamp(1.65rem, 2.6vw, 2.2rem);
+  line-height: 1.12;
+}
+.main-container > header h2{
+  margin: 0 0 10px;
+  font-weight: 500;
+  opacity: .92;
+  font-size: 1.05rem;
+  line-height: 1.35;
+  max-width: 72ch;
+}
+.byline{
+  margin: 0;
+  opacity: .92;
+  max-width: 72ch;
+  font-size: .98rem;
 }
 
-/* Centered header variant (matches existing template feel) */
-.amh-header-centered{
-  text-align: center;
-}
-.amh-header-centered h1,
-.amh-header-centered h2,
-.amh-header-centered .byline{
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.amh-logo-wrap{
-  display: flex;
-  justify-content: center;
-  margin: 0 0 6px;
-}
-.amh-logo-wrap .amh-logo{
-  width: 110px;
-  height: auto;
-  background: none;
-  padding: 0;
-  border-radius: 0;
-}
-
-/* Practice pill (template) */
+/* Green pill in header */
 .doctor-tag{
   display: inline-block;
-  background: var(--accent-teal);
+  background: rgba(22,160,133,0.95);
   color: #fff;
-  padding: 8px 14px;
+  padding: 8px 12px;
   border-radius: 999px;
   font-weight: 800;
-  margin: 10px auto 8px;
+  letter-spacing: .2px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.18);
 }
 
-/* Action buttons row (template) */
-.action-bar{
+/* Optional logo + action bar (used in template pages) */
+.amh-logo-wrap{
+  width: 100%;
   display: flex;
   justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 14px;
+  align-items: center;
+  padding: 6px 0 10px;
+}
+.amh-logo{
+  max-height: 64px;
+  width: auto;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.35));
+}
+.action-bar{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top: 10px;
 }
 
-/* Button variants: support both “plain” .amh-btn and .amh-btn.secondary */
-.amh-btn{
-  background: var(--accent-teal);
-  color: #fff;
-  box-shadow: 0 10px 18px rgba(102,126,234,0.35);
+/* Main content typography */
+.content-body{
+  padding: 18px;
+  background: var(--white);
+  color: var(--text);
 }
-.amh-btn:hover{
-  transform: translateY(-1px);
+.content-body h3{
+  margin: 18px 0 10px;
+  color: var(--primary-1);
+  font-size: 1.18rem;
 }
-.amh-btn.secondary{
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.55);
-  color: #fff;
-  box-shadow: none;
+.content-body h4{
+  margin: 14px 0 8px;
+  color: var(--primary-1);
+  font-size: 1.02rem;
 }
-.amh-btn.secondary:hover{
-  background: rgba(255,255,255,0.12);
-  border-color: rgba(255,255,255,0.25);
-  transform: translateY(-1px);
+.content-body p{
+  margin: 0 0 12px;
+  line-height: 1.6;
 }
-.amh-btn:disabled{
-  opacity: .55;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
+.content-body a{
+  color: var(--accent-indigo);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.content-body a:hover{
+  filter: brightness(1.05);
 }
 
-/* TOC block: when combined with .amh-card it will look consistent; add minor polish */
+/* Table of contents */
+.toc{
+  margin: 14px 0 18px;
+  padding: 14px;
+  background: var(--bg-verylight);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
 .toc h4{
-  margin-top: 0;
+  margin: 0 0 10px;
 }
-.toc a{
-  display: inline-block;
-  padding: 2px 0;
+.toc ul{
+  margin: 0;
+  padding-left: 18px;
+}
+.toc li{
+  margin: 6px 0;
 }
 
-/* Structured “grid cards” inside content (used heavily on ADHD page) */
+/* Button-style TOC items (avoids hash navigation issues) */
+.toc-btn{
+  appearance: none;
+  border: 1px solid transparent;
+  background: transparent;
+  padding: 4px 6px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: var(--accent-indigo);
+  font: inherit;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.toc-btn:hover,
+.toc-btn:focus{
+  outline: none;
+  background: rgba(102,126,234,0.08);
+  border-color: rgba(102,126,234,0.18);
+}
+
+/* Lists */
+.symptom-list{
+  margin: 8px 0 14px;
+  padding-left: 18px;
+}
+.symptom-list li{
+  margin: 6px 0;
+  line-height: 1.55;
+}
+
+/* Callout boxes */
+.alert-box,
+.clinical-note,
+.success-box{
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+  margin: 14px 0;
+}
+.alert-box{ border-left: 6px solid var(--danger); }
+.clinical-note{ border-left: 6px solid var(--accent-indigo); }
+.success-box{ border-left: 6px solid var(--success); }
+
+/* Rx-style structured cards */
+.rx-card{
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+  margin: 14px 0;
+}
 .rx-header{
   display:flex;
-  align-items:baseline;
-  justify-content:space-between;
-  gap:12px;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
   margin-bottom: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--border);
 }
 .rx-name{
-  font-weight: 900;
-  color: var(--primary-1);
+  font-weight: 800;
+  color: var(--accent-teal);
+  font-size: 1.02rem;
 }
 .rx-type{
   font-size: .78rem;
   letter-spacing: .12em;
-  text-transform: uppercase;
-  opacity: .75;
+  font-weight: 900;
+  opacity: .9;
+  color: var(--primary-1);
+  background: rgba(236,240,241,0.85);
+  border: 1px solid var(--border);
+  padding: 5px 8px;
+  border-radius: 999px;
 }
+
 .rx-grid{
   display:grid;
-  grid-template-columns: 190px minmax(0, 1fr);
+  grid-template-columns: 160px 1fr;
   gap: 10px 14px;
-}
-.rx-label{
-  font-weight: 800;
-  color: var(--primary-2);
 }
 @media (max-width: 720px){
   .rx-grid{ grid-template-columns: 1fr; }
-  .rx-label{ margin-top: 6px; }
+}
+.rx-label{
+  font-weight: 800;
+  color: var(--primary-1);
+}
+.rx-list{
+  margin: 0;
+  padding-left: 1.05em;
+}
+.rx-list li{ margin: 6px 0; }
+
+/* References block (when used as paragraph) */
+.references-block{
+  margin-top: 10px;
+}
+.references-block a{
+  word-break: break-word;
 }
 
-/* Footer metadata */
+/* Footer / disclaimer */
+.main-container footer{
+  padding: 0 18px 18px;
+}
+.medical-disclaimer{
+  background: #fff;
+  border: 1px solid var(--border);
+  border-left: 6px solid var(--warning);
+  border-radius: 14px;
+  padding: 14px;
+  margin: 16px 0 12px;
+}
+.medical-disclaimer p{
+  margin: 0 0 10px;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+.medical-disclaimer p:last-child{
+  margin-bottom: 0;
+}
+.copyright{
+  margin: 0;
+}
 .last-updated{
   margin: 10px 0 0;
-  font-size: .9rem;
-  opacity: .85;
+  font-size: 0.92rem;
+  color: #555;
+}
+
+/* Print / PDF output (extend existing rules to legacy template classes) */
+@media print{
+  .main-container{
+    width: 100% !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+  .main-container > header{
+    background: #fff !important;
+    color: #000 !important;
+    border-bottom: 2px solid #333 !important;
+  }
+  .doctor-tag{
+    background:#fff !important;
+    color:#000 !important;
+    border:1px solid #333 !important;
+    box-shadow:none !important;
+  }
+  .rx-card, .alert-box, .clinical-note, .success-box, .medical-disclaimer{
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  a{ color:#000 !important; }
+  .no-print{ display:none !important; }
 }
