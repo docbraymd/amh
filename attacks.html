@@ -1,0 +1,1418 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>629–1291 Conflict Timelapse Map (Single File)</title>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel:#101a2e;
+      --panel2:#0e1730;
+      --text:#e9eefc;
+      --muted:#a8b3d6;
+      --border:rgba(255,255,255,0.10);
+      --shadow: 0 14px 34px rgba(0,0,0,.38);
+
+      /* Two category colors (customize) */
+      --mus:#3bd6c6;   /* “Muslim-led / Islamic polities (simplified label)” */
+      --chr:#f7b24b;   /* “Christian-led polities (simplified label)” */
+      --danger:#ff5c77;
+      --ok:#7ee787;
+
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);}
+    body{overflow:hidden;} /* no scrolling */
+
+    .app{
+      position:fixed; inset:0;
+      display:grid;
+      grid-template-rows:auto 1fr auto;
+      gap:10px;
+      padding:10px;
+    }
+
+    header{
+      padding:12px 14px;
+      border:1px solid var(--border);
+      border-radius:14px;
+      background:linear-gradient(180deg, rgba(16,26,46,0.95), rgba(11,18,32,0.92));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+    header .row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+    h1{font-size:16px;margin:0 0 4px 0;letter-spacing:0.2px;}
+    .sub{font-size:12px;color:var(--muted);line-height:1.35;max-width:980px;}
+    .pillbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px}
+    .pill{
+      font-size:12px;color:var(--muted);
+      padding:6px 10px;border:1px solid var(--border);
+      background:rgba(255,255,255,0.04);border-radius:999px;
+      display:flex;align-items:center;gap:8px;
+      user-select:none;
+    }
+    .dot{width:10px;height:10px;border-radius:50%;}
+    .dot.m{background:var(--mus);}
+    .dot.c{background:var(--chr);}
+
+    main{
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:10px;
+      min-height:0;
+    }
+
+    .stage{
+      position:relative;
+      border:1px solid var(--border);
+      border-radius:14px;
+      overflow:hidden;
+      background:#060a14;
+      box-shadow: var(--shadow);
+    }
+    canvas{display:block;width:100%;height:100%}
+
+    .hud{
+      position:absolute; left:10px; top:10px;
+      display:flex; flex-direction:column; gap:8px;
+      pointer-events:none;
+      max-width:min(560px, calc(100% - 20px));
+    }
+    .card{
+      pointer-events:none;
+      background:rgba(16,26,46,0.82);
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:10px 10px;
+      backdrop-filter: blur(8px);
+    }
+    .kpiRow{display:flex;gap:10px;flex-wrap:wrap;}
+    .kpi{
+      padding:8px 10px;
+      border:1px solid var(--border);
+      border-radius:12px;
+      background:rgba(255,255,255,0.04);
+      min-width:155px;
+    }
+    .kpi .label{font-size:11px;color:var(--muted)}
+    .kpi .val{font-size:14px;margin-top:3px;font-family:var(--mono)}
+
+    .loadingBanner{
+      position:absolute;inset:auto 10px 10px 10px;
+      background:rgba(16,26,46,0.90);
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:10px;
+      font-size:12px;color:var(--muted);
+      display:none;
+      backdrop-filter: blur(8px);
+      box-shadow: var(--shadow);
+    }
+    .loadingBanner strong{color:var(--text)}
+    .loadingBanner .bar{
+      height:8px;border-radius:8px;background:rgba(255,255,255,0.08);
+      overflow:hidden;margin-top:8px;
+    }
+    .loadingBanner .bar > div{
+      height:100%;width:0%;
+      background:rgba(255,255,255,0.35);
+      transition:width 120ms linear;
+    }
+
+    .tooltip{
+      position:absolute;
+      pointer-events:none;
+      background:rgba(16,26,46,0.94);
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:10px;
+      font-size:12px;
+      color:var(--text);
+      max-width:420px;
+      display:none;
+      backdrop-filter: blur(8px);
+      box-shadow: var(--shadow);
+      transform: translate(12px, 12px);
+    }
+    .tooltip .t{font-weight:700;margin-bottom:4px}
+    .tooltip .m{color:var(--muted);line-height:1.35;font-family:var(--mono);font-size:11px}
+    .tooltip .tag{
+      display:inline-flex;align-items:center;gap:6px;
+      border:1px solid var(--border);
+      padding:3px 8px;border-radius:999px;
+      margin-top:8px;font-size:11px;color:var(--muted);
+    }
+    .tooltip .tag .dot{width:9px;height:9px}
+
+    aside{
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:10px;
+      background:rgba(255,255,255,0.03);
+      box-shadow: var(--shadow);
+      min-height:0;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .panel{
+      border:1px solid var(--border);
+      border-radius:14px;
+      background:rgba(16,26,46,0.55);
+      padding:12px;
+    }
+    .panel h2{margin:0 0 10px 0;font-size:13px;letter-spacing:0.2px;}
+    .row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+
+    button{
+      background:rgba(255,255,255,0.06);
+      color:var(--text);
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:10px 12px;
+      cursor:pointer;
+      font-weight:700;
+      user-select:none;
+    }
+    button:hover{background:rgba(255,255,255,0.10)}
+    button:active{transform:translateY(1px)}
+    button.primary{background:rgba(255,255,255,0.12)}
+    button.danger{border-color:rgba(255,92,119,0.45); color:#ffdbe1}
+    button.danger:hover{background:rgba(255,92,119,0.14)}
+
+    .ctl{display:flex;flex-direction:column;gap:8px;margin-top:8px;}
+    label{font-size:12px;color:var(--muted)}
+    input[type="range"]{width:100%}
+    select{
+      background:rgba(255,255,255,0.06);
+      border:1px solid var(--border);
+      border-radius:12px;
+      color:var(--text);
+      padding:9px 10px;
+      font-weight:700;
+      font-family:var(--mono);
+    }
+    .small{font-size:12px;color:var(--muted);line-height:1.4}
+    .small code{font-family:var(--mono);font-size:11px}
+    .checkRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+    .check{
+      display:flex;align-items:center;gap:8px;
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:8px 10px;
+      background:rgba(255,255,255,0.04);
+      user-select:none;
+      cursor:pointer;
+      font-size:12px;
+      color:var(--muted);
+    }
+    .check input{accent-color:#ffffff}
+    .footerNote{
+      font-size:11px;color:var(--muted);
+      padding-top:10px;border-top:1px solid var(--border);
+      line-height:1.4;
+    }
+
+    /* Drawer */
+    .drawer{
+      position:absolute;
+      right:10px; top:10px;
+      width:min(560px, calc(100% - 20px));
+      max-height: calc(100% - 20px);
+      display:none;
+      flex-direction:column;
+      gap:10px;
+      pointer-events:auto;
+      z-index: 5;
+    }
+    .drawer.open{ display:flex; }
+
+    textarea{
+      width:100%;
+      height: 240px;
+      resize:none;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      padding: 10px;
+      font-family: var(--mono);
+      font-size: 11px;
+      line-height: 1.35;
+      outline:none;
+    }
+    .msg{font-size:12px;color:var(--muted);}
+
+    /* Min-size overlay */
+    .errorOverlay{
+      position:fixed; inset:0;
+      display:none;
+      place-items:center;
+      padding:24px;
+      background: rgba(0,0,0,0.62);
+      z-index: 999;
+    }
+    .errorOverlay.show{ display:grid; }
+    .errorCard{
+      max-width: 760px;
+      background: rgba(11,18,32,0.92);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+    .errorCard h3{margin:0 0 8px 0;font-size:16px;color:#ffcc66}
+    .errorCard p{margin:0 0 10px 0;font-size:13px;line-height:1.45;color:var(--text)}
+    .errorCard ul{margin:0 0 10px 18px;color:var(--muted);font-size:13px;line-height:1.5}
+    .kbd{
+      font-family: var(--mono);
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+    }
+
+    @media (max-width: 980px){
+      main{grid-template-columns: 1fr; }
+      aside{display:none;} /* keep no-scroll layout on small screens */
+    }
+  </style>
+</head>
+
+<body>
+<div class="app">
+  <header>
+    <div class="row">
+      <div>
+        <h1>629–1291 Timelapse Map — Europe • Middle East • North Africa</h1>
+        <div class="sub">
+          Basemap tiles: Natural Earth raster (public-domain data; tiles served by a public-domain-dedicated tile set). Labels “Muslim-led” vs “Christian-led” are a coarse visualization proxy for the principal attacking coalition in a given episode; historical coalitions and motivations are often more complex.
+        </div>
+        <div class="pillbar">
+          <div class="pill"><span class="dot m"></span>Muslim-led (simplified)</div>
+          <div class="pill"><span class="dot c"></span>Christian-led (simplified)</div>
+          <div class="pill">Radius ~ deaths (or fallback severity)</div>
+          <div class="pill">On-map time ~ event duration</div>
+          <div class="pill" id="statusPill" style="font-family:var(--mono);">Ready</div>
+        </div>
+      </div>
+
+      <div class="pill" style="align-self:flex-start; font-family:var(--mono);">
+        <span>Shortcuts:</span>
+        <span class="kbd">Space</span><span>Play/Pause</span>
+        <span class="kbd">R</span><span>Restart</span>
+        <span class="kbd">D</span><span>Data</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="stage" id="stage">
+      <canvas id="c"></canvas>
+
+      <div class="hud">
+        <div class="card">
+          <div class="kpiRow">
+            <div class="kpi">
+              <div class="label">Current year</div>
+              <div class="val" id="yearReadout">—</div>
+            </div>
+            <div class="kpi">
+              <div class="label">Visible flashes</div>
+              <div class="val" id="visibleReadout">—</div>
+            </div>
+            <div class="kpi">
+              <div class="label">Named events loaded</div>
+              <div class="val" id="countReadout">—</div>
+            </div>
+            <div class="kpi">
+              <div class="label">Tiles</div>
+              <div class="val" id="tileReadout">—</div>
+            </div>
+          </div>
+          <div class="small" style="margin-top:8px">
+            Hover to inspect an event. Use the right panel (desktop) or <span class="kbd">D</span> to load your own dataset (JSON).
+            Optional “Modeled frontier raids” increases flash density without claiming each pulse is a documented engagement.
+          </div>
+        </div>
+      </div>
+
+      <div class="loadingBanner" id="loadingBanner">
+        <div><strong>Loading basemap tiles…</strong> <span id="loadingText"></span></div>
+        <div class="bar"><div id="loadingBar"></div></div>
+        <div class="small" style="margin-top:8px">
+          If tiles are blocked by network policy, the animation will run with a fallback background.
+        </div>
+      </div>
+
+      <div class="tooltip" id="tip"></div>
+
+      <!-- Data drawer -->
+      <div class="drawer" id="drawer">
+        <div class="panel">
+          <div class="row">
+            <h2 style="margin:0">Data (JSON)</h2>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;">
+              <button id="btnExport">Export</button>
+              <button id="btnRestore">Restore built-in</button>
+              <button class="primary" id="btnLoad">Load</button>
+              <button id="btnClose">Close</button>
+            </div>
+          </div>
+          <div class="small">
+            Paste an array of objects: <code>[{name, side:"mus"|"chr", start, end, lon, lat, deaths}]</code>.
+            Years may be decimals. Unknown deaths may be omitted or null.
+          </div>
+          <textarea id="dataBox" spellcheck="false"></textarea>
+          <div class="msg" id="dataMsg"></div>
+        </div>
+      </div>
+    </section>
+
+    <aside>
+      <div class="panel">
+        <h2>Playback</h2>
+        <div class="row">
+          <button class="primary" id="playBtn">Play</button>
+          <button id="restartBtn">Restart</button>
+          <button class="danger" id="pauseBtn">Pause</button>
+          <button id="dataBtn">Data</button>
+        </div>
+
+        <div class="ctl">
+          <label>Start year preset</label>
+          <select id="startPreset">
+            <option value="610">610 (founding-era)</option>
+            <option value="622">622 (Hijra-era)</option>
+            <option value="629" selected>629 (your spec)</option>
+          </select>
+
+          <label>Scrub</label>
+          <input id="scrub" type="range" min="0" max="1" step="0.0005" value="0" />
+          <div class="row">
+            <div class="small">Range: <strong id="rangeReadout">—</strong></div>
+            <div class="small">Speed: <strong id="speedReadout">1.0×</strong></div>
+          </div>
+
+          <label>Speed</label>
+          <input id="speed" type="range" min="0.4" max="3.0" step="0.1" value="1.0" />
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Filters</h2>
+        <div class="checkRow">
+          <label class="check"><input id="showMus" type="checkbox" checked /> Show Muslim-led</label>
+          <label class="check"><input id="showChr" type="checkbox" checked /> Show Christian-led</label>
+        </div>
+        <div class="checkRow">
+          <label class="check"><input id="showTips" type="checkbox" checked /> Tooltips on hover</label>
+          <label class="check"><input id="reduceMotion" type="checkbox" /> Reduce motion</label>
+        </div>
+
+        <div class="ctl">
+          <label>Unknown deaths “fallback severity” (affects radius)</label>
+          <input id="unknownSeverity" type="range" min="100" max="20000" step="100" value="3000" />
+          <div class="small">Current: <strong id="unknownSeverityReadout" style="font-family:var(--mono)"></strong></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Optional density layer</h2>
+        <div class="small">
+          “Modeled frontier raids” generates additional low-severity pulses along known frontier zones (Anatolia, Levant coast, Iberian marches, Sicily/Italy) to reflect sustained warfare when the named-event list still feels sparse.
+          These are <strong>modeled</strong>—not a claim that each pulse is a separately documented battle.
+        </div>
+        <div class="checkRow">
+          <label class="check"><input id="modeledRaids" type="checkbox" checked /> Enable modeled raids</label>
+        </div>
+        <div class="ctl">
+          <label>Modeled raid density</label>
+          <input id="raidDensity" type="range" min="0" max="100" step="5" value="60" />
+          <div class="small">Current: <strong id="raidDensityReadout" style="font-family:var(--mono)"></strong></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Notes</h2>
+        <div class="small">
+          • This file includes an expanded list of major named engagements across the period, but it is still not exhaustive.<br>
+          • Casualty estimates for medieval events are often uncertain; unknown deaths use the fallback severity slider.<br>
+          • For full coverage, paste your curated dataset via <code>Data</code>.
+        </div>
+        <div class="footerNote">
+          Basemap: Natural Earth raster tiles (public domain data; raster tile set published with a public-domain dedication). Consider self-hosting tiles if you deploy this publicly.
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <footer style="display:flex;gap:10px;justify-content:space-between;align-items:center;padding:0 2px;color:var(--muted);font-size:11px;">
+    <div>Single-file demo. No scrolling. Desktop view includes full control panel.</div>
+    <div style="font-family:var(--mono)">v1.2</div>
+  </footer>
+</div>
+
+<div class="errorOverlay" id="errorOverlay" role="dialog" aria-modal="true">
+  <div class="errorCard">
+    <h3>Screen too small</h3>
+    <p>This visualization disables scrolling. Increase window size or use a larger screen to view the map and controls reliably.</p>
+    <ul>
+      <li>Rotate to landscape.</li>
+      <li>Use a desktop/laptop for the full control panel.</li>
+      <li>Zoom out if necessary.</li>
+    </ul>
+    <p style="margin:0;color:var(--muted);font-family:var(--mono);font-size:12px">
+      Minimum: <span id="minSize"></span> • Current: <span id="curSize"></span>
+    </p>
+  </div>
+</div>
+
+<script>
+(() => {
+  "use strict";
+
+  // ------------------------------------------------------------
+  // 1) TIMELINE + VIEW SETTINGS
+  // ------------------------------------------------------------
+  const END_YEAR = 1291;
+  const REALTIME_SECONDS = 120; // ~2 minutes
+  let START_YEAR = 629;         // user spec default, can change via UI
+
+  // Region bounds: Europe + Middle East + North Africa
+  const BOUNDS = { lonMin: -12, lonMax: 65, latMin: 18, latMax: 62 };
+
+  // Min screen size (no scroll)
+  const MIN_W = 920, MIN_H = 620;
+
+  // Natural Earth raster tiles (public-domain-based). Zoom 5 is a good compromise.
+  // If HTTPS fails widely, code falls back to HTTP.
+  const TILE_URL_HTTPS = "https://naturalearthtiles.lukasmartinelli.ch/tiles/natural_earth_2_shaded_relief.raster/{z}/{x}/{y}.png";
+  const TILE_URL_HTTP  = "http://naturalearthtiles.lukasmartinelli.ch/tiles/natural_earth_2_shaded_relief.raster/{z}/{x}/{y}.png";
+  const TILE_SIZE = 256;
+  const TILE_ZOOM = 5;
+
+  // ------------------------------------------------------------
+  // 2) BUILT-IN EVENTS (expanded, still not exhaustive)
+  //    Compact format: [name, side("mus"|"chr"), start, end, lon, lat, deathsOrNull]
+  //    Notes:
+  //    - Coordinates are approximate "centroids" for visualization.
+  //    - Many medieval casualty estimates are uncertain -> null triggers fallback severity.
+  // ------------------------------------------------------------
+  const E_COMPACT = [
+    // --- Early Muslim–Byzantine / Levant / Egypt / North Africa (selected major episodes) ---
+    ["Battle of Mu'tah",                 "mus", 629.70, 629.75, 35.77, 31.23, null],
+    ["Battle of Dathin",                 "mus", 634.10, 634.15, 34.45, 31.50, null],
+    ["Battle of Ajnadayn",               "mus", 634.60, 634.65, 34.95, 31.90, null],
+    ["Siege of Damascus",                "mus", 634.75, 635.10, 36.29, 33.51, null],
+    ["Battle of Fahl (Pella)",           "mus", 635.10, 635.20, 35.62, 32.44, null],
+    ["Battle of Yarmouk",                "mus", 636.55, 636.60, 35.90, 32.60, 50000],
+    ["Siege of Jerusalem",               "mus", 636.90, 637.15, 35.22, 31.78, null],
+    ["Battle of Heliopolis",             "mus", 640.50, 640.55, 31.30, 30.10, null],
+    ["Siege of Babylon Fortress (Egypt)", "mus", 640.55, 641.05, 31.24, 30.05, null],
+    ["Siege of Alexandria",              "mus", 641.20, 642.00, 29.92, 31.20, null],
+    ["Battle of Nikiou",                 "mus", 646.10, 646.20, 31.45, 30.80, null],
+    ["Battle of Sufetula",               "mus", 647.60, 647.65, 9.05,  35.22, null],
+    ["Battle of the Masts (naval)",      "mus", 655.55, 655.60, 30.00, 35.50, null],
+    ["First Siege of Constantinople",    "mus", 674.00, 678.00, 28.97, 41.01, 180000],
+    ["Battle of Sebastopolis",           "mus", 692.60, 692.62, 39.72, 40.26, null],
+    ["Siege of Carthage",                "mus", 695.00, 698.00, 10.33, 36.85, null],
+    ["Second Siege of Constantinople",   "mus", 717.00, 718.00, 28.97, 41.01, 200000],
+    ["Battle of Toulouse",               "mus", 721.60, 721.65, 1.44,  43.60, null],
+    ["Battle of Tours/Poitiers",         "mus", 732.75, 732.80, 0.70,  47.40, 13000],
+    ["Battle of Akroinon",               "chr", 740.55, 740.56, 31.05, 39.35, null], // Byzantine defense/offensive framing simplified
+    ["Abbasid raid: Sack of Amorion",    "mus", 838.60, 838.70, 31.90, 39.00, null],
+    ["Battle of Anzen (Dazimon)",        "mus", 838.70, 838.72, 35.50, 40.30, null],
+    ["Battle of Lalakaon",               "chr", 863.60, 863.62, 37.00, 40.80, null],
+    ["Battle of Andrassos",              "chr", 960.60, 960.62, 32.40, 38.50, null],
+    ["Battle of Azaz (Byz vs Mirdasids)", "chr", 1030.30, 1030.32, 37.05, 36.58, null],
+
+    // --- Iberia / Western Mediterranean (selected) ---
+    ["Battle of Guadalete",              "mus", 711.55, 711.60, -5.40, 36.05, null],
+    ["Siege of Narbonne (early Umayyad)", "mus", 719.00, 720.00, 3.00,  43.18, null],
+    ["Battle of Covadonga (traditional)", "chr", 722.30, 722.31, -5.05, 43.27, null],
+    ["Capture of Toledo (Reconquista)",  "chr", 1085.45, 1085.55, -4.02, 39.86, null],
+    ["Battle of Sagrajas (Zallaqa)",     "mus", 1086.80, 1086.82, -6.97, 38.88, null],
+    ["Siege of Valencia",                "chr", 1094.40, 1094.60, -0.38, 39.47, null],
+    ["Capture of Zaragoza",              "chr", 1118.95, 1119.05, -0.88, 41.65, null],
+    ["Battle of Ourique (traditional)",  "chr", 1139.55, 1139.56, -7.90, 37.65, null],
+    ["Siege of Lisbon",                  "chr", 1147.70, 1147.85, -9.14, 38.72, null],
+    ["Battle of Alarcos",                "mus", 1195.55, 1195.56, -4.10, 38.99, null],
+    ["Battle of Las Navas de Tolosa",    "chr", 1212.55, 1212.56, -3.50, 38.40, null],
+    ["Capture of Córdoba",               "chr", 1236.55, 1236.60, -4.78, 37.89, null],
+    ["Capture of Seville",               "chr", 1248.80, 1248.95, -5.99, 37.39, null],
+
+    // --- Seljuk / Byzantine pivot into Crusade era (selected) ---
+    ["Battle of Manzikert",              "mus", 1071.65, 1071.66, 42.54, 39.15, 20000],
+
+    // --- First Crusade (selected major milestones; not exhaustive) ---
+    ["Siege of Nicaea",                  "chr", 1097.35, 1097.50, 29.72, 40.43, null],
+    ["Battle of Dorylaeum",              "chr", 1097.55, 1097.56, 30.55, 39.80, null],
+    ["Siege of Antioch",                 "chr", 1097.85, 1098.50, 36.16, 36.20, null],
+    ["Battle of Antioch (relief)",       "chr", 1098.50, 1098.52, 36.16, 36.20, null],
+    ["Siege of Ma'arrat al-Numan",       "chr", 1098.85, 1098.92, 36.65, 35.65, null],
+    ["Siege/Capture of Jerusalem (1099)", "chr", 1099.54, 1099.56, 35.22, 31.78, 70000],
+    ["Battle of Ascalon",                "chr", 1099.61, 1099.62, 34.55, 31.67, null],
+
+    // --- Early Crusader states / counterattacks (selected) ---
+    ["Battle of Harran",                 "mus", 1104.30, 1104.31, 39.03, 36.86, null],
+    ["Battle of Ramla (1101)",           "chr", 1101.55, 1101.56, 34.87, 31.92, null],
+    ["Battle of Ramla (1102)",           "mus", 1102.55, 1102.56, 34.87, 31.92, null],
+    ["Capture of Caesarea",              "chr", 1101.38, 1101.40, 34.89, 32.50, null],
+    ["Capture of Tripoli (Levant)",      "chr", 1109.55, 1109.60, 35.84, 34.43, null],
+
+    // --- Second Crusade era (selected) ---
+    ["Fall of Edessa",                   "mus", 1144.95, 1145.05, 39.00, 37.16, null],
+    ["Siege of Damascus (1148)",         "chr", 1148.55, 1148.60, 36.29, 33.51, null],
+
+    // --- Saladin / Third Crusade era (selected) ---
+    ["Battle of Hattin",                 "mus", 1187.52, 1187.53, 35.49, 32.80, 30000],
+    ["Surrender of Jerusalem (1187)",    "mus", 1187.75, 1187.85, 35.22, 31.78, null],
+    ["Siege of Acre (1189–1191)",        "chr", 1189.70, 1191.60, 35.08, 32.93, 25000],
+    ["Battle of Arsuf",                  "chr", 1191.75, 1191.76, 34.95, 32.20, null],
+    ["Battle of Jaffa",                  "chr", 1192.60, 1192.62, 34.75, 32.05, null],
+
+    // --- Fourth Crusade (not Muslim-Christian, but included because users often expect it) ---
+    ["Sack of Constantinople (1204)",    "chr", 1204.25, 1204.35, 28.97, 41.01, null],
+
+    // --- Fifth Crusade / Egypt (selected) ---
+    ["Siege of Damietta (1218–1219)",    "chr", 1218.55, 1219.75, 31.82, 31.42, null],
+    ["Crusader defeat at al-Mansura (1221)", "mus", 1221.55, 1221.60, 31.80, 31.05, null],
+
+    // --- Sixth Crusade (mostly diplomatic; included at low intensity) ---
+    ["Treaty return of Jerusalem (1229)", "chr", 1229.10, 1229.30, 35.22, 31.78, 300],
+
+    // --- Seventh Crusade / Egypt (selected) ---
+    ["Capture of Damietta (1249)",       "chr", 1249.50, 1249.60, 31.82, 31.42, null],
+    ["Battle of al-Mansurah (1250)",     "mus", 1250.15, 1250.25, 31.80, 31.05, null],
+
+    // --- Late Crusader period / Mamluk offensives (selected) ---
+    ["Sack of Jerusalem (1244)",         "mus", 1244.55, 1244.60, 35.22, 31.78, null],
+    ["Fall of Antioch (1268)",           "mus", 1268.35, 1268.45, 36.16, 36.20, null],
+    ["Siege of Krak des Chevaliers (1271)", "mus", 1271.10, 1271.20, 36.28, 34.76, null],
+    ["Eighth Crusade (Tunis, 1270)",     "chr", 1270.55, 1270.70, 10.18, 36.80, null],
+    ["Ninth Crusade (Acre region)",      "chr", 1271.55, 1272.20, 35.08, 32.93, null],
+    ["Fall of Tripoli (1289)",           "mus", 1289.30, 1289.50, 35.84, 34.43, null],
+    ["Fall of Acre (1291)",              "mus", 1291.30, 1291.55, 35.08, 32.93, 30000]
+  ];
+
+  // ------------------------------------------------------------
+  // 3) MODELLED FRONTIER RAID GENERATOR (density layer)
+  // ------------------------------------------------------------
+  function mulberry32(a){ return function(){ let t = a += 0x6D2B79F5; t = Math.imul(t ^ t >>> 15, t | 1); t ^= t + Math.imul(t ^ t >>> 7, t | 61); return ((t ^ t >>> 14) >>> 0) / 4294967296; } }
+  function clamp(v,min,max){ return Math.max(min, Math.min(max,v)); }
+  function lerp(a,b,t){ return a + (b-a)*t; }
+  function smoothstep(t){ t = clamp(t,0,1); return t*t*(3-2*t); }
+
+  // These "zones" are coarse; they generate many small pulses across long periods.
+  const RAID_ZONES = [
+    // Anatolian frontier (Byz–Caliphate border warfare)
+    { name:"Anatolia Frontier", lon: 33.0, lat: 38.8, rLon: 10.0, rLat: 5.0, start: 650, end: 1050, side:"mus" },
+    { name:"Anatolia Counter-raids", lon: 32.0, lat: 39.5, rLon: 10.0, rLat: 5.0, start: 650, end: 1050, side:"chr" },
+
+    // Levant coast / inland
+    { name:"Levant Frontier", lon: 35.5, lat: 32.8, rLon: 4.0, rLat: 3.0, start: 1095, end: 1291, side:"chr" },
+    { name:"Levant Counter-offensives", lon: 36.0, lat: 33.0, rLon: 4.0, rLat: 3.0, start: 1095, end: 1291, side:"mus" },
+
+    // Iberian marches (Reconquista era)
+    { name:"Iberian Marches", lon: -3.5, lat: 39.5, rLon: 6.0, rLat: 4.0, start: 711, end: 1291, side:"chr" },
+    { name:"Iberian Counter-raids", lon: -4.0, lat: 38.5, rLon: 6.0, rLat: 4.0, start: 711, end: 1291, side:"mus" },
+
+    // Sicily / S. Italy
+    { name:"Sicily & S. Italy", lon: 14.5, lat: 37.2, rLon: 3.0, rLat: 2.0, start: 800, end: 1100, side:"mus" },
+    { name:"Sicily Reconquest", lon: 14.2, lat: 37.0, rLon: 3.0, rLat: 2.0, start: 1000, end: 1100, side:"chr" }
+  ];
+
+  function generateModeledRaids(density0to100, startYear, endYear){
+    const density = clamp(density0to100, 0, 100);
+    if (density === 0) return [];
+    const rng = mulberry32(0xA11CE + Math.floor(density*97));
+
+    const out = [];
+    for (const z of RAID_ZONES){
+      const s = Math.max(z.start, startYear);
+      const e = Math.min(z.end, endYear);
+      if (e <= s) continue;
+
+      // density scaling: number of pulses per century per zone
+      const centuries = (e - s) / 100;
+      const perCentury = lerp(8, 70, density/100); // tuned for “more flashes”
+      const n = Math.floor(centuries * perCentury);
+
+      for (let i=0;i<n;i++){
+        const yr = lerp(s, e, rng());
+        // short raid duration in years (days/weeks) represented as small fraction
+        const dur = lerp(0.01, 0.12, rng()); // ~3.6 days to ~44 days, visually meaningful
+        const lon = z.lon + (rng()*2 - 1) * z.rLon;
+        const lat = z.lat + (rng()*2 - 1) * z.rLat;
+
+        // small severity distribution
+        const sev = Math.floor(lerp(200, 3500, Math.pow(rng(), 0.55)));
+
+        out.push({
+          name: `Modeled raid: ${z.name}`,
+          side: z.side,
+          start: yr,
+          end: yr + dur,
+          lon, lat,
+          deaths: sev,
+          modeled: true
+        });
+      }
+    }
+    return out;
+  }
+
+  // ------------------------------------------------------------
+  // 4) DOM / CANVAS
+  // ------------------------------------------------------------
+  const stage = document.getElementById("stage");
+  const canvas = document.getElementById("c");
+  const ctx = canvas.getContext("2d", { alpha: false });
+
+  const yearReadout = document.getElementById("yearReadout");
+  const visibleReadout = document.getElementById("visibleReadout");
+  const countReadout = document.getElementById("countReadout");
+  const tileReadout = document.getElementById("tileReadout");
+  const statusPill = document.getElementById("statusPill");
+
+  const playBtn = document.getElementById("playBtn");
+  const pauseBtn = document.getElementById("pauseBtn");
+  const restartBtn = document.getElementById("restartBtn");
+  const dataBtn = document.getElementById("dataBtn");
+
+  const scrub = document.getElementById("scrub");
+  const speed = document.getElementById("speed");
+  const speedReadout = document.getElementById("speedReadout");
+  const rangeReadout = document.getElementById("rangeReadout");
+  const startPreset = document.getElementById("startPreset");
+
+  const showMus = document.getElementById("showMus");
+  const showChr = document.getElementById("showChr");
+  const showTips = document.getElementById("showTips");
+  const reduceMotion = document.getElementById("reduceMotion");
+
+  const unknownSeverity = document.getElementById("unknownSeverity");
+  const unknownSeverityReadout = document.getElementById("unknownSeverityReadout");
+
+  const modeledRaids = document.getElementById("modeledRaids");
+  const raidDensity = document.getElementById("raidDensity");
+  const raidDensityReadout = document.getElementById("raidDensityReadout");
+
+  const tip = document.getElementById("tip");
+  const loadingBanner = document.getElementById("loadingBanner");
+  const loadingText = document.getElementById("loadingText");
+  const loadingBar = document.getElementById("loadingBar");
+
+  const drawer = document.getElementById("drawer");
+  const dataBox = document.getElementById("dataBox");
+  const dataMsg = document.getElementById("dataMsg");
+  const btnLoad = document.getElementById("btnLoad");
+  const btnClose = document.getElementById("btnClose");
+  const btnExport = document.getElementById("btnExport");
+  const btnRestore = document.getElementById("btnRestore");
+
+  const errorOverlay = document.getElementById("errorOverlay");
+  const minSize = document.getElementById("minSize");
+  const curSize = document.getElementById("curSize");
+
+  function setStatus(s){ statusPill.textContent = s; }
+  function cssVar(name){ return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+
+  // ------------------------------------------------------------
+  // 5) TILE / PROJECTION (Web Mercator)
+  // ------------------------------------------------------------
+  const baseCanvas = document.createElement("canvas");
+  const baseCtx = baseCanvas.getContext("2d", { alpha: false });
+
+  const viewport = {
+    z: TILE_ZOOM,
+    worldTL: {x:0,y:0},
+    worldBR: {x:0,y:0},
+    worldW: 1,
+    worldH: 1,
+    scale: 1,
+    pad: 18
+  };
+
+  function lonLatToWorldPx(lon, lat, z){
+    const scale = TILE_SIZE * (1 << z);
+    const x = (lon + 180) / 360 * scale;
+    const rad = lat * Math.PI/180;
+    const y = (1 - Math.log(Math.tan(rad) + 1/Math.cos(rad)) / Math.PI) / 2 * scale;
+    return {x,y};
+  }
+
+  function computeViewport(){
+    const z = viewport.z;
+    const tl = lonLatToWorldPx(BOUNDS.lonMin, BOUNDS.latMax, z);
+    const br = lonLatToWorldPx(BOUNDS.lonMax, BOUNDS.latMin, z);
+
+    viewport.worldTL = tl;
+    viewport.worldBR = br;
+    viewport.worldW = Math.max(1, br.x - tl.x);
+    viewport.worldH = Math.max(1, br.y - tl.y);
+
+    const dpr = Math.max(1, Math.min(2.5, window.devicePixelRatio || 1));
+    const pad = viewport.pad * dpr;
+
+    const availW = Math.max(1, baseCanvas.width  - 2*pad);
+    const availH = Math.max(1, baseCanvas.height - 2*pad);
+    viewport.scale = Math.min(availW / viewport.worldW, availH / viewport.worldH);
+  }
+
+  function worldPxToCanvasPx(wx, wy){
+    const dpr = Math.max(1, Math.min(2.5, window.devicePixelRatio || 1));
+    const pad = viewport.pad * dpr;
+    return {
+      x: pad + (wx - viewport.worldTL.x) * viewport.scale,
+      y: pad + (wy - viewport.worldTL.y) * viewport.scale
+    };
+  }
+
+  function lonLatToCanvas(lon, lat){
+    const w = lonLatToWorldPx(lon, lat, viewport.z);
+    return worldPxToCanvasPx(w.x, w.y);
+  }
+
+  // Tile caching
+  const tileCache = new Map(); // key -> {img, ok}
+  let tilesNeeded = [];
+  let tilesLoaded = 0;
+  let tilesFailed = 0;
+  let tilesTotal = 0;
+  let tileUrlTemplate = TILE_URL_HTTPS;
+
+  function tileKey(z,x,y){ return `${z}/${x}/${y}`; }
+
+  function computeTilesNeeded(){
+    const z = viewport.z;
+    const tl = viewport.worldTL;
+    const br = viewport.worldBR;
+
+    const x0 = Math.floor(tl.x / TILE_SIZE);
+    const y0 = Math.floor(tl.y / TILE_SIZE);
+    const x1 = Math.floor((br.x-1) / TILE_SIZE);
+    const y1 = Math.floor((br.y-1) / TILE_SIZE);
+
+    const list = [];
+    for(let x=x0; x<=x1; x++){
+      for(let y=y0; y<=y1; y++){
+        list.push({z,x,y});
+      }
+    }
+    return list;
+  }
+
+  function showLoading(on){
+    loadingBanner.style.display = on ? "block" : "none";
+  }
+
+  function updateLoadingUI(){
+    loadingText.textContent = `(${tilesLoaded}/${tilesTotal} loaded, ${tilesFailed} failed)`;
+    const pct = tilesTotal ? Math.round((tilesLoaded / tilesTotal) * 100) : 0;
+    loadingBar.style.width = pct + "%";
+    tileReadout.textContent = tilesTotal ? `${tilesLoaded}/${tilesTotal}` : "—";
+  }
+
+  function loadOneTile(z,x,y, forceReload=false){
+    return new Promise((resolve) => {
+      const key = tileKey(z,x,y);
+      if(!forceReload && tileCache.has(key)){
+        tilesLoaded++;
+        updateLoadingUI();
+        return resolve();
+      }
+
+      const url = tileUrlTemplate
+        .replace("{z}", z)
+        .replace("{x}", x)
+        .replace("{y}", y);
+
+      const img = new Image();
+      img.decoding = "async";
+      img.loading = "eager";
+
+      img.onload = () => {
+        tileCache.set(key, {img, ok:true});
+        tilesLoaded++;
+        updateLoadingUI();
+        resolve();
+      };
+      img.onerror = () => {
+        tileCache.set(key, {img:null, ok:false});
+        tilesFailed++;
+        updateLoadingUI();
+        resolve();
+      };
+      img.src = url;
+    });
+  }
+
+  async function loadTiles(){
+    tilesNeeded = computeTilesNeeded();
+    tilesTotal = tilesNeeded.length;
+    tilesLoaded = 0;
+    tilesFailed = 0;
+    updateLoadingUI();
+    showLoading(true);
+
+    tileUrlTemplate = TILE_URL_HTTPS;
+    await Promise.all(tilesNeeded.map(t => loadOneTile(t.z,t.x,t.y)));
+
+    // If too many failures, try HTTP once
+    if(tilesFailed > Math.max(3, tilesTotal * 0.35)){
+      tileUrlTemplate = TILE_URL_HTTP;
+      tilesLoaded = 0;
+      tilesFailed = 0;
+      updateLoadingUI();
+      await Promise.all(tilesNeeded.map(t => loadOneTile(t.z,t.x,t.y, true)));
+    }
+
+    showLoading(false);
+    redrawBase();
+  }
+
+  function drawFallbackBase(gctx){
+    const w = baseCanvas.width, h = baseCanvas.height;
+    gctx.fillStyle = "#070b14";
+    gctx.fillRect(0,0,w,h);
+
+    gctx.strokeStyle = "rgba(255,255,255,0.05)";
+    gctx.lineWidth = 1 * (window.devicePixelRatio || 1);
+    const step = 48 * (window.devicePixelRatio || 1);
+    for(let x=0; x<w; x+=step){
+      gctx.beginPath(); gctx.moveTo(x,0); gctx.lineTo(x,h); gctx.stroke();
+    }
+    for(let y=0; y<h; y+=step){
+      gctx.beginPath(); gctx.moveTo(0,y); gctx.lineTo(w,y); gctx.stroke();
+    }
+
+    gctx.fillStyle = "rgba(255,255,255,0.12)";
+    gctx.font = `${12*(window.devicePixelRatio||1)}px ${cssVar("--sans")}`;
+    gctx.fillText("Basemap tiles unavailable — fallback mode.", 18*(window.devicePixelRatio||1), 26*(window.devicePixelRatio||1));
+  }
+
+  function redrawBase(){
+    baseCtx.save();
+    baseCtx.fillStyle = "#070b14";
+    baseCtx.fillRect(0,0,baseCanvas.width,baseCanvas.height);
+
+    if(!tilesTotal || tilesLoaded === 0){
+      drawFallbackBase(baseCtx);
+      baseCtx.restore();
+      return;
+    }
+
+    for(const t of tilesNeeded){
+      const key = tileKey(t.z,t.x,t.y);
+      const entry = tileCache.get(key);
+      if(!entry || !entry.ok) continue;
+
+      const tileWorldX = t.x * TILE_SIZE;
+      const tileWorldY = t.y * TILE_SIZE;
+      const p = worldPxToCanvasPx(tileWorldX, tileWorldY);
+      const drawW = TILE_SIZE * viewport.scale;
+      const drawH = TILE_SIZE * viewport.scale;
+      baseCtx.drawImage(entry.img, p.x, p.y, drawW, drawH);
+    }
+
+    // vignette
+    const g = baseCtx.createRadialGradient(
+      baseCanvas.width*0.5, baseCanvas.height*0.5, Math.min(baseCanvas.width,baseCanvas.height)*0.15,
+      baseCanvas.width*0.5, baseCanvas.height*0.5, Math.min(baseCanvas.width,baseCanvas.height)*0.80
+    );
+    g.addColorStop(0,"rgba(0,0,0,0)");
+    g.addColorStop(1,"rgba(0,0,0,0.35)");
+    baseCtx.fillStyle = g;
+    baseCtx.fillRect(0,0,baseCanvas.width,baseCanvas.height);
+
+    baseCtx.restore();
+  }
+
+  // ------------------------------------------------------------
+  // 6) EVENTS: build + merge modeled raids
+  // ------------------------------------------------------------
+  function buildNamedEvents(){
+    return E_COMPACT.map(r => ({
+      name: r[0],
+      side: r[1],
+      start: r[2],
+      end: r[3],
+      lon: r[4],
+      lat: r[5],
+      deaths: (r[6] == null ? null : Number(r[6])),
+      modeled: false
+    }));
+  }
+
+  let namedEvents = buildNamedEvents();
+  let events = [];
+
+  function rebuildEvents(){
+    const s = START_YEAR;
+    const e = END_YEAR;
+
+    const base = namedEvents.filter(ev => ev.end >= s && ev.start <= e);
+    let all = base.slice();
+
+    if (modeledRaids.checked){
+      const m = generateModeledRaids(Number(raidDensity.value), s, e);
+      all = all.concat(m);
+    }
+
+    // Stable ordering by start year
+    all.sort((a,b) => a.start - b.start);
+
+    events = all;
+    countReadout.textContent = `${base.length} named (+${all.length - base.length} modeled)`;
+    setStatus("Events rebuilt");
+  }
+
+  // ------------------------------------------------------------
+  // 7) RENDERING: flashes
+  // ------------------------------------------------------------
+  function colorForSide(side){
+    return side === "mus" ? cssVar("--mus") : cssVar("--chr");
+  }
+
+  function deathsToRadius(deaths){
+    const fallback = Number(unknownSeverity.value);
+    const d = (deaths == null || !isFinite(deaths) || deaths <= 0) ? fallback : deaths;
+
+    // sqrt scaling with clamp
+    const r = 3 + Math.sqrt(d) * 0.14;
+    return clamp(r, 4, 36);
+  }
+
+  function colorToRgba(hex, alpha){
+    if(hex.startsWith("#")){
+      const r = parseInt(hex.slice(1,3),16);
+      const g = parseInt(hex.slice(3,5),16);
+      const b = parseInt(hex.slice(5,7),16);
+      return `rgba(${r},${g},${b},${alpha})`;
+    }
+    return hex;
+  }
+
+  function alphaEnvelope(ev, year){
+    const s = ev.start;
+    const e = (ev.end != null ? ev.end : ev.start);
+    const dur = Math.max(0.10, e - s);
+    const fade = Math.max(0.08, dur * 0.25);
+
+    if(year < s - fade || year > e + fade) return 0;
+
+    let a;
+    if(year < s) a = smoothstep((year - (s - fade)) / fade) * 0.85;
+    else if(year > e) a = smoothstep(((e + fade) - year) / fade) * 0.85;
+    else {
+      const t = (year - s) / dur;
+      const pulse = reduceMotion.checked ? 0 : 0.12 * (0.5 + 0.5*Math.sin(2*Math.PI*(t*2.2)));
+      a = clamp(0.72 + pulse, 0, 0.95);
+    }
+
+    // Modeled events slightly dimmer
+    if (ev.modeled) a *= 0.55;
+    return a;
+  }
+
+  function drawFlash(gctx, x, y, r, color, a){
+    if(a <= 0) return;
+
+    gctx.save();
+    gctx.globalCompositeOperation = "lighter";
+
+    // Core
+    gctx.globalAlpha = a;
+    gctx.fillStyle = color;
+    gctx.beginPath();
+    gctx.arc(x,y,r,0,Math.PI*2);
+    gctx.fill();
+
+    // Glow
+    const glowR = r * 2.6;
+    const grd = gctx.createRadialGradient(x,y,r*0.6, x,y,glowR);
+    grd.addColorStop(0,  colorToRgba(color, 0.55*a));
+    grd.addColorStop(1,  colorToRgba(color, 0));
+    gctx.globalAlpha = 1;
+    gctx.fillStyle = grd;
+    gctx.beginPath();
+    gctx.arc(x,y,glowR,0,Math.PI*2);
+    gctx.fill();
+
+    // Ring
+    if (!reduceMotion.checked){
+      gctx.globalAlpha = 0.55*a;
+      gctx.lineWidth = Math.max(1, r*0.18) * (window.devicePixelRatio || 1);
+      gctx.strokeStyle = colorToRgba(color, 0.95);
+      gctx.beginPath();
+      gctx.arc(x,y, r*1.6, 0, Math.PI*2);
+      gctx.stroke();
+    }
+
+    gctx.restore();
+  }
+
+  // ------------------------------------------------------------
+  // 8) TOOLTIP (hover nearest visible event)
+  // ------------------------------------------------------------
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, ch => ({
+      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+    }[ch]));
+  }
+
+  const mouse = {x:0,y:0,inside:false};
+  function updateTooltip(currentYear){
+    if(!showTips.checked || !mouse.inside){
+      tip.style.display = "none";
+      return;
+    }
+
+    let best = null;
+    let bestD2 = Infinity;
+
+    for(const ev of events){
+      if(ev.side === "mus" && !showMus.checked) continue;
+      if(ev.side === "chr" && !showChr.checked) continue;
+
+      const a = alphaEnvelope(ev, currentYear);
+      if(a <= 0.06) continue;
+
+      const p = lonLatToCanvas(ev.lon, ev.lat);
+      const r = deathsToRadius(ev.deaths) * (window.devicePixelRatio || 1);
+      const dx = mouse.x - p.x, dy = mouse.y - p.y;
+      const d2 = dx*dx + dy*dy;
+
+      if(d2 < (r*2.2)*(r*2.2) && d2 < bestD2){
+        bestD2 = d2;
+        best = {ev, p, r};
+      }
+    }
+
+    if(!best){
+      tip.style.display = "none";
+      return;
+    }
+
+    const ev = best.ev;
+    const sideLabel = (ev.side === "mus") ? "Muslim-led (simplified)" : "Christian-led (simplified)";
+    const c = colorForSide(ev.side);
+
+    const deaths = (ev.deaths == null) ? `unknown (fallback=${Number(unknownSeverity.value)})` : Math.round(ev.deaths).toLocaleString();
+    const years = `${ev.start.toFixed(2)} → ${(ev.end ?? ev.start).toFixed(2)}`;
+
+    tip.innerHTML = `
+      <div class="t">${escapeHtml(ev.name)}</div>
+      <div class="m">side=${ev.side} | ${sideLabel}<br>years=${years}<br>deaths=${deaths}<br>lon=${ev.lon.toFixed(2)} lat=${ev.lat.toFixed(2)}${ev.modeled ? "<br>modeled=true" : ""}</div>
+      <div class="tag"><span class="dot" style="background:${c}"></span>${sideLabel}${ev.modeled ? " • modeled" : ""}</div>
+    `;
+
+    const rect = stage.getBoundingClientRect();
+    const dpr = canvas.width / rect.width;
+    tip.style.left = (mouse.x / dpr) + "px";
+    tip.style.top  = (mouse.y / dpr) + "px";
+    tip.style.display = "block";
+  }
+
+  // ------------------------------------------------------------
+  // 9) PLAYBACK
+  // ------------------------------------------------------------
+  let playing = false;
+  let tNorm = 0; // 0..1
+  let lastTs = 0;
+
+  function yearFromT(){
+    const span = END_YEAR - START_YEAR;
+    return START_YEAR + span * tNorm;
+  }
+
+  function setRangeReadout(){
+    rangeReadout.textContent = `${START_YEAR} → ${END_YEAR} (${END_YEAR-START_YEAR}y) in ~${REALTIME_SECONDS}s`;
+  }
+
+  function setScrub(v){
+    tNorm = clamp(v, 0, 1);
+    scrub.value = tNorm.toFixed(4);
+    renderFrame();
+  }
+
+  function play(){ playing = true; setStatus("Playing"); }
+  function pause(){ playing = false; setStatus("Paused"); }
+
+  function renderFrame(){
+    ctx.drawImage(baseCanvas, 0, 0);
+
+    const y = yearFromT();
+    yearReadout.textContent = Math.round(y).toString();
+
+    let visible = 0;
+    for(const ev of events){
+      if(ev.side === "mus" && !showMus.checked) continue;
+      if(ev.side === "chr" && !showChr.checked) continue;
+
+      const a = alphaEnvelope(ev, y);
+      if(a <= 0) continue;
+
+      const p = lonLatToCanvas(ev.lon, ev.lat);
+      const r = deathsToRadius(ev.deaths) * (window.devicePixelRatio || 1);
+      drawFlash(ctx, p.x, p.y, r, colorForSide(ev.side), a);
+      visible++;
+    }
+
+    visibleReadout.textContent = String(visible);
+    updateTooltip(y);
+  }
+
+  function tick(ts){
+    if(!lastTs) lastTs = ts;
+    const dt = Math.min(0.05, (ts - lastTs) / 1000);
+    lastTs = ts;
+
+    if(playing){
+      const speedMul = Number(speed.value);
+      const yearsSpan = END_YEAR - START_YEAR;
+      const yearsPerSec = yearsSpan / REALTIME_SECONDS;
+
+      const advanceYears = dt * yearsPerSec * speedMul;
+      const dn = advanceYears / yearsSpan;
+
+      tNorm = clamp(tNorm + dn, 0, 1);
+      scrub.value = tNorm.toFixed(4);
+
+      if(tNorm >= 1){
+        playing = false;
+        setStatus("Finished");
+      }
+    }
+
+    renderFrame();
+    requestAnimationFrame(tick);
+  }
+
+  // ------------------------------------------------------------
+  // 10) RESIZE / INIT
+  // ------------------------------------------------------------
+  function checkMinSize(){
+    const w = window.innerWidth, h = window.innerHeight;
+    minSize.textContent = `${MIN_W}×${MIN_H}`;
+    curSize.textContent = `${w}×${h}`;
+    errorOverlay.classList.toggle("show", (w < MIN_W || h < MIN_H));
+  }
+
+  function resize(){
+    checkMinSize();
+
+    const r = stage.getBoundingClientRect();
+    const dpr = Math.max(1, Math.min(2.5, window.devicePixelRatio || 1));
+    canvas.width = Math.floor(r.width * dpr);
+    canvas.height = Math.floor(r.height * dpr);
+    baseCanvas.width = canvas.width;
+    baseCanvas.height = canvas.height;
+
+    computeViewport();
+    tilesNeeded = computeTilesNeeded();
+    tilesTotal = tilesNeeded.length;
+
+    // redraw using existing cache; tiles will be loaded/updated by loadTiles
+    redrawBase();
+  }
+
+  window.addEventListener("resize", () => {
+    resize();
+    loadTiles().catch(() => {});
+  });
+
+  // ------------------------------------------------------------
+  // 11) DATA DRAWER
+  // ------------------------------------------------------------
+  function openDrawer(){
+    drawer.classList.add("open");
+    dataBox.value = JSON.stringify(namedEvents, null, 2);
+    dataMsg.textContent = "Paste JSON and click Load. Use side='mus' or side='chr'.";
+    setStatus("Data");
+  }
+  function closeDrawer(){
+    drawer.classList.remove("open");
+    dataMsg.textContent = "";
+    setStatus("Ready");
+  }
+
+  function safeJsonParse(text){
+    try{ return {ok:true, value: JSON.parse(text)}; }
+    catch(e){ return {ok:false, error:e}; }
+  }
+
+  function validateEventArray(arr){
+    if(!Array.isArray(arr)) return {ok:false, msg:"JSON must be an array."};
+    const out = [];
+    for(let i=0;i<arr.length;i++){
+      const e = arr[i];
+      if(!e || typeof e !== "object") return {ok:false, msg:`Index ${i}: not an object.`};
+      const need = ["name","side","start","end","lon","lat"];
+      for(const k of need){
+        if(!(k in e)) return {ok:false, msg:`Index ${i}: missing '${k}'.`};
+      }
+      const side = String(e.side).toLowerCase();
+      if(side !== "mus" && side !== "chr") return {ok:false, msg:`Index ${i}: side must be 'mus' or 'chr'.`};
+      const start = Number(e.start), end = Number(e.end);
+      const lon = Number(e.lon), lat = Number(e.lat);
+      const deaths = (e.deaths == null) ? null : Number(e.deaths);
+      if(!isFinite(start) || !isFinite(end) || end < start) return {ok:false, msg:`Index ${i}: invalid start/end.`};
+      if(!isFinite(lon) || !isFinite(lat)) return {ok:false, msg:`Index ${i}: invalid lon/lat.`};
+
+      out.push({
+        name: String(e.name),
+        side,
+        start,
+        end,
+        lon, lat,
+        deaths: (deaths == null || !isFinite(deaths) || deaths < 0) ? null : deaths,
+        modeled: !!e.modeled
+      });
+    }
+    return {ok:true, events: out};
+  }
+
+  btnLoad.addEventListener("click", () => {
+    const p = safeJsonParse(dataBox.value);
+    if(!p.ok){
+      dataMsg.innerHTML = `<span style="color:${cssVar("--danger")}">Parse error:</span> ${escapeHtml(p.error.message)}`;
+      return;
+    }
+    const v = validateEventArray(p.value);
+    if(!v.ok){
+      dataMsg.innerHTML = `<span style="color:${cssVar("--danger")}">Invalid:</span> ${escapeHtml(v.msg)}`;
+      return;
+    }
+    namedEvents = v.events.filter(x => !x.modeled); // keep modeled optional layer separate
+    dataMsg.innerHTML = `<span style="color:${cssVar("--ok")}">Loaded</span> ${namedEvents.length} named events.`;
+    rebuildEvents();
+    closeDrawer();
+  });
+
+  btnExport.addEventListener("click", async () => {
+    const txt = JSON.stringify(namedEvents, null, 2);
+    try{
+      await navigator.clipboard.writeText(txt);
+      dataMsg.innerHTML = `<span style="color:${cssVar("--ok")}">Exported</span> to clipboard.`;
+    }catch{
+      dataBox.value = txt;
+      dataBox.focus(); dataBox.select();
+      dataMsg.innerHTML = "Clipboard unavailable; JSON selected (copy manually).";
+    }
+  });
+
+  btnRestore.addEventListener("click", () => {
+    namedEvents = buildNamedEvents();
+    dataBox.value = JSON.stringify(namedEvents, null, 2);
+    dataMsg.innerHTML = `<span style="color:${cssVar("--ok")}">Restored</span> built-in list.`;
+    rebuildEvents();
+  });
+
+  btnClose.addEventListener("click", closeDrawer);
+
+  // ------------------------------------------------------------
+  // 12) UI WIRING
+  // ------------------------------------------------------------
+  playBtn.addEventListener("click", play);
+  pauseBtn.addEventListener("click", pause);
+  restartBtn.addEventListener("click", () => { pause(); setScrub(0); setStatus("Restarted"); });
+  dataBtn.addEventListener("click", () => drawer.classList.contains("open") ? closeDrawer() : openDrawer());
+
+  scrub.addEventListener("input", () => { pause(); setScrub(parseFloat(scrub.value)); });
+
+  speed.addEventListener("input", () => {
+    speedReadout.textContent = `${Number(speed.value).toFixed(1)}×`;
+  });
+
+  startPreset.addEventListener("change", () => {
+    START_YEAR = Number(startPreset.value);
+    setRangeReadout();
+    rebuildEvents();
+    setScrub(0);
+  });
+
+  unknownSeverity.addEventListener("input", () => {
+    unknownSeverityReadout.textContent = Number(unknownSeverity.value).toLocaleString();
+  });
+
+  modeledRaids.addEventListener("change", () => { rebuildEvents(); });
+  raidDensity.addEventListener("input", () => {
+    raidDensityReadout.textContent = String(Number(raidDensity.value));
+    rebuildEvents();
+  });
+
+  // Mouse tooltip
+  stage.addEventListener("mousemove", (e) => {
+    const r = canvas.getBoundingClientRect();
+    const dpr = canvas.width / r.width;
+    mouse.x = (e.clientX - r.left) * dpr;
+    mouse.y = (e.clientY - r.top) * dpr;
+    mouse.inside = true;
+  });
+  stage.addEventListener("mouseleave", () => {
+    mouse.inside = false;
+    tip.style.display = "none";
+  });
+
+  // Keyboard shortcuts
+  window.addEventListener("keydown", (ev) => {
+    if(ev.key === " "){
+      ev.preventDefault();
+      playing ? pause() : play();
+    }
+    if(ev.key.toLowerCase() === "r"){
+      pause(); setScrub(0); setStatus("Restarted");
+    }
+    if(ev.key.toLowerCase() === "d"){
+      drawer.classList.contains("open") ? closeDrawer() : openDrawer();
+    }
+    if(ev.key === "Escape" && drawer.classList.contains("open")){
+      closeDrawer();
+    }
+  });
+
+  // ------------------------------------------------------------
+  // 13) INIT
+  // ------------------------------------------------------------
+  function init(){
+    START_YEAR = Number(startPreset.value);
+    unknownSeverityReadout.textContent = Number(unknownSeverity.value).toLocaleString();
+    raidDensityReadout.textContent = String(Number(raidDensity.value));
+    speedReadout.textContent = `${Number(speed.value).toFixed(1)}×`;
+    setRangeReadout();
+
+    resize();
+    rebuildEvents();
+
+    tilesTotal = computeTilesNeeded().length;
+    tileReadout.textContent = `0/${tilesTotal}`;
+
+    // Tile load
+    tilesNeeded = computeTilesNeeded();
+    tilesTotal = tilesNeeded.length;
+    tilesLoaded = 0;
+    tilesFailed = 0;
+    updateLoadingUI();
+    showLoading(true);
+    loadTiles().catch(() => { showLoading(false); });
+
+    // Render loop
+    renderFrame();
+    requestAnimationFrame(tick);
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>
