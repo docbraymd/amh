@@ -8,6 +8,34 @@
   <!-- Shared stylesheet -->
   <link rel="stylesheet" href="https://docbraymd.github.io/amh/style_v2.css" />
 
+
+  <!-- Page-specific styles (only for embedded graphic lightbox) -->
+  <style>
+    .amh-graphic-block { margin: 14px 0 22px; }
+    .amh-graphic-link { display: block; cursor: zoom-in; }
+    .amh-graphic-img { width: 100%; height: auto; border-radius: 14px; }
+
+    .amh-lightbox {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      background: rgba(0,0,0,0.86);
+      z-index: 9999;
+    }
+    .amh-lightbox[aria-hidden="false"] { display: flex; }
+    .amh-lightbox img {
+      max-width: 96vw;
+      max-height: 96vh;
+      width: auto;
+      height: auto;
+      cursor: zoom-out;
+    }
+    body.amh-modal-open { overflow: hidden; }
+  </style>
+
   <!-- html2pdf for one-click PDF download -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
@@ -96,6 +124,13 @@
           If you have chest pain, severe shortness of breath, fainting, new neurologic symptoms (weakness, facial droop, speech trouble),
           severe paranoia/hallucinations, suicidal thoughts, or uncontrolled vomiting with dehydration, seek urgent evaluation.
         </p>
+      </div>
+
+
+      <div class="amh-graphic-block" aria-label="Medical marijuana graphic">
+        <a class="amh-graphic-link" id="amh-graphic-link" href="https://docbraymd.github.io/amh/marijuana_graphic.jpg" target="_blank" rel="noopener">
+          <img class="amh-graphic-img" src="https://docbraymd.github.io/amh/marijuana_graphic.jpg" alt="Medical marijuana: high-yield summary and safety considerations graphic" loading="lazy" decoding="async" crossorigin="anonymous" />
+        </a>
       </div>
 
       <h3 id="scheduleIII">Schedule III update: what changes and what does not</h3>
@@ -725,6 +760,11 @@
     </div>
   </div>
 
+
+
+  <div class="amh-lightbox no-print" id="amh-lightbox" aria-hidden="true" role="dialog" aria-modal="true">
+    <img id="amh-lightbox-img" alt="Expanded medical marijuana graphic" />
+  </div>
   <script>
     (function () {
       // ---- Last updated + year ----
@@ -765,6 +805,45 @@
           history.replaceState(null, "", hash);
         }
       });
+
+
+      // ---- Embedded graphic lightbox ----
+      var graphicLink = document.getElementById("amh-graphic-link");
+      var lightbox = document.getElementById("amh-lightbox");
+      var lightboxImg = document.getElementById("amh-lightbox-img");
+
+      function closeLightbox() {
+        if (!lightbox) return;
+        lightbox.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("amh-modal-open");
+        if (lightboxImg) lightboxImg.removeAttribute("src");
+      }
+
+      function openLightbox(src) {
+        if (!lightbox || !lightboxImg) return;
+        lightboxImg.setAttribute("src", src);
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.classList.add("amh-modal-open");
+      }
+
+      if (graphicLink && lightbox && lightboxImg) {
+        graphicLink.addEventListener("click", function (e) {
+          // Only intercept a plain left-click (allow right-click/middle-click/new-tab behaviors)
+          if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+          e.preventDefault();
+          openLightbox(graphicLink.href);
+        });
+
+        lightbox.addEventListener("click", function () {
+          closeLightbox();
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && lightbox.getAttribute("aria-hidden") === "false") {
+            closeLightbox();
+          }
+        });
+      }
 
       // ---- Download PDF using html2pdf.js ----
       var btn = document.getElementById("downloadPdfBtn");
