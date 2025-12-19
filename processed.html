@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Food Processing: Ultra-Processed vs Processed vs Unprocessed | Archangel Michael Health</title>
+
+  <!-- Site stylesheet (v2) -->
+  <link rel="stylesheet" href="https://docbraymd.github.io/amh/style_v2.css" />
+
+  <!-- PDF export helper -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+
+  <style>
+    /* Simple image lightbox (page-local) */
+    .amh-img-thumb img { cursor: zoom-in; }
+    dialog.amh-lightbox {
+      padding: 0;
+      border: none;
+      background: transparent;
+      max-width: 96vw;
+      width: 96vw;
+    }
+    dialog.amh-lightbox::backdrop { background: rgba(0, 0, 0, 0.75); }
+
+    .amh-lightbox img {
+      display: block;
+      margin: 0 auto;
+      max-width: 96vw;
+      max-height: 88vh;
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    .amh-lightbox-close {
+      position: fixed;
+      top: 12px;
+      right: 14px;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(0,0,0,0.55);
+      color: #fff;
+      font-size: 28px;
+      line-height: 40px;
+      cursor: pointer;
+    }
+    .amh-lightbox-close:focus { outline: 2px solid rgba(255,255,255,0.7); outline-offset: 2px; }
+  </style>
+</head>
+
+<body>
+  <div id="top" class="amh-page">
+    <header class="amh-header">
+      <div class="amh-header-inner">
+        <div class="logo-wrap">
+          <img class="amh-logo" src="https://docbraymd.github.io/amh/AMHLogo.png" alt="Archangel Michael Health logo" />
+        </div>
+
+        <div class="amh-practice doctor-tag">Archangel Michael Health</div>
+
+        <h1 class="amh-title" id="page-title">Food Processing: Ultra-Processed vs Processed vs Unprocessed</h1>
+        <h2 class="amh-tagline">Patient Guide: Lifestyle, Integrative &amp; Conventional Care</h2>
+        <div class="byline">by Christopher L. Bray MD PhD</div>
+
+        <div class="action-bar amh-actions no-print" aria-label="Actions">
+          <button class="amh-btn amh-btn-secondary" type="button" onclick="window.print()">
+            Print / Save as PDF
+          </button>
+          <button class="amh-btn amh-btn-primary" id="downloadPdfBtn" type="button">
+            Download PDF
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="amh-content content-body">
+      <p>
+        “Processed food” is not a diagnosis, but it can be a powerful upstream driver of many of the conditions we treat in internal medicine:
+        insulin resistance, dyslipidemia, hypertension, obesity, fatty liver, reflux, IBS-like symptoms, chronic fatigue, and even mood and sleep disruption.
+        This page clarifies the spectrum of food processing, shows you how to accurately identify ultra-processed foods (UPFs), explains the plausible
+        biological mechanisms, and provides a concrete plan to reduce UPFs while keeping your diet practical, enjoyable, and sustainable.
+      </p>
+
+      <div class="callout">
+        <strong>Clinical intent:</strong> This guide is designed for sophisticated patients who want to think in systems.
+        The goal is not dietary perfection. The goal is to decrease dietary exposure to industrial formulations that promote overeating and metabolic
+        dysfunction, while increasing foods that reliably improve satiety, glucose control, blood pressure, lipid profiles, gut health, and long-term risk.
+      </div>
+
+      <h3 id="toc">On this page</h3>
+      <div class="toc toc-columns">
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#definitions">Definitions: unprocessed → ultra-processed</a></li>
+          <li><a href="#why-it-matters">Why UPFs matter (mechanisms)</a></li>
+          <li><a href="#symptoms">Symptoms and warning signs</a></li>
+          <li><a href="#assessment">Diagnosis: how we assess exposure + what to test</a></li>
+          <li><a href="#drivers">Root causes: why UPFs take over</a></li>
+        </ul>
+        <ul>
+          <li><a href="#consequences">Downstream consequences and conditions</a></li>
+          <li><a href="#action-plan">A detailed, practical action plan</a></li>
+<li><a href="#special-topics">Special topics and common edge cases</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#references">References</a></li>
+        </ul>
+      </div>
+
+      <hr />
+
+      <h3 id="overview">Overview</h3>
+      <p>
+        Food processing exists on a spectrum. Some processing is benign or beneficial (washing, chopping, freezing, pasteurization, fermentation).
+        The clinical concern is not “processing” in the generic sense; it is <em>ultra-processing</em>—industrial formulation of foods using
+        refined ingredients, isolates, and additives to optimize convenience, shelf life, palatability, and margin.
+      </p>
+      <p>
+        UPFs can make it easier to overconsume calories without noticing, displace nutrient-dense foods, and increase exposure to additives and
+        packaging-associated chemicals. High UPF intake is consistently associated (in observational research) with higher risk of cardiometabolic disease,
+        some cancers, common mental disorders, and all-cause mortality. Controlled-feeding research also suggests that UPFs can increase energy intake
+        even when presented diets are matched for macronutrients, sugar, sodium, and fiber.
+      </p>
+
+      <div class="callout">
+        <strong>The simplest clinical summary:</strong> A diet dominated by foods you could plausibly make in a normal kitchen tends to be self-limiting
+        (better satiety per calorie). A diet dominated by industrial formulations tends to be easier to overeat and harder to recover from metabolically.
+      </div>
+
+      <h3 id="definitions">Definitions: unprocessed → ultra-processed</h3>
+      <p>
+        The most widely used research framework is the NOVA classification, which groups foods by the nature and purpose of processing.
+        Clinically, you can think in four categories:
+      </p>
+
+      <figure class="amh-figure">
+        <a class="amh-img-thumb" href="https://docbraymd.github.io/amh/processedfood.jpg" data-amh-lightbox="processedfood" target="_blank" rel="noopener">
+          <img src="https://docbraymd.github.io/amh/processedfood.jpg" alt="Visual summary of the food processing spectrum from unprocessed to ultra-processed foods" loading="lazy" />
+        </a>
+        <figcaption>
+          A quick visual that captures the key idea: as processing increases, foods tend to move away from recognizable ingredients and toward industrial formulations designed for shelf-stability, hyper-palatability, and convenience.
+        </figcaption>
+      </figure>
+
+      <dialog id="amhLightbox" class="amh-lightbox" aria-label="Image viewer">
+        <button class="amh-lightbox-close" type="button" aria-label="Close image viewer">×</button>
+        <img id="amhLightboxImg" src="" alt="" loading="lazy" />
+      </dialog>
+
+      <ul>
+        <li><strong>Unprocessed or minimally processed:</strong> edible parts of plants or animals with minimal alteration (washing, cutting, chilling, freezing, pasteurization).</li>
+        <li><strong>Processed culinary ingredients:</strong> substances extracted from foods and used in cooking (oils, butter, sugar, salt).</li>
+        <li><strong>Processed foods:</strong> foods made by adding culinary ingredients to minimally processed foods (canned beans with salt, plain yogurt, simple bread, canned fish).</li>
+        <li><strong>Ultra-processed foods (UPFs):</strong> industrial formulations that often contain refined starches, sugars, seed oils, protein isolates, and additives
+          (emulsifiers, thickeners, flavors, sweeteners, colors). They are designed to be “ready-to-eat/drink/heat” and highly consistent.</li>
+      </ul>
+
+      <h4>Practical identification tools (no lab required)</h4>
+      <ul>
+        <li><strong>The “kitchen test”:</strong> If the ingredient list includes several items you would not reasonably keep or use in home cooking
+          (for example: maltodextrin, modified starches, protein isolates, emulsifiers, colorants, “natural flavors”), treat it as likely ultra-processed.</li>
+        <li><strong>Ingredient-count heuristic:</strong> Longer ingredient lists increase the probability of ultra-processing. This is not perfect (there are exceptions),
+          but it is a useful first pass.</li>
+        <li><strong>Category clue:</strong> If it is shelf-stable for months, hyper-palatable, and “engineered” (chips, cookies, boxed meals, sweetened drinks),
+          it is almost certainly a UPF.</li>
+      </ul>
+
+      <div class="callout">
+        <strong>Important nuance:</strong> Not all UPFs are nutritionally identical. Some “UPF” items (for example, certain whole-grain breads or unsweetened yogurts)
+        may be reasonable transitional foods. The direction of travel matters: reduce the overall burden, prioritize high-fiber, high-protein, minimally sweetened choices,
+        and focus on dietary patterns rather than single ingredients.
+      </div>
+
+      <h3 id="why-it-matters">Why UPFs matter (mechanisms)</h3>
+      <p>
+        Nutrition discussions often focus on macronutrients and calories. UPFs add another layer: the way the food is engineered changes how it behaves
+        in your body and brain. Key mechanisms with clinical relevance include:
+      </p>
+
+      <h4>1) Satiety disruption and faster eating</h4>
+      <ul>
+        <li><strong>Food structure (“matrix”) is degraded:</strong> grinding, extrusion, refining, and reconstitution reduce chewing requirements and speed ingestion.</li>
+        <li><strong>Energy density and “passive overconsumption”:</strong> many UPFs deliver many calories per bite with low mechanical and sensory satiety.</li>
+        <li><strong>Hormonal satiety signaling:</strong> rapid intake and lower viscous fiber can blunt normal fullness cues (GLP-1, PYY, CCK) and delay recognition of satiety.</li>
+      </ul>
+
+      <h4>2) Reward pathway “hyper-palatability”</h4>
+      <p>
+        Many UPFs are engineered around highly rewarding combinations (often refined carbohydrate + fat + salt, or sweetness + fat) plus flavor systems that increase
+        craving and “wanting.” This is not a moral failing; it is an environment-and-design problem.
+      </p>
+
+      <h4>3) Additives and gut biology</h4>
+      <ul>
+        <li><strong>Emulsifiers/thickeners:</strong> some human feeding studies suggest certain emulsifiers (for example, carboxymethylcellulose) can alter the gut microbiome,
+          metabolites, and markers of inflammation in at least some individuals.</li>
+        <li><strong>Sweeteners and flavor systems:</strong> responses vary by person; in some, sweetness without calories can sustain sweet cravings and drive compensatory intake.</li>
+      </ul>
+
+      <h4>4) Processing-generated compounds and packaging exposures</h4>
+      <ul>
+        <li><strong>Heat/processing byproducts:</strong> some high-heat processing can increase exposure to compounds such as advanced glycation end-products (AGEs) and acrylamide.</li>
+        <li><strong>Packaging contaminants:</strong> some UPFs have higher contact with plastics and packaging that can be a source of endocrine-disrupting chemicals (examples include BPA and phthalates).
+          The clinical importance varies, but it is a plausible additional burden.</li>
+      </ul>
+
+      <h3 id="symptoms">Symptoms and warning signs</h3>
+      <p>
+        UPF exposure is not directly “diagnosed” by symptoms. However, certain patterns strongly suggest a UPF-heavy dietary environment and are clinically useful
+        for targeting interventions:
+      </p>
+      <ul>
+        <li><strong>Cravings and loss of dietary control:</strong> “I’m not hungry, but I want snacks,” especially later in the day.</li>
+        <li><strong>Energy volatility:</strong> post-meal sleepiness, mid-afternoon crash, frequent need for caffeine or sweets.</li>
+        <li><strong>Weight trajectory drift:</strong> gradual weight gain despite “not eating much,” especially when meals are replaced by snacks.</li>
+        <li><strong>GI symptoms:</strong> bloating, reflux, constipation/diarrhea fluctuation, or IBS-like symptoms that correlate with packaged foods.</li>
+        <li><strong>Mood/sleep linkage:</strong> irritability, anxiety, or low mood that seems worsened by high sugar or highly processed patterns.</li>
+      </ul>
+
+      <div class="callout">
+        <strong>Red flags:</strong> If you have unintentional weight loss, persistent vomiting, GI bleeding, severe abdominal pain, progressive swallowing difficulty,
+        or major changes in bowel habits, these require prompt medical evaluation regardless of diet quality.
+      </div>
+
+      <h3 id="assessment">Diagnosis: how we assess exposure + what to test</h3>
+
+      <h4>Dietary exposure assessment (the “processing audit”)</h4>
+      <ul>
+        <li><strong>3-day food record:</strong> include one weekend day. Track meals, snacks, beverages, and “tastes.”</li>
+        <li><strong>UPF tally:</strong> identify which items are clearly ultra-processed. Estimate what percent of your calories or “eating occasions” are UPFs.</li>
+        <li><strong>Grocery receipt review:</strong> often more honest than memory. We look for the ratio of foods that can become meals vs foods that are “products.”</li>
+        <li><strong>Time-of-day pattern:</strong> UPFs often cluster in late afternoon/evening when decision fatigue and stress are highest.</li>
+      </ul>
+
+      <h4>Clinical metrics and lab markers (“numbers to improve”)</h4>
+      <p>
+        Because UPFs often act through appetite dysregulation and metabolic effects, the most useful “numbers” to track are cardiometabolic and inflammatory markers:
+      </p>
+      <ul>
+        <li><strong>Anthropometrics:</strong> weight trend, waist circumference, body composition (if available).</li>
+        <li><strong>Vital signs:</strong> home blood pressure averages.</li>
+        <li><strong>Glycemic markers:</strong> fasting glucose, fasting insulin (select cases), HbA1c.</li>
+        <li><strong>Lipids:</strong> triglycerides, HDL, LDL, ApoB (when appropriate).</li>
+        <li><strong>Inflammation and liver:</strong> hsCRP, ALT/AST, and in many cases an assessment for fatty liver risk.</li>
+        <li><strong>Optional “refinement” labs:</strong> vitamin D, magnesium, iron studies, B12 (particularly if diet quality has been poor or restrictive).</li>
+      </ul>
+
+      <h3 id="drivers">Root causes: why UPFs take over</h3>
+      <p>
+        Most people do not choose UPFs because they are lazy or uninformed. UPFs win because they are optimized for modern constraints.
+        Addressing “root causes” means engineering your environment, not just your willpower.
+      </p>
+
+      <h4>Common drivers</h4>
+      <ul>
+        <li><strong>Time scarcity and decision fatigue:</strong> when you are tired, stressed, or busy, convenience becomes the dominant value.</li>
+        <li><strong>Food environment:</strong> UPFs are often the default in workplaces, schools, travel, and many neighborhoods.</li>
+        <li><strong>Stress and sleep debt:</strong> poor sleep increases hunger hormones and hedonic appetite; stress increases reward-seeking behavior.</li>
+        <li><strong>Cost and predictability:</strong> UPFs are often cheaper per calorie and have reliable taste/texture.</li>
+        <li><strong>Skill gap:</strong> many adults were never taught simple meal assembly and therefore underestimate how fast real food can be.</li>
+        <li><strong>Medication and physiology:</strong> some medications and hormonal states increase appetite or cravings; this can amplify UPF reliance.</li>
+      </ul>
+
+      <div class="callout">
+        <strong>Clinical insight:</strong> If your plan does not address sleep, stress, and friction (how hard it is to access real food when you are tired),
+        it will fail—even if the nutrition science is perfect.
+      </div>
+
+      <h3 id="consequences">Downstream consequences and conditions</h3>
+      <p>
+        High UPF exposure is best understood as a risk amplifier. It does not “cause” a disease in a single step; it increases the probability of multiple
+        downstream pathways that converge on chronic disease.
+      </p>
+
+      <h4>Cardiometabolic</h4>
+      <ul>
+        <li><strong>Weight gain and visceral adiposity:</strong> especially when UPFs dominate snacks and beverages.</li>
+        <li><strong>Insulin resistance and type 2 diabetes risk:</strong> driven by excess energy intake, refined carbohydrate load, and loss of fiber-rich foods.</li>
+        <li><strong>Dyslipidemia:</strong> higher triglycerides and lower HDL are common in high-UPF patterns.</li>
+        <li><strong>Hypertension:</strong> often via sodium load, low potassium intake, low dietary fiber, and endothelial dysfunction.</li>
+      </ul>
+
+      <h4>Gastrointestinal and immune</h4>
+      <ul>
+        <li><strong>Reflux and dyspepsia:</strong> often worsened by large, late, energy-dense meals and carbonated/sweetened drinks.</li>
+        <li><strong>Constipation:</strong> low fiber and low water intake, plus limited whole plant foods.</li>
+        <li><strong>Microbiome disruption:</strong> lower diversity and reduced production of beneficial short-chain fatty acids when dietary fiber is displaced.</li>
+      </ul>
+
+      <h4>Brain, mood, and behavior</h4>
+      <ul>
+        <li><strong>Energy and cognition:</strong> volatility in glucose and high reward-driven eating can feel like “brain fog.”</li>
+        <li><strong>Mood and anxiety:</strong> high UPF patterns are associated with higher risk of common mental disorders in observational research.</li>
+        <li><strong>Habit loops:</strong> repeated cue → craving → consumption cycles become reinforced and feel “addictive.”</li>
+      </ul>
+
+      <h3 id="action-plan">A detailed, practical action plan</h3>
+
+      <div class="callout">
+        <strong>Target:</strong> Move your diet toward foods that can become meals (ingredients) and away from foods that are primarily “products.”
+        For many patients, a realistic first goal is an <strong>80/20 pattern</strong>: 80% of intake from minimally processed foods, 20% flexible.
+      </div>
+
+      <h4>Step 0 (Baseline week): measure before you change</h4>
+      <ul>
+        <li>Do a 3-day food record and estimate your current UPF exposure (percent of calories or eating occasions).</li>
+        <li>Pick 1–2 numbers you care about (waist, blood pressure average, fasting glucose, HbA1c, triglycerides).</li>
+        <li>Identify your “UPF hot zone” (most people: afternoon/evening snacks + beverages).</li>
+      </ul>
+
+      <h4>Step 1 (Weeks 1–2): remove the easiest leverage points</h4>
+      <ul>
+        <li><strong>Beverages first:</strong> replace sweetened drinks (including many “coffee shop” beverages) with water, sparkling water, unsweetened tea, or black coffee.
+          If you need a bridge, use lightly sweetened or lower-sugar options and taper.</li>
+        <li><strong>Snacks second:</strong> swap packaged snack foods for “single-ingredient” or minimally processed options: fruit, nuts, Greek yogurt, cheese, boiled eggs,
+          hummus with vegetables, leftover protein, or a simple smoothie you make at home.</li>
+        <li><strong>Protein anchor:</strong> at each meal, include a protein source (beans/lentils, fish, eggs, poultry, tofu/tempeh, Greek yogurt) to stabilize appetite.</li>
+      </ul>
+
+      <h4>Step 2 (Weeks 2–4): build repeatable meal templates</h4>
+      <p>
+        “Meal templates” reduce decision fatigue. Pick 2–3 options for each meal that you can repeat.
+      </p>
+      <ul>
+        <li><strong>Breakfast templates:</strong> oats + berries + nuts; eggs + vegetables; Greek yogurt + fruit + seeds; tofu scramble; chia pudding.</li>
+        <li><strong>Lunch templates:</strong> big salad + protein; leftovers; bean-based bowl (beans + whole grain + vegetables + salsa/olive oil); soup + side salad.</li>
+        <li><strong>Dinner templates:</strong> sheet-pan vegetables + protein; stir-fry with frozen vegetables; chili; lentil curry; grilled fish/chicken + vegetables + potatoes.</li>
+      </ul>
+
+      <h4>Step 3 (Month 2+): optimize for your physiology and schedule</h4>
+      <ul>
+        <li><strong>Fiber target:</strong> work toward a high-fiber pattern using beans/lentils, vegetables, fruit, nuts/seeds, and intact whole grains.</li>
+        <li><strong>Sleep protection:</strong> your nutrition plan should include a sleep plan. Sleep debt increases cravings and impulsive eating.</li>
+        <li><strong>Stress plan:</strong> integrate a daily decompression ritual (walk, prayer, breathing practice, journaling, mobility work).</li>
+        <li><strong>Environment design:</strong> keep real-food defaults visible and convenient; make UPFs hard to access (not forbidden—just friction).</li>
+      </ul>
+
+      <h4>Advanced tactics (high yield for motivated patients)</h4>
+      <ul>
+        <li><strong>Label triage (30 seconds):</strong> scan the ingredient list first. If you see multiple additives (emulsifiers, modified starches, isolates, “flavor systems”),
+          treat it as a UPF and use it intentionally, not mindlessly.</li>
+        <li><strong>“Health-washing” defense:</strong> front-of-package claims (organic, gluten-free, plant-based, “high protein”) do not guarantee low processing.
+          Ingredient lists and added sugar/sodium are more reliable.</li>
+        <li><strong>Resistant starch hack:</strong> cooling cooked potatoes/rice/pasta increases resistant starch (some people see improved post-meal glucose response).
+          This is not magic, but it can be a useful tool.</li>
+        <li><strong>Batch cooking:</strong> cook 2 proteins and 2 starches per week, then assemble meals quickly with vegetables and sauces.</li>
+      </ul>
+
+      <div class="callout">
+        <strong>If you feel overwhelmed:</strong> Start with one domain—beverages and snacks. Many patients see meaningful changes in energy, hunger,
+        and weight trajectory just from this step.
+      </div>
+
+<h3 id="special-topics">Special topics and common edge cases</h3>
+
+      <h4>“Plant-based” can be ultra-processed</h4>
+      <p>
+        Plant-based does not automatically mean minimally processed. Many plant-based meats and snacks are ultra-processed formulations.
+        A whole-food plant-forward pattern (beans, lentils, intact whole grains, vegetables, fruit, nuts, seeds) is very different from a diet built on
+        ultra-processed plant-based products.
+      </p>
+
+      <h4>Kids and teens</h4>
+      <p>
+        Youth often get a large fraction of calories from UPFs due to school, sports, and social environments. The most effective family strategy is
+        to change defaults: beverages, breakfast, and after-school snacks. Remove friction for whole-food options.
+      </p>
+
+      <h4>Athletes and “performance nutrition”</h4>
+      <p>
+        For endurance and strength athletes, some processed foods can be pragmatic tools (sports drinks, gels, bars) around training.
+        The key is compartmentalization: keep “engineered fuel” as a tactical tool during high-demand sessions, not the foundation of daily nutrition.
+      </p>
+
+      <h4>Budget constraints</h4>
+      <ul>
+        <li>Use frozen vegetables and fruit (nutritionally strong and often cheaper).</li>
+        <li>Use dried beans/lentils, oats, rice, and potatoes as staples.</li>
+        <li>Cook once, eat multiple times. The most expensive diet is the one that fails.</li>
+        <li>When you buy convenience foods, choose the least processed versions (simple ingredient lists, lower added sugar/sodium).</li>
+      </ul>
+
+      <h3 id="faq">FAQ</h3>
+
+      <h4>Is all processing bad?</h4>
+      <p>
+        No. Processing can improve safety and access (pasteurization, freezing, fermentation). The problem is industrial formulation designed for
+        overconsumption and long shelf-life, often displacing fiber-rich whole foods.
+      </p>
+
+      <h4>Do I have to eliminate UPFs completely?</h4>
+      <p>
+        Usually not. For many people, an 80/20 approach is more sustainable. The major health wins come from reducing the dominant sources:
+        sweetened beverages, packaged snacks, desserts, and “ready-to-eat” meals that replace real meals.
+      </p>
+
+      <h4>What is the fastest “first win”?</h4>
+      <p>
+        Change beverages and snacks. Many patients notice improved hunger control and steadier energy within 1–2 weeks.
+      </p>
+
+      <h4>What if I have IBS or a sensitive gut and whole foods worsen symptoms?</h4>
+      <p>
+        In that case we often use a phased approach: simplify ingredients, reduce additives, emphasize cooked vegetables and well-tolerated fibers,
+        and tailor the plan to your specific triggers. The goal is not maximal fiber overnight; it is a stable gut, then gradual expansion.
+      </p>
+
+      <h3 id="references">References</h3>
+      <p class="muted">
+        References are provided for patients who want to review primary sources. No citations are embedded in the main text by design.
+      </p>
+      <ol class="ref-list">
+        <li>Centers for Disease Control and Prevention (NCHS). <em>Ultra-processed Food Consumption in Youth and Adults</em> (NCHS Data Brief No. 536, Aug 2025). <a href="https://www.cdc.gov/nchs/products/databriefs/db536.htm">https://www.cdc.gov/nchs/products/databriefs/db536.htm</a></li>
+        <li>Lane MM, Gamage E, Du S, et al. <em>Ultra-processed food exposure and adverse health outcomes: umbrella review of epidemiological meta-analyses</em>. BMJ. 2024;384:e077310. <a href="https://www.bmj.com/content/384/bmj-2023-077310">https://www.bmj.com/content/384/bmj-2023-077310</a></li>
+        <li>Hall KD, Ayuketah A, Brychta R, et al. <em>Ultra-Processed Diets Cause Excess Calorie Intake and Weight Gain: An Inpatient Randomized Controlled Trial of Ad Libitum Food Intake</em>. Cell Metabolism. 2019. <a href="https://pubmed.ncbi.nlm.nih.gov/31105044/">https://pubmed.ncbi.nlm.nih.gov/31105044/</a></li>
+        <li>Hagerman CJ, et al. <em>A Pilot Study of a Novel Dietary Intervention Targeting Ultra-Processed Food Consumption</em>. (Published 2024; covered widely in 2025). <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11625872/">https://pmc.ncbi.nlm.nih.gov/articles/PMC11625872/</a></li>
+        <li>Chassaing B, et al. <em>Randomized Controlled-Feeding Study of Dietary Emulsifier Carboxymethylcellulose Reveals Detrimental Impacts on the Gut Microbiota and Metabolome</em>. Gastroenterology. 2022;162(3):743-756. <a href="https://pubmed.ncbi.nlm.nih.gov/34774538/">https://pubmed.ncbi.nlm.nih.gov/34774538/</a></li>
+        <li>Monteiro CA, Cannon G, Levy RB, et al. <em>Ultra-processed foods: what they are and how to identify them</em>. Public Health Nutrition. 2019;22(5):936-941. <a href="https://pubmed.ncbi.nlm.nih.gov/30744710/">https://pubmed.ncbi.nlm.nih.gov/30744710/</a></li>
+        <li>Juul F, Parekh N, Martinez-Steele E, Monteiro CA, Chang VW. <em>Ultra-processed food consumption among US adults from 2001–2018</em>. Am J Clin Nutr. 2022. <a href="https://www.sciencedirect.com/science/article/pii/S0002916522001253">https://www.sciencedirect.com/science/article/pii/S0002916522001253</a></li>
+        <li>Vadiveloo MK, et al. <em>Ultraprocessed Foods and Their Association With Cardiometabolic Health: Evidence, Gaps and Opportunities</em>. Circulation. 2025. <a href="https://www.ahajournals.org/doi/10.1161/CIR.0000000000001365">https://www.ahajournals.org/doi/10.1161/CIR.0000000000001365</a></li>
+        <li>Harvard T.H. Chan School of Public Health, The Nutrition Source. <em>Processed Foods and Health</em>. <a href="https://nutritionsource.hsph.harvard.edu/processed-foods/">https://nutritionsource.hsph.harvard.edu/processed-foods/</a></li>
+        <li>Harvard Health Publishing. <em>What are ultra-processed foods and are they bad for our health?</em> (Jan 2020). <a href="https://www.health.harvard.edu/blog/what-are-ultra-processed-foods-and-are-they-bad-for-our-health-2020010918605">https://www.health.harvard.edu/blog/what-are-ultra-processed-foods-and-are-they-bad-for-our-health-2020010918605</a></li>
+        <li>American Heart Association. <em>Are ultraprocessed foods good or bad?</em> (Aug 2025). <a href="https://www.heart.org/en/healthy-living/healthy-eating/eat-smart/nutrition-basics/are-ultraprocessed-foods-good-or-bad">https://www.heart.org/en/healthy-living/healthy-eating/eat-smart/nutrition-basics/are-ultraprocessed-foods-good-or-bad</a></li>
+      </ol>
+
+      <a class="back-to-top no-print" href="#top" aria-label="Back to top">Back to top</a>
+    </div>
+
+    
+    <footer class="amh-footer">
+      <div class="amh-disclaimer medical-disclaimer">
+        <p><strong>Medical disclaimer:</strong> The information on this page is provided for general educational purposes only and is not medical advice. It is not intended to diagnose, treat, cure, or prevent any disease, and it does not establish a physician–patient relationship.</p>
+        <p>Do not apply this information to your specific situation without the oversight of a qualified clinician who can consider your full health history, medications, goals, preferences, and limitations. If you have urgent or severe symptoms, seek emergency care.</p>
+        <p style="margin: 0;"><strong>Copyright:</strong> © Dr. Bray at Archangel Michael Health <span id="amh-year">2025</span></p>
+      </div>
+
+      <div class="amh-footer-meta">
+        <span><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine</span>
+        <span class="amh-dot">•</span>
+        <span><strong>Last updated:</strong> <span id="amh-last-updated">—</span></span>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    (function () {
+      
+
+      // ---- Last updated + year ----
+      var yearEl = document.getElementById("amh-year");
+      if (yearEl) {
+        try { yearEl.textContent = String(new Date().getFullYear()); } catch (e) {}
+      }
+
+      var updatedEl = document.getElementById("amh-last-updated");
+      if (updatedEl) {
+        var lm = document.lastModified; // typically reflects server Last-Modified (works well on GitHub Pages)
+        var d = lm ? new Date(lm) : null;
+        if (d && !isNaN(d.getTime())) {
+          var yyyy = d.getFullYear();
+          var mm = String(d.getMonth() + 1).padStart(2, "0");
+          var dd = String(d.getDate()).padStart(2, "0");
+          updatedEl.textContent = yyyy + "-" + mm + "-" + dd;
+        } else {
+          updatedEl.textContent = "—";
+        }
+      }
+
+var btn = document.getElementById("downloadPdfBtn");
+      if (!btn) return;
+
+      btn.addEventListener("click", function () {
+        // Temporarily hide no-print elements (e.g., buttons)
+        document.body.classList.add("pdf-exporting");
+
+        var element = document.querySelector(".amh-content");
+        var title = document.getElementById("page-title");
+        var filename = (title ? title.textContent : "AMH-Patient-Guide")
+          .trim()
+          .replace(/\s+/g, "-")
+          .replace(/[^a-zA-Z0-9\-]/g, "") + ".pdf";
+
+        var opt = {
+          margin:       0.5,
+          filename:     filename,
+          image:        { type: "jpeg", quality: 0.98 },
+          html2canvas:  { scale: 2, useCORS: true },
+          jsPDF:        { unit: "in", format: "letter", orientation: "portrait" }
+        };
+
+        html2pdf().set(opt).from(element).save().finally(function () {
+          document.body.classList.remove("pdf-exporting");
+        });
+      });
+    })();
+  </script>
+
+
+  <script>
+    (function () {
+      var dialog = document.getElementById("amhLightbox");
+      var dialogImg = document.getElementById("amhLightboxImg");
+      if (!dialog || !dialogImg || typeof dialog.showModal !== "function") return;
+
+      // Open lightbox when clicking the thumbnail (unless the user is explicitly opening a new tab/window)
+      document.querySelectorAll('a.amh-img-thumb[data-amh-lightbox]').forEach(function (a) {
+        a.addEventListener("click", function (e) {
+          if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return; // keep native "open in new tab" behavior
+          e.preventDefault();
+
+          var href = a.getAttribute("href");
+          if (!href) return;
+
+          var thumbImg = a.querySelector("img");
+          dialogImg.src = href;
+          dialogImg.alt = (thumbImg && thumbImg.getAttribute("alt")) ? thumbImg.getAttribute("alt") : "Expanded image";
+
+          dialog.showModal();
+        });
+      });
+
+      // Close controls
+      var closeBtn = dialog.querySelector(".amh-lightbox-close");
+      if (closeBtn) closeBtn.addEventListener("click", function () { dialog.close(); });
+
+      // Click outside the image closes (backdrop)
+      dialog.addEventListener("click", function (e) {
+        if (e.target === dialog) dialog.close();
+      });
+    })();
+  </script>
+</body>
+</html>
