@@ -324,13 +324,15 @@
   <!-- VIEWPORT SIZE GATE (SCROLLING IS DISABLED) -->
   <div id="sizeGate" role="alert" aria-live="assertive" aria-atomic="true">
     <h1>SCREEN TOO SMALL</h1>
-    <h2>This application disables scrolling and requires a larger window.</h2>
+    <h2>This application disables scrolling, must run at 100% zoom, and requires enough space to show all controls.</h2>
 
     <div class="panel">
       <div class="hint" style="margin-top:0;">
         <p style="margin-top:0;">
-          Minimum required window size: <strong id="sizeGateMin">—</strong><br/>
-          Current window size: <strong id="sizeGateCur">—</strong>
+          Minimum required viewport: <strong id="sizeGateMin">—</strong><br/>
+          Current viewport: <strong id="sizeGateCur">—</strong><br/>
+          Current zoom: <strong id="sizeGateZoom">—</strong><br/>
+          Required to show controls: <strong id="sizeGateNeed">—</strong>
         </p>
 
         <div class="divider"></div>
@@ -339,6 +341,7 @@
         <ul>
           <li>Rotate your device to landscape (if applicable).</li>
           <li>Use a larger screen (tablet, laptop, or desktop).</li>
+          <li>Return zoom to 100% (do not pinch-zoom) and try again.</li>
           <li>Try fullscreen mode to maximize available space.</li>
         </ul>
 
@@ -1382,18 +1385,103 @@ Rating: ${p.jitterTag}`;
   // -----------------------------
   const MIN_VIEWPORT = { w: 900, h: 680 }; // CSS pixels
 
+    function getViewportMetrics(){
+    const vv = window.visualViewport;
+    if (vv){
+      return {
+        w: Math.round(vv.width),
+        h: Math.round(vv.height),
+        scale: (typeof vv.scale === "number" ? vv.scale : 1)
+      };
+    }
+    return { w: Math.round(window.innerWidth), h: Math.round(window.innerHeight), scale: 1 };
+  }
+
+  function isVisible(el){
+    if (!el) return false;
+    const cs = window.getComputedStyle(el);
+    if (cs.display === "none" || cs.visibility === "hidden") return false;
+    return true;
+  }
+
+  function requiredControlsInfo(vw, vh){
+    const active = document.querySelector(".screen.active");
+    if (!active) return { fits:true, needW:0, needH:0 };
+
+    const id = active.id || "";
+    let requiredIds = [];
+    switch (id){
+      case "screenIntro":
+        requiredIds = ["btnPreflight", "btnFullscreen", "btnStart"];
+        break;
+      case "screenPractice":
+        requiredIds = ["btnPractice", "btnSkipPractice"];
+        break;
+      case "screenReady":
+        requiredIds = ["btnBeginTest", "btnBack"];
+        break;
+      case "screenTest":
+        requiredIds = ["btnAbort"];
+        break;
+      case "screenResults":
+        requiredIds = ["btnRestart", "btnExport"];
+        break;
+      default:
+        requiredIds = [];
+    }
+
+    const margin = 8;
+    let fits = true;
+    let maxRight = 0;
+    let maxBottom = 0;
+
+    // Fallback: if we don't have a mapping, infer clipping from scroll dimensions.
+    if (requiredIds.length === 0){
+      const clipped = (active.scrollHeight > active.clientHeight + 2) || (active.scrollWidth > active.clientWidth + 2);
+      if (clipped){
+        maxRight = Math.max(maxRight, active.scrollWidth);
+        maxBottom = Math.max(maxBottom, active.scrollHeight);
+        fits = false;
+      }
+      return { fits, needW: Math.ceil(maxRight + margin), needH: Math.ceil(maxBottom + margin) };
+    }
+
+    for (const rid of requiredIds){
+      const el = document.getElementById(rid);
+      if (!isVisible(el)) continue;
+      const r = el.getBoundingClientRect();
+      maxRight = Math.max(maxRight, r.right);
+      maxBottom = Math.max(maxBottom, r.bottom);
+      if (r.left < margin || r.top < margin || r.right > (vw - margin) || r.bottom > (vh - margin)){
+        fits = false;
+      }
+    }
+    return { fits, needW: Math.ceil(maxRight + margin), needH: Math.ceil(maxBottom + margin) };
+  }
+
   function checkViewportGate(){
     const gate = $("sizeGate");
     if (!gate) return;
 
-    const w = Math.round(window.innerWidth);
-    const h = Math.round(window.innerHeight);
-    const tooSmall = (w < MIN_VIEWPORT.w) || (h < MIN_VIEWPORT.h);
+    const { w, h, scale } = getViewportMetrics();
+
+    const zoomOk = Math.abs(scale - 1) < 0.02; // require ~100% zoom
+    const baseTooSmall = (w < MIN_VIEWPORT.w) || (h < MIN_VIEWPORT.h);
+
+    const req = requiredControlsInfo(w, h);
+    const contentTooSmall = !req.fits;
 
     const minEl = $("sizeGateMin");
     const curEl = $("sizeGateCur");
+    const zoomEl = $("sizeGateZoom");
+    const needEl = $("sizeGateNeed");
+
     if (minEl) minEl.textContent = `${MIN_VIEWPORT.w}×${MIN_VIEWPORT.h}px`;
     if (curEl) curEl.textContent = `${w}×${h}px`;
+    if (zoomEl) zoomEl.textContent = `${Math.round(scale*100)}%`;
+    if (needEl) needEl.textContent = contentTooSmall ? `${req.needW}×${req.needH}px` : "OK";
+
+    const tooSmall = baseTooSmall || contentTooSmall || !zoomOk;
 
     if (tooSmall){
       gate.classList.add("show");
@@ -1415,7 +1503,10 @@ Rating: ${p.jitterTag}`;
 
   window.addEventListener("resize", checkViewportGate, { passive:true });
   window.addEventListener("orientationchange", checkViewportGate, { passive:true });
-
+  if (window.visualViewport){
+    window.visualViewport.addEventListener("resize", checkViewportGate, { passive:true });
+    window.visualViewport.addEventListener("scroll", checkViewportGate, { passive:true });
+  }
 
   // -----------------------------
   // UI wiring
