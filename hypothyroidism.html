@@ -1,1046 +1,907 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Hypothyroidism | Archangel Michael Health</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Patient's Guide to Hypothyroidism: An Integrative Approach</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            text-align: center;
+            background: linear-gradient(135deg, #4a7c59 0%, #2d5436 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.2em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+        
+        .header .author {
+            margin-top: 20px;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        h2 {
+            color: #4a7c59;
+            border-bottom: 3px solid #4a7c59;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        
+        h3 {
+            color: #2d5436;
+            margin-top: 25px;
+        }
 
-  <!-- Shared stylesheet -->
-  <link rel="stylesheet" href="https://docbraymd.github.io/amh/style_v2.css" />
+        h4 {
+            color: #2d5436;
+            margin-top: 15px;
+        }
+        
+        /* Standard green highlight box */
+        .highlight-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4a7c59;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
 
-  <!-- html2pdf for one-click PDF download -->
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+        /* Blue info box for general information */
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        /* Orange warning box for cautions */
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        /* Red danger box for critical warnings or negative symptoms */
+        .danger-box {
+            background: #ffebee;
+            border-left: 4px solid #f44336;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .symptom-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .symptom-item {
+            background: #f1f8e9;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 3px solid #4a7c59;
+        }
+
+        /* Specialized styling for over-treatment symptoms */
+        .symptom-item-danger {
+            background: #ffebee;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 3px solid #f44336;
+        }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .card h4 {
+            color: #4a7c59;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        
+        ul {
+            padding-left: 25px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9em;
+        }
+        
+        .data-table th {
+            background: #4a7c59;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .data-table td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .data-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        /* Numbered list styling */
+        .action-steps {
+            background: #e8f5e9;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .action-steps ol {
+            counter-reset: step-counter;
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .action-steps li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 15px;
+        }
+        
+        .action-steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #4a7c59;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .quote-box {
+            background: #f5f5f5;
+            border-left: 4px solid #4a7c59;
+            padding: 20px;
+            margin: 30px 0;
+            font-style: italic;
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        .risk-factors {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .risk-badge {
+            background: #c8e6c9;
+            color: #1b5e20;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            .section, .header {
+                box-shadow: none;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+
+    <!-- Infographic lightbox styles (page-local) -->
+    <style>
+      /* Infographic inline figure */
+      .amh-figure { margin: 1.25rem 0; }
+      .amh-figure .amh-figure-inner {
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(0,0,0,0.15);
+        background: rgba(0,0,0,0.02);
+      }
+      .amh-figure img {
+        display: block;
+        width: 100%;
+        height: auto;
+        cursor: zoom-in;
+      }
+      .amh-figure figcaption {
+        font-size: 0.95rem;
+        opacity: 0.9;
+        margin-top: 0.6rem;
+      }
+
+      /* Fullscreen overlay (lightbox) */
+      .amh-lightbox {
+        position: fixed;
+        inset: 0;
+        display: none;
+        align-items: stretch;
+        justify-content: stretch;
+        background: rgba(0,0,0,0.92);
+        z-index: 999999;
+        padding: 12px;
+      }
+      .amh-lightbox.is-open { display: flex; }
+
+      .amh-lightbox-panel {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .amh-lightbox-toolbar {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+      }
+
+      .amh-lightbox-btn,
+      .amh-lightbox-link {
+        appearance: none;
+        border: 1px solid rgba(255,255,255,0.25);
+        background: rgba(255,255,255,0.08);
+        color: #fff;
+        padding: 10px 12px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .amh-lightbox-btn:hover,
+      .amh-lightbox-link:hover { background: rgba(255,255,255,0.14); }
+
+      .amh-lightbox-imgwrap {
+        flex: 1;
+        width: 100%;
+        height: 100%;
+        border-radius: 12px;
+        border: 1px solid rgba(255,255,255,0.18);
+        background: rgba(255,255,255,0.04);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Full-browser-size containment without cropping */
+      .amh-lightbox-imgwrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        cursor: zoom-out;
+        user-select: none;
+        -webkit-user-drag: none;
+      }
+    </style>
+
 </head>
-
 <body>
-  <div class="amh-page main-container" id="pdf-root" role="document">
-    <header class="amh-header">
-      <div class="amh-header-inner amh-header-centered">
-        <div class="amh-logo-wrap">
-          <img class="amh-logo" src="https://docbraymd.github.io/amh/AMHLogo.png" alt="Archangel Michael Health logo" />
-        </div>
-
-        <div class="amh-practice doctor-tag">Archangel Michael Health</div>
-
-        <h1 class="amh-title" id="page-title">Hypothyroidism (Underactive Thyroid)</h1>
-        <h2 class="amh-tagline">Patient Guide: Lifestyle, Integrative &amp; Conventional Care</h2>
-        <div class="byline">by Christopher L. Bray MD PhD</div>
-
-        <div class="action-bar amh-actions no-print" aria-label="Actions">
-          <button class="amh-btn amh-btn-secondary" type="button" onclick="window.print()">
-            Print / Save as PDF
-          </button>
-          <button class="amh-btn amh-btn-primary" id="downloadPdfBtn" type="button">
-            Download PDF
-          </button>
-        </div>
-      </div>
-    </header>
-
-    <div class="amh-content content-body">
-      <p>
-        Hypothyroidism means your thyroid is not producing (or your body is not effectively using) enough thyroid hormone
-        to support normal metabolic function. Because thyroid hormone influences virtually every organ system, symptoms
-        can be broad—fatigue, brain fog, constipation, weight gain, low mood, dry skin, hair changes, cold intolerance,
-        menstrual changes, and more. In most cases, hypothyroidism is straightforward to diagnose and highly treatable.
-        The best outcomes come from pairing the right medical therapy with practical lifestyle and integrative strategies
-        that reduce inflammation, optimize nutrient status, improve hormone “conversion,” and improve medication absorption.
-      </p>
-
-      <div class="clinical-note">
-        <strong>How to use this guide:</strong> Start with “Diagnosis and what to test” to understand which labs matter and why.
-        Then use the “Step-by-step improvement plan” to build a staged approach: foundations and medication precision first,
-        then targeted nutrition, then deeper root-cause work (especially for Hashimoto’s autoimmune thyroiditis).
-      </div>
-
-      <div class="toc no-print" aria-label="On this page">
-        <h2>On this page</h2>
-        <ul class="amh-list">
-          <li><a href="#overview">Overview and key points</a></li>
-          <li><a href="#risk">Who is at higher risk</a></li>
-          <li><a href="#physiology">Thyroid physiology: T4, T3, conversion, and reverse T3</a></li>
-          <li><a href="#symptoms">Symptoms and red flags</a></li>
-          <li><a href="#diagnosis">Diagnosis and what to test</a></li>
-          <li><a href="#drivers">Root causes and contributing factors</a></li>
-          <li><a href="#consequences">Consequences if untreated or undertreated</a></li>
-          <li><a href="#pregnancy">Pregnancy and postpartum considerations</a></li>
-          <li><a href="#plan">Step-by-step improvement plan</a></li>
-          <li><a href="#treatments">Conventional treatments</a></li>
-          <li><a href="#integrative">Integrative options</a></li>
-          <li><a href="#toxins">Lowering toxic load: practical endocrine disruptor reduction</a></li>
-          <li><a href="#tracking">Targets and tracking</a></li>
-          <li><a href="#costs">Cost considerations</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#references">References</a></li>
-        </ul>
-      </div>
-
-      <h3 id="overview">Overview and key points</h3>
-      <p>
-        The thyroid gland primarily produces two hormones: T4 (thyroxine) and T3 (triiodothyronine). T4 is largely a “storage”
-        hormone; T3 is the more active form at the cellular receptor. Your pituitary gland regulates thyroid output using TSH
-        (thyroid-stimulating hormone). When thyroid hormone levels fall, the pituitary increases TSH to stimulate the thyroid.
-        For primary hypothyroidism (the most common type), the hallmark pattern is <strong>elevated TSH</strong> with
-        <strong>low free T4</strong>. Hypothyroidism is common, and women are disproportionately affected over the lifespan.
-      </p>
-
-      <div class="clinical-note">
-        <strong>High-yield concept:</strong> In iodine-sufficient regions like the U.S., the most common root cause of primary hypothyroidism
-        is <strong>Hashimoto’s thyroiditis</strong>—an immune-driven inflammatory condition of the thyroid. Treating the hormone deficit is essential,
-        but long-term symptom stability often improves when we also address immune drivers, gut health, nutrient status, sleep, and toxin exposure.
-      </div>
-
-      <ul class="amh-list symptom-list">
-        <li><strong>Most common U.S. cause:</strong> Hashimoto’s thyroiditis (autoimmune inflammation and gradual thyroid injury).</li>
-        <li><strong>Other common causes:</strong> thyroid surgery, radioactive iodine therapy, head/neck radiation, thyroiditis (postpartum or viral), and select medications.</li>
-        <li><strong>Key treatment principle:</strong> normalize thyroid physiology and symptoms using the simplest effective approach (usually levothyroxine), then optimize absorption, conversion, and root contributors.</li>
-        <li><strong>Subclinical hypothyroidism:</strong> mildly elevated TSH with normal free T4—often early thyroid strain; management depends on symptoms, antibodies, pregnancy plans, and cardiovascular risk.</li>
-        <li><strong>Central hypothyroidism:</strong> rare; pituitary/hypothalamic dysfunction can produce low/normal TSH despite low thyroid hormone—requires a different diagnostic lens.</li>
-      </ul>
-
-      <div class="clinical-note">
-        <strong>Clinical note:</strong> Some people remain symptomatic despite “normal” TSH. Before escalating therapy, confirm:
-        (1) correct diagnosis, (2) consistent medication timing and absorption, (3) no lab interference (especially biotin),
-        and (4) no other conditions mimicking hypothyroid symptoms (sleep apnea, anemia/iron deficiency, depression,
-        low vitamin B12, insulin resistance, chronic inflammation, medication effects).
-      </div>
-
-      <h3 id="risk">Who is at higher risk</h3>
-      <p>
-        Risk is not destiny, but it guides how aggressively we screen, how we interpret mild abnormalities, and how closely we monitor.
-      </p>
-      <ul class="amh-list symptom-list">
-        <li><strong>Sex:</strong> Women are substantially more likely than men to develop hypothyroidism across the lifespan.</li>
-        <li><strong>Age:</strong> Prevalence increases with age, and symptoms can be mistakenly attributed to “normal aging.”</li>
-        <li><strong>Family history:</strong> A first-degree relative with thyroid disease increases risk and lowers the threshold for antibody testing.</li>
-        <li><strong>Autoimmune clustering:</strong> Type 1 diabetes, rheumatoid arthritis, celiac disease, vitiligo, pernicious anemia, and other autoimmune diseases increase risk.</li>
-        <li><strong>Pregnancy/postpartum:</strong> Thyroid physiology changes in pregnancy; postpartum thyroiditis can occur and sometimes becomes permanent hypothyroidism.</li>
-        <li><strong>Prior thyroid treatment:</strong> Thyroid surgery, radioactive iodine, or head/neck radiation.</li>
-        <li><strong>Medications:</strong> Lithium, amiodarone, interferon-based therapies, and some immunotherapies can affect thyroid function.</li>
-      </ul>
-
-      <h3 id="physiology">Thyroid physiology: T4, T3, conversion, and reverse T3</h3>
-      <p>
-        Many treatment frustrations come from misunderstanding where “active hormone” actually comes from. Your thyroid makes mostly T4.
-        Much of your usable T3 is produced outside the thyroid by converting T4 to T3 in peripheral tissues—especially the liver and gut.
-        This is why gut health, nutrient status, inflammation, and stress physiology can meaningfully affect how you feel even when some labs appear “acceptable.”
-      </p>
-
-      <div class="success-box">
-        <strong>Practical translation:</strong> T4 is the supply line. T3 is the “active fuel.” Conversion efficiency and receptor responsiveness
-        determine how much of that supply becomes usable energy.
-      </div>
-
-      <h4>T4 (thyroxine): the “storage/supply” hormone</h4>
-      <p>
-        T4 circulates in relatively higher amounts and has a longer half-life. It provides a stable reservoir that tissues can draw from.
-      </p>
-
-      <h4>T3 (triiodothyronine): the “active” hormone</h4>
-      <p>
-        T3 binds thyroid hormone receptors more strongly and drives a large share of the “metabolic effect”: warmth, energy, bowel motility,
-        cognitive clarity, and lipid metabolism.
-      </p>
-
-      <h4>Reverse T3 (rT3): the “metabolic brake” (selective clinical use)</h4>
-      <p>
-        In states of physiologic stress—acute illness, inflammation, sleep deprivation, severe caloric restriction, injury, and sometimes chronic stress—
-        the body may shift T4 metabolism toward reverse T3. Reverse T3 is an inactive form that can reflect a conservation response.
-        Clinically, this may present as “functional hypothyroid” symptoms even when TSH and free T4 do not look dramatically abnormal.
-      </p>
-
-      <div class="alert-box">
-        <strong>High-yield conversion blockers:</strong> chronic stress and elevated cortisol signaling, severe illness, rapid weight loss or very low-calorie dieting,
-        systemic inflammation, nutrient deficiencies (selenium, zinc, iron), and overtraining (especially high-intensity volume without recovery).
-      </div>
-
-      <h3 id="symptoms">Symptoms and red flags</h3>
-      <p>
-        Hypothyroidism often develops slowly, and symptoms can overlap with common issues (stress, sleep deprivation, aging,
-        overtraining, depression, iron deficiency). The most helpful pattern is a cluster of symptoms plus supportive labs.
-      </p>
-
-      <h4>Common symptoms (classic pattern)</h4>
-      <ul class="amh-list symptom-list">
-        <li><strong>Energy and metabolism:</strong> persistent fatigue, low stamina, feeling “slowed down,” cold intolerance, unexplained weight gain or difficulty losing weight.</li>
-        <li><strong>Brain and mood:</strong> brain fog, slower thinking, memory issues, low mood, anxiety, reduced motivation.</li>
-        <li><strong>Skin, hair, and connective tissue:</strong> dry/coarse skin, brittle nails, thinning hair, eyebrow thinning, puffiness (especially facial/periorbital).</li>
-        <li><strong>GI:</strong> constipation, bloating, sluggish digestion.</li>
-        <li><strong>Muscle and joints:</strong> cramps, aches, stiffness, weakness, reduced exercise tolerance.</li>
-        <li><strong>Cardiometabolic:</strong> slower heart rate, higher LDL cholesterol or triglycerides, reduced exercise capacity.</li>
-        <li><strong>Reproductive:</strong> heavy or irregular periods, fertility challenges, low libido; in pregnancy, untreated hypothyroidism can affect maternal and fetal health.</li>
-      </ul>
-
-      <h4>Symptoms that can indicate over-treatment (too much thyroid hormone)</h4>
-      <ul class="amh-list symptom-list">
-        <li>palpitations, racing heart, tremor, anxiety/irritability</li>
-        <li>insomnia, heat intolerance, sweating</li>
-        <li>unexplained weight loss, frequent bowel movements</li>
-        <li>new or worsening chest discomfort or shortness of breath</li>
-      </ul>
-
-      <div class="alert-box" id="red-flags">
-        <strong>Red flags (seek urgent evaluation):</strong>
-        confusion or marked sleepiness, severe weakness, fainting, chest pain, new significant shortness of breath,
-        severe swelling, very slow heart rate, hypothermia, or inability to stay awake. These can represent severe hypothyroidism
-        (rare but dangerous) or other urgent conditions that should not be managed at home.
-      </div>
-
-      <h3 id="diagnosis">Diagnosis and what to test</h3>
-      <p>
-        Diagnosis is made with a combination of clinical assessment and blood testing. A high-quality thyroid evaluation does
-        not rely on a single number. It starts with TSH and free T4, then adds targeted tests based on context (autoimmune risk,
-        symptoms, pregnancy, medication history, and response to therapy).
-      </p>
-
-      <div class="clinical-note">
-        <strong>The sensitivity of TSH (why small changes matter):</strong> TSH behaves like an “amplifier” of thyroid hormone signaling.
-        This is one reason mild shifts in free hormone can produce larger shifts in TSH—and why stable medication timing and absorption are essential.
-      </div>
-
-      <h4>Core thyroid labs</h4>
-      <ul class="amh-list symptom-list">
-        <li>
-          <strong>TSH:</strong> the most sensitive screening marker for primary hypothyroidism. Elevated TSH signals the pituitary is pushing the thyroid harder.
-          Reference ranges vary by lab and age; interpretation should match symptoms and free hormone levels.
-        </li>
-        <li>
-          <strong>Free T4:</strong> the unbound “available” T4. Low free T4 with high TSH confirms overt primary hypothyroidism. Normal free T4 with mildly high TSH suggests subclinical hypothyroidism.
-        </li>
-        <li>
-          <strong>Free T3 (selective use):</strong> not usually required for diagnosis, but can be helpful when symptoms persist despite therapy, when conversion concerns exist, or when evaluating certain nonstandard treatment approaches.
-        </li>
-      </ul>
-
-      <h4>Autoimmune evaluation (very important in the U.S.)</h4>
-      <ul class="amh-list symptom-list">
-        <li><strong>Thyroid peroxidase antibodies (TPO Ab):</strong> often positive in Hashimoto’s; helps identify autoimmune etiology and predicts progression risk in subclinical cases.</li>
-        <li><strong>Thyroglobulin antibodies (Tg Ab):</strong> can also support Hashimoto’s diagnosis; sometimes positive when TPO Ab is negative.</li>
-      </ul>
-
-      <h4>Reverse T3 (rT3) testing (selective)</h4>
-      <p>
-        Reverse T3 testing is not routinely required. It is sometimes considered when symptoms persist despite apparently reasonable thyroid labs,
-        particularly when there is significant physiologic stress, inflammation, overtraining, severe dieting, or chronic illness.
-        If used, it should be interpreted cautiously and never as a stand-alone reason to escalate therapy without addressing foundational drivers.
-      </p>
-
-      <h4>Optimal vs. reference ranges (interpretation framework)</h4>
-      <p>
-        Lab “reference ranges” describe what is statistically common in a broad population, not necessarily what is optimal for you.
-        Many symptomatic patients feel best with thyroid markers in the healthier portion of the reference range—provided we avoid over-treatment.
-        Any target should be individualized, especially with aging, cardiovascular disease, and pregnancy.
-      </p>
-      <ul class="amh-list symptom-list">
-        <li><strong>TSH:</strong> often best tolerated in the lower half of the reference range for many symptomatic patients; clinical judgment matters.</li>
-        <li><strong>Free T4:</strong> many patients feel better when free T4 is not at the bottom of the range, assuming safety and symptom response align.</li>
-        <li><strong>Free T3:</strong> sometimes useful when symptoms persist, but interpretation should account for illness/stress physiology and conversion drivers.</li>
-      </ul>
-
-      <h4>Supportive and “why you feel this way” testing</h4>
-      <p>
-        Hypothyroid symptoms are common in other conditions. If you are symptomatic, testing should also look for frequent
-        co-travelers and “symptom mimics,” especially if thyroid labs are only mildly abnormal or if symptoms persist despite treatment.
-      </p>
-      <ul class="amh-list symptom-list">
-        <li><strong>Lipid panel:</strong> hypothyroidism can raise LDL cholesterol and triglycerides.</li>
-        <li><strong>CBC + ferritin/iron studies:</strong> iron deficiency can cause fatigue, hair loss, cold intolerance, and impaired thyroid hormone utilization.</li>
-        <li><strong>Vitamin B12 and folate:</strong> low levels can cause fatigue, neuropathy, cognitive symptoms, and anemia.</li>
-        <li><strong>Vitamin D:</strong> commonly low; relevant for immune balance and musculoskeletal symptoms.</li>
-        <li><strong>Comprehensive metabolic panel (CMP):</strong> liver and kidney function matter for conversion and overall physiology.</li>
-        <li><strong>Glucose/A1c (and sometimes fasting insulin):</strong> insulin resistance can overlap with weight gain, fatigue, and inflammation.</li>
-        <li><strong>Celiac screening (tTG-IgA with total IgA):</strong> higher prevalence in Hashimoto’s; untreated celiac can impair medication absorption and drive inflammation.</li>
-        <li><strong>Sleep apnea screening (clinical assessment ± home sleep test):</strong> common, underdiagnosed, and highly symptomatic.</li>
-      </ul>
-
-      <div class="clinical-note">
-        <strong>Biotin warning (high-yield):</strong> High-dose biotin (often in “hair/skin/nails” products) can distort thyroid lab assays and produce misleading results.
-        If you use biotin, disclose it and stop it in advance of thyroid labs per clinician guidance so results reflect true physiology.
-      </div>
-
-      <h4>When imaging is appropriate</h4>
-      <ul class="amh-list symptom-list">
-        <li><strong>Thyroid ultrasound:</strong> useful if there is a goiter, asymmetry, nodules, swallowing discomfort, or concerning exam findings.</li>
-        <li><strong>Pituitary evaluation:</strong> if central hypothyroidism is suspected (low free T4 with non-elevated TSH), additional pituitary hormones and sometimes MRI are appropriate.</li>
-      </ul>
-
-      <h3 id="drivers">Root causes and contributing factors</h3>
-      <p>
-        In integrative care, we separate “root cause” from “contributors.” The root cause is the primary biological reason
-        thyroid output is low (e.g., Hashimoto’s, post-surgical). Contributors are the factors that amplify symptoms, worsen antibody activity,
-        impair conversion (T4 → T3), or interfere with medication absorption.
-      </p>
-
-      <h4>Common root causes</h4>
-      <ul class="amh-list symptom-list">
-        <li><strong>Hashimoto’s thyroiditis:</strong> immune-mediated inflammation against thyroid tissue.</li>
-        <li><strong>Iatrogenic hypothyroidism:</strong> thyroid removal or destruction (surgery, radioactive iodine, head/neck radiation).</li>
-        <li><strong>Medication-associated:</strong> lithium, amiodarone, interferon therapies, and select immunotherapies can impair thyroid function.</li>
-        <li><strong>Thyroiditis:</strong> postpartum or inflammatory thyroiditis can transition from hyperthyroid phases to hypothyroid phases.</li>
-        <li><strong>Iodine deficiency (less common in the U.S.):</strong> globally common; in iodine-replete regions, excessive iodine supplementation can sometimes worsen thyroid autoimmunity.</li>
-        <li><strong>Central hypothyroidism:</strong> pituitary/hypothalamic disease (rare).</li>
-      </ul>
-
-      <h4>Key contributors that worsen symptoms or labs</h4>
-      <ul class="amh-list symptom-list">
-        <li><strong>Medication absorption issues:</strong> taking thyroid hormone with coffee, food, calcium/iron/magnesium/zinc, fiber supplements, bile-acid binders, or some antacids can reduce absorption.</li>
-        <li><strong>GI conditions:</strong> celiac disease, H. pylori, atrophic gastritis, inflammatory bowel disease, and significant dysbiosis can impair absorption and raise dose requirements.</li>
-        <li><strong>Nutrient deficits:</strong> iron, selenium, zinc, vitamin D, B12 (and sometimes folate) are common “limiting factors” for energy, hair, mood, and immune balance.</li>
-        <li><strong>Chronic stress and sleep debt:</strong> can worsen fatigue and reduce resilience; may also influence conversion and inflammatory signaling.</li>
-        <li><strong>Insulin resistance and metabolic inflammation:</strong> overlaps strongly with weight gain, dyslipidemia, and fatigue.</li>
-        <li><strong>Environmental exposures:</strong> endocrine-disrupting chemicals can interfere with iodine handling or thyroid hormone signaling; risk reduction is reasonable even when individual causality is hard to quantify.</li>
-      </ul>
-
-      <h3 id="consequences">Consequences if untreated or undertreated</h3>
-      <p>
-        Untreated hypothyroidism is not only a “how you feel” issue. Over time it can influence cardiovascular risk,
-        metabolic health, fertility/pregnancy outcomes, and cognitive function. The degree of risk depends on how severe
-        and how prolonged the hormone deficiency is.
-      </p>
-
-      <ul class="amh-list symptom-list">
-        <li><strong>Cardiometabolic:</strong> elevated LDL cholesterol and triglycerides; potential acceleration of atherosclerosis risk; reduced exercise capacity.</li>
-        <li><strong>Neurocognitive and mood:</strong> persistent brain fog, depressive symptoms, and reduced productivity/quality of life.</li>
-        <li><strong>Reproductive:</strong> menstrual irregularity, fertility challenges; in pregnancy, inadequate thyroid hormone can affect maternal wellbeing and fetal development.</li>
-        <li><strong>Musculoskeletal:</strong> weakness, cramps, reduced performance; in severe/prolonged cases, increased risk of certain muscle enzyme elevations.</li>
-        <li><strong>Severe hypothyroidism (rare):</strong> can progress to a life-threatening state with hypothermia, slowed breathing, bradycardia, and altered mental status.</li>
-      </ul>
-
-      <div class="clinical-note">
-        <strong>Balance matters:</strong> Over-treatment also carries real risk—particularly atrial fibrillation and bone loss in susceptible individuals.
-        The goal is not “as much thyroid hormone as possible,” but the smallest dose and strategy that restores stable physiology and function.
-      </div>
-
-      <h3 id="pregnancy">Pregnancy and postpartum considerations</h3>
-      <p>
-        Thyroid management during pregnancy is time-sensitive. Early fetal neurodevelopment depends on maternal thyroid hormone availability.
-        If you are planning pregnancy, already pregnant, or postpartum, your thyroid plan should be explicitly tailored and monitored.
-      </p>
-
-      <div class="success-box">
-        <strong>Pregnancy action framework:</strong> optimize thyroid status pre-conception, act early when pregnancy is confirmed, and monitor more frequently
-        using pregnancy-specific targets and clinician guidance.
-      </div>
-
-      <ul class="amh-list symptom-list">
-        <li><strong>Pre-conception:</strong> aim for stable thyroid labs and symptom control before pregnancy whenever possible.</li>
-        <li><strong>When pregnancy is confirmed:</strong> if you are already on levothyroxine, many clinicians increase the dose early and then confirm with labs—because requirements often rise quickly. Contact your clinician promptly for individualized instructions.</li>
-        <li><strong>Monitoring:</strong> thyroid testing is typically performed more often in pregnancy, especially in the first trimester and after any dose change.</li>
-        <li><strong>Postpartum thyroiditis:</strong> the postpartum period can be a vulnerable window for thyroid inflammation. Symptoms may mimic anxiety, depression, or sleep deprivation. Some cases resolve; some evolve into persistent hypothyroidism.</li>
-      </ul>
-
-      <h3 id="plan">Step-by-step improvement plan</h3>
-
-      <div class="success-box">
-        <strong>Practical plan:</strong> Most people improve fastest by getting fundamentals right first: confirm the diagnosis, optimize medication timing/absorption,
-        stabilize sleep and protein intake, and address common “symptom mimics.” Then add targeted nutrition and selective supplements.
-        Finally, address deeper autoimmune and gut drivers (and toxic load) when needed.
-      </div>
-
-      <h4>Phase 1 (Weeks 0–2): Precision first</h4>
-      <ul class="amh-list symptom-list">
-        <li><strong>Confirm the core labs:</strong> at minimum TSH + free T4; add antibodies if Hashimoto’s is likely.</li>
-        <li><strong>Remove lab interference:</strong> disclose supplements (especially biotin) and medication timing to your clinician before labs.</li>
-        <li><strong>Medication timing discipline:</strong> take consistently with water on an empty stomach; choose either morning (well before food/coffee) or bedtime (well after food) and keep it consistent.</li>
-        <li><strong>Build a true separation buffer:</strong> hard separation from calcium/iron/magnesium/zinc, fiber supplements, and soy-based protein.</li>
-        <li><strong>Start symptom tracking:</strong> energy, mood, constipation, hair shedding, cold intolerance, resting pulse, sleep quality. Weekly notes outperform memory.</li>
-      </ul>
-
-      <h4>Phase 2 (Weeks 2–8): Foundations that move the needle</h4>
-      <ul class="amh-list symptom-list">
-        <li><strong>Protein and micronutrient density:</strong> aim for adequate protein and whole-food variety; avoid “empty calorie” patterns that worsen fatigue and insulin resistance.</li>
-        <li><strong>Anti-inflammatory food pattern:</strong> prioritize vegetables (especially cooked), legumes, nuts/seeds, olive oil, fish or other omega-3 sources, and minimally processed foods.</li>
-        <li><strong>Crucifers and soy (practical approach):</strong> cruciferous vegetables are healthy; emphasize cooked forms if intake is high. Soy can be part of a healthy diet—just avoid taking it near thyroid medication.</li>
-        <li><strong>Sleep and circadian rhythm:</strong> consistent sleep/wake times; morning light exposure; reduce late-night screens; treat sleep apnea if present.</li>
-        <li><strong>Exercise (start where you are):</strong> begin with walking and strength basics; build toward weekly moderate activity plus resistance training. Avoid “crash” overtraining early.</li>
-      </ul>
-
-      <h4>Phase 3 (Months 2–6): Targeted root-cause work (especially for Hashimoto’s)</h4>
-      <ul class="amh-list symptom-list">
-        <li><strong>Autoimmune strategy:</strong> reduce inflammatory triggers and support immune regulation—diet quality, vitamin D status, sleep, stress management, and gut health matter most.</li>
-        <li><strong>Structured elimination trials (selective):</strong> if Hashimoto’s is present and symptoms persist, consider a time-limited, measurable trial of gluten reduction (and sometimes dairy reduction) guided by symptoms and follow-up labs. Screen for celiac disease before eliminating gluten if testing is planned.</li>
-        <li><strong>Correct deficiencies:</strong> iron/ferritin, vitamin D, B12, zinc, and selenium can be “rate limiters” for energy and hair even if thyroid labs improve.</li>
-        <li><strong>Review medication list:</strong> acid suppressants, bile binders, iron/calcium, and certain cardiac/psychiatric medications may affect thyroid physiology or absorption.</li>
-        <li><strong>Lower toxic load:</strong> implement a realistic, staged endocrine disruptor reduction plan (see dedicated section).</li>
-        <li><strong>Re-test at the right intervals:</strong> thyroid dose changes take weeks to equilibrate; follow-up labs are most meaningful after a consistent period on a stable regimen.</li>
-      </ul>
-
-      <h3 id="treatments">Conventional treatments</h3>
-      <p>
-        The standard of care for overt hypothyroidism is thyroid hormone replacement. For most people, levothyroxine
-        (synthetic T4) is effective, safe, and stable. The most common reason people struggle is not the molecule itself,
-        but inconsistent timing, absorption interference, or unaddressed contributors (iron deficiency, sleep apnea, inflammatory disease, etc.).
-      </p>
-
-      <div class="rx-card amh-rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Levothyroxine (T4) — tablets</div>
-          <div class="rx-type">STANDARD</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">What it is</div>
-          <div>
-            Synthetic T4 replacement. Your body converts T4 to active T3 in peripheral tissues (especially liver and gut).
-            It is the most commonly used and best-studied long-term therapy.
-          </div>
-
-          <div class="rx-label">How it works</div>
-          <div>
-            Restores circulating T4, allowing tissues to generate T3 as needed. Over time, this normalizes pituitary feedback (TSH)
-            and improves metabolic function across systems.
-          </div>
-
-          <div class="rx-label">Typical use</div>
-          <div>
-            Taken daily. Dose is individualized based on age, weight, cardiac risk, pregnancy status, symptoms, and follow-up labs.
-            Consistency is the core skill: same time, same relationship to food and other medications.
-          </div>
-
-          <div class="rx-label">Absorption rules</div>
-          <div>
-            Take with water on an empty stomach. Avoid taking it close to coffee or food. Separate from calcium, iron, magnesium, zinc,
-            fiber supplements, soy protein, bile-acid binders, and certain antacids. If mornings are hard, bedtime dosing (well after food)
-            can work when done consistently.
-          </div>
-
-          <div class="rx-label">Side effects / risks</div>
-          <div>
-            When dosed correctly, side effects are uncommon. Over-treatment can cause palpitations, anxiety, insomnia,
-            atrial fibrillation risk, and bone loss over time; under-treatment can leave symptoms and cardiometabolic risk unresolved.
-          </div>
-
-          <div class="rx-label">Cost</div>
-          <div>
-            Often low-cost as a generic. Brand-name costs vary. The “true cost” often comes from repeated adjustments when absorption is inconsistent.
-          </div>
-        </div>
-      </div>
-
-      <div class="rx-card amh-rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Levothyroxine — soft-gel or liquid formulations</div>
-          <div class="rx-type">STANDARD</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">What it is</div>
-          <div>
-            Alternative levothyroxine delivery designed to reduce absorption variability in people with GI issues or complex medication regimens.
-            Some products have fewer inactive ingredients, which can be helpful for sensitivities.
-          </div>
-
-          <div class="rx-label">Why it can help</div>
-          <div>
-            Some formulations bypass dissolution issues and can be less sensitive to gastric pH changes. They may be useful when
-            there is suspected malabsorption, significant gastritis, or persistent instability despite good adherence.
-          </div>
-
-          <div class="rx-label">Typical use</div>
-          <div>
-            Still taken daily, still requires consistency. Often considered after addressing common blockers first.
-          </div>
-
-          <div class="rx-label">Side effects / risks</div>
-          <div>
-            Similar to standard levothyroxine; the main considerations are cost and ensuring follow-up labs after switching.
-          </div>
-
-          <div class="rx-label">Cost</div>
-          <div>
-            Typically higher than generic tablets; may be worth it when it prevents repeated “dose chasing.”
-          </div>
-        </div>
-      </div>
-
-      <div class="rx-card amh-rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Liothyronine (T3) add-on (combination therapy trial)</div>
-          <div class="rx-type">SELECTIVE</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">What it is</div>
-          <div>
-            Synthetic T3 (the more active hormone). Occasionally used as an add-on when symptoms persist despite optimized T4 therapy
-            and no other explanation is found.
-          </div>
-
-          <div class="rx-label">How it works</div>
-          <div>
-            Provides direct T3 to tissues. Because T3 acts quickly, dosing must be cautious to avoid peaks that trigger palpitations or anxiety.
-          </div>
-
-          <div class="rx-label">Who might consider it</div>
-          <div>
-            Select patients with persistent symptoms despite stable labs on T4 therapy, excellent adherence, and careful review for other causes.
-            Considered a structured therapeutic trial rather than a default strategy.
-          </div>
-
-          <div class="rx-label">Risks / cautions</div>
-          <div>
-            Higher risk of palpitations, anxiety, insomnia, and over-treatment effects. Extra caution in cardiovascular disease, arrhythmia history,
-            and osteoporosis risk. Requires close monitoring.
-          </div>
-
-          <div class="rx-label">Cost</div>
-          <div>
-            Variable. The “cost” includes closer monitoring and more careful symptom tracking.
-          </div>
-        </div>
-      </div>
-
-      <div class="rx-card amh-rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Desiccated thyroid (porcine-derived T4/T3)</div>
-          <div class="rx-type">CONTROVERSIAL</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">What it is</div>
-          <div>
-            Animal-derived thyroid hormone containing both T4 and T3. Some patients report improvement, but the T3 component can
-            increase variability and peak exposure.
-          </div>
-
-          <div class="rx-label">Clinical reality</div>
-          <div>
-            Major professional societies generally do not recommend it as routine first-line therapy due to variability, limited outcome data,
-            and the risk of over-treatment (particularly via T3).
-          </div>
-
-          <div class="rx-label">If used</div>
-          <div>
-            Requires careful clinician supervision, conservative dosing, and follow-up labs. Not appropriate for self-directed experimentation.
-          </div>
-
-          <div class="rx-label">Cautions</div>
-          <div>
-            Increased risk of palpitations/anxiety; extra caution in cardiac disease and osteoporosis risk.
-          </div>
-
-          <div class="rx-label">Cost</div>
-          <div>
-            Variable; monitoring needs can increase total cost.
-          </div>
-        </div>
-      </div>
-
-      <div class="clinical-note">
-        <strong>Brand vs. generic consistency (often overlooked):</strong> Thyroid hormone has a narrow “therapeutic window.”
-        Even when active ingredient standards are met, inactive ingredients and bioavailability can vary by manufacturer.
-        If your pharmacy changes your levothyroxine manufacturer and you notice symptom changes, it is reasonable to re-check thyroid labs after a stable period and discuss consistency strategies.
-      </div>
-
-      <h3 id="integrative">Integrative options</h3>
-      <p>
-        Integrative care is not a replacement for thyroid hormone when it is needed. It is the layer that improves results:
-        better absorption, better conversion, fewer symptoms, reduced inflammatory load, and a higher chance of stabilizing
-        antibodies over time in Hashimoto’s. The guiding rule is <strong>test when possible, avoid megadoses, and prioritize safety</strong>.
-      </p>
-
-      <div class="clinical-note">
-        <strong>Important safety principle:</strong> Supplements can meaningfully affect thyroid physiology and lab interpretation.
-        They can also interact with anticoagulants, blood pressure medications, antidepressants, stimulants, and cardiac rhythm.
-        Use a clinician-guided plan—especially if pregnant, trying to conceive, managing arrhythmias, or living with liver/kidney disease.
-      </div>
-
-      <h4>Key nutrients: what to test, what they do, and practical use</h4>
-      <p>
-        Deficiencies can amplify fatigue, hair loss, mood symptoms, and impaired conversion—even when thyroid labs improve.
-        The most cost-effective strategy is to test intelligently, correct what is low, and avoid “stacking” overlapping products.
-      </p>
-
-      <div class="rx-card amh-rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Selenium (typically as selenomethionine)</div>
-          <div class="rx-type">INTEGRATIVE</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">Rationale</div>
-          <div>
-            Supports enzymes involved in thyroid hormone metabolism and antioxidant defenses.
-            In Hashimoto’s, a time-limited trial is sometimes used to support immune balance and reduce inflammatory activity.
-          </div>
-
-          <div class="rx-label">Typical use</div>
-          <div>
-            Prefer food sources first when feasible. If supplementing, avoid combining multiple selenium-containing products.
-            Re-check symptoms and relevant labs on a defined timeline rather than taking indefinitely without feedback.
-          </div>
-
-          <div class="rx-label">Safety</div>
-          <div>
-            Excess selenium can cause hair/nail changes, GI upset, metallic taste, and neurologic symptoms.
-            Avoid megadoses and do not “stack.”
-          </div>
-
-          <div class="rx-label">Cost</div>
-          <div>
-            Typically low monthly cost.
-          </div>
-        </div>
-      </div>
-
-      <div class="rx-card amh-rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Iodine (balance matters; avoid extremes)</div>
-          <div class="rx-type">INTEGRATIVE</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">Rationale</div>
-          <div>
-            Iodine is required to build thyroid hormone. In iodine-replete areas, deficiency is less common, while excess iodine (especially from kelp/seaweed megadoses)
-            can destabilize thyroid function in susceptible individuals, particularly with autoimmune thyroid disease.
-          </div>
-
-          <div class="rx-label">Practical use</div>
-          <div>
-            Favor dietary sufficiency (e.g., appropriately used iodized salt and iodine-containing foods) rather than high-dose supplements.
-            Pregnancy planning requires special attention—use clinician guidance rather than guessing.
-          </div>
-
-          <div class="rx-label">Safety</div>
-          <div>
-            Avoid self-directed iodine “protocols.” If you have Hashimoto’s or fluctuating thyroid labs, excess iodine can worsen the picture.
-          </div>
-
-          <div class="rx-label">Cost</div>
-          <div>
-            Usually minimal when achieved through diet.
-          </div>
-        </div>
-      </div>
-
-      <div class="rx-card amh-rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Iron optimization (ferritin and iron studies)</div>
-          <div class="rx-type">INTEGRATIVE</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">Rationale</div>
-          <div>
-            Iron deficiency is a common driver of fatigue and hair loss and can reduce exercise tolerance and cognition.
-            It can also complicate thyroid symptom interpretation.
-          </div>
-
-          <div class="rx-label">Typical use</div>
-          <div>
-            Test first. If low, address root causes (dietary insufficiency, blood loss, malabsorption) and use a structured replacement plan.
-          </div>
-
-          <div class="rx-label">Safety</div>
-          <div>
-            Iron can cause constipation and GI upset. It strongly interferes with levothyroxine absorption—separate timing.
-            Avoid iron unless deficiency is confirmed or strongly suspected by your clinician.
-          </div>
-
-          <div class="rx-label">Cost</div>
-          <div>
-            Low-to-moderate; testing adds cost but prevents unnecessary supplementation.
-          </div>
-        </div>
-      </div>
-
-      <div class="rx-card amh-rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Vitamin D (correct deficiency; support immune balance)</div>
-          <div class="rx-type">INTEGRATIVE</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">Rationale</div>
-          <div>
-            Vitamin D is frequently low and is relevant to musculoskeletal symptoms, mood, immune regulation, and general resilience.
-            Deficiency can amplify fatigue and pain.
-          </div>
-
-          <div class="rx-label">Typical use</div>
-          <div>
-            Test first when feasible, then correct deficiency with a clinician-guided plan and recheck. Pair with safe sunlight exposure and dietary sources.
-          </div>
-
-          <div class="rx-label">Safety</div>
-          <div>
-            Excess dosing can raise calcium levels. Extra caution in granulomatous disease, kidney disease, or history of kidney stones.
-          </div>
-
-          <div class="rx-label">Cost</div>
-          <div>
-            Usually inexpensive; testing adds cost but improves precision.
-          </div>
-        </div>
-      </div>
-
-      <div class="rx-card amh-rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Vitamin B12 (and folate) repletion when low</div>
-          <div class="rx-type">INTEGRATIVE</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">Rationale</div>
-          <div>
-            Low B12 can drive fatigue, neuropathy, cognitive symptoms, and anemia. Autoimmune clustering can increase risk in some patients.
-          </div>
-
-          <div class="rx-label">Typical use</div>
-          <div>
-            Test and replace if low. Evaluate dietary patterns and absorption issues (gastritis, medications).
-          </div>
-
-          <div class="rx-label">Safety</div>
-          <div>
-            Generally safe; dosing strategy should match severity and absorption. Neurologic symptoms warrant prompt evaluation.
-          </div>
-
-          <div class="rx-label">Cost</div>
-          <div>
-            Typically low; injections add cost but are sometimes appropriate depending on absorption.
-          </div>
-        </div>
-      </div>
-
-      <div class="rx-card amh-rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Zinc and magnesium (when clinically indicated)</div>
-          <div class="rx-type">INTEGRATIVE</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">Rationale</div>
-          <div>
-            Zinc supports immune function and tissue repair; magnesium supports sleep, muscle function, and stress resilience.
-            Deficiency can amplify fatigue, cramps, and poor sleep.
-          </div>
-
-          <div class="rx-label">Safety and timing</div>
-          <div>
-            Zinc excess can cause nausea and can lower copper; magnesium can cause diarrhea depending on form and dose.
-            Both can interfere with levothyroxine absorption—separate timing by several hours.
-          </div>
-
-          <div class="rx-label">Cost</div>
-          <div>
-            Usually low monthly cost.
-          </div>
-        </div>
-      </div>
-
-<!-- Infographic (place after the nutrients section) -->
-<figure class="amh-figure" id="thyroid-infographic">
-  <div class="amh-figure-inner">
-    <img
-      src="https://docbraymd.github.io/amh/thyroid_factors.jpg"
-      alt="Infographic summarizing key thyroid factors and contributors"
-      loading="lazy"
-      decoding="async"
-      data-lightbox="true"
-    />
-  </div>
-  <figcaption>
-    <strong>Infographic:</strong> Key thyroid factors and contributors. Click the image to expand to full browser size. From the expanded view you can download it, and it remains downloadable via right-click.
-  </figcaption>
-</figure>
-      
-      <h4>Food sensitivities, gut health, and autoimmunity (selective but high-yield)</h4>
-      <p>
-        In Hashimoto’s, we often ask: what is keeping the immune system activated? The gut is a major immune interface,
-        and gut inflammation or malabsorption can worsen symptoms and destabilize medication absorption.
-      </p>
-      <ul class="amh-list symptom-list">
-        <li><strong>Celiac overlap:</strong> celiac disease is more common in Hashimoto’s than in the general population; screening is reasonable especially with GI symptoms, iron deficiency, or unstable thyroid dosing needs.</li>
-        <li><strong>Gluten trial (selective):</strong> if celiac testing is complete (or not indicated) and symptoms persist, a time-limited, measurable gluten reduction trial can be considered; focus on whole foods rather than highly processed “gluten-free” substitutes.</li>
-        <li><strong>Dairy trial (selective):</strong> sometimes considered when GI symptoms or inflammatory symptoms persist, especially if there is concurrent intolerance.</li>
-      </ul>
-
-      <h4>Exercise, stress physiology, and sleep</h4>
-      <p>
-        Hypothyroidism disrupts sleep and energy, and poor sleep worsens metabolic and immune resilience. Build exercise gradually,
-        avoid overtraining, and protect recovery. If you snore, wake unrefreshed, or have daytime sleepiness, sleep apnea screening is high-yield.
-      </p>
-
-      <h3 id="toxins">Lowering toxic load: practical endocrine disruptor reduction</h3>
-      <p>
-        Your thyroid system is sensitive to environmental chemicals that can disrupt endocrine signaling. Some exposures interfere with iodine handling
-        or thyroid hormone transport; others interact at the receptor level or alter metabolism through inflammatory signaling.
-        You do not need perfection. The goal is a <strong>reasonable, staged reduction</strong> in the most common and most modifiable exposures.
-      </p>
-
-      <div class="clinical-note">
-        <strong>Conceptual anchor:</strong> Thyroid hormone function depends on (1) iodine availability and transport, (2) hormone synthesis, (3) conversion and tissue delivery,
-        (4) receptor signaling, and (5) immune/inflammatory context. Endocrine disruptors can affect multiple steps at once—especially in genetically susceptible individuals.
-      </div>
-
-      <h4>Major thyroid-disrupting chemical categories (high-yield)</h4>
-      <ul class="amh-list symptom-list">
-        <li><strong>Bisphenols (BPA and “regrettable substitutes” like BPS/BPF):</strong> common in some plastics, can linings, and thermal receipts; can disrupt endocrine signaling.</li>
-        <li><strong>Phthalates:</strong> common in fragranced products, some plastics/vinyl, and packaging; can interfere with hormone signaling.</li>
-        <li><strong>Perchlorate:</strong> can contaminate water and some foods; competes with iodine uptake in the thyroid.</li>
-        <li><strong>PFAS (“forever chemicals”):</strong> associated with stain-resistant treatments, some food packaging, and contaminated water sources; can affect endocrine and immune signaling.</li>
-        <li><strong>Flame retardants (e.g., PBDEs):</strong> historically used in furniture and electronics; persist in house dust and may influence endocrine pathways.</li>
-        <li><strong>Pesticide residues:</strong> exposure varies by food choices and occupational/environmental context.</li>
-        <li><strong>High fluoride exposure (context dependent):</strong> fluoride is a halogen; very high exposures can impact thyroid physiology in some contexts. The goal is not fear, but informed mitigation when exposure is high.</li>
-      </ul>
-
-      <h4>Practical exposure reduction strategies (high ROI)</h4>
-      <div class="success-box">
-        <strong>Start with the “big levers”:</strong> water, food storage/cooking, personal care products, and household dust.
-      </div>
-
-      <ul class="amh-list symptom-list">
-        <li><strong>Water quality (highest leverage for many households):</strong> consider a high-quality filtration strategy if your local water profile is concerning.
-          Reverse osmosis systems are commonly used when the goal is broad contaminant reduction. This is especially relevant if you have well water or known regional contaminant issues.</li>
-        <li><strong>Food storage:</strong> store food and water in glass or stainless steel when feasible. Avoid microwaving food in plastic containers.</li>
-        <li><strong>Cookware:</strong> replace damaged non-stick cookware with stainless steel, cast iron, or other safer alternatives when possible.</li>
-        <li><strong>Reduce thermal receipt exposure:</strong> minimize handling of receipts, especially before eating; wash hands after exposure.</li>
-        <li><strong>Personal care (fragrance is a major “hidden” category):</strong> choose fragrance-free products when possible; reduce the number of products used daily.</li>
-        <li><strong>House dust and indoor air:</strong> vacuum regularly (HEPA filtration is helpful), wet-dust high surfaces, and ventilate indoor spaces.</li>
-        <li><strong>Food choices (risk-based approach):</strong> prioritize whole foods and consider organic options for produce known to carry higher pesticide residue—without turning nutrition into an anxiety project.</li>
-      </ul>
-
-      <h4>A staged “toxic load” plan you can actually do</h4>
-      <div class="rx-card amh-rx-card">
-        <div class="rx-header">
-          <div class="rx-name">7-day quick start</div>
-          <div class="rx-type">ACTION</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">Water</div>
-          <div>
-            Use filtered water consistently for drinking and cooking. If you are exploring filtration, start with the highest-impact point-of-use system you can sustain.
-          </div>
-          <div class="rx-label">Food storage</div>
-          <div>
-            Switch your two most-used containers to glass or stainless steel. Stop microwaving in plastic.
-          </div>
-          <div class="rx-label">Personal care</div>
-          <div>
-            Replace one daily-use fragranced product (lotion, deodorant, shampoo, perfume) with a fragrance-free alternative.
-          </div>
-          <div class="rx-label">Kitchen</div>
-          <div>
-            Replace any visibly damaged non-stick pan; do not overheat non-stick cookware.
-          </div>
-        </div>
-      </div>
-
-      <div class="rx-card amh-rx-card">
-        <div class="rx-header">
-          <div class="rx-name">30-day deepen</div>
-          <div class="rx-type">ACTION</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">Dust strategy</div>
-          <div>
-            HEPA vacuum routine + wet dusting. Focus on bedrooms and the main living area.
-          </div>
-          <div class="rx-label">Packaging strategy</div>
-          <div>
-            Reduce ultra-processed foods and packaged meals (this simultaneously lowers additives, improves nutrition density, and reduces packaging exposure).
-          </div>
-          <div class="rx-label">Water decision</div>
-          <div>
-            If you have high concern exposure (well water, local advisories), formalize a filtration plan appropriate for your context.
-          </div>
-          <div class="rx-label">Personal care simplification</div>
-          <div>
-            Reduce product count and choose simpler ingredient profiles. Consistency beats perfection.
-          </div>
-        </div>
-      </div>
-
-      <h3 id="tracking">Targets and tracking</h3>
-      <p>
-        Your goal is stable physiology and stable function—not “chasing” single lab values. Track outcomes that matter and review them systematically.
-      </p>
-
-      <div class="clinical-note">
-        <strong>Track both biology and lived function:</strong> labs + symptoms + recovery + cardiometabolic markers. Many “thyroid problems” are actually absorption problems, deficiency problems, sleep problems, or stress physiology problems.
-      </div>
-
-      <ul class="amh-list symptom-list">
-        <li><strong>Labs (as appropriate):</strong> TSH, free T4 (and antibodies if Hashimoto’s); consider lipids, ferritin/iron studies, B12, vitamin D, and A1c based on symptoms and risk.</li>
-        <li><strong>Symptoms (weekly):</strong> energy (0–10), brain fog (0–10), constipation frequency, hair shedding pattern, cold intolerance, mood.</li>
-        <li><strong>Vitals:</strong> resting pulse, blood pressure (if relevant), and subjective exercise tolerance.</li>
-        <li><strong>Sleep:</strong> sleep duration, awakenings, and whether you wake refreshed; snoring or daytime sleepiness prompts sleep apnea screening.</li>
-        <li><strong>Medication adherence quality:</strong> same time daily, separation from blockers, consistent formulation/manufacturer.</li>
-      </ul>
-
-      <h3 id="costs">Cost considerations</h3>
-      <p>
-        A cost-effective strategy is to prioritize interventions that most reliably improve outcomes: accurate diagnosis, consistent medication timing,
-        sleep optimization, and treating common deficiencies. Many people overspend on supplements while missing high-yield basics.
-      </p>
-
-      <ul class="amh-list symptom-list">
-        <li><strong>Medication:</strong> generic levothyroxine is often low-cost; specialty formulations are best reserved for clear indications.</li>
-        <li><strong>Testing:</strong> focus on tests that change decisions—TSH/free T4 for management, antibodies for etiology, targeted labs for deficiencies and symptom mimics.</li>
-        <li><strong>Supplements:</strong> use “one purpose per supplement,” avoid duplicates, and prefer correcting confirmed deficits rather than taking broad “thyroid stacks.”</li>
-        <li><strong>Nutrition:</strong> whole foods are frequently the most cost-effective intervention. Packaged “special diets” can inflate costs without improving outcomes.</li>
-        <li><strong>Toxin reduction:</strong> prioritize “big levers” first (water, cookware, storage, fragrance reduction) rather than expensive detox products.</li>
-      </ul>
-
-      <h3 id="faq">FAQ</h3>
-
-      <h4>Why do I still feel hypothyroid if my TSH is “normal”?</h4>
-      <p>
-        Common reasons include inconsistent medication absorption (timing with coffee, calcium/iron/magnesium/zinc, fiber, or soy),
-        unrecognized sleep apnea, iron deficiency, low vitamin B12 or vitamin D, depression/anxiety, insulin resistance,
-        chronic inflammation, or other medical conditions. Less commonly, a carefully supervised combination-therapy trial may be considered
-        after high-yield causes are addressed.
-      </p>
-
-      <h4>Do I need to avoid cruciferous vegetables or soy?</h4>
-      <p>
-        Most people do not need to avoid these foods. Cruciferous vegetables are typically beneficial, especially when cooked.
-        Soy can be part of a healthy diet; the main issue is timing relative to thyroid medication because soy may reduce absorption
-        if consumed too close to dosing.
-      </p>
-
-      <h4>Should I take iodine or kelp supplements for my thyroid?</h4>
-      <p>
-        In iodine-replete areas, high-dose iodine can worsen thyroid problems in susceptible individuals, especially with autoimmune thyroid disease.
-        Aim for balanced dietary intake and avoid megadoses unless guided by testing and a clinician’s plan.
-      </p>
-
-      <h4>What is subclinical hypothyroidism, and does it require treatment?</h4>
-      <p>
-        Subclinical hypothyroidism means TSH is mildly elevated while free T4 is still normal—often a sign that the system is under strain.
-        Management depends on symptoms, antibody status, pregnancy plans, and cardiovascular risk. Some people benefit from treatment;
-        others do well with monitoring and lifestyle work.
-      </p>
-
-      <h4>What are the most important lifestyle levers?</h4>
-      <p>
-        Consistent sleep and circadian rhythm, protein and micronutrient sufficiency, reduced ultra-processed foods, gradual exercise progression,
-        and stress regulation practices. For Hashimoto’s, gut health work, structured elimination trials, and toxin reduction may be helpful when targeted and measurable.
-      </p>
-
-      <h3 id="references">References</h3>
-      <ol class="ref-list">
-        <li>American Thyroid Association — Hypothyroidism (patient education): <a href="https://www.thyroid.org/hypothyroidism/" target="_blank" rel="noopener">https://www.thyroid.org/hypothyroidism/</a></li>
-        <li>American Thyroid Association — Hashimoto’s thyroiditis: <a href="https://www.thyroid.org/hashimotos-thyroiditis/" target="_blank" rel="noopener">https://www.thyroid.org/hashimotos-thyroiditis/</a></li>
-        <li>Endocrine Society — Patient resources (thyroid): <a href="https://www.endocrine.org/patient-engagement/endocrine-library" target="_blank" rel="noopener">https://www.endocrine.org/patient-engagement/endocrine-library</a></li>
-        <li>Mayo Clinic — Hypothyroidism overview: <a href="https://www.mayoclinic.org/diseases-conditions/hypothyroidism/symptoms-causes/syc-20350284" target="_blank" rel="noopener">https://www.mayoclinic.org/diseases-conditions/hypothyroidism/symptoms-causes/syc-20350284</a></li>
-        <li>Cleveland Clinic — Hypothyroidism: <a href="https://my.clevelandclinic.org/health/diseases/12120-hypothyroidism" target="_blank" rel="noopener">https://my.clevelandclinic.org/health/diseases/12120-hypothyroidism</a></li>
-        <li>NIH Office of Dietary Supplements — Iodine fact sheet: <a href="https://ods.od.nih.gov/factsheets/Iodine-HealthProfessional/" target="_blank" rel="noopener">https://ods.od.nih.gov/factsheets/Iodine-HealthProfessional/</a></li>
-        <li>NIH Office of Dietary Supplements — Selenium fact sheet: <a href="https://ods.od.nih.gov/factsheets/Selenium-HealthProfessional/" target="_blank" rel="noopener">https://ods.od.nih.gov/factsheets/Selenium-HealthProfessional/</a></li>
-        <li>NIH Office of Dietary Supplements — Vitamin D fact sheet: <a href="https://ods.od.nih.gov/factsheets/VitaminD-HealthProfessional/" target="_blank" rel="noopener">https://ods.od.nih.gov/factsheets/VitaminD-HealthProfessional/</a></li>
-        <li>NIH Office of Dietary Supplements — Vitamin B12 fact sheet: <a href="https://ods.od.nih.gov/factsheets/VitaminB12-HealthProfessional/" target="_blank" rel="noopener">https://ods.od.nih.gov/factsheets/VitaminB12-HealthProfessional/</a></li>
-        <li>MedlinePlus (NIH) — Thyroid diseases overview: <a href="https://medlineplus.gov/thyroiddiseases.html" target="_blank" rel="noopener">https://medlineplus.gov/thyroiddiseases.html</a></li>
-        <li>FDA — Biotin interference with lab tests (safety communication entry point): <a href="https://www.fda.gov/" target="_blank" rel="noopener">https://www.fda.gov/</a></li>
-        <li>Environmental Working Group (EWG) — consumer database for personal care and chemicals: <a href="https://www.ewg.org/" target="_blank" rel="noopener">https://www.ewg.org/</a></li>
-        <li>U.S. EPA — Drinking water contaminants (reference entry point): <a href="https://www.epa.gov/" target="_blank" rel="noopener">https://www.epa.gov/</a></li>
-      </ol>
-
-      <footer class="amh-footer">
-        <div class="amh-disclaimer medical-disclaimer">
-          <p><strong>Medical disclaimer:</strong> The information on this page is provided for general educational purposes only and is not medical advice. It is not intended to diagnose, treat, cure, or prevent any disease, and it does not establish a physician–patient relationship.</p>
-          <p>Do not apply this information to your specific situation without the oversight of a qualified clinician who can consider your full health history, medications, goals, preferences, and limitations. If you have urgent or severe symptoms, seek emergency care.</p>
-          <p style="margin: 0;"><strong>Copyright:</strong> © Dr. Christopher Bray MD PhD at Archangel Michael Health <span id="amh-year">2025</span></p>
-        </div>
-
-        <div class="amh-footer-meta">
-          <span><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine</span>
-          <span class="amh-dot">•</span>
-          <span><strong>Last updated:</strong> <span id="amh-last-updated">—</span></span>
-        </div>
-      </footer>
+    <div class="header">
+        <h1>Hypothyroidism (Underactive Thyroid)</h1>
+        <div class="subtitle">An Integrative Approach to Restoring Your Metabolism and Vitality</div>
+        <div class="author">Christopher L. Bray, MD, PhD<br>Archangel Michael Health</div>
     </div>
-  </div>
 
-  <script>
-    (function () {
-      // ---- Last updated + year ----
-      var yearEl = document.getElementById("amh-year");
-      if (yearEl) {
-        try { yearEl.textContent = String(new Date().getFullYear()); } catch (e) {}
+    <div class="section">
+        <h2>A Note from Dr. Bray: Understanding Your Thyroid</h2>
+        
+        <p>Welcome. At Archangel Michael Health, where we practice both Internal Medicine and Integrative Medicine, our philosophy is to identify and address the root causes of health problems early. We use common-sense, practical, and effective lifestyle interventions alongside conventional treatments.</p>
+        
+        <p>This guide to hypothyroidism is written with that philosophy in mind. This condition is far more than a simple lab value; it's a system-wide issue influenced by diet, stress, environment, and immune health. The thyroid gland, a small butterfly-shaped organ in your neck, is your body's <strong>master metabolic regulator</strong>. It controls energy production, body temperature, and the function of nearly every system in your body. When it's not functioning optimally, the effects can be profound.</p>
+
+        <div class="quote-box">
+            Our goal is to empower you with the knowledge to be an active participant in your health, blending the best of standard-of-care medicine with evidence-based lifestyle strategies to help you restore your energy and vitality.
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>What is Hypothyroidism?</h2>
+        <p>Hypothyroidism means your thyroid gland is not producing enough thyroid hormone. This deficiency slows down your body's metabolic processes. It is a common condition, affecting approximately 1 in 8 women during their lifetime.</p>
+
+        <p>To monitor this, we look at how the brain (pituitary gland) communicates with the thyroid using Thyroid-Stimulating Hormone (TSH). If the thyroid is struggling, the pituitary releases more TSH—it "yells louder"—to try and boost production.</p>
+        
+        <div class="info-box">
+            <h4>The Sensitivity of TSH</h4>
+            <p>TSH is the most sensitive marker for thyroid dysfunction because the relationship is logarithmic: a small, 2-fold change in thyroid hormone (T4) results in a massive 100-fold change in TSH.</p>
+        </div>
+
+        <div class="card-grid">
+            <div class="card">
+                <h4>Overt Hypothyroidism</h4>
+                <p>The thyroid cannot keep up with demand. Lab tests show:</p>
+                <ul>
+                    <li><strong>High TSH</strong> (The brain is yelling loudly)</li>
+                    <li><strong>Low T4</strong> (Thyroid hormone levels have dropped)</li>
+                </ul>
+                <p>Symptoms are usually present, and treatment is required.</p>
+            </div>
+            
+            <div class="card">
+                <h4>Subclinical Hypothyroidism (SCH)</h4>
+                <p>The "early-warning" stage. The thyroid is struggling but managing. Lab tests show:</p>
+                <ul>
+                    <li><strong>High TSH</strong> (Typically 4.5–10.0 mIU/L)</li>
+                    <li><strong>Normal T4</strong> (Hormone levels are still adequate)</li>
+                </ul>
+                <p>This is a key stage where early interventions can be effective. About 2-5% of cases progress to overt hypothyroidism annually.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Who Is at Risk?</h2>
+        <p>Several factors significantly increase the risk of developing hypothyroidism.</p>
+
+        <div class="risk-factors">
+            <span class="risk-badge">Gender: Women are 8-10x more likely than men</span>
+            <span class="risk-badge">Age: Prevalence increases progressively with age</span>
+            <span class="risk-badge">Family History: 9x increased risk with a first-degree relative</span>
+            <span class="risk-badge">Autoimmune History: Increased risk if you have Type 1 Diabetes, RA, or Celiac Disease</span>
+            <span class="risk-badge">Pregnancy and Postpartum Period</span>
+            <span class="risk-badge">Previous Thyroid Treatments (Surgery or Radiation)</span>
+            <span class="risk-badge">Certain Medications (e.g., Lithium, Amiodarone)</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>The Symptom Spectrum</h2>
+        <p>Because thyroid hormones affect every cell, the symptoms of an underactive thyroid are broad and often develop slowly, mimicking other conditions or normal aging.</p>
+        
+        <h3>Symptoms of Hypothyroidism (Underactive or Under-treated)</h3>
+        <div class="symptom-grid">
+            <div class="symptom-item">Fatigue, exhaustion, or sluggishness</div>
+            <div class="symptom-item">Unintentional weight gain or difficulty losing weight</div>
+            <div class="symptom-item">Sensitivity to cold (Cold intolerance)</div>
+            <div class="symptom-item">Dry, coarse, or pale skin; sometimes yellowing (carotenemia)</div>
+            <div class="symptom-item">Thinning hair (including eyebrows) or brittle nails</div>
+            <div class="symptom-item">Constipation and digestive sluggishness</div>
+            <div class="symptom-item">Depression, low mood, or anxiety</div>
+            <div class="symptom-item">"Brain fog," difficulty concentrating, or poor memory</div>
+            <div class="symptom-item">Heavy, frequent, or irregular menstrual periods; Infertility</div>
+            <div class="symptom-item">Muscle aches, joint stiffness, or weakness</div>
+            <div class="symptom-item">Slowed heart rate; Elevated cholesterol</div>
+            <div class="symptom-item">Puffy face or swelling of the thyroid (goiter)</div>
+        </div>
+
+        <div class="danger-box">
+            <h3>The Other Side: Recognizing Over-Treatment</h3>
+            <p>The goal of therapy is balance. Taking too much thyroid medication can push your body into a state of hyperthyroidism (overactive thyroid), which carries long-term risks, including <strong>atrial fibrillation</strong> (irregular heart rhythm) and <strong>osteoporosis</strong> (bone loss). Monitor these symptoms closely:</p>
+            <div class="symptom-grid">
+                <div class="symptom-item-danger">Nervousness, anxiety, or irritability</div>
+                <div class="symptom-item-danger">Insomnia or difficulty sleeping</div>
+                <div class="symptom-item-danger">Increased sweating or feeling hot</div>
+                <div class="symptom-item-danger">Shaky hands or tremors</div>
+                <div class="symptom-item-danger">A racing heart or palpitations</div>
+                <div class="symptom-item-danger">Frequent bowel movements or diarrhea</div>
+                <div class="symptom-item-danger">Weight loss despite a good appetite</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Why Does This Happen? The Root Causes</h2>
+        <p>Understanding the cause is the most important step in developing a comprehensive treatment plan.</p>
+
+        <h3>The Autoimmune Driver: Hashimoto's Disease</h3>
+        <p>In the United States and other iodine-sufficient countries, <strong>Hashimoto's thyroiditis</strong> causes up to 90% of primary hypothyroidism cases.</p>
+        <div class="highlight-box">
+            <p>It is critical to understand that Hashimoto's is primarily a disease of the <strong>immune system</strong>. The immune system mistakenly produces antibodies (anti-TPO and anti-Tg) that attack the thyroid tissue, causing inflammation and slowly reducing its function over time.</p>
+        </div>
+
+        <h3>Other Common Causes</h3>
+        <ul>
+            <li><strong>Iatrogenic (Medically-Caused):</strong> The second-leading cause. Includes thyroid surgery (thyroidectomy) or radioactive iodine (RAI) treatment. 80-90% of people treated with RAI eventually develop hypothyroidism.</li>
+            <li><strong>Iodine Imbalance:</strong> While iodine deficiency is the leading cause globally, in the U.S., excess iodine (e.g., from high-dose kelp supplements) can actually trigger or worsen hypothyroidism.</li>
+        </ul>
+
+        <h3>The Integrative View: Underlying Triggers</h3>
+        <p>From an integrative perspective, especially with Hashimoto's, we ask: Why is the immune system dysfunctional? We look deeper at systemic triggers:</p>
+        <ul>
+            <li><strong>Chronic Stress:</strong> Elevates cortisol, which can blunt thyroid function and trigger autoimmune flare-ups.</li>
+            <li><strong>Gut Health and Food Sensitivities:</strong> Over 70% of the immune system is in the gut. "Leaky gut" (intestinal permeability) and food sensitivities (especially gluten and dairy) are strongly linked to autoimmune processes.</li>
+            <li><strong>Environmental Toxins:</strong> Exposure to certain chemicals can disrupt thyroid signaling.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>The Thyroid System Explained: T4, T3, and Conversion</h2>
+        <p>Understanding the hormones helps you understand your treatment. The process starts in the brain, which signals the pituitary gland to release TSH. TSH tells the thyroid gland to produce its hormones.</p>
+
+        <div class="card-grid">
+            <div class="card">
+                <h4>T4 (Thyroxine) - The "Storage" Hormone</h4>
+                <p>The main hormone your thyroid produces. T4 is relatively inactive; it's a "storage" hormone with a 7-10 day half-life, waiting to be activated.</p>
+            </div>
+            
+            <div class="card">
+                <h4>T3 (Triiodothyronine) - The "Active" Hormone</h4>
+                <p>The "active" hormone that "presses the gas pedal" for your metabolism. It is significantly more potent than T4. This hormone makes you feel warm, energetic, and clear-headed.</p>
+            </div>
+        </div>
+
+        <h3>The Crucial Step: T4-to-T3 Conversion</h3>
+        <p>Here is a critical concept: The vast majority of active T3 is <strong>not</strong> made in the thyroid gland. It is made in peripheral tissues (primarily the liver and gut) by converting T4 into T3 using a deiodinase enzyme.</p>
+        <p><strong>Your ability to convert T4 to T3 is just as important as your thyroid's ability to produce T4.</strong></p>
+
+        <h3>Reverse T3 (rT3) - The "Emergency Brakes"</h3>
+        <p>In times of stress, illness, injury, or famine (severe dieting), the body conserves energy. It takes T4 and converts it into <strong>Reverse T3 (rT3)</strong>, an inactive form.</p>
+        <p>Think of T3 as the gas pedal and rT3 as the emergency brake. High rT3 leads to "functional hypothyroidism"—your TSH and T4 may look normal, but you feel hypothyroid because you lack active T3.</p>
+
+        <div class="warning-box">
+            <h4>Factors That Cause Poor Conversion (High rT3)</h4>
+            <ul>
+                <li>Chronic stress and elevated cortisol levels</li>
+                <li>Severe illness or injury</li>
+                <li>Calorie restriction and rapid weight loss</li>
+                <li>Systemic inflammation</li>
+                <li>Nutritional deficiencies (Selenium, Zinc, Iron)</li>
+                <li>Overtraining (excessive high-intensity exercise)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Our Diagnostic Approach: Looking Beyond TSH</h2>
+        <p>Because of this complexity, a comprehensive diagnostic panel must look beyond just the TSH.</p>
+
+        <h3>The Full Thyroid Panel</h3>
+        <ul>
+            <li><strong>TSH:</strong> The pituitary messenger hormone. The most sensitive test.</li>
+            <li><strong>Free T4 (FT4):</strong> The amount of available storage hormone.</li>
+            <li><strong>Free T3 (FT3):</strong> The amount of available active hormone. (Often remains normal until hypothyroidism is severe).</li>
+            <li><strong>Thyroid Antibodies (TPO Ab and Tg Ab):</strong> TPO antibodies appear in 90% of Hashimoto's cases. Positive antibodies indicate a higher risk of progression and tell us we must focus on calming the immune system.</li>
+            <li><strong>Reverse T3 (rT3):</strong> Assessed in persistent cases to check for conversion issues.</li>
+        </ul>
+
+        <h3>Optimal vs. Reference Ranges</h3>
+        <p>The "reference ranges" on lab reports (e.g., TSH 0.4–4.5 mIU/L) are statistical averages of the general population. However, the median TSH in healthy populations clusters around 1.0–1.5 mIU/L. We focus on the "optimal" or "functional" ranges where healthy, asymptomatic people typically fall.</p>
+
+        <div class="highlight-box">
+            <h4>Optimal (Functional) Ranges</h4>
+            <ul>
+                <li><strong>TSH:</strong> 1.0 - 2.0 mIU/L (We are suspicious of TSH > 2.5 if symptomatic)</li>
+                <li><strong>Free T4:</strong> Upper 1/3rd of the reference range (e.g., 1.4 - 1.8 ng/dL)</li>
+                <li><strong>Free T3:</strong> Upper 1/2 of the reference range (e.g., 3.4 - 4.2 pg/mL)</li>
+            </ul>
+        </div>
+
+        <div class="danger-box">
+            <h4>CRITICAL NOTE: Biotin Interference</h4>
+            <p>High-dose biotin (Vitamin B7), common in hair/nail supplements, severely interferes with thyroid lab assays. It can cause <strong>falsely low TSH</strong> and <strong>falsely high T4/T3</strong> levels, leading to incorrect diagnosis.</p>
+            <p><strong>You MUST stop all biotin supplements for at least 3 to 7 days (72 hours minimum) before having your blood drawn for thyroid tests.</strong></p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Pregnancy and Hypothyroidism</h2>
+        <p>Thyroid management during pregnancy is critical for maternal and fetal health. Fetal brain development depends on maternal thyroid hormone.</p>
+
+        <div class="action-steps">
+            <h3>Action Steps for Pregnancy</h3>
+            <ol>
+                <li><strong>Pre-conception Planning:</strong> Optimize thyroid levels before getting pregnant.</li>
+                <li><strong>Immediate Action if Pregnant:</strong> If you are already taking levothyroxine, increase your dose by 25-30% immediately upon confirmation of pregnancy (e.g., take two extra tablets weekly) and contact your healthcare provider for monitoring. Thyroid hormone requirements increase significantly during pregnancy.</li>
+                <li><strong>Monitoring:</strong> Pregnancy requires tighter TSH control using trimester-specific ranges:
+                    <ul>
+                        <li>First Trimester: Upper limit 2.5 mIU/L</li>
+                        <li>Second Trimester: Upper limit 3.0 mIU/L</li>
+                        <li>Third Trimester: Upper limit 3.5 mIU/L</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <h4>Postpartum Thyroiditis</h4>
+        <p>The postpartum period is a vulnerable time. Postpartum thyroiditis affects 5-11% of women, typically appearing 8-20 weeks after delivery. Up to 50% of affected women may develop permanent hypothyroidism.</p>
+    </div>
+
+
+    <div class="section">
+        <h2>Pharmaceutical Treatment Options</h2>
+        <p>The standard (conventional) treatment is daily thyroid hormone replacement. The goal is restoring normal TSH levels and resolving symptoms. There is no "one-size-fits-all" medication.</p>
+
+        <h3>Standard Care: T4-Only (Levothyroxine)</h3>
+        <p>Levothyroxine (synthetic T4) is the gold standard treatment. It relies on your body's ability to convert T4 to T3. Most patients feel well on this alone.</p>
+        
+        <h4>Initial Dosing Guidelines</h4>
+        <ul>
+            <li><strong>Healthy adults under 60:</strong> Typically start with a full replacement dose (calculated around 1.6 mcg per kilogram of body weight daily).</li>
+            <li><strong>Adults over 60 or those with heart disease:</strong> Start lower (25-50 mcg daily) and increase gradually every 3-4 weeks to avoid stressing the cardiovascular system.</li>
+        </ul>
+
+        <h4>Formulations</h4>
+        <ul>
+            <li><strong>Generics/Synthroid (Tablets):</strong> Common options. May contain various fillers (lactose, corn starch) and dyes.</li>
+            <li><strong>Tirosint (Softgel):</strong> A "cleaner" T4 option (contains only levothyroxine, glycerin, gelatin, and water). Often better tolerated by those with sensitivities or absorption issues.</li>
+            <li><strong>Tirosint-SOL (Liquid):</strong> A liquid formulation useful for severe malabsorption issues; may be taken just 15 minutes before eating.</li>
+        </ul>
+
+        <h3>Brand vs. Generic: The Need for Consistency</h3>
+        <p>While the FDA considers generics bioequivalent to brand names, inactive ingredients (fillers, dyes) vary between manufacturers. Thyroid medication has a "narrow therapeutic index," meaning small changes can matter clinically.</p>
+        <div class="info-box">
+            <p>The American Thyroid Association (ATA) advises maintaining the <strong>same preparation</strong>—either a specific brand OR the same generic manufacturer—to avoid fluctuations. If your pharmacy switches your generic manufacturer, recheck TSH in 4-6 weeks.</p>
+        </div>
+
+        <h3>Combination Therapies (T4 and T3)</h3>
+        <p>About 5-10% of patients still have symptoms despite normal TSH on T4-only therapy, often due to poor T4-to-T3 conversion. While evidence does not support routine use, and major medical societies consider it experimental, a trial may be considered in these cases.</p>
+
+        <h4>Natural Desiccated Thyroid (NDT)</h4>
+        <p>Derived from porcine thyroid extract (e.g., Armour, Nature-Throid). Contains both T4 and T3.</p>
+        <ul>
+            <li><strong>Ratio:</strong> NDT has a T3-heavy ratio (approx. 4:1) compared to human physiology (approx. 14:1). This T3 boost is why many "poor converters" report feeling better.</li>
+            <li><strong>Considerations:</strong> Hormone content can sometimes vary, making the dose less predictable than synthetic options.</li>
+        </ul>
+
+        <h4>Synthetic Combination</h4>
+        <p>Adding synthetic T3 (Liothyronine/Cytomel) to a T4 medication. If a trial shows no improvement after 3 months, the T3 should be discontinued.</p>
+        
+    </div>
+
+    <div class="section">
+        <h2>Practical Medication Management: Ensuring Success</h2>
+        <p>Taking your medication correctly is crucial. Variable absorption is the number one enemy of stable thyroid levels.</p>
+
+        <h3>Timing and Absorption</h3>
+        <p>Levothyroxine absorption is finicky. Absorption is maximized (60-80%) when fasting, but drops significantly (to 40-64%) when taken with food.</p>
+
+        <div class="action-steps">
+            <h3>How and When to Take Your Medication</h3>
+            <ol>
+                <li><strong>Empty Stomach:</strong> Take levothyroxine first thing in the morning with a full glass of water, on an empty stomach.</li>
+                <li><strong>Wait Before Eating:</strong> Wait at least 60 minutes before eating breakfast.</li>
+                <li><strong>Wait Before Coffee:</strong> Coffee (especially espresso) reduces absorption by 29-36%. Wait at least 60 minutes before drinking coffee.</li>
+                <li><strong>Alternative Timing:</strong> Take at bedtime, provided it is at least 3-4 hours after your last meal. Some studies suggest this may provide slightly better absorption.</li>
+                <li><strong>Consistency is Key:</strong> Pick one method and be consistent every single day.</li>
+                <li><strong>Monitoring:</strong> Check TSH every 4-8 weeks after starting medication or changing the dose until stable, then every 6-12 months.</li>
+            </ol>
+        </div>
+
+        <div class="warning-box">
+            <h3>🚫 Absorption Blockers: 4-Hour Rule</h3>
+            <p>The following substances bind the hormone and prevent absorption. <strong>Wait at least 4 hours</strong> after your thyroid pill before taking these:</p>
+            <ul>
+                <li><strong>Supplements:</strong> Calcium (in any form), Iron (including multivitamins with iron), Magnesium, Zinc.</li>
+                <li><strong>Foods:</strong> High-fiber meals, Soy products (soy milk, soy protein), Walnuts.</li>
+                <li><strong>Medications:</strong> Aluminum-containing Antacids (like Tums), Proton Pump Inhibitors (e.g., omeprazole), Bile acid sequestrants.</li>
+            </ul>
+        </div>
+
+        <h4>Gastrointestinal Conditions and Absorption</h4>
+        <p>Gut health critically affects absorption. Conditions like Celiac disease, atrophic gastritis, H. pylori infection, lactose intolerance, inflammatory bowel disease (IBD), and SIBO can impair levothyroxine absorption, potentially requiring higher doses or alternative formulations (like Tirosint/Tirosint-SOL).</p>
+
+    </div>
+
+    <div class="section">
+        <h2>Lifestyle as Medicine: Nutrition Strategy</h2>
+        <p>Diet cannot replace thyroid hormone, but it is essential for supporting thyroid function, reducing inflammation, and addressing the root causes of Hashimoto's. Emphasize a nutrient-dense, anti-inflammatory diet (e.g., Mediterranean style), focusing on whole foods and minimizing sugar and processed items.</p>
+        
+        <h3>Key Nutrients for Thyroid Support</h3>
+        <p>Deficiencies in key micronutrients can impair thyroid function or reduce your response to hormone replacement. Ensure you have the raw materials and co-factors needed for hormone production and conversion.</p>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Nutrient</th>
+                    <th>Role in Thyroid Health</th>
+                    <th>Optimal Levels / RDA</th>
+                    <th>Notes and Cautions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Selenium</strong></td>
+                    <td>Critical for T4-to-T3 conversion and antioxidant defense.</td>
+                    <td>RDA: 55 mcg.<br>Upper Limit: 400 mcg.</td>
+                    <td>In Hashimoto's, 200 mcg/day may reduce antibodies by 15-30%. Food sources: Brazil nuts (use sparingly), fish, eggs. Toxicity (selenosis) can occur with excess.</td>
+                </tr>
+                <tr>
+                    <td><strong>Iodine</strong></td>
+                    <td>Essential building block for T4/T3 hormones.</td>
+                    <td>RDA: 150 mcg (Adults), 220 mcg (Pregnancy).<br>Upper Limit: 1100 mcg.</td>
+                    <td><strong>CAUTION:</strong> Excess iodine (e.g., kelp supplements >500 mcg) can worsen or trigger Hashimoto's. Sea salt and Himalayan salt are NOT iodized. Pregnant women should take a prenatal with 150 mcg iodine.</td>
+                </tr>
+                <tr>
+                    <td><strong>Zinc</strong></td>
+                    <td>Supports T4-to-T3 conversion, TSH synthesis, and immune balance.</td>
+                    <td>RDA: 8-11 mg.<br>Upper Limit: 40 mg.</td>
+                    <td>Food sources: Oysters, beef, seeds. <strong>Must be separated from levothyroxine by 4 hours.</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Iron</strong></td>
+                    <td>Required for the TPO enzyme to synthesize thyroid hormones.</td>
+                    <td>Optimal Ferritin: 50–100 ng/mL.</td>
+                    <td>Iron deficiency impairs thyroid function. Check ferritin (iron storage). <strong>Must be separated from levothyroxine by 4 hours.</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Vitamin D</strong></td>
+                    <td>Immune modulator. Deficiency strongly linked to Hashimoto's.</td>
+                    <td>Optimal Serum Level: 30–50 ng/mL.</td>
+                    <td>Deficiency is remarkably common in hypothyroid patients. Use Vitamin D3 (cholecalciferol). Optimizing levels supports immune regulation.</td>
+                </tr>
+                <tr>
+                    <td><strong>Vitamin A (Retinol)</strong></td>
+                    <td>Activates thyroid hormone receptors and regulates TSH.</td>
+                    <td>RDA: 700-900 mcg RAE.</td>
+                    <td>Hypothyroidism impairs conversion of beta-carotene (plant form) to active retinol. Focus on preformed Vitamin A (liver, eggs, dairy) may be more effective. Caution: Excessive preformed Vitamin A is toxic during pregnancy.</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <!-- Thyroid infographic (placed after nutrients section per request) -->
+        <figure class="amh-figure" id="thyroid-infographic">
+            <div class="amh-figure-inner">
+                <img
+                    id="thyroidInfographicImg"
+                    src="https://docbraymd.github.io/amh/thyroid_factors.jpg"
+                    alt="Thyroid factors infographic"
+                    loading="lazy"
+                    decoding="async"
+                    data-lightbox="true"
+                />
+            </div>
+            <figcaption>
+                <strong>Infographic:</strong> Thyroid factors and contributors. Click to expand full screen; right-click remains available to save.
+            </figcaption>
+        </figure>
+
+
+
+        <h3>Foods to Be Cautious With</h3>
+        
+        <h4>The Autoimmune Connection: Gluten & Dairy</h4>
+        <p>If you have Hashimoto's (positive antibodies), addressing food sensitivities is critical.</p>
+        <ul>
+            <li><strong>Gluten and Celiac Disease:</strong> Celiac disease occurs in 3.5-9.3% of people with Hashimoto's (compared to 1% of the general population). Molecular mimicry between gluten proteins and thyroid tissue may trigger immune responses.</li>
+            <li><strong>Testing Requirement:</strong> All people with Hashimoto's should be screened for Celiac disease <strong>before</strong> trying a gluten-free diet, as testing becomes inaccurate once gluten is removed.</li>
+            <li><strong>Gluten Sensitivity:</strong> Even without Celiac disease, some studies show a gluten-free diet may reduce thyroid antibodies by 15-30% over 6 months. If you have persistent symptoms, consider a strict 6-month trial.</li>
+        </ul>
+
+        <h4>The "Kale Myth": Goitrogens</h4>
+        <p>Goitrogenic foods (raw cruciferous vegetables like broccoli, kale, cabbage) contain glucosinolates that can interfere with iodine uptake, but only when consumed in <strong>extraordinarily large, raw quantities</strong> (e.g., 15+ cups of raw bok choy daily) combined with iodine deficiency.</p>
+        <ul>
+            <li><strong>Common-Sense Solution:</strong> Cooking destroys approximately 90% of goitrogens. Steaming, boiling, or sautéing these vegetables makes them safe for regular consumption (1-2 cups daily).</li>
+            <li><strong>Soy:</strong> Fine in moderation, but consume it at least 4 hours away from your thyroid medication as it impairs absorption.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Integrative Strategies: Lifestyle and Environment</h2>
+        
+        <h3>Exercise: Balancing Metabolism</h3>
+        <p>Exercise addresses many symptoms: combating slow metabolism, elevating mood, and boosting energy. However, balance is key.</p>
+        <div class="card-grid">
+            <div class="card">
+                <h4>Aerobic Foundation</h4>
+                <p>Aim for 150-300 minutes of moderate-intensity aerobic activity weekly (walking, swimming, cycling). Consistency is crucial.</p>
+            </div>
+            <div class="card">
+                <h4>Strength Training</h4>
+                <p>Two sessions weekly builds lean muscle mass, which increases resting metabolic rate. Focus on functional, compound movements.</p>
+            </div>
+        </div>
+        <div class="warning-box">
+            <h4>Avoid Overtraining</h4>
+            <p>Excessive high-intensity exercise increases cortisol, which suppresses TSH and blocks T4-to-T3 conversion, worsening hypothyroid symptoms. Train at intensities appropriate for your current fitness level.</p>
+        </div>
+
+        <h3>Stress Management and the Cortisol Connection</h3>
+        <p>Chronic stress and thyroid dysfunction create a vicious cycle. The brain axes that control stress (HPA) and thyroid (HPT) are intimately connected.</p>
+        <ul>
+            <li><strong>Hormonally:</strong> Chronic stress elevates cortisol, which inhibits TSH production and blocks conversion of T4 to active T3.</li>
+            <li><strong>Immunologically:</strong> Stress increases inflammation and worsens autoimmune conditions like Hashimoto's.</li>
+        </ul>
+        <p>Effective stress management—daily meditation, mindfulness, yoga, or deep breathing—is essential for optimal thyroid function.</p>
+
+        <h3>Sleep Optimization</h3>
+        <p>Hypothyroidism disrupts sleep, and poor sleep worsens thyroid function. Hypothyroidism reduces slow-wave "refreshing" sleep and increases sleep latency (difficulty falling asleep).</p>
+        <div class="info-box">
+            <h4>Sleep Apnea Risk</h4>
+            <p>Hypothyroidism significantly increases the risk for obstructive sleep apnea (affecting 9-24% of hypothyroid patients). If you snore loudly or experience excessive daytime sleepiness, discuss sleep apnea evaluation.</p>
+        </div>
+        <p>Prioritize 7-9 hours (often 8 hours is needed) of quality sleep nightly with consistent sleep hygiene (dark room, cool temperature, no screens before bed).</p>
+
+        <h3>Reducing Your Toxic Load: Endocrine Disruptors</h3>
+        <p>Your thyroid is sensitive to environmental chemicals that disrupt endocrine function. Iodine belongs to the "halide" family; other halides and chemicals can compete with iodine uptake or block thyroid hormone action.</p>
+
+        <h4>Major Thyroid-Disrupting Chemicals</h4>
+        <ul>
+            <li><strong>BPA (and BPS/BPF):</strong> Found in food can linings, plastic bottles, and thermal receipts. Antagonizes T3 receptors.</li>
+            <li><strong>Phthalates:</strong> Found in fragrances, vinyl flooring, food packaging, and PVC plastics (recycling code #3). Blocks thyroid hormone action.</li>
+            <li><strong>Perchlorate:</strong> Contaminates drinking water and soil. Competitively inhibits iodine uptake.</li>
+            <li><strong>Fluoride:</strong> Found in drinking water and toothpaste. Interferes with iodine (as another halogen). High levels are associated with increased TSH.</li>
+            <li><strong>Others:</strong> Pesticides, flame retardants (PBDEs), and PFAS (non-stick cookware).</li>
+        </ul>
+
+
+        <figure class="amh-figure" id="thyroid-toxins-infographic">
+            <div class="amh-figure-inner">
+                <img
+                    src="https://docbraymd.github.io/amh/thyroid_toxins.jpg"
+                    alt="Infographic: thyroid toxins and endocrine disruptors"
+                    loading="lazy"
+                    decoding="async"
+                    data-lightbox="true"
+                />
+            </div>
+            <figcaption>
+                <strong>Infographic:</strong> Thyroid toxins and endocrine disruptors. Click to expand full screen; right-click remains available to save.
+            </figcaption>
+        </figure>
+
+        <div class="highlight-box">
+            <h4>Practical Exposure Reduction Strategies</h4>
+            <ul>
+                <li><strong>Water Quality:</strong> Install a <strong>Reverse Osmosis (RO)</strong> filtration system. RO is most effective at removing perchlorate, pesticides, fluoride, and heavy metals. Standard carbon/pitcher filters are insufficient.</li>
+                <li><strong>Food Choices:</strong> Store food in glass or stainless steel instead of plastic. Buy organic produce when possible.</li>
+                <li><strong>Household:</strong> Replace non-stick cookware with stainless steel, cast iron, or ceramic. Vacuum frequently with a HEPA filter.</li>
+                <li><strong>Personal Care:</strong> Choose "fragrance-free" products (fragrance often hides phthalates). Use the Environmental Working Group (EWG) database to check product safety.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Concluding Thoughts from Dr. Bray</h2>
+        
+        <div class="quote-box">
+            "Hypothyroidism is a highly manageable condition when approached comprehensively. By blending the best of conventional medicine with evidence-based lifestyle strategies, we can restore your energy and vitality."
+        </div>
+        
+        <p>Hypothyroidism typically requires lifelong management, but your experience with it is optimizable. We reject the "pill for an ill" model that simply chases a TSH number.</p>
+
+        <h3>The Bottom Line: Your Path Forward</h3>
+        <ul>
+            <li>✓ <strong>Medication Foundation:</strong> Take your levothyroxine consistently at the same time daily with proper separation (60 min from food/coffee; 4 hours from calcium/iron/zinc/magnesium).</li>
+            <li>✓ <strong>Optimize Levels:</strong> Work with your provider to achieve optimal TSH levels (often under 2.0 mIU/L) and symptom resolution.</li>
+            <li>✓ <strong>Nutrient Support:</strong> Test for and correct deficiencies, particularly Vitamin D (target 30-50 ng/mL) and Iron (ferritin target 50-100 ng/mL).</li>
+            <li>✓ <strong>Anti-inflammatory Diet:</strong> Adopt a whole-foods diet. If you have Hashimoto's, consider selenium supplementation and a gluten-free trial. Screen for Celiac disease.</li>
+            <li>✓ <strong>Lifestyle Balance:</strong> Establish regular exercise (avoiding overtraining), practice daily stress reduction, and prioritize quality sleep.</li>
+             <li>✓ <strong>Minimize Toxins:</strong> Reduce exposure to endocrine disruptors through water filtration (Reverse Osmosis) and safer household products.</li>
+        </ul>
+        
+        <p>We will work together to understand your unique physiology. A balanced approach leads to the best outcomes.</p>
+
+        <br>
+        <p style="text-align: center; font-weight: bold;"><em>Dr. Christopher L. Bray, MD, PhD<br>
+        Archangel Michael Health<br>
+        Integrative & Internal Medicine</em></p>
+    </div>
+
+    <!-- Fullscreen infographic viewer -->
+    <div class="amh-lightbox" id="amhLightbox" aria-hidden="true" role="dialog" aria-label="Image viewer">
+        <div class="amh-lightbox-panel" role="document">
+            <div class="amh-lightbox-toolbar">
+                <a class="amh-lightbox-link" id="amhLightboxDownload"
+                   href="https://docbraymd.github.io/amh/thyroid_factors.jpg" download>
+                    Download image
+                </a>
+                <button class="amh-lightbox-btn" type="button" id="amhLightboxClose">Close</button>
+            </div>
+            <div class="amh-lightbox-imgwrap" id="amhLightboxImgWrap">
+                <img id="amhLightboxImg" src="https://docbraymd.github.io/amh/thyroid_factors.jpg" alt="Expanded thyroid infographic" />
+            </div>
+        </div>
+    </div>
+
+    <script>
+  (function () {
+    var lightbox = document.getElementById("amhLightbox");
+    var lightboxImg = document.getElementById("amhLightboxImg");
+    var lightboxClose = document.getElementById("amhLightboxClose");
+    var lightboxImgWrap = document.getElementById("amhLightboxImgWrap");
+    var downloadLink = document.getElementById("amhLightboxDownload");
+
+    if (!lightbox || !lightboxImg || !lightboxClose || !lightboxImgWrap) return;
+
+    function openLightbox(src, alt) {
+      lightboxImg.src = src;
+      lightboxImg.alt = alt || "Expanded image";
+      if (downloadLink) downloadLink.href = src;
+
+      lightbox.classList.add("is-open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove("is-open");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    // Event delegation: click any image with data-lightbox="true"
+    document.addEventListener("click", function (e) {
+      var img = e.target.closest('img[data-lightbox="true"]');
+      if (img) {
+        e.preventDefault();
+        e.stopPropagation();
+        openLightbox(img.getAttribute("src"), img.getAttribute("alt"));
+        return;
       }
 
-      var updatedEl = document.getElementById("amh-last-updated");
-      if (updatedEl) {
-        var lm = document.lastModified; // usually reflects server file Last-Modified (works well on GitHub Pages)
-        var d = lm ? new Date(lm) : null;
-        if (d && !isNaN(d.getTime())) {
-          // ISO-like YYYY-MM-DD
-          var yyyy = d.getFullYear();
-          var mm = String(d.getMonth() + 1).padStart(2, "0");
-          var dd = String(d.getDate()).padStart(2, "0");
-          updatedEl.textContent = yyyy + "-" + mm + "-" + dd;
-        }
+      // Close when clicking the background or the expanded image
+      if (e.target === lightbox || e.target === lightboxImg || e.target === lightboxImgWrap) {
+        closeLightbox();
       }
+    });
 
-      // ---- Smooth scroll for TOC ----
-      function scrollToId(id) {
-        var el = document.getElementById(id);
-        if (!el) return;
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
+    lightboxClose.addEventListener("click", function (e) {
+      e.preventDefault();
+      closeLightbox();
+    });
 
-      document.addEventListener("click", function (e) {
-        var btn = e.target.closest(".toc-btn[data-scroll]");
-        if (btn) {
-          e.preventDefault();
-          scrollToId(btn.getAttribute("data-scroll"));
-          return;
-        }
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && lightbox.classList.contains("is-open")) closeLightbox();
+    });
+  })();
+</script>
 
-        var link = e.target.closest('.toc a[href^="#"]');
-        if (link) {
-          var hash = link.getAttribute("href");
-          var target = hash && hash.length > 1 ? hash.slice(1) : null;
-          if (!target) return;
-          e.preventDefault();
-          scrollToId(target);
-          history.replaceState(null, "", hash);
-        }
-      });
-
-      // ---- Download PDF using html2pdf.js ----
-      var btn = document.getElementById("downloadPdfBtn");
-      if (!btn) return;
-
-      function safeFilename(title) {
-        return (title || "patient-guide")
-          .toLowerCase()
-          .replace(/[^a-z0-9]+/g, "-")
-          .replace(/(^-|-$)/g, "")
-          .slice(0, 80) || "patient-guide";
-      }
-
-      btn.addEventListener("click", function () {
-        btn.disabled = true;
-        btn.textContent = "Generating…";
-
-        var title = (document.getElementById("page-title") && document.getElementById("page-title").textContent) || "Patient Guide";
-        var filename = safeFilename(title) + ".pdf";
-
-        // Clone content for PDF and remove UI elements
-        var source = document.getElementById("pdf-root").cloneNode(true);
-        source.querySelectorAll(".no-print").forEach(function (el) { el.remove(); });
-
-        var wrapper = document.createElement("div");
-        wrapper.style.background = "#ffffff";
-        wrapper.appendChild(source);
-
-        var opt = {
-          margin: [0.5, 0.5, 0.6, 0.5], // inches
-          filename: filename,
-          image: { type: "jpeg", quality: 0.98 },
-          html2canvas: { scale: 2, useCORS: true, letterRendering: true },
-          jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
-          pagebreak: { mode: ["css", "legacy"] }
-        };
-
-        html2pdf()
-          .set(opt)
-          .from(wrapper)
-          .save()
-          .catch(function (err) {
-            console.error(err);
-            alert("Could not generate the PDF in this browser. Please use Print / Save as PDF.");
-          })
-          .finally(function () {
-            btn.disabled = false;
-            btn.textContent = "Download PDF";
-          });
-      });
-    })();
-  </script>
 </body>
 </html>
-
