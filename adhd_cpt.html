@@ -292,9 +292,67 @@
       h1{ letter-spacing:2px; }
       #countdown{ font-size:3.2rem; }
     }
+  
+    /* Viewport size gate (no scrolling allowed) */
+    #sizeGate{
+      position:fixed;
+      inset:0;
+      z-index:9999;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      text-align:center;
+      padding:22px;
+      box-sizing:border-box;
+      background:var(--bg);
+      pointer-events:auto;
+    }
+    #sizeGate.show{ display:flex; }
+    #sizeGate .panel{ text-align:left; }
+    #sizeGate ul{
+      margin:10px 0 0 18px;
+      padding:0;
+      color:#bdbdbd;
+      line-height:1.6;
+    }
+
   </style>
 </head>
 <body>
+
+  <!-- VIEWPORT SIZE GATE (SCROLLING IS DISABLED) -->
+  <div id="sizeGate" role="alert" aria-live="assertive" aria-atomic="true">
+    <h1>SCREEN TOO SMALL</h1>
+    <h2>This application disables scrolling and requires a larger window.</h2>
+
+    <div class="panel">
+      <div class="hint" style="margin-top:0;">
+        <p style="margin-top:0;">
+          Minimum required window size: <strong id="sizeGateMin">—</strong><br/>
+          Current window size: <strong id="sizeGateCur">—</strong>
+        </p>
+
+        <div class="divider"></div>
+
+        <strong style="color:#fff;">How to fix</strong>
+        <ul>
+          <li>Rotate your device to landscape (if applicable).</li>
+          <li>Use a larger screen (tablet, laptop, or desktop).</li>
+          <li>Try fullscreen mode to maximize available space.</li>
+        </ul>
+
+        <div class="btnRow" style="margin-top:16px;">
+          <button class="btn" id="btnSizeGateFullscreen">Try Fullscreen</button>
+        </div>
+      </div>
+
+      <div class="tiny" style="margin-top:12px;">
+        Note: If the window becomes too small during an active session, the session will be aborted.
+      </div>
+    </div>
+  </div>
+
 
   <!-- INTRO -->
   <div id="screenIntro" class="screen active">
@@ -1318,6 +1376,47 @@ Rating: ${p.jitterTag}`;
   // -----------------------------
   function wait(ms){ return new Promise(res => setTimeout(res, ms)); }
 
+
+  // -----------------------------
+  // Viewport size gate (no scrolling allowed)
+  // -----------------------------
+  const MIN_VIEWPORT = { w: 900, h: 680 }; // CSS pixels
+
+  function checkViewportGate(){
+    const gate = $("sizeGate");
+    if (!gate) return;
+
+    const w = Math.round(window.innerWidth);
+    const h = Math.round(window.innerHeight);
+    const tooSmall = (w < MIN_VIEWPORT.w) || (h < MIN_VIEWPORT.h);
+
+    const minEl = $("sizeGateMin");
+    const curEl = $("sizeGateCur");
+    if (minEl) minEl.textContent = `${MIN_VIEWPORT.w}×${MIN_VIEWPORT.h}px`;
+    if (curEl) curEl.textContent = `${w}×${h}px`;
+
+    if (tooSmall){
+      gate.classList.add("show");
+
+      // If a session is in progress, abort and clean up immediately.
+      if (State.running){
+        State.aborted = true;
+        State.running = false;
+        document.body.style.cursor = "default";
+        unbindAll();
+        // Return to a known screen underneath the gate
+        switchScreen(Screens.intro);
+        updatePreflightStatus();
+      }
+    } else {
+      gate.classList.remove("show");
+    }
+  }
+
+  window.addEventListener("resize", checkViewportGate, { passive:true });
+  window.addEventListener("orientationchange", checkViewportGate, { passive:true });
+
+
   // -----------------------------
   // UI wiring
   // -----------------------------
@@ -1404,6 +1503,7 @@ Rating: ${p.jitterTag}`;
   // First render of preflight block
   renderPreflight();
   updatePreflightStatus();
+  checkViewportGate();
 
 })();
 </script>
