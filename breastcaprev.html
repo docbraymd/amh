@@ -5,11 +5,38 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Breast Cancer Prevention | Archangel Michael Health</title>
 
-  <!-- Shared stylesheet (template-consistent) -->
+  <!-- Shared stylesheet -->
   <link rel="stylesheet" href="https://docbraymd.github.io/amh/style_v2.css" />
 
   <!-- html2pdf for one-click PDF download -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <style>
+    /* Page-local table styling (requested) */
+    .amh-table-wrap { overflow-x: auto; }
+    table.amh-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0 8px 0;
+      font-size: 0.95rem;
+      line-height: 1.45;
+    }
+    table.amh-table th, table.amh-table td {
+      border: 1px solid var(--amh-border);
+      padding: 10px 10px;
+      vertical-align: top;
+    }
+    table.amh-table th {
+      background: var(--amh-bg-soft);
+      font-weight: 800;
+      text-align: left;
+    }
+    .amh-table-note {
+      font-size: 0.92rem;
+      color: var(--amh-text-soft);
+      margin-top: 6px;
+    }
+  </style>
 </head>
 
 <body>
@@ -23,7 +50,7 @@
         <div class="amh-practice doctor-tag">Archangel Michael Health</div>
 
         <h1 class="amh-title" id="page-title">Breast Cancer Prevention</h1>
-        <h2 class="amh-tagline">Patient Guide: Lifestyle, Integrative &amp; Conventional Risk Reduction</h2>
+        <h2 class="amh-tagline">Patient Guide: Lifestyle, Integrative &amp; Conventional Prevention</h2>
         <div class="byline">by Christopher L. Bray MD PhD</div>
 
         <div class="action-bar amh-actions no-print" aria-label="Actions">
@@ -37,13 +64,12 @@
       </div>
     </header>
 
-    <div class="amh-content content-body">
+        <div class="amh-content content-body">
       <p>
-        Breast cancer risk is not a single “yes/no” property. It is a probability shaped by genetics, breast tissue biology,
-        hormones, metabolic health, inflammation, lifestyle exposures, and (importantly) how well screening can actually see through your breast tissue.
-        This guide is designed for sophisticated patients who want a rigorous, practical plan: foundations first, then targeted risk reduction,
-        and escalation (enhanced imaging and/or medications) only when the risk/benefit profile makes sense.
-        This is a prevention and early-detection guide (not a diagnosis page). References are provided at the end.
+        Breast cancer risk is influenced by a mix of non-modifiable factors (age, genetics, breast density, reproductive history)
+        and modifiable factors (alcohol, body composition, metabolic health, physical activity, diet quality, smoking, sleep/circadian rhythm,
+        environmental exposures, and selected medications/hormones). This guide is designed for the sophisticated patient who wants
+        a pragmatic, evidence-informed prevention plan that combines standard preventive care with high-ROI lifestyle and integrative strategies.
       </p>
 
       <div class="toc no-print" aria-label="On this page">
@@ -51,11 +77,11 @@
         <ul class="amh-list">
           <li><a href="#overview">Overview and key points</a></li>
           <li><a href="#symptoms">Symptoms and red flags</a></li>
-          <li><a href="#diagnosis">Diagnosis and what to test</a></li>
+          <li><a href="#diagnosis">Risk assessment, screening, and what to test</a></li>
           <li><a href="#drivers">Root causes and contributing factors</a></li>
-          <li><a href="#plan">Step-by-step improvement plan</a></li>
-          <li><a href="#treatments">Conventional care: screening and high-risk prevention</a></li>
-          <li><a href="#integrative">Integrative options: foods, spices, supplements</a></li>
+          <li><a href="#plan">Step-by-step prevention plan</a></li>
+          <li><a href="#treatments">Conventional prevention and high-risk management</a></li>
+          <li><a href="#integrative">Integrative options</a></li>
           <li><a href="#costs">Cost considerations</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#references">References</a></li>
@@ -63,868 +89,688 @@
       </div>
 
       <h3 id="overview">Overview and key points</h3>
+      <p>
+        Prevention is not “one pill” or “one test.” It is risk stratification plus long-term behavior and environment design.
+        A practical approach is to (1) quantify baseline risk, (2) optimize the “big levers” that meaningfully shift biology
+        (alcohol, adiposity/insulin, activity, diet quality, smoking, sleep/circadian alignment), (3) reduce endocrine-disrupting and carcinogenic exposures,
+        and (4) choose screening and medical prevention strategies that match risk level and preferences.
+      </p>
+
+      <div class="clinical-note">
+        <strong>Clinical note:</strong> Breast cancer is heterogeneous. “Estrogen receptor positive” (ER+) cancers are most common and are influenced by lifetime estrogen exposure,
+        adiposity/insulin signaling, inflammation, and (likely) endocrine-disrupting chemical exposures. Prevention strategies often target those upstream drivers.
+      </div>
 
       <div class="success-box">
         <strong>High-yield summary:</strong>
-        The highest “return on effort” for primary prevention is a staged approach:
-        (1) reduce alcohol and avoid tobacco; (2) maintain a healthy waistline and improve insulin sensitivity;
-        (3) exercise consistently; (4) eat a Mediterranean / plant-forward dietary pattern rich in fiber and phytonutrients;
-        (5) use hormones thoughtfully (birth control and HRT are not “free” from a risk standpoint);
-        (6) know your breast density and perform a formal risk calculation; and (7) reserve medications (tamoxifen, raloxifene, aromatase inhibitors)
-        and enhanced imaging (MRI) for patients whose calculated risk justifies the tradeoffs.
+        <ul class="amh-list">
+          <li><strong>Alcohol:</strong> dose-dependent increase in risk; for breast cancer, “less is better.”</li>
+          <li><strong>Body fat and insulin resistance:</strong> major, modifiable, high-ROI driver of post-menopausal risk.</li>
+          <li><strong>Exercise:</strong> consistently associated with lower risk and lower recurrence risk in survivors.</li>
+          <li><strong>Diet quality:</strong> emphasize plant-forward, high-fiber, minimally processed patterns; limit ultra-processed foods.</li>
+          <li><strong>Sleep/circadian rhythm:</strong> prioritize adequate sleep and avoid long-term night shift work when possible.</li>
+          <li><strong>EDC avoidance:</strong> reduce routine exposures that can act as xenoestrogens or disrupt hormone signaling.</li>
+          <li><strong>Risk-based screening:</strong> mammography saves lives but also causes false positives and some overdiagnosis; tailor decisions to risk, breast density, and life expectancy.</li>
+          <li><strong>Very high risk:</strong> consider MRI screening, chemoprevention, and (in select cases) risk-reducing surgery.</li>
+        </ul>
       </div>
-
-      <div class="clinical-note">
-        <strong>Clinical note: what “prevention” really means.</strong>
-        Prevention has two domains: (1) <em>primary prevention</em> (reduce the chance a cancer forms),
-        and (2) <em>secondary prevention</em> (detect cancer earlier when it is more treatable).
-        Screening saves lives, but it can also cause harm via false alarms, unnecessary biopsies, anxiety,
-        radiation exposure, and “overdiagnosis” (finding a cancer that would not have harmed you in your lifetime).
-        The goal is individualized prevention: enough screening and intervention to reduce meaningful risk, but not so much that you incur avoidable harm.
-      </div>
-
-      <h4>Key concepts to understand</h4>
-      <ul class="amh-list symptom-list">
-        <li><strong>Breast density is a “double jeopardy” factor:</strong> it increases biological risk and reduces the ability of mammography to detect tumors.</li>
-        <li><strong>Risk calculators matter:</strong> the same person may be “average risk” on one model and “high risk” on another, changing whether MRI or medications are appropriate.</li>
-        <li><strong>Hormones are powerful:</strong> lifetime estrogen/progesterone exposure influences risk. The tradeoffs around oral contraceptives and menopausal hormone therapy deserve deliberate decision-making.</li>
-        <li><strong>Metabolic health matters:</strong> after menopause, excess adipose tissue becomes a major estrogen source; insulin resistance and chronic inflammation amplify proliferative signaling.</li>
-        <li><strong>Supplements are secondary:</strong> the most reliable benefits come from lifestyle patterns; supplements may be adjuncts, not substitutes.</li>
-      </ul>
-
-      <hr />
 
       <h3 id="symptoms">Symptoms and red flags</h3>
       <p>
-        Most early breast cancers cause no symptoms. That is why risk-appropriate screening and follow-up of abnormal findings matters.
-        Still, you should know what warrants prompt evaluation.
+        This page focuses on prevention, but knowing warning signs matters. Many breast cancers are detected on screening before symptoms occur.
+        If you notice new or concerning changes, seek clinical evaluation promptly rather than “watching it for months.”
       </p>
-
-      <h4>Possible breast cancer symptoms</h4>
-      <ul class="amh-list symptom-list">
-        <li>New lump or thickening in the breast or underarm (especially if firm, irregular, or fixed).</li>
-        <li>Change in breast size or shape that is new and persistent.</li>
-        <li>Skin changes: dimpling, puckering, new redness, or “peau d’orange” (orange-peel texture).</li>
-        <li>Nipple changes: new inversion, scaling, ulceration, or persistent crusting.</li>
-        <li>Spontaneous nipple discharge, especially if bloody or from one duct.</li>
-        <li>Persistent, focal breast pain (pain alone is usually not cancer, but persistent focal pain deserves evaluation).</li>
-      </ul>
 
       <div class="alert-box">
-        <strong>Red flags (seek prompt clinical evaluation):</strong>
-        rapidly enlarging breast swelling or redness (possible inflammatory breast cancer or infection),
-        a new hard mass with skin tethering,
-        bloody nipple discharge,
-        or a new lump in the armpit that persists.
-        If you have fever with breast redness and are breastfeeding, mastitis is common—but if symptoms do not improve quickly with appropriate treatment, reassessment is important.
+        <strong>Red flags (seek prompt evaluation):</strong>
+        <ul class="amh-list">
+          <li>New palpable lump or firm thickening that persists beyond a menstrual cycle.</li>
+          <li>New nipple inversion, spontaneous nipple discharge (especially bloody), or persistent scaling/eczema of the nipple/areola.</li>
+          <li>Skin dimpling, peau d’orange texture, or focal swelling/redness not explained by infection.</li>
+          <li>Rapid change in breast size/shape, or new persistent focal pain (especially if associated with a mass).</li>
+          <li>Enlarged axillary or supraclavicular lymph nodes without another clear cause.</li>
+        </ul>
       </div>
 
-      <hr />
-
-      <h3 id="diagnosis">Diagnosis and what to test</h3>
+      <h4>Self breast exam and “breast awareness”</h4>
       <p>
-        For prevention, “diagnosis” means two things: (1) quantify risk accurately, and (2) match screening intensity to risk (and breast density).
-        The highest-value tests are those that change management.
+        Formal monthly self-breast examination has not shown a mortality benefit in large trials and can increase false alarms and benign biopsies.
+        However, “breast awareness” is reasonable: know your baseline and pay attention to new, persistent changes. If you prefer a structured self-exam,
+        ask your clinician to teach a technique designed to minimize unnecessary alarm.
       </p>
 
-      <h4>1) Determine your baseline risk category</h4>
+      <h4>Clinical breast exam</h4>
+      <p>
+        Clinical breast exam (performed by a clinician) is sometimes included during routine preventive visits. For average-risk patients, evidence that it
+        adds substantial benefit on top of modern mammography is limited, and recommendations vary. In practice, it can be helpful when symptoms are present,
+        for people who are not up-to-date on screening, or in settings where imaging access is limited.
+      </p>
+
+      <h3 id="diagnosis">Risk assessment, screening, and what to test</h3>
+      <p>
+        The goal of “diagnosis” in prevention is to identify your risk tier and match that with an appropriate screening and prevention strategy.
+        Two people the same age can have very different risk profiles based on family history, breast density, reproductive exposures, prior biopsies,
+        and genetic variants.
+      </p>
+
+      <h4>Risk calculators</h4>
+      <p>
+        Risk calculators estimate short-term (5–10 year) and/or lifetime risk. They differ in what they include, so results can vary.
+        These tools are most useful to decide whether you meet thresholds for enhanced screening (e.g., MRI) or chemoprevention.
+      </p>
       <ul class="amh-list symptom-list">
-        <li><strong>Average risk:</strong> no strong family history, no high-risk gene mutation known, no prior high-risk breast lesion, no chest radiation at young age.</li>
-        <li><strong>Increased risk:</strong> family history (especially young diagnoses), certain benign lesions (atypical hyperplasia, LCIS), elevated risk scores on calculators, dense breasts plus other risk factors.</li>
-        <li><strong>High risk:</strong> known pathogenic mutation (e.g., BRCA1/2, TP53, PALB2), strong hereditary pattern, prior chest radiation (especially before age 30), or lifetime risk ≥20% on validated models.</li>
+        <li><strong><a href="https://bcrisktool.cancer.gov/" target="_blank" rel="noopener">NCI Breast Cancer Risk Assessment Tool (Gail model)</a>:</strong> widely used; includes age, reproductive factors, limited family history, and prior biopsies.</li>
+        <li><strong><a href="https://tools.bcsc-scc.ucdavis.edu/BC5yearRisk/" target="_blank" rel="noopener">BCSC Risk Calculator</a>:</strong> incorporates breast density and prior biopsy information; useful for screening decisions.</li>
+        <li><strong><a href="https://canrisk.org/" target="_blank" rel="noopener">CanRisk (BOADICEA / Tyrer–Cuzick family-history-based tools)</a>:</strong> more detailed family history and genetic components; commonly used in high-risk clinics.</li>
+        <li><strong><a href="https://magview.com/ibis-risk-calculator/" target="_blank" rel="noopener">Tyrer–Cuzick (IBIS) interface information</a>:</strong> often used to estimate lifetime risk and guide MRI eligibility (availability varies by clinic/software).</li>
       </ul>
 
-      <h4>2) Use validated breast cancer risk calculators (and understand their limitations)</h4>
       <div class="clinical-note">
-        <strong>Why calculators matter:</strong> Chemoprevention and MRI screening are generally guided by calculated thresholds.
-        Different tools weigh different variables, so a single “risk score” should be treated as decision-support—not destiny.
+        <strong>Practical thresholds used in many clinics:</strong> A lifetime risk ≥20% (by certain models) often triggers consideration of annual breast MRI in addition to mammography.
+        A 5-year risk ≥1.7% (Gail) has historically been used as a threshold to discuss chemoprevention, but decision-making should be individualized.
       </div>
 
-      <ul class="amh-list symptom-list">
-        <li><strong>Gail Model / BCRAT:</strong> practical for primary care and for determining medication eligibility based on 5-year risk. Limitations: less complete family history modeling and typically does not incorporate breast density.</li>
-        <li><strong>Tyrer-Cuzick / IBIS:</strong> more comprehensive (often includes second-degree relatives, BMI, hormones, and breast density). Commonly used to determine eligibility for MRI screening based on lifetime risk.</li>
-        <li><strong>BRCAPRO (carrier probability):</strong> estimates probability of carrying BRCA mutations from detailed pedigree. Useful for deciding on referral to genetic counseling and testing.</li>
-        <li><strong>Claus model (family history):</strong> older, family-history based tool; sometimes used but often replaced by more comprehensive models.</li>
-      </ul>
-
-      <h4>Practical risk thresholds that commonly change management</h4>
-      <ul class="amh-list symptom-list">
-        <li><strong>5-year Gail risk ≥1.67%:</strong> traditional threshold to discuss risk-reducing medication; some guidance uses ≥3% as the point where benefits more clearly outweigh harms.</li>
-        <li><strong>Lifetime risk ≥20%:</strong> typically qualifies for annual breast MRI in addition to mammography.</li>
-        <li><strong>BRCAPRO carrier probability ≥10% or hereditary red flags:</strong> usually warrants genetic counseling/testing consideration.</li>
-      </ul>
-
-      <h4>3) Know your breast density</h4>
+      <h4>Breast density: why it matters</h4>
       <p>
-        Breast density is determined by mammography and reported as one of four categories (from mostly fatty to extremely dense).
-        Dense tissue can “hide” tumors on mammogram because both dense tissue and tumors appear white.
+        Breast density is both (1) an independent risk factor and (2) a factor that reduces mammography sensitivity (dense tissue can mask tumors).
+        Density is usually reported as: almost entirely fatty, scattered fibroglandular densities, heterogeneously dense, or extremely dense.
+        Dense breasts are common and are not “abnormal,” but they can change screening strategy.
       </p>
-      <ul class="amh-list symptom-list">
-        <li><strong>Risk impact:</strong> extremely dense breasts can carry substantially higher risk compared with fatty breasts.</li>
-        <li><strong>Detection impact:</strong> the sensitivity of mammography is much higher in fatty breasts and substantially lower in extremely dense breasts.</li>
-        <li><strong>Action:</strong> if you have dense breasts, you should discuss whether you need supplemental screening (tomosynthesis, ultrasound, contrast-enhanced mammography, or MRI), guided by your total risk profile.</li>
-      </ul>
-
-      <h4>4) Testing that may be reasonable in a prevention-focused clinic</h4>
       <p>
-        These tests are not “breast cancer tests,” but they can identify modifiable physiologic drivers that influence risk (especially metabolic and inflammatory risk).
-        Testing should be individualized—best used when results will drive a concrete plan.
+        Dense breasts are associated with higher false-positive recalls and can increase the chance that an interval cancer is diagnosed between screens.
+        Modern 3D mammography (tomosynthesis) can modestly reduce recalls compared with 2D mammography for many women, although benefits vary by density.
       </p>
+
+      <h4>Screening options (average and increased risk)</h4>
       <ul class="amh-list symptom-list">
-        <li><strong>Metabolic risk:</strong> fasting glucose, A1c, fasting insulin (or insulin resistance markers), lipid panel, blood pressure, waist circumference.</li>
-        <li><strong>Inflammation (selective):</strong> hs-CRP may help contextualize inflammatory risk and lifestyle priorities.</li>
-        <li><strong>Vitamin D:</strong> reasonable to check if low sun exposure, osteoporosis risk, autoimmune disease, or if supplementation is being considered.</li>
-        <li><strong>Genetics:</strong> referral/testing when family history patterns or risk model outputs suggest hereditary risk.</li>
+        <li><strong>Mammography (2D or 3D/tomosynthesis):</strong> the core population screening tool; most evidence for mortality benefit.</li>
+        <li><strong>Breast MRI:</strong> highest sensitivity; typically reserved for high-risk individuals (e.g., genetic risk, very high lifetime risk, prior chest radiation).</li>
+        <li><strong>Breast ultrasound:</strong> sometimes used as supplemental screening in dense breasts; increases detection but also increases false positives.</li>
+        <li><strong>Contrast-enhanced mammography:</strong> emerging option in some centers for certain risk profiles when MRI is not feasible.</li>
       </ul>
 
-      <hr />
+      <h4>Thermography (important clarification)</h4>
+      <p>
+        Thermography is not an approved substitute for mammography. It may detect heat patterns, but it has not demonstrated the reliability needed to replace imaging
+        that directly visualizes tissue changes. If thermography is used at all, it should only be considered an adjunct and should never delay indicated mammography or diagnostic imaging.
+      </p>
+
+      <h4>When to stop screening: life expectancy and individualized decisions</h4>
+      <p>
+        For older adults, the main issue is not “age alone,” but whether you are likely to live long enough to benefit from screening (benefits accrue over years),
+        versus experiencing harms (false positives, overdiagnosis, procedures) sooner. I often use the ePrognosis tool to support shared decision-making:
+        <a href="https://eprognosis.ucsf.edu/cancer/partials/breast-cancer.php" target="_blank" rel="noopener">ePrognosis Breast Cancer Screening Decision Tool</a>.
+      </p>
 
       <h3 id="drivers">Root causes and contributing factors</h3>
       <p>
-        You cannot change every variable. Some risks are “fixed” (sex, age, genetics), but many are modifiable.
-        The prevention strategy is to identify the few levers that meaningfully change your probability.
+        Some risk factors are not modifiable (age, certain gene variants, prior chest radiation, strong family history). Many others are modifiable and are the primary focus here.
+        Think in terms of upstream biology: estrogen exposure and signaling, insulin/IGF-1 signaling, inflammation, oxidative stress, immune surveillance, and environmental endocrine disruption.
       </p>
 
-      <h4>Non-modifiable or minimally modifiable factors</h4>
+      <h4>Non-modifiable or partly modifiable factors</h4>
       <ul class="amh-list symptom-list">
-        <li><strong>Age:</strong> risk rises with age, especially after midlife.</li>
-        <li><strong>Genetics:</strong> high-penetrance mutations (e.g., BRCA1/2, TP53, PALB2) materially change strategy (MRI, medications, sometimes surgery).</li>
-        <li><strong>Personal breast history:</strong> atypical hyperplasia, LCIS, or prior breast cancer increases future risk.</li>
-        <li><strong>Chest radiation at a young age:</strong> substantially increases lifetime risk.</li>
+        <li><strong>Age:</strong> risk rises with age.</li>
+        <li><strong>Genetics and family history:</strong> BRCA1/2 and other genes; early diagnoses or multiple affected relatives increases risk.</li>
+        <li><strong>Breast density:</strong> independent risk factor and reduces screening sensitivity.</li>
+        <li><strong>Reproductive history:</strong> early menarche, later menopause, later age at first full-term pregnancy, and fewer pregnancies slightly increase lifetime exposure to estrogen.</li>
+        <li><strong>Prior biopsies:</strong> atypical ductal hyperplasia, atypical lobular hyperplasia, and LCIS increase future risk.</li>
       </ul>
 
-      <h4>High-impact modifiable factors (best ROI)</h4>
-      <ul class="amh-list symptom-list">
-        <li><strong>Alcohol intake:</strong> the most consistently supported dietary risk factor for breast cancer.</li>
-        <li><strong>Tobacco exposure:</strong> active smoking and prolonged exposure increases risk and worsens overall cancer and cardiovascular outcomes.</li>
-        <li><strong>Body fat distribution and insulin resistance:</strong> after menopause, adipose tissue becomes a significant estrogen source; insulin/IGF signaling amplifies proliferation.</li>
-        <li><strong>Physical inactivity:</strong> exercise reduces risk through weight-dependent and weight-independent mechanisms (hormonal, immune, inflammatory, metabolic).</li>
-        <li><strong>Dietary pattern:</strong> fiber intake, plant diversity, and overall dietary quality influence estrogen metabolism, inflammation, and insulin sensitivity.</li>
-        <li><strong>Hormone exposures:</strong> oral contraceptives and menopausal hormone therapy can alter risk; decisions should be individualized.</li>
-      </ul>
-
-      <h4>Additional contributing factors worth addressing</h4>
-      <ul class="amh-list symptom-list">
-        <li><strong>Sleep/circadian disruption:</strong> irregular sleep and night shift work may contribute via melatonin and metabolic pathways.</li>
-        <li><strong>Reproductive history:</strong> earlier menarche, later first birth, and not breastfeeding can increase risk modestly via lifetime hormone exposure patterns.</li>
-        <li><strong>Environmental exposures:</strong> endocrine-disrupting chemicals (EDCs) plausibly matter; the highest-yield approach is to reduce high-frequency exposures (food packaging, fragrances, certain plastics, solvents), without turning life into a fear project.</li>
-      </ul>
-
-      <hr />
-
-      <h3 id="plan">Step-by-step improvement plan</h3>
-      <div class="success-box">
-        <strong>Practical plan:</strong> Most patients do best with a staged strategy:
-        (1) quantify risk + clarify screening; (2) implement the “big levers” (alcohol, weight/insulin resistance, exercise, dietary pattern);
-        (3) address hormones and breastfeeding history where relevant; (4) consider targeted integrative adjuncts; and (5) if risk thresholds are met,
-        discuss MRI and/or medications (tamoxifen, raloxifene, aromatase inhibitors).
-      </div>
-
-      <h4>Step 0: Clarify your “starting point” (one-time setup)</h4>
-      <ul class="amh-list symptom-list">
-        <li><strong>Get your breast density from your mammogram report.</strong></li>
-        <li><strong>Run a formal risk assessment:</strong> ideally Tyrer-Cuzick/IBIS (especially if dense breasts or extended family history) and consider Gail/BCRAT for 5-year risk framing.</li>
-        <li><strong>Review family history:</strong> breast, ovarian, pancreatic, prostate cancers; ages at diagnosis; maternal and paternal sides.</li>
-        <li><strong>Decide on a screening strategy:</strong> based on age, density, and risk model results (see Conventional Care).</li>
-      </ul>
-
-      <h4>Step 1 (Weeks 1–4): Foundations that move risk the most</h4>
-
-      <div class="rx-card amh-rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Alcohol strategy</div>
-          <div class="rx-type">FOUNDATION</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">Why it matters</div>
-          <div>
-            Alcohol is the dietary exposure with the strongest evidence for increasing breast cancer risk.
-            Mechanisms include higher estrogen levels, oxidative stress, acetaldehyde toxicity, and impaired folate metabolism.
-          </div>
-
-          <div class="rx-label">Practical target</div>
-          <div>
-            Best prevention target is <strong>zero</strong>. If you choose to drink, aim for the lowest frequency and dose possible.
-            If you currently drink most days, your first win is reducing to occasional use.
-          </div>
-
-          <div class="rx-label">High-yield steps</div>
-          <div>
-            Replace “default alcohol” with an alternate ritual (sparkling water + citrus, tea, or a non-alcoholic botanical beverage);
-            avoid drinking on an empty stomach; avoid “stress drinking” by building alternative stress outlets.
-          </div>
-
-          <div class="rx-label">Safety / cautions</div>
-          <div>
-            Alcohol also increases hypertension, atrial fibrillation risk, sleep disruption, depression/anxiety risk, and multiple other cancers.
-            If you use alcohol to manage anxiety or sleep, treat the underlying issue—alcohol is a net negative for both.
-          </div>
-
-          <div class="rx-label">Cost</div>
-          <div>
-            Often cost-saving: less alcohol generally reduces spending and improves health ROI.
-          </div>
-        </div>
-      </div>
-
-      <div class="rx-card amh-rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Exercise prescription (risk reduction + metabolic health)</div>
-          <div class="rx-type">FOUNDATION</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">Why it matters</div>
-          <div>
-            Exercise improves insulin sensitivity, lowers chronic inflammation, improves immune surveillance, reduces visceral fat,
-            and can lower postmenopausal estrogen exposure indirectly through reduced adiposity.
-          </div>
-
-          <div class="rx-label">Practical target</div>
-          <div>
-            <strong>150–300 minutes/week</strong> of moderate aerobic activity plus <strong>2</strong> resistance training sessions/week.
-            If you do not exercise now, begin with 10–20 minutes/day and build.
-          </div>
-
-          <div class="rx-label">High-yield structure</div>
-          <div>
-            Most patients do well with: (1) a daily baseline (walk after meals), (2) two “longer sessions” weekly,
-            and (3) resistance training focused on major muscle groups (squats/hinges/push/pull/carry).
-          </div>
-
-          <div class="rx-label">Safety / cautions</div>
-          <div>
-            If you have known cardiovascular disease, severe orthopedic limitations, or unexplained exertional symptoms, discuss a safe ramp-up plan.
-          </div>
-
-          <div class="rx-label">Cost</div>
-          <div>
-            Low-cost options: walking, cycling, home resistance bands/dumbbells. Gym membership is optional, not required.
-          </div>
-        </div>
-      </div>
-
-      <div class="rx-card amh-rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Weight and insulin-resistance strategy (especially important after menopause)</div>
-          <div class="rx-type">FOUNDATION</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">Why it matters</div>
-          <div>
-            After menopause, adipose tissue becomes a major source of estrogen via aromatase activity.
-            Insulin resistance increases IGF signaling and inflammatory pathways that favor proliferation.
-          </div>
-
-          <div class="rx-label">Practical target</div>
-          <div>
-            Focus less on scale weight and more on <strong>waist circumference</strong>, <strong>body composition</strong>, and <strong>metabolic markers</strong>.
-            Aim for steady, sustainable improvement rather than rapid dieting cycles.
-          </div>
-
-          <div class="rx-label">High-yield steps</div>
-          <div>
-            Protein-forward breakfasts, high fiber (beans, lentils, vegetables), limit ultra-processed foods,
-            build daily movement, and prioritize sleep. Consider time-restricted eating if appropriate (see below).
-          </div>
-
-          <div class="rx-label">Safety / cautions</div>
-          <div>
-            If you have a history of eating disorder, pregnancy, or medical conditions requiring tight glucose control,
-            fasting strategies should be clinician-guided.
-          </div>
-
-          <div class="rx-label">Cost</div>
-          <div>
-            Often cost-neutral if you substitute legumes/whole foods for packaged foods and alcohol.
-          </div>
-        </div>
-      </div>
-
-      <h4>Step 2 (Weeks 4–12): Dietary pattern and hormone strategy</h4>
-
-      <div class="clinical-note">
-        <strong>Diet “pattern” beats individual superfoods.</strong>
-        For prevention, the strongest nutrition evidence generally supports a Mediterranean / plant-forward pattern:
-        high vegetable and legume intake, fiber, healthy fats (olive oil, nuts), limited ultra-processed foods,
-        and minimal alcohol. Specific foods and spices can be layered in as targeted adjuncts (see Integrative Options).
-      </div>
-
-      <h4>Dietary pattern targets (practical and measurable)</h4>
-      <ul class="amh-list symptom-list">
-        <li><strong>Vegetables:</strong> 5+ servings/day; aim for color diversity. Include cruciferous vegetables several times/week.</li>
-        <li><strong>Fiber:</strong> build toward 25–40 g/day (beans/lentils, vegetables, chia/flax, whole grains as tolerated).</li>
-        <li><strong>Protein:</strong> prioritize legumes, fish, and minimally processed protein sources; limit processed meats.</li>
-        <li><strong>Fats:</strong> olive oil, nuts, seeds; avoid routinely deep-fried foods and trans fats.</li>
-        <li><strong>Ultra-processed foods:</strong> reduce frequency and portion size—these often drive insulin resistance and weight gain.</li>
-      </ul>
-
-      <h4>Hormones: birth control and menopausal hormone therapy (HRT)</h4>
+      <h4>Alcohol</h4>
       <p>
-        Hormones are among the most nuanced parts of prevention because they are not “good” or “bad” universally—benefit depends on why they are used,
-        at what dose, and in whom. The core principle is to use the lowest effective dose for the shortest necessary time, and to consider non-hormonal alternatives when appropriate.
+        Alcohol is one of the most consistent and modifiable breast cancer risk factors. Mechanisms include increased estrogen levels, acetaldehyde exposure,
+        oxidative stress, and impaired folate metabolism. From a prevention standpoint, the key message is dose-response: fewer drinks per week is better.
+        If you drink, consider lowering frequency, choosing smaller servings, and building alcohol-free default routines.
       </p>
 
+      <h4>Smoking and secondhand smoke</h4>
+      <p>
+        Smoking is associated with increased breast cancer risk and worsened overall cancer outcomes, and it amplifies oxidative stress and inflammation.
+        Smoking cessation has broad benefits and remains a core prevention target.
+      </p>
+
+      <h4>Obesity, insulin resistance, and inflammation</h4>
+      <p>
+        Adipose tissue is hormonally active: it increases aromatase activity (conversion of androgens to estrogen), raises insulin/IGF-1 signaling,
+        and increases inflammatory cytokines. Post-menopausal ER+ breast cancer risk is strongly linked to adiposity and metabolic dysfunction.
+        Prevention is not about “thinness”; it is about metabolic health, lean mass, insulin sensitivity, and reducing visceral fat.
+      </p>
+
+      <h4>Physical activity and exercise</h4>
+      <p>
+        Exercise improves insulin sensitivity, reduces inflammation, improves immune surveillance, and helps regulate estrogen metabolism and body composition.
+        Practical targets:
+      </p>
       <ul class="amh-list symptom-list">
-        <li><strong>Oral contraceptives:</strong> current or recent use is associated with a modest increase in breast cancer risk; risk trends back toward baseline after stopping over time. This must be balanced against benefits (pregnancy prevention, cycle control, ovarian/endometrial cancer risk reduction, symptom control).</li>
-        <li><strong>Menopausal hormone therapy:</strong> combined estrogen-progestin therapy increases breast cancer risk more than estrogen-only therapy. Timing, formulation, dose, route (oral vs transdermal), and duration matter. The goal is individualized symptom relief while minimizing long-term exposure.</li>
-        <li><strong>High-risk patients:</strong> if you have elevated calculated risk, dense breasts, prior high-risk lesions, or strong family history, hormone decisions should be more conservative and collaborative.</li>
+        <li><strong>Baseline:</strong> 150–300 minutes/week of moderate activity or 75–150 minutes/week vigorous activity, plus 2+ days/week of resistance training.</li>
+        <li><strong>High ROI:</strong> brisk walking, cycling, swimming, and strength training focused on major muscle groups.</li>
+        <li><strong>Reduce sedentary time:</strong> frequent movement breaks matter, especially for desk-based work.</li>
       </ul>
+
+      <h4>Sleep, circadian rhythm, and night shift work</h4>
+      <p>
+        Circadian disruption can alter melatonin signaling, immune function, glucose regulation, and estrogen pathways. Long-term night shift work has been associated
+        with a modestly increased breast cancer risk in multiple studies, with higher risk often reported with longer duration or more intense patterns of night work.
+        If night shift work is unavoidable, mitigation strategies include consistent sleep timing on off-days when possible, strong morning light exposure after waking,
+        minimizing bright light exposure at night, and prioritizing sleep quality.
+      </p>
+
+      <h4>Estrogen exposure: hormonal contraception and hormone replacement therapy</h4>
+      <p>
+        Breast cancer risk is influenced by cumulative lifetime estrogen exposure, but the relationship is nuanced.
+        <strong>Combined hormonal contraception</strong> (estrogen + progestin) is associated with a small increase in breast cancer risk during use and for some time after discontinuation,
+        with the absolute risk remaining low for most younger women. Decisions should incorporate the strong benefits of contraception and cycle control.
+      </p>
+      <p>
+        <strong>Menopausal hormone therapy (HRT):</strong> the type of progestogen matters. The best randomized trial data that showed increased breast cancer risk used a synthetic progestin
+        (medroxyprogesterone acetate) combined with estrogen. Observational data suggest that <strong>micronized (natural) progesterone</strong> may have a lower breast cancer risk profile
+        than certain synthetic progestins, but it is not “risk-free,” and longer duration and higher cumulative exposure still matter. For patients who need HRT for quality of life,
+        discuss lowest effective dose, shortest necessary duration, non-hormonal options, and the choice of transdermal estrogen and progesterone formulations.
+      </p>
+
+      <h4>Estrogen metabolism: higher-risk vs lower-risk pathways</h4>
+      <p>
+        Estrogens are metabolized through several pathways. In simplified terms, some metabolites are considered more proliferative or potentially DNA-damaging,
+        while others are considered less biologically aggressive. The major pathways involve hydroxylation (Phase I) and then methylation/conjugation (Phase II).
+      </p>
+      <ul class="amh-list symptom-list">
+        <li><strong>2-hydroxylation (“2-OH” pathway):</strong> often described as a lower-risk pathway; metabolites are generally less estrogenic.</li>
+        <li><strong>4-hydroxylation (“4-OH” pathway):</strong> can form reactive quinones that may damage DNA if not adequately detoxified.</li>
+        <li><strong>16α-hydroxylation (“16-OH” pathway):</strong> associated with more proliferative signaling in some research contexts.</li>
+      </ul>
+      <p>
+        A practical prevention approach is to support the body’s ability to handle estrogen through diet, microbiome support, and methylation capacity,
+        rather than pursuing aggressive “detox” claims. High-ROI steps include: a high-fiber diet (supports estrogen excretion), regular bowel movements,
+        cruciferous vegetables (broccoli, cabbage, Brussels sprouts), adequate protein and micronutrients for Phase II pathways, and avoidance of alcohol excess.
+        Some integrative practices use urine estrogen metabolite testing, but clinical outcome data are limited; interpret results cautiously and focus on foundations first.
+      </p>
+
+      <h4>Environmental endocrine disruptors and breast cancer risk</h4>
+      <p>
+        Many modern chemicals can act as endocrine-disrupting chemicals (EDCs), including some that mimic estrogen (xenoestrogens) or interfere with hormone receptors,
+        metabolism, and signaling. Evidence quality varies by chemical; the prevention philosophy is “reduce routine, high-frequency exposure where feasible.”
+      </p>
+
+      <div class="success-box">
+        <strong>High-ROI EDC avoidance strategies (practical):</strong>
+        <ul class="amh-list">
+          <li><strong>Food and storage:</strong> avoid heating food in plastic; use glass/stainless; reduce canned foods when possible.</li>
+          <li><strong>Personal care:</strong> choose fragrance-free or low-chemical products; limit parabens/phthalates; simplify routines.</li>
+          <li><strong>Receipts:</strong> minimize handling thermal paper receipts; wash hands after exposure.</li>
+          <li><strong>Water:</strong> consider filtration (especially where PFAS concerns exist); use a quality filter matched to local water reports.</li>
+          <li><strong>Cookware:</strong> reduce exposure to damaged non-stick coatings; consider stainless, cast iron, or safer ceramic options.</li>
+          <li><strong>Home dust:</strong> wet-dust and HEPA vacuuming can reduce flame retardant and phthalate exposure in indoor dust.</li>
+        </ul>
+      </div>
+
+            <h4>Makeup, perfumes, and personal care products</h4>
+      <p>
+        Personal care products can be a meaningful source of repeated, long-term exposure to endocrine-disrupting and sensitizing chemicals.
+        The epidemiology linking specific products to breast cancer risk is not always consistent, but several exposure classes are biologically plausible
+        because they can influence estrogen signaling, hormone metabolism, or chronic inflammation. For prevention-minded patients, the practical goal is not perfection;
+        it is reducing routine, high-frequency exposures—especially to “fragrance” mixtures and certain preservative/plasticizer classes.
+      </p>
+      <p>
+        Common exposure classes discussed in the prevention literature include <strong>fragrance-related phthalates</strong> (often present when “fragrance/parfum” is listed),
+        certain <strong>paraben preservatives</strong>, some <strong>UV filters</strong> used in cosmetics, and <strong>PFAS</strong> (“forever chemicals”) that have been identified
+        in some long-wear and water-resistant products. In addition, occasional contamination with <strong>heavy metals</strong> has been reported in certain cosmetic products.
+        While individual product effects are usually small, the cumulative exposure profile can be meaningful over decades.
+      </p>
+
+      <div class="success-box">
+        <strong>Practical risk-reduction steps (high ROI):</strong>
+        <ul class="amh-list">
+          <li><strong>Default to fragrance-free:</strong> prioritize “fragrance-free” over “unscented” (which can still contain masking fragrances).</li>
+          <li><strong>Simplify the routine:</strong> fewer products used daily generally means lower cumulative exposure.</li>
+          <li><strong>Read labels:</strong> avoid products listing “fragrance/parfum” as a default; consider reducing parabens and phthalates when feasible.</li>
+          <li><strong>Aerosols and sprays:</strong> minimize inhalation exposure from hair sprays, perfumes, and powdered cosmetics; apply in well-ventilated areas.</li>
+          <li><strong>Long-wear products:</strong> consider limiting “long-wear/waterproof” items if you are trying to reduce PFAS exposure.</li>
+          <li><strong>Hands and lips:</strong> be selective with products used on lips and hands (higher ingestion/dermal contact over time).</li>
+          <li><strong>Pregnancy and puberty:</strong> these are sensitive windows; consider a more stringent “low-chemical” approach during these periods.</li>
+        </ul>
+      </div>
+<h4>Aluminum antiperspirants (what we know)</h4>
+      <p>
+        Aluminum-containing antiperspirants are sometimes discussed online as a breast cancer risk. The strongest available evidence does not support a clear causal link.
+        However, personal care products can be sources of fragrance chemicals, parabens, and other compounds that may have endocrine activity. If you prefer to reduce exposure,
+        you can choose aluminum-free, fragrance-free products as a low-risk, optional precaution without assuming it is a proven breast cancer prevention strategy.
+      </p>
 
       <h4>Breastfeeding</h4>
       <p>
-        If you have children and breastfeeding is feasible and desired, longer cumulative breastfeeding duration is associated with meaningful protective effect.
-        Breastfeeding is not “required” for health, but it is a genuine risk-reduction lever when it aligns with your life circumstances.
+        Breastfeeding is associated with reduced breast cancer risk, particularly with longer cumulative duration. The mechanisms likely include hormonal changes,
+        reduced lifetime menstrual cycles, and differentiation of breast tissue. This is not a “requirement” for prevention, but it is a measurable protective factor.
       </p>
 
-      <h4>Fasting and time-restricted eating (TRE)</h4>
+      <h4>Sauna and heat exposure</h4>
       <p>
-        The best evidence for fasting in breast cancer is stronger for <em>metabolic health</em> and (in some studies) outcomes in survivors rather than direct proof of primary prevention.
-        Nevertheless, because insulin resistance and visceral adiposity contribute to risk, TRE can be a practical tool for some patients.
+        Sauna use is associated in observational studies with cardiometabolic benefits and may improve insulin sensitivity and inflammation—upstream drivers relevant to cancer biology.
+        Direct evidence that sauna prevents breast cancer is limited. If used, treat sauna as an adjunct to (not a substitute for) the foundational lifestyle levers.
+        Avoid dehydration, use caution with low blood pressure, pregnancy, or unstable cardiac conditions, and build gradually.
       </p>
 
-      <ul class="amh-list symptom-list">
-        <li><strong>Low-risk, practical approach:</strong> aim for a consistent overnight fasting window (for example, a 12–13 hour break between dinner and breakfast).</li>
-        <li><strong>Most important rule:</strong> fasting should not become a stressor or lead to binge-restrict cycles.</li>
-        <li><strong>Who should be cautious:</strong> pregnancy, breastfeeding (individualized), eating disorder history, underweight, frailty, and certain diabetes medication regimens.</li>
-      </ul>
-
-      <h4>Sauna</h4>
+      <h4>Fasting and time-restricted eating</h4>
       <p>
-        Sauna use can improve relaxation and may improve cardiovascular and metabolic markers in some populations, but it is not proven as a breast cancer prevention strategy.
-        Use sauna as a wellness adjunct—not as a replacement for the high-ROI levers (alcohol, exercise, weight/metabolic health).
+        Intermittent fasting and time-restricted eating can help some individuals reduce energy intake, improve insulin sensitivity, and support weight loss—pathways relevant to post-menopausal risk.
+        Evidence for fasting as a direct breast cancer prevention tool is still evolving. If you use fasting, keep it sustainable, avoid under-protein intake, and avoid extreme approaches
+        that worsen sleep, stress, or relationship with food.
       </p>
 
-      <hr />
-
-      <h3 id="treatments">Conventional care: screening and high-risk prevention</h3>
-      <p>
-        Conventional prevention is fundamentally about <strong>risk-stratified screening</strong> (detect earlier) and,
-        for higher-risk individuals, <strong>risk-reducing medication</strong> and occasionally <strong>risk-reducing surgery</strong>.
-        The correct strategy depends on your age, breast density, personal risk factors, and risk model outputs.
-      </p>
-
-      <h4>Screening: what standard-of-care is trying to do</h4>
-      <ul class="amh-list symptom-list">
-        <li><strong>Mammography</strong> reduces breast cancer mortality in screened populations, especially as age increases.</li>
-        <li><strong>Harms exist:</strong> false positives, unnecessary biopsies, anxiety, and overdiagnosis (detecting a cancer that would not have harmed you).</li>
-        <li><strong>Breast density changes the equation:</strong> dense tissue both increases risk and reduces mammography sensitivity, sometimes justifying supplemental screening.</li>
-      </ul>
-
-      <div class="clinical-note">
-        <strong>How to interpret “benefit vs harm” numbers.</strong>
-        Many screening statistics are reported per 1,000 women screened over a time horizon (often 10 years).
-        Numbers vary across studies and models, so treat them as “order-of-magnitude” decision aids—not precise predictions for an individual.
+      <h3 id="plan">Step-by-step prevention plan</h3>
+      <div class="success-box">
+        <strong>Practical plan:</strong> focus on the “big levers,” then refine. For most patients, durable risk reduction comes from months-to-years of consistent behavior rather than intense short bursts.
       </div>
 
-      <h4>Screening tradeoffs by age (typical 10-year framing)</h4>
+      <h4>Step 1: Stratify your baseline risk</h4>
       <ul class="amh-list symptom-list">
-        <li>
-          <strong>Women 40–49 (biennial screening):</strong> modest mortality benefit for the group, with a relatively high burden of false positives and biopsies.
-          Over a decade, many women experience at least one false alarm; a smaller number undergo benign biopsies; and a small number experience overdiagnosis.
-        </li>
-        <li>
-          <strong>Women 50–74:</strong> mortality benefit is clearer at the population level, and the number needed to screen to prevent one death improves with age.
-          Overdiagnosis remains a real concern, especially as age advances.
-        </li>
-        <li>
-          <strong>Women 70+:</strong> the balance becomes increasingly individualized (life expectancy, comorbidities, functional status, and personal values).
-          Overdiagnosis risk increases as competing mortality increases.
-        </li>
+        <li>Document family history (first- and second-degree relatives; ages at diagnosis).</li>
+        <li>Confirm breast density from your mammography report.</li>
+        <li>Use a risk calculator (see above) and discuss results with your clinician.</li>
+        <li>Consider genetics referral if family history is strong or suggests hereditary risk.</li>
       </ul>
 
-      <div class="alert-box">
-        <strong>Important:</strong> If you have a strong family history, a high-risk lesion (atypia/LCIS), a high-risk genetic mutation,
-        or prior chest radiation, you are not an “average risk screening” patient. Your screening and prevention plan should be escalated appropriately.
-      </div>
+      <h4>Step 2: Alcohol strategy (high ROI)</h4>
+      <ul class="amh-list symptom-list">
+        <li>If you drink: set a weekly cap and schedule alcohol-free days by default.</li>
+        <li>Prefer smaller servings; avoid using alcohol as stress management.</li>
+        <li>Pair alcohol reduction with sleep improvement and stress skills so it is sustainable.</li>
+      </ul>
 
-      <h4>Breast density: how it changes screening and why it matters</h4>
+      <h4>Step 3: Body composition and insulin strategy</h4>
+      <ul class="amh-list symptom-list">
+        <li>Target waist circumference and visceral fat reduction through diet quality, resistance training, and daily movement.</li>
+        <li>Prioritize protein adequacy, fiber, and minimally processed carbohydrates; reduce ultra-processed foods and sugar-sweetened beverages.</li>
+        <li>If indicated: evaluate A1c, fasting insulin, triglycerides/HDL ratio, and blood pressure as markers of metabolic health.</li>
+      </ul>
+
+      <h4>Step 4: Exercise “minimum effective dose”</h4>
+      <ul class="amh-list symptom-list">
+        <li>Build a weekly routine: 3–5 days of moderate activity + 2–3 days resistance training.</li>
+        <li>Include at least one session that challenges you (intervals or hills) if safe for your joints and cardiovascular status.</li>
+        <li>Track consistency, not perfection.</li>
+      </ul>
+
+      <h4>Step 5: Diet pattern (plant-forward, high fiber, low ultra-processed)</h4>
+      <ul class="amh-list symptom-list">
+        <li><strong>Foundation:</strong> vegetables, legumes, fruit, whole grains, nuts/seeds, and quality proteins.</li>
+        <li><strong>Fiber target:</strong> many adults benefit from 25–40 g/day (increase gradually; hydrate).</li>
+        <li><strong>Key foods:</strong> cruciferous vegetables, berries, mushrooms, ground flaxseed, and fatty fish (or algae-based omega-3).</li>
+        <li><strong>Soy:</strong> whole-food soy (tofu, edamame, tempeh) is generally considered safe and may be protective; avoid fear-based myths.</li>
+      </ul>
+
+      <h4>Step 6: Sleep and circadian alignment</h4>
+      <ul class="amh-list symptom-list">
+        <li>Protect a stable sleep window (7–9 hours for most adults).</li>
+        <li>Bright light exposure shortly after waking; dim light in the evening.</li>
+        <li>If you do night shift work: prioritize a consistent sleep schedule and discuss mitigation strategies with your clinician.</li>
+      </ul>
+
+      <h4>Step 7: Reduce endocrine-disrupting exposures</h4>
       <p>
-        Dense breasts reduce mammography sensitivity and increase the chance of interval cancers (cancers that appear between screenings).
-        If you have dense breasts, do not stop at “normal mammogram”—discuss whether supplemental screening is appropriate given your total risk.
+        Choose a few high-ROI changes rather than attempting “perfect purity.” Your goal is to reduce chronic, high-frequency exposures.
       </p>
 
-      <h4>Supplemental screening options (most common)</h4>
+      <h4>Step 8: Choose a screening strategy aligned with risk and preferences</h4>
+      <p>
+        Screening can reduce breast cancer mortality, but it also generates false-positive recalls, biopsies, anxiety, and overdiagnosis. The tradeoffs are not identical across age and density.
+      </p>
+
+            <div class="amh-table-wrap">
+        <table class="amh-table" aria-label="Breast cancer screening outcomes by age range">
+          <thead>
+            <tr>
+              <th>Age range (biennial screening)</th>
+              <th>Deaths averted<br><span style="font-weight:400;">per 1,000 women</span></th>
+              <th>False-positive recalls<br><span style="font-weight:400;">per 1,000 women</span></th>
+              <th>Overdiagnosed cases<br><span style="font-weight:400;">per 1,000 women</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>40–49 years</strong></td>
+              <td>1.5</td>
+              <td>492</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td><strong>50–59 years</strong></td>
+              <td>3.0</td>
+              <td>392</td>
+              <td>6</td>
+            </tr>
+            <tr>
+              <td><strong>60–74 years</strong></td>
+              <td>3.7</td>
+              <td>492</td>
+              <td>6</td>
+            </tr>
+            <tr>
+              <td><strong>75–79 years</strong></td>
+              <td>0.8</td>
+              <td>Not separately reported</td>
+              <td>Not separately reported</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="amh-table-note">
+          These decade/age-range estimates are intended to support shared decision-making about when to start and when to stop screening.
+          They are based on the 2024 USPSTF collaborative modeling analysis and the 2024 USPSTF recommendation statement (see References).
+          Estimates assume 100% screening adherence with digital breast tomosynthesis (DBT) and reflect modeled lifetime outcomes.
+        </div>
+        <div class="amh-table-note">
+          Practical interpretation: Starting biennial screening at age 40 (vs 50) adds an estimated 1.5 additional deaths averted per 1,000 women, at the cost of many more false-positive recalls in the 40s.
+          Extending screening from age 74 to 79 adds an estimated 0.8 additional deaths averted per 1,000 women; decisions in the late 70s should be strongly guided by overall health, competing risks, and life expectancy.
+        </div>
+      </div>
+
+      <h4>Harms of false positives (often underappreciated)</h4>
+      <p>
+        False-positive recalls are not “free.” They can cause substantial short-term anxiety, weeks of uncertainty, time away from work, and direct out-of-pocket costs.
+        Biopsies can be painful, can cause bruising and hematoma, and some people experience persistent discomfort or tenderness at the biopsy site.
+        Some patients also report longer-lasting anxiety around future screening. These harms matter in shared decision-making.
+      </p>
+
+      <h3 id="treatments">Conventional prevention and high-risk management</h3>
+      <p>
+        “Conventional prevention” includes risk-based screening and, for selected higher-risk patients, medications (chemoprevention) or risk-reducing surgery.
+        The highest-risk individuals benefit most from aggressive strategies.
+      </p>
+
+      <h4>Standard screening (average risk)</h4>
       <ul class="amh-list symptom-list">
-        <li><strong>3D Tomosynthesis (3D mammogram):</strong> improves detection and generally reduces false positive callbacks compared with 2D alone. Often a good default if available.</li>
-        <li><strong>Ultrasound:</strong> can detect additional cancers in dense breasts but increases false positives and benign biopsies.</li>
-        <li><strong>Breast MRI:</strong> highest sensitivity; typically reserved for high-risk women or selected dense-breast patients with additional risk factors due to cost, access, and higher false positive rate.</li>
-        <li><strong>Abbreviated MRI (AB-MRI):</strong> shorter protocol in some centers; may improve accessibility while maintaining strong sensitivity, though availability varies.</li>
-        <li><strong>Contrast-enhanced mammography (CEM):</strong> emerging/expanding tool in some centers; may be considered where available.</li>
+        <li><strong>USPSTF:</strong> biennial mammography for ages 40–74 (average risk), with individualized decisions beyond that range.</li>
+        <li><strong>Breast density:</strong> dense breasts may justify discussion of tomosynthesis and supplemental imaging depending on risk and local resources.</li>
       </ul>
 
-      <h4>Enhanced prevention for increased-risk and high-risk individuals</h4>
+      <h4>High-risk screening (examples)</h4>
+      <ul class="amh-list symptom-list">
+        <li><strong>Annual MRI + mammography:</strong> often used when lifetime risk is ≥20% or for known high-risk gene carriers.</li>
+        <li><strong>Earlier and more intensive strategies:</strong> may be indicated for those with prior chest radiation at a young age or strong hereditary risk patterns.</li>
+      </ul>
 
       <div class="rx-card amh-rx-card">
         <div class="rx-header">
-          <div class="rx-name">Breast MRI screening (for high-risk patients)</div>
+          <div class="rx-name">Breast MRI (high-risk screening)</div>
           <div class="rx-type">STANDARD</div>
         </div>
         <div class="rx-grid">
           <div class="rx-label">What it is</div>
-          <div>
-            Contrast-enhanced MRI imaging with the highest sensitivity for breast cancer detection. Usually used annually in high-risk patients,
-            in addition to (not instead of) mammography.
-          </div>
+          <div>Contrast-enhanced MRI is the most sensitive screening modality and can detect cancers missed by mammography, especially in dense breasts.</div>
 
           <div class="rx-label">How it works</div>
-          <div>
-            MRI detects vascular and tissue characteristics of cancer. It is less affected by breast density than mammography.
-          </div>
+          <div>Uses magnetic fields and intravenous contrast to highlight vascular patterns often present in malignancy.</div>
 
           <div class="rx-label">Typical use</div>
-          <div>
-            Often used when lifetime risk is ≥20%, when high-risk genetics are present, when there is prior chest radiation at a young age,
-            or when there are high-risk lesions and the overall risk profile supports escalation.
-          </div>
-
-          <div class="rx-label">Side effects / downsides</div>
-          <div>
-            Higher false positive callback and biopsy rates; requires IV contrast (gadolinium) and is not appropriate for some patients with severe kidney disease.
-            Claustrophobia and access/cost are common barriers.
-          </div>
-
-          <div class="rx-label">Cost</div>
-          <div>
-            Often covered for high-risk indications; out-of-pocket costs can be substantial without coverage. AB-MRI may be less expensive where offered.
-          </div>
-        </div>
-      </div>
-
-      <div class="rx-card amh-rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Risk-reducing medications (chemoprevention)</div>
-          <div class="rx-type">STANDARD</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">What it is</div>
-          <div>
-            Medications that reduce the probability of developing hormone receptor–positive breast cancer in women at elevated risk.
-            These are prevention medications, not chemotherapy.
-          </div>
-
-          <div class="rx-label">How it works</div>
-          <div>
-            Most breast cancers are estrogen receptor positive. These drugs reduce estrogen signaling (SERMs like tamoxifen/raloxifene)
-            or reduce estrogen synthesis (aromatase inhibitors like anastrozole/exemestane).
-          </div>
-
-          <div class="rx-label">Who benefits most</div>
-          <div>
-            Women with elevated 5-year risk or high-risk lesions (atypical hyperplasia, LCIS), and selected high-risk women based on risk model outputs.
-          </div>
-
-          <div class="rx-label">Downsides</div>
-          <div>
-            Side effects and rare serious harms exist. The key is ensuring your baseline risk is high enough that the absolute benefit outweighs these risks.
-          </div>
-
-          <div class="rx-label">Cost</div>
-          <div>
-            Often inexpensive as generics, but total cost includes follow-up, management of side effects, and the burden of taking a daily medication for years.
-          </div>
-        </div>
-      </div>
-
-      <div class="rx-card amh-rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Tamoxifen (SERM)</div>
-          <div class="rx-type">STANDARD</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">What it is</div>
-          <div>
-            A selective estrogen receptor modulator (SERM). It blocks estrogen signaling in breast tissue.
-            Used for risk reduction in higher-risk premenopausal and postmenopausal women, and also used in treatment settings.
-          </div>
-
-          <div class="rx-label">How it works</div>
-          <div>
-            Competes with estrogen at the receptor in breast tissue, reducing estrogen-driven proliferation.
-          </div>
-
-          <div class="rx-label">Typical use</div>
-          <div>
-            Often a multi-year course (commonly 5 years) for prevention in appropriately selected higher-risk individuals.
-            Selection is based on a formal risk assessment and shared decision-making.
-          </div>
+          <div>Usually annual for high-risk patients, typically in addition to (not instead of) mammography; requires shared decision-making about false positives.</div>
 
           <div class="rx-label">Side effects</div>
-          <div>
-            Hot flashes, mood changes, vaginal symptoms; rare but serious: venous thromboembolism, stroke risk in selected populations,
-            and increased endometrial cancer risk (primarily in postmenopausal women).
-          </div>
+          <div>Contrast reactions are uncommon; claustrophobia and incidental findings occur; false positives are more common than mammography.</div>
 
           <div class="rx-label">Cost</div>
-          <div>
-            Generic is usually low-cost (often inexpensive monthly), but monitoring and side-effect management matter.
-          </div>
+          <div>Often higher out-of-pocket costs if not covered; prices vary widely by region and facility.</div>
         </div>
       </div>
 
-      <div class="rx-card amh-rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Raloxifene (SERM; postmenopausal)</div>
-          <div class="rx-type">STANDARD</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">What it is</div>
-          <div>
-            A SERM used in postmenopausal women for osteoporosis and for breast cancer risk reduction in selected higher-risk patients.
-          </div>
-
-          <div class="rx-label">How it works</div>
-          <div>
-            Estrogen antagonist effects in breast tissue; estrogen agonist effects in bone (helpful for bone density).
-          </div>
-
-          <div class="rx-label">Typical use</div>
-          <div>
-            Prevention option for postmenopausal women when the risk profile supports benefit and when side-effect profile is acceptable.
-          </div>
-
-          <div class="rx-label">Side effects</div>
-          <div>
-            Hot flashes, leg cramps; rare serious: venous thromboembolism. Typically lower endometrial cancer risk compared with tamoxifen.
-          </div>
-
-          <div class="rx-label">Cost</div>
-          <div>
-            Generic often moderate-to-low monthly cost.
-          </div>
-        </div>
-      </div>
-
-      <div class="rx-card amh-rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Aromatase inhibitors (anastrozole, exemestane; postmenopausal)</div>
-          <div class="rx-type">STANDARD</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">What it is</div>
-          <div>
-            Medications that reduce estrogen synthesis by inhibiting aromatase. Used for prevention in selected higher-risk postmenopausal women.
-          </div>
-
-          <div class="rx-label">How it works</div>
-          <div>
-            Lowers systemic estrogen levels, reducing estrogen-driven proliferation in breast tissue.
-          </div>
-
-          <div class="rx-label">Typical use</div>
-          <div>
-            Considered when baseline risk is sufficiently elevated (often based on risk calculators or high-risk lesions).
-            Requires attention to bone health.
-          </div>
-
-          <div class="rx-label">Side effects</div>
-          <div>
-            Joint/muscle pains, hot flashes, decreased libido; long-term concern: bone loss and fracture risk.
-            Bone density monitoring and bone-protective strategies are often needed.
-          </div>
-
-          <div class="rx-label">Cost</div>
-          <div>
-            Often low-cost as generic, though bone monitoring and side-effect management add indirect costs.
-          </div>
-        </div>
-      </div>
-
-      <div class="rx-card amh-rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Risk-reducing surgery (very high risk)</div>
-          <div class="rx-type">STANDARD</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">What it is</div>
-          <div>
-            Bilateral prophylactic mastectomy and/or risk-reducing salpingo-oophorectomy in carefully selected patients with very high hereditary risk.
-          </div>
-
-          <div class="rx-label">How it works</div>
-          <div>
-            Removes the highest-risk tissue (breast) and/or reduces ovarian estrogen production (oophorectomy), lowering risk substantially in mutation carriers.
-          </div>
-
-          <div class="rx-label">Typical use</div>
-          <div>
-            Usually reserved for high-penetrance mutation carriers (e.g., BRCA1/2, TP53, PALB2) or exceptionally high lifetime risk with strong preference.
-            Requires multidisciplinary counseling (genetics, surgery, oncology, and psychosocial support).
-          </div>
-
-          <div class="rx-label">Side effects / downsides</div>
-          <div>
-            Major surgery with permanent body changes; possible complications; potential impact on identity and sexual health.
-            Oophorectomy causes surgical menopause and can have significant quality-of-life implications.
-          </div>
-
-          <div class="rx-label">Cost</div>
-          <div>
-            Often covered when medically indicated. Total cost includes surgery, reconstruction (if chosen), recovery time, and follow-up care.
-          </div>
-        </div>
-      </div>
-
-      <hr />
-
-      <h3 id="integrative">Integrative options: foods, spices, supplements</h3>
+      <h4>Medication prevention (chemoprevention): who should consider it?</h4>
       <p>
-        Integrative prevention should be disciplined: prioritize interventions that are (1) safe, (2) plausible mechanistically,
-        (3) consistent with population-level evidence, and (4) additive to (not replacing) the proven levers.
-        In most cases, <strong>food-first</strong> delivers more benefit and fewer risks than high-dose supplements.
+        For patients at higher-than-average risk (based on risk calculators, prior atypia/LCIS, or strong family history),
+        anti-estrogen medications can lower the risk of developing ER+ breast cancer. These medications are not used for everyone; the decision depends on risk level and tolerance for side effects.
       </p>
 
-      <div class="alert-box">
-        <strong>Safety first:</strong> “Natural” does not automatically mean safe.
-        Many supplements interact with anticoagulants, antiplatelet agents, seizure medications, thyroid medications, SSRIs/SNRIs,
-        and hormone therapies. If you are pregnant, breastfeeding, have liver disease, or have a history of estrogen-sensitive cancer,
-        supplement choices should be clinician-guided.
-      </div>
-
-      <h4>Food-first prevention stack (high ROI)</h4>
-      <ul class="amh-list symptom-list">
-        <li><strong>Cruciferous vegetables:</strong> broccoli, broccoli sprouts, Brussels sprouts, cabbage, kale, arugula (sulforaphane and related compounds support detoxification enzymes and may reduce carcinogen activation).</li>
-        <li><strong>Allium family:</strong> garlic, onions, leeks (organosulfur compounds; antioxidant and detoxification support).</li>
-        <li><strong>Flaxseed (ground):</strong> lignans may shift estrogen metabolism toward less proliferative pathways; easy to implement daily.</li>
-        <li><strong>Soy foods (whole foods):</strong> tofu, tempeh, edamame, unsweetened soy milk (isoflavones; evidence generally supports safety of moderate intake and possible benefit, especially as whole foods).</li>
-        <li><strong>Polyphenol-rich plants:</strong> berries, green tea, herbs/spices, colorful vegetables (antioxidant and anti-inflammatory signaling support).</li>
-        <li><strong>Fiber and legumes:</strong> beans/lentils improve insulin sensitivity and support estrogen elimination via the gut.</li>
-      </ul>
-
-      <h4>Spices and culinary herbs (reasonable, low-risk adjuncts)</h4>
-      <ul class="amh-list symptom-list">
-        <li><strong>Turmeric + black pepper:</strong> curcumin is anti-inflammatory; black pepper (piperine) improves absorption.</li>
-        <li><strong>Ginger:</strong> anti-inflammatory and supports metabolic health; easy food-based use.</li>
-        <li><strong>Rosemary, oregano, thyme:</strong> polyphenols; easy daily culinary use.</li>
-        <li><strong>Cinnamon:</strong> may modestly support glucose control in some individuals.</li>
-      </ul>
-
       <div class="rx-card amh-rx-card">
         <div class="rx-header">
-          <div class="rx-name">Ground flaxseed</div>
-          <div class="rx-type">INTEGRATIVE</div>
+          <div class="rx-name">Selective estrogen receptor modulators (SERMs): Tamoxifen / Raloxifene</div>
+          <div class="rx-type">STANDARD</div>
         </div>
         <div class="rx-grid">
-          <div class="rx-label">Rationale</div>
-          <div>
-            Rich source of lignans; gut metabolism produces enterolignans that may modulate estrogen metabolism toward less proliferative metabolites.
-            Food-based intervention with favorable safety profile for most patients.
-          </div>
+          <div class="rx-label">What it is</div>
+          <div>Medications that block estrogen signaling in breast tissue; used for prevention in selected higher-risk individuals.</div>
+
+          <div class="rx-label">How it works</div>
+          <div>Antagonizes estrogen receptors in breast tissue, reducing estrogen-driven proliferation (most benefit is for ER+ risk reduction).</div>
 
           <div class="rx-label">Typical use</div>
-          <div>
-            Common “food dose” is about <strong>2 tablespoons/day</strong> of <strong>ground</strong> flaxseed (whole seeds are often not digested).
-            Mix into yogurt, oatmeal, smoothies, or sprinkle on salads.
-          </div>
+          <div>Often a 5-year course in appropriate candidates; selection depends on menopausal status and risk/benefit profile.</div>
 
-          <div class="rx-label">Safety</div>
-          <div>
-            Increase gradually if you are not used to fiber to avoid bloating; hydrate. If on anticoagulants, discuss with your clinician (food doses are typically fine, but context matters).
-          </div>
+          <div class="rx-label">Side effects</div>
+          <div>Hot flashes, vaginal symptoms; tamoxifen can increase venous thromboembolism risk and (rarely) endometrial cancer risk; raloxifene has lower uterine risk and is used in post-menopausal patients.</div>
 
           <div class="rx-label">Cost</div>
-          <div>
-            Low monthly cost; usually one of the best ROI integrative options.
-          </div>
+          <div>Generics are often affordable; costs vary by pharmacy and insurance status.</div>
         </div>
       </div>
 
       <div class="rx-card amh-rx-card">
         <div class="rx-header">
-          <div class="rx-name">Cruciferous vegetables / sulforaphane strategy</div>
-          <div class="rx-type">INTEGRATIVE</div>
+          <div class="rx-name">Aromatase inhibitors (AIs): Anastrozole / Exemestane</div>
+          <div class="rx-type">STANDARD</div>
         </div>
         <div class="rx-grid">
-          <div class="rx-label">Rationale</div>
-          <div>
-            Crucifers provide glucosinolates that convert to isothiocyanates (including sulforaphane) which support phase II detoxification enzymes
-            and may reduce activation of certain carcinogens.
-          </div>
+          <div class="rx-label">What it is</div>
+          <div>Medications used in post-menopausal patients to lower estrogen production; used for prevention in selected high-risk individuals.</div>
+
+          <div class="rx-label">How it works</div>
+          <div>Inhibits aromatase, the enzyme that converts androgens to estrogen in adipose tissue and other tissues, lowering systemic estrogen levels.</div>
 
           <div class="rx-label">Typical use</div>
-          <div>
-            Food-first: include crucifers several times/week. Highest yield for sulforaphane often comes from broccoli sprouts.
-            Practical approach: add sprouts to salads/sandwiches; lightly cook mature broccoli.
-          </div>
+          <div>Typically a multi-year course (often 5 years) in post-menopausal candidates with elevated risk; monitor symptoms and bone health.</div>
 
-          <div class="rx-label">Safety</div>
-          <div>
-            Generally safe as foods. If you have significant thyroid disease, crucifers are still usually safe as part of a varied diet,
-            but avoid extreme “single food” approaches.
-          </div>
+          <div class="rx-label">Side effects</div>
+          <div>Joint/muscle aches, hot flashes, vaginal dryness; can accelerate bone loss—bone density monitoring and bone-protective strategies are important.</div>
 
           <div class="rx-label">Cost</div>
-          <div>
-            Low-to-moderate; sprouts can be purchased or grown at home.
-          </div>
+          <div>Often available as generics; out-of-pocket ranges vary.</div>
         </div>
       </div>
 
-      <div class="rx-card amh-rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Green tea (food-first) / EGCG (caution with extracts)</div>
-          <div class="rx-type">INTEGRATIVE</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">Rationale</div>
-          <div>
-            Green tea provides polyphenols (including EGCG) with plausible anti-proliferative and anti-angiogenic mechanisms.
-            Observational data suggest possible modest benefit.
-          </div>
-
-          <div class="rx-label">Typical use</div>
-          <div>
-            Prefer brewed tea (e.g., 2–3 cups/day if tolerated). Matcha provides higher polyphenol exposure than steeped tea.
-          </div>
-
-          <div class="rx-label">Safety</div>
-          <div>
-            <strong>Avoid high-dose green tea extract capsules</strong> unless clinically justified and monitored—concentrated extracts have been associated with liver injury in some cases.
-            If you have liver disease, prioritize brewed tea or avoid.
-          </div>
-
-          <div class="rx-label">Cost</div>
-          <div>
-            Low for brewed tea; supplements vary widely and are often unnecessary.
-          </div>
-        </div>
-      </div>
-
-      <div class="rx-card amh-rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Curcumin (as food and, selectively, as supplement)</div>
-          <div class="rx-type">INTEGRATIVE</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">Rationale</div>
-          <div>
-            Curcumin has anti-inflammatory signaling effects and plausible anti-proliferative mechanisms in experimental models.
-            Human prevention evidence is evolving; best considered as an adjunct.
-          </div>
-
-          <div class="rx-label">Typical use</div>
-          <div>
-            Food-based: cook with turmeric regularly (with black pepper and fat). If using a supplement, prefer enhanced-bioavailability formulations.
-            Use should be individualized, not automatic.
-          </div>
-
-          <div class="rx-label">Safety</div>
-          <div>
-            Can worsen reflux in some; caution with anticoagulants/antiplatelets; caution if gallbladder disease. Avoid “mega-dosing” without oversight.
-          </div>
-
-          <div class="rx-label">Cost</div>
-          <div>
-            Food use is low-cost. Supplements typically moderate monthly cost depending on formulation.
-          </div>
-        </div>
-      </div>
-
-      <div class="rx-card amh-rx-card">
-        <div class="rx-header">
-          <div class="rx-name">Vitamin D (supportive, not a proven prevention pill)</div>
-          <div class="rx-type">INTEGRATIVE</div>
-        </div>
-        <div class="rx-grid">
-          <div class="rx-label">Rationale</div>
-          <div>
-            Low vitamin D is associated with multiple adverse outcomes; direct proof that supplementation prevents breast cancer is not strong.
-            Still, maintaining a reasonable vitamin D level is often appropriate for bone and immune health.
-          </div>
-
-          <div class="rx-label">Typical use</div>
-          <div>
-            Test if clinically indicated. Supplementation dose should be individualized to your baseline level, sun exposure, and risk factors.
-          </div>
-
-          <div class="rx-label">Safety</div>
-          <div>
-            Excess dosing can cause hypercalcemia. Use lab-guided dosing if taking higher doses.
-          </div>
-
-          <div class="rx-label">Cost</div>
-          <div>
-            Usually inexpensive monthly.
-          </div>
-        </div>
-      </div>
-
+      <h4>Risk-reducing surgery for very high risk</h4>
       <p>
-        <strong>Bottom line:</strong> If you want the highest-confidence integrative prevention strategy, prioritize the food pattern:
-        crucifers + alliums + fiber/legumes + flax + limited alcohol + consistent exercise. Supplements can be layered in selectively,
-        but they should not distract from the big levers.
+        For certain very high-risk individuals (e.g., high-risk pathogenic gene variants or extremely strong family history),
+        risk-reducing bilateral mastectomy can dramatically lower breast cancer incidence. This is a major decision with physical and psychological implications
+        and should be guided by a high-risk clinic and shared decision-making. Risk-reducing salpingo-oophorectomy is relevant for ovarian cancer prevention in certain gene carriers
+        and can also influence breast cancer risk depending on timing.
       </p>
 
-      <hr />
+      <h3 id="integrative">Integrative options</h3>
+      <p>
+        Integrative approaches can complement (not replace) standard screening and risk-based medical management.
+        Focus on realistic, safe strategies with plausible mechanisms and some supportive evidence.
+      </p>
+
+      <div class="rx-card amh-rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Vitamin D (optimize, don’t megadose)</div>
+          <div class="rx-type">INTEGRATIVE</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Rationale</div>
+          <div>Vitamin D status is associated with multiple health outcomes; some observational data suggest an association between adequate vitamin D and improved breast cancer outcomes, but prevention causality is not definitive.</div>
+
+          <div class="rx-label">Typical use</div>
+          <div>Common approach is to measure 25(OH)D and supplement if low; target ranges vary by clinician. Recheck after 8–12 weeks if making a major dose change.</div>
+
+          <div class="rx-label">Safety</div>
+          <div>Excess dosing can cause hypercalcemia; use caution with kidney stones or granulomatous disease; consider magnesium adequacy.</div>
+
+          <div class="rx-label">Cost</div>
+          <div>Usually low; typical over-the-counter pricing.</div>
+        </div>
+      </div>
+
+      <div class="rx-card amh-rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Melatonin (circadian support; possible oncostatic properties)</div>
+          <div class="rx-type">INTEGRATIVE</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Rationale</div>
+          <div>Melatonin is a circadian hormone with antioxidant and immune-modulating properties. Circadian disruption is linked to cancer biology in experimental models, and melatonin has been studied as an adjunct in some oncology settings. Direct evidence for melatonin as a primary prevention supplement is limited.</div>
+
+          <div class="rx-label">Typical use</div>
+          <div>Often used for sleep timing support: low doses (e.g., 0.3–1 mg) may help circadian alignment; higher doses (e.g., 2–5 mg) are sometimes used for insomnia. Timing matters—typically 1–2 hours before desired sleep.</div>
+
+          <div class="rx-label">Safety</div>
+          <div>Possible vivid dreams, morning grogginess, headaches; use caution if driving early morning. Discuss use in pregnancy, seizure disorders, severe depression, or if on immunosuppressive therapy.</div>
+
+          <div class="rx-label">Cost</div>
+          <div>Generally inexpensive; varies by brand and formulation.</div>
+        </div>
+      </div>
+
+      <div class="rx-card amh-rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Cruciferous phytochemicals (food-first; DIM / sulforaphane as optional)</div>
+          <div class="rx-type">INTEGRATIVE</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Rationale</div>
+          <div>Cruciferous vegetables contain compounds that can influence Phase I/II detoxification enzymes and estrogen metabolism (food-first approach). Supplements like DIM or sulforaphane extracts may be considered in select cases, but outcome data are limited.</div>
+
+          <div class="rx-label">Typical use</div>
+          <div>Food-first: several servings per week (broccoli, Brussels sprouts, cabbage, kale). If using supplements, start low and assess tolerance.</div>
+
+          <div class="rx-label">Safety</div>
+          <div>GI upset in some; use caution with thyroid disease if intake is extreme and iodine intake is low; discuss with clinician if pregnant or on multiple medications.</div>
+
+          <div class="rx-label">Cost</div>
+          <div>Food costs vary; supplements are moderate in cost depending on formulation.</div>
+        </div>
+      </div>
+
+      <div class="rx-card amh-rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Omega-3 fatty acids (fish or algae)</div>
+          <div class="rx-type">INTEGRATIVE</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">Rationale</div>
+          <div>Omega-3s can reduce inflammation and may support cardiometabolic health; evidence for direct breast cancer prevention is mixed, but the metabolic and inflammatory benefits can support an overall prevention strategy.</div>
+
+          <div class="rx-label">Typical use</div>
+          <div>Diet-first: fatty fish 1–2 times/week or algae-based omega-3 for plant-forward diets. Supplements vary widely in EPA/DHA content.</div>
+
+          <div class="rx-label">Safety</div>
+          <div>Fishy aftertaste; may increase bruising/bleeding risk at higher doses in combination with anticoagulants—discuss if on blood thinners.</div>
+
+          <div class="rx-label">Cost</div>
+          <div>Moderate; depends on purity testing and dose.</div>
+        </div>
+      </div>
+
+      <h4>Foods and spices with plausible benefit (food-first)</h4>
+      <ul class="amh-list symptom-list">
+        <li><strong>Ground flaxseed:</strong> lignans and fiber; supports estrogen excretion and cardiometabolic health.</li>
+        <li><strong>Mushrooms:</strong> immune-active compounds; observational data suggest potential benefit, but causal proof is limited.</li>
+        <li><strong>Green tea:</strong> polyphenols (EGCG); modest evidence signals, but avoid overpromising.</li>
+        <li><strong>Turmeric/curcumin:</strong> anti-inflammatory signaling; bioavailability varies; food use is safe for most.</li>
+        <li><strong>Berries and colorful plants:</strong> polyphenols and fiber; consistent health benefits.</li>
+      </ul>
 
       <h3 id="costs">Cost considerations</h3>
       <ul class="amh-list symptom-list">
-        <li><strong>Highest ROI interventions are often low-cost:</strong> alcohol reduction, walking after meals, resistance training, legumes/vegetables, sleep discipline.</li>
-        <li><strong>Screening costs vary:</strong> mammography is commonly covered; MRI and supplemental imaging costs vary widely by indication and insurance coverage.</li>
-        <li><strong>Genetic counseling/testing:</strong> may be covered when criteria are met; out-of-pocket can vary based on pathway and lab.</li>
-        <li><strong>Medications:</strong> most chemoprevention drugs are generic and often affordable, but side effects and monitoring (especially bone health for aromatase inhibitors) add indirect cost.</li>
-        <li><strong>Supplements:</strong> avoid “stacking” many products. Choose a few high-signal, low-risk, food-first strategies; reserve supplements for clear rationale.</li>
+        <li><strong>Highest ROI is often free or low-cost:</strong> alcohol reduction, walking, resistance training with minimal equipment, improved sleep routines, and food quality upgrades.</li>
+        <li><strong>Screening costs vary:</strong> mammography is often covered as preventive care; MRI and supplemental imaging can generate significant out-of-pocket costs depending on coverage.</li>
+        <li><strong>Testing should change management:</strong> prioritize tests that alter screening or prevention decisions (e.g., genetics in high-risk scenarios).</li>
+        <li><strong>Supplements:</strong> avoid stacking many products; prefer a small, targeted set with a clear reason and a stop/reassess plan.</li>
       </ul>
 
-      <hr />
-
       <h3 id="faq">FAQ</h3>
+      <h4>Do deodorants or antiperspirants cause breast cancer?</h4>
+      <p>
+        Current evidence does not support a clear causal link between aluminum-containing antiperspirants and breast cancer.
+        If you want to lower overall chemical exposure, aluminum-free and fragrance-free options are reasonable, low-risk choices—but they should not replace the high-impact prevention steps.
+      </p>
 
-      <h4>Is there a “safe” amount of alcohol for breast cancer prevention?</h4>
+      <h4>Is thermography a good alternative to mammography?</h4>
+      <p>
+        No. Thermography should not be used as a replacement for mammography. If used at all, it should only be an adjunct and should never delay appropriate imaging.
+      </p>
+
+      <h4>Should everyone take supplements like DIM, turmeric, or melatonin for prevention?</h4>
+      <p>
+        No supplement is proven to prevent breast cancer in the way vaccines prevent certain infections. Supplements can be adjuncts for selected individuals, but the foundations
+        (alcohol, metabolic health, exercise, diet quality, sleep/circadian alignment, and exposure reduction) provide the largest and most reliable risk shift.
+      </p>
+
+      <h4>How do I decide when to stop screening?</h4>
+      <p>
+        If you are older, the key question is whether you are likely to live long enough to benefit from detecting a slow-growing cancer early, versus being more likely to experience harms sooner.
+        Use shared decision-making; the ePrognosis tool can help frame that decision in a structured way.
+      </p>
+
+            <h4>Is there a “safe” amount of alcohol for breast cancer prevention?</h4>
       <p>
         From a strict prevention perspective, the lowest-risk choice is to avoid alcohol. If you drink, reducing frequency and dose meaningfully improves risk exposure.
-        If you are trying to decide whether alcohol is “worth it,” remember alcohol affects far more than cancer risk (sleep, blood pressure, arrhythmias, mood, liver health).
+        Alcohol also affects sleep quality, blood pressure, arrhythmias, mood, and liver health—so the benefits of reduction often extend beyond cancer risk.
       </p>
 
       <h4>Do dense breasts automatically mean I need MRI?</h4>
       <p>
-        Not automatically. Dense breasts increase risk and reduce mammography sensitivity, but the correct next step depends on your total risk profile.
-        Many patients do well with 3D tomosynthesis; others benefit from supplemental ultrasound or MRI based on calculated risk.
+        Not automatically. Dense breasts increase risk and reduce mammography sensitivity, but the next step depends on your total risk profile (family history, genetics, prior biopsies, and calculated risk).
+        Many patients do well with 3D tomosynthesis; others benefit from supplemental ultrasound or MRI when overall risk is high enough to justify the tradeoff of more false positives.
       </p>
 
       <h4>Should I take a “breast cancer prevention supplement stack”?</h4>
       <p>
-        Usually no. Food-based patterns have the best safety and broad metabolic benefits. If supplements are used, choose a small number with clear rationale and safety,
-        and do not use them as a substitute for alcohol reduction, exercise, and weight/metabolic health.
+        Usually no. Food-based patterns have the best safety profile and the broadest metabolic and inflammatory benefits.
+        If supplements are used, choose a small number with a clear rationale and safety plan—and do not use supplements as a substitute for alcohol reduction, exercise, and weight/metabolic health.
       </p>
 
       <h4>If I am high risk, should I get a prophylactic mastectomy?</h4>
       <p>
-        That is a deeply personal decision. For very high-risk mutation carriers, surgery can offer the largest risk reduction, but it carries major physical and psychosocial tradeoffs.
-        Many high-risk patients choose enhanced screening and/or medication instead. A multidisciplinary discussion is essential.
+        This is a deeply personal decision. For very high-risk mutation carriers, surgery can offer the largest risk reduction, but it carries major physical and psychosocial tradeoffs.
+        Many high-risk patients choose enhanced screening and/or medication prevention instead. A multidisciplinary discussion is essential.
       </p>
 
       <h4>What is overdiagnosis, and why does it matter?</h4>
       <p>
-        Overdiagnosis is finding a cancer through screening that would not have harmed you in your lifetime.
-        The problem is that once discovered, it is typically treated—exposing a patient to surgery, radiation, and/or medications that did not improve longevity.
-        Overdiagnosis risk increases with age and comorbidity; this is a major reason screening decisions after age 70 should be individualized.
+        Overdiagnosis means finding a cancer through screening that would not have harmed you during your lifetime. Once discovered, it is typically treated—exposing a patient to surgery,
+        radiation, and/or medications that do not improve longevity. Overdiagnosis risk increases with age and comorbidity, which is a major reason screening decisions after age 70 should be individualized.
       </p>
 
-      <hr />
+      <h4>Does “clean eating” eliminate breast cancer risk?</h4>
+      <p>
+        No. Lifestyle can meaningfully lower risk, but it cannot reduce risk to zero. Genetics, age, and chance still matter.
+        The goal is risk reduction and earlier detection when appropriate—not the promise of a guarantee.
+      </p>
 
-      <h3 id="references">References</h3>
-      <ol class="ref-list">
-        <li>U.S. Preventive Services Task Force (USPSTF). Breast Cancer: Screening. <a href="https://www.uspreventiveservicestaskforce.org/" target="_blank" rel="noopener">https://www.uspreventiveservicestaskforce.org/</a></li>
-        <li>American Cancer Society (ACS). Breast Cancer Screening Guidelines. <a href="https://www.cancer.org/" target="_blank" rel="noopener">https://www.cancer.org/</a></li>
-        <li>American College of Radiology (ACR). Breast Cancer Screening Recommendations / Appropriateness Criteria. <a href="https://www.acr.org/" target="_blank" rel="noopener">https://www.acr.org/</a></li>
-        <li>National Cancer Institute (NCI). Breast Cancer Risk Assessment Tool (Gail Model/BCRAT). <a href="https://bcrisktool.cancer.gov/" target="_blank" rel="noopener">https://bcrisktool.cancer.gov/</a></li>
-        <li>IBIS / Tyrer-Cuzick breast cancer risk evaluation (information portal). <a href="https://www.ibis-risk-calculator.com/" target="_blank" rel="noopener">https://www.ibis-risk-calculator.com/</a></li>
-        <li>CanRisk / BOADICEA risk tool (hereditary risk modeling). <a href="https://www.canrisk.org/" target="_blank" rel="noopener">https://www.canrisk.org/</a></li>
-        <li>Dense breast information resources (patient-focused). <a href="https://densebreast-info.org/" target="_blank" rel="noopener">https://densebreast-info.org/</a></li>
-        <li>Women’s Health Initiative (WHI) publications on menopausal hormone therapy and breast cancer outcomes. <a href="https://www.whi.org/" target="_blank" rel="noopener">https://www.whi.org/</a></li>
-        <li>International Breast Cancer Intervention Study (IBIS) trials and prevention data (tamoxifen/anastrozole). <a href="https://www.ctsu.ox.ac.uk/research/ibis" target="_blank" rel="noopener">https://www.ctsu.ox.ac.uk/research/ibis</a></li>
-        <li>MAP.3 trial (exemestane for breast cancer prevention in postmenopausal women). <a href="https://clinicaltrials.gov/" target="_blank" rel="noopener">https://clinicaltrials.gov/</a></li>
-        <li>National Comprehensive Cancer Network (NCCN) Guidelines (patient and clinician resources as applicable). <a href="https://www.nccn.org/" target="_blank" rel="noopener">https://www.nccn.org/</a></li>
-        <li>National Institutes of Health (NIH) Office of Dietary Supplements (supplement safety and evidence summaries). <a href="https://ods.od.nih.gov/" target="_blank" rel="noopener">https://ods.od.nih.gov/</a></li>
+      <h4>Which single supplement prevents breast cancer best?</h4>
+      <p>
+        There is no single supplement with strong evidence to prevent breast cancer across the population.
+        If you use supplements, use them to support fundamentals (sleep, metabolic health, and nutrient repletion) rather than as a substitute for them.
+      </p>
+<h3 id="references">References</h3>
+<ol class="ref-list">
+                <li>Collaborative Modeling to Compare Different Breast Cancer Screening Strategies: A Decision Analysis for the US Preventive Services Task Force. Trentham-Dietz A, Chapman CH, Jayasekera J, et al. <em>JAMA</em>. 2024;331(22):1947-1960. doi:10.1001/jama.2023.24766: <a href="https://doi.org/10.1001/jama.2023.24766" target="_blank" rel="noopener">https://doi.org/10.1001/jama.2023.24766</a></li>
+        <li>Screening for Breast Cancer: US Preventive Services Task Force Recommendation Statement. US Preventive Services Task Force; Nicholson WK, Silverstein M, et al. <em>JAMA</em>. 2024;331(22):1918-1930. doi:10.1001/jama.2024.5534: <a href="https://doi.org/10.1001/jama.2024.5534" target="_blank" rel="noopener">https://doi.org/10.1001/jama.2024.5534</a></li>
+<li>U.S. Preventive Services Task Force. Breast Cancer: Screening (Final Recommendation Statement, 2024).: <a href="https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-screening" target="_blank" rel="noopener">https://www.uspreventiveservicestaskforce.org/uspstf/recommendation/breast-cancer-screening</a></li>
+        <li>USPSTF. Draft/Final modeling and evidence updates supporting biennial screening starting at age 40 (CISNET modeling publications and supporting materials).: <a href="https://www.uspreventiveservicestaskforce.org/uspstf/document/final-recommendation-statement/breast-cancer-screening" target="_blank" rel="noopener">https://www.uspreventiveservicestaskforce.org/uspstf/document/final-recommendation-statement/breast-cancer-screening</a></li>
+        <li>Ho JM, et al. Cumulative Probability of False-Positive Results After 10 Years of Screening With Digital Breast Tomosynthesis vs Digital Mammography. JAMA Network Open (2022).: <a href="https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2790521" target="_blank" rel="noopener">https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2790521</a></li>
+        <li>American Cancer Society. Breast Cancer Early Detection and Diagnosis (guideline overview and high-risk MRI discussion).: <a href="https://www.cancer.org/cancer/types/breast-cancer/screening-tests-and-early-detection.html" target="_blank" rel="noopener">https://www.cancer.org/cancer/types/breast-cancer/screening-tests-and-early-detection.html</a></li>
+        <li>NCI Breast Cancer Risk Assessment Tool (Gail model).: <a href="https://bcrisktool.cancer.gov/" target="_blank" rel="noopener">https://bcrisktool.cancer.gov/</a></li>
+        <li>Breast Cancer Surveillance Consortium (BCSC) risk calculator.: <a href="https://tools.bcsc-scc.ucdavis.edu/BC5yearRisk/" target="_blank" rel="noopener">https://tools.bcsc-scc.ucdavis.edu/BC5yearRisk/</a></li>
+        <li>CanRisk (BOADICEA / family-history and genetics–informed risk estimation tools).: <a href="https://canrisk.org/" target="_blank" rel="noopener">https://canrisk.org/</a></li>
+        <li>UCSF ePrognosis Breast Cancer Screening Decision Tool (to support decisions about stopping screening).: <a href="https://eprognosis.ucsf.edu/cancer/partials/breast-cancer.php" target="_blank" rel="noopener">https://eprognosis.ucsf.edu/cancer/partials/breast-cancer.php</a></li>
+        <li>Breast Cancer Prevention Partners (BCPP) – prevention and environmental health resources.: <a href="https://www.bcpp.org/" target="_blank" rel="noopener">https://www.bcpp.org/</a></li>
+        <li>International Agency for Research on Cancer (IARC). Night shift work and circadian disruption as a carcinogenic hazard (classification and supporting materials).: <a href="https://www.iarc.who.int/" target="_blank" rel="noopener">https://www.iarc.who.int/</a></li>
+        <li>Women’s Health Initiative (WHI) hormone therapy trials and follow-up publications (estrogen-only vs combined estrogen + progestin outcomes).: <a href="https://www.whi.org/" target="_blank" rel="noopener">https://www.whi.org/</a></li>
+        <li>U.S. Food and Drug Administration (FDA). Thermography is not a substitute for mammography (safety communications).: <a href="https://www.fda.gov/medical-devices/breast-implants/thermography" target="_blank" rel="noopener">https://www.fda.gov/medical-devices/breast-implants/thermography</a></li>
+        <li>National Cancer Institute. Cancer Stat Facts: Female Breast Cancer (incidence and mortality context).: <a href="https://seer.cancer.gov/statfacts/html/breast.html" target="_blank" rel="noopener">https://seer.cancer.gov/statfacts/html/breast.html</a></li>
+        <li>National Academies / Endocrine Society resources on endocrine-disrupting chemicals (EDCs) and health (background context).: <a href="https://www.endocrine.org/topics/edc" target="_blank" rel="noopener">https://www.endocrine.org/topics/edc</a></li>
       </ol>
 
       <footer class="amh-footer">
         <div class="amh-disclaimer medical-disclaimer">
-          <p><strong>Medical disclaimer:</strong> The information on this page is provided for general educational purposes only and is not medical advice.
-          It does not replace an individualized evaluation by a qualified clinician. If you have urgent symptoms, seek urgent medical care.</p>
+          <p><strong>Medical disclaimer:</strong> The information on this page is provided for general educational purposes only and is not medical advice. It is not intended to diagnose, treat, cure, or prevent any disease, and it does not establish a physician–patient relationship.</p>
+          <p>Do not apply this information to your specific situation without the oversight of a qualified clinician who can consider your full health history, medications, goals, preferences, and limitations. If you have urgent or severe symptoms, seek emergency care.</p>
+          <p style="margin: 0;"><strong>Copyright:</strong> © Dr. Bray at Archangel Michael Health <span id="amh-year">2025</span></p>
         </div>
-        <div class="amh-copyright copyright">
-          <p>&copy; <span id="year"></span> Archangel Michael Health. All rights reserved.</p>
+
+        <div class="amh-footer-meta">
+          <span><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine</span>
+          <span class="amh-dot">•</span>
+          <span><strong>Last updated:</strong> <span id="amh-last-updated">—</span></span>
         </div>
       </footer>
     </div>
@@ -932,11 +778,28 @@
 
   <script>
     (function () {
-      // ---- Dynamic year ----
-      var yearEl = document.getElementById("year");
-      if (yearEl) yearEl.textContent = new Date().getFullYear();
+      // ---- Last updated + year ----
+      var yearEl = document.getElementById("amh-year");
+      if (yearEl) {
+        try { yearEl.textContent = String(new Date().getFullYear()); } catch (e) {}
+      }
 
-      // ---- Smooth scrolling for hash links ----
+      var updatedEl = document.getElementById("amh-last-updated");
+      if (updatedEl) {
+        var lm = document.lastModified; // usually reflects server file Last-Modified (works well on GitHub Pages)
+        var d = lm ? new Date(lm) : null;
+        if (d && !isNaN(d.getTime())) {
+          // ISO-like YYYY-MM-DD
+          var yyyy = d.getFullYear();
+          var mm = String(d.getMonth() + 1).padStart(2, "0");
+          var dd = String(d.getDate()).padStart(2, "0");
+          updatedEl.textContent = yyyy + "-" + mm + "-" + dd;
+        } else {
+          updatedEl.textContent = "—";
+        }
+      }
+
+      // ---- TOC scrolling (support both anchor links and data-scroll buttons) ----
       function scrollToId(id) {
         var el = document.getElementById(id);
         if (!el) return;
