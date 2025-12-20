@@ -36,6 +36,75 @@
       color: var(--amh-text-soft);
       margin-top: 6px;
     }
+  
+    /* Infographics (click to expand) */
+    figure.amh-figure {
+      margin: 18px 0;
+    }
+    img.amh-infographic {
+      width: 100%;
+      height: auto;
+      max-width: 980px;
+      display: block;
+      margin: 12px auto 6px auto;
+      border-radius: 14px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+      cursor: zoom-in;
+      border: 1px solid var(--amh-border);
+      background: #fff;
+    }
+    .amh-figcaption {
+      text-align: center;
+      font-size: 0.92rem;
+      color: var(--amh-text-soft);
+      margin: 0 auto;
+      max-width: 980px;
+    }
+    body.amh-modal-open {
+      overflow: hidden;
+    }
+    .amh-img-modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+      background: rgba(0,0,0,0.88);
+      z-index: 9999;
+    }
+    .amh-img-modal.open {
+      display: flex;
+    }
+    .amh-img-modal img {
+      max-width: 96vw;
+      max-height: 92vh;
+      width: auto;
+      height: auto;
+      border-radius: 14px;
+      box-shadow: 0 18px 42px rgba(0,0,0,0.45);
+      cursor: zoom-out;
+      background: #fff;
+    }
+    .amh-img-close {
+      position: fixed;
+      top: 14px;
+      right: 14px;
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.12);
+      color: #ffffff;
+      font-size: 28px;
+      line-height: 1;
+      cursor: pointer;
+    }
+    .amh-img-close:focus {
+      outline: 3px solid rgba(255,255,255,0.35);
+      outline-offset: 2px;
+    }
+
   </style>
 </head>
 
@@ -114,6 +183,20 @@
           <li><strong>Very high risk:</strong> consider MRI screening, chemoprevention, and (in select cases) risk-reducing surgery.</li>
         </ul>
       </div>
+
+
+      <figure class="amh-figure" aria-label="Lifestyle prevention summary infographic">
+        <img
+          class="amh-infographic"
+          src="https://docbraymd.github.io/amh/breastca_lifestyle.jpg"
+          alt="Infographic summarizing high-yield lifestyle features that can reduce breast cancer risk."
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption class="amh-figcaption">Lifestyle prevention summary (click the image to enlarge).</figcaption>
+      </figure>
+
+
 
       <h3 id="symptoms">Symptoms and red flags</h3>
       <p>
@@ -285,6 +368,18 @@
         cruciferous vegetables (broccoli, cabbage, Brussels sprouts), adequate protein and micronutrients for Phase II pathways, and avoidance of alcohol excess.
         Some integrative practices use urine estrogen metabolite testing, but clinical outcome data are limited; interpret results cautiously and focus on foundations first.
       </p>
+
+      <figure class="amh-figure" aria-label="Estrogen metabolism infographic">
+        <img
+          class="amh-infographic"
+          src="https://docbraymd.github.io/amh/breastca_estrogens.jpg"
+          alt="Infographic explaining major pathways of estrogen metabolism and downstream metabolites."
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption class="amh-figcaption">Estrogen metabolism overview (click the image to enlarge).</figcaption>
+      </figure>
+
 
       <h4>Environmental endocrine disruptors and breast cancer risk</h4>
       <p>
@@ -776,6 +871,13 @@
     </div>
   </div>
 
+  <!-- Image modal (click an infographic to expand) -->
+  <div class="amh-img-modal" id="amhImgModal" aria-hidden="true" role="dialog" aria-label="Expanded image">
+    <button class="amh-img-close" id="amhImgModalClose" type="button" aria-label="Close image">×</button>
+    <img id="amhImgModalImg" alt="" />
+  </div>
+
+
   <script>
     (function () {
       // ---- Last updated + year ----
@@ -824,6 +926,70 @@
           history.replaceState(null, "", hash);
         }
       });
+
+      // ---- Click-to-expand infographics ----
+      var imgModal = document.getElementById("amhImgModal");
+      var imgModalImg = document.getElementById("amhImgModalImg");
+      var imgModalClose = document.getElementById("amhImgModalClose");
+
+      function openImgModal(src, alt) {
+        if (!imgModal || !imgModalImg) return;
+        imgModalImg.src = src;
+        imgModalImg.alt = alt || "";
+        imgModal.classList.add("open");
+        imgModal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("amh-modal-open");
+      }
+
+      function closeImgModal() {
+        if (!imgModal || !imgModalImg) return;
+        imgModal.classList.remove("open");
+        imgModal.setAttribute("aria-hidden", "true");
+        // Clear src after close to stop loading if user closes quickly
+        imgModalImg.src = "";
+        imgModalImg.alt = "";
+        document.body.classList.remove("amh-modal-open");
+      }
+
+      // Make images accessible as buttons (keyboard open)
+      document.querySelectorAll("img.amh-infographic").forEach(function (img) {
+        img.setAttribute("role", "button");
+        img.setAttribute("tabindex", "0");
+
+        img.addEventListener("click", function () {
+          openImgModal(img.currentSrc || img.src, img.alt);
+        });
+
+        img.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openImgModal(img.currentSrc || img.src, img.alt);
+          }
+        });
+      });
+
+      if (imgModal) {
+        imgModal.addEventListener("click", function (e) {
+          // Close only if user clicked the backdrop (not the image itself)
+          if (e.target === imgModal) closeImgModal();
+        });
+      }
+
+      if (imgModalImg) {
+        imgModalImg.addEventListener("click", closeImgModal);
+      }
+
+      if (imgModalClose) {
+        imgModalClose.addEventListener("click", closeImgModal);
+      }
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && imgModal && imgModal.classList.contains("open")) {
+          closeImgModal();
+        }
+      });
+
+
 
       // ---- Download PDF using html2pdf.js ----
       var btn = document.getElementById("downloadPdfBtn");
