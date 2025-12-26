@@ -1,0 +1,1067 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gluteal Health & Functional Hypertrophy | Archangel Michael Health</title>
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <style>
+    /*
+      Archangel Michael Health (AMH) — Patient Education Stylesheet
+      (Embedded for standalone robustness)
+    */
+
+    /* ============ Design tokens ============ */
+    :root {
+      /* Brand */
+      --amh-primary-dark: #2c3e50;
+      --amh-primary-light: #34495e;
+      --amh-accent-teal: #16a085;
+      --amh-accent-indigo: #667eea;
+
+      /* Surfaces */
+      --amh-bg-page: linear-gradient(135deg, var(--amh-primary-dark) 0%, var(--amh-primary-light) 100%);
+      --amh-bg-card: #ffffff;
+      --amh-bg-soft: #f8f9fa;
+      --amh-bg-muted: #ecf0f1;
+      --amh-bg-success: #d5f4e6;
+      --amh-bg-warning: #fff7e6;
+      --amh-bg-danger: #fff5f5;
+
+      /* Text */
+      --amh-text: #333333;
+      --amh-text-soft: #444444;
+      --amh-text-invert: #ffffff;
+
+      /* Alerts */
+      --amh-alert-danger: #dc3545;
+      --amh-alert-warning: #f39c12;
+      --amh-alert-success: #16a085;
+
+      /* Layout */
+      --amh-max-width: 920px;
+      --amh-radius: 10px;
+      --amh-radius-sm: 8px;
+      --amh-border: #e0e0e0;
+      --amh-shadow: 0 10px 25px rgba(0, 0, 0, 0.30);
+      --amh-shadow-soft: 0 8px 18px rgba(0, 0, 0, 0.18);
+
+      /* Typography */
+      --amh-font: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    /* ============ Base ============ */
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--amh-font);
+      margin: 0;
+      padding: 0;
+      background: var(--amh-bg-page);
+      color: var(--amh-text);
+      line-height: 1.65;
+    }
+    img { max-width: 100%; }
+    a {
+      color: var(--amh-accent-teal);
+      text-decoration: none;
+      word-break: break-word;
+    }
+    a:hover { text-decoration: underline; }
+    :focus-visible {
+      outline: 3px solid rgba(22, 160, 133, 0.35);
+      outline-offset: 2px;
+      border-radius: 6px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { transition: none !important; animation: none !important; }
+    }
+
+    /* Helps headings not hide behind header when using #anchors */
+    h2[id], h3[id], h4[id], section[id] { scroll-margin-top: 96px; }
+
+    /* ============ Page container ============ */
+    .main-container,
+    .amh-page {
+      max-width: var(--amh-max-width);
+      margin: 40px auto;
+      background: var(--amh-bg-card);
+      box-shadow: var(--amh-shadow);
+      border-radius: var(--amh-radius);
+      overflow: hidden;
+    }
+
+    /* ============ Header ============ */
+    header,
+    .amh-header {
+      background: var(--amh-bg-page);
+      color: var(--amh-text-invert);
+      padding: 40px 26px;
+      text-align: center;
+      border-bottom: 5px solid var(--amh-accent-teal);
+    }
+    .amh-header-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .amh-header-centered { text-align: center; }
+
+    /* Logo */
+    .amh-logo-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 0 14px 0;
+    }
+    .amh-logo {
+      width: 110px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.22));
+    }
+
+    /* Practice pill */
+    header .doctor-tag,
+    .amh-practice {
+      background: var(--amh-accent-teal);
+      color: var(--amh-text-invert);
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 0.86rem;
+      font-weight: 800;
+      display: inline-block;
+      margin-top: 12px;
+      letter-spacing: 0.2px;
+    }
+
+    /* Titles */
+    header h1,
+    .amh-title {
+      margin: 12px 0 0 0;
+      font-size: 2.35rem;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+    }
+    header h2,
+    .amh-tagline {
+      margin: 10px 0 0 0;
+      font-size: 1.05rem;
+      font-weight: 300;
+      opacity: 0.94;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      line-height: 1.35;
+    }
+    header .byline {
+      margin-top: 12px;
+      font-size: 0.96rem;
+      opacity: 0.96;
+      letter-spacing: 0.4px;
+    }
+
+    /* Actions */
+    .action-bar,
+    .amh-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      align-items: center;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+    .amh-btn {
+      appearance: none;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      background: var(--amh-accent-teal);
+      color: #ffffff;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, opacity 0.15s ease;
+    }
+    .amh-btn:hover { transform: translateY(-1px); box-shadow: var(--amh-shadow-soft); }
+    .amh-btn:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    .amh-btn.secondary,
+    .amh-btn.amh-btn-secondary {
+      background: #34495e;
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+    .amh-btn.amh-btn-primary {
+      background: var(--amh-accent-teal);
+    }
+
+    /* ============ Content body ============ */
+    .content-body,
+    .amh-content {
+      padding: 46px;
+    }
+    /* Typography */
+    p {
+      margin: 0 0 1.15rem 0;
+      font-size: 1.05rem;
+      color: var(--amh-text-soft);
+    }
+    h3 {
+      color: var(--amh-primary-dark);
+      font-size: 1.75rem;
+      margin-top: 40px;
+      margin-bottom: 18px;
+      border-left: 6px solid var(--amh-accent-teal);
+      padding-left: 15px;
+    }
+    h4 {
+      color: var(--amh-accent-teal);
+      font-size: 1.22rem;
+      margin-top: 22px;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid var(--amh-border);
+      margin: 26px 0;
+    }
+
+    /* ============ Generic cards & callouts ============ */
+    .amh-card,
+    .clinical-note,
+    .alert-box,
+    .success-box {
+      border-radius: 0 8px 8px 0;
+      padding: 18px 20px;
+      margin: 22px 0;
+      border: 1px solid var(--amh-border);
+      background: var(--amh-bg-soft);
+    }
+    .clinical-note {
+      background: var(--amh-bg-muted);
+      border-left: 4px solid var(--amh-primary-light);
+    }
+    .alert-box {
+      background: var(--amh-bg-danger);
+      border-left: 4px solid var(--amh-alert-danger);
+      color: #8a1f1f;
+    }
+    .success-box {
+      background: var(--amh-bg-success);
+      border-left: 4px solid var(--amh-alert-success);
+      color: var(--amh-primary-dark);
+    }
+
+    /* ============ Lists ============ */
+    ul.symptom-list,
+    ul.amh-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.2rem 0;
+    }
+    ul.symptom-list li,
+    ul.amh-list li {
+      position: relative;
+      padding-left: 30px;
+      margin-bottom: 12px;
+    }
+    ul.symptom-list li::before,
+    ul.amh-list li::before {
+      content: "•";
+      color: var(--amh-accent-teal);
+      font-weight: 900;
+      font-size: 1.5em;
+      position: absolute;
+      left: 0;
+      top: -5px;
+    }
+    /* Plain lists without special class should still look clean */
+    .content-body ul:not(.symptom-list):not(.amh-list),
+    .content-body ol:not(.ref-list) {
+      margin: 0 0 1.2rem 1.25rem;
+    }
+    .content-body li { margin-bottom: 8px; }
+
+    /* ============ TOC ============ */
+    .toc {
+      background: var(--amh-bg-soft);
+      border: 1px solid var(--amh-border);
+      border-left: 4px solid var(--amh-accent-teal);
+      padding: 18px 20px;
+      margin: 24px 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .toc h2,
+    .toc h3,
+    .toc h4 {
+      margin: 0 0 10px 0;
+      border: none;
+      padding: 0;
+      color: var(--amh-accent-teal);
+      font-weight: 700;
+      font-size: 1.15rem;
+      text-transform: none;
+      letter-spacing: 0.3px;
+    }
+    .toc ul { list-style: none; padding: 0; margin: 8px 0 0 0; }
+    .toc li { margin: 10px 0; }
+
+    .toc a,
+    .toc button,
+    .toc .toc-btn {
+      all: unset;
+      cursor: pointer;
+      display: inline;
+      color: var(--amh-primary-dark);
+      font-weight: 700;
+      border-bottom: 1px dashed rgba(44, 62, 80, 0.35);
+    }
+    .toc a:hover,
+    .toc button:hover,
+    .toc .toc-btn:hover {
+      color: var(--amh-accent-teal);
+      border-bottom-color: var(--amh-accent-teal);
+    }
+
+    /* ============ RX Cards ============ */
+    .rx-card,
+    .amh-rx-card {
+      background: var(--amh-bg-soft);
+      border: 1px solid var(--amh-border);
+      border-top: 5px solid var(--amh-accent-indigo);
+      border-radius: var(--amh-radius-sm);
+      padding: 22px;
+      margin: 0 0 26px 0;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .rx-card:hover,
+    .amh-rx-card:hover {
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.20);
+      transform: translateY(-2px);
+    }
+    .rx-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--amh-border);
+      padding-bottom: 14px;
+      margin-bottom: 14px;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .rx-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--amh-primary-dark);
+    }
+    .rx-type {
+      background: var(--amh-accent-indigo);
+      color: #ffffff;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .rx-grid {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 14px;
+      font-size: 0.98rem;
+    }
+    .rx-label {
+      font-weight: 700;
+      color: var(--amh-primary-light);
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      padding-top: 4px;
+      letter-spacing: 0.3px;
+    }
+
+    /* ============ References ============ */
+    .references-block,
+    .amh-references {
+      font-size: 0.95rem;
+      margin-top: 14px;
+      text-align: left;
+      max-width: 860px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .ref-list {
+      margin: 10px 0 0 1.2rem;
+      padding: 0;
+    }
+    .ref-list li { margin-bottom: 8px; }
+    .references-block a,
+    .ref-list a {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* ============ Footer ============ */
+    footer,
+    .amh-footer {
+      background: var(--amh-bg-muted);
+      padding: 36px 20px;
+      text-align: center;
+      font-size: 0.95rem;
+      color: var(--amh-primary-light);
+      border-top: 1px solid var(--amh-border);
+    }
+    .amh-disclaimer,
+    .medical-disclaimer {
+      text-align: left;
+      margin: 0 auto 16px auto;
+      max-width: 860px;
+      background: #ffffff;
+      border: 1px solid var(--amh-border);
+      border-left: 5px solid var(--amh-alert-warning);
+      border-radius: var(--amh-radius-sm);
+      padding: 16px 18px;
+      color: #333;
+    }
+    .medical-disclaimer p {
+      margin: 0 0 10px 0;
+      font-size: 0.95rem;
+      color: #333;
+    }
+    .amh-footer-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 14px;
+      font-size: 0.92rem;
+      color: #666;
+    }
+    .amh-dot { opacity: 0.65; }
+
+    /* ============ Utility ============ */
+    .no-print { display: block; }
+    .amh-muted { color: #666; }
+    .amh-small { font-size: 0.92rem; }
+
+    /* ============ Lightbox Styles ============ */
+    .infographic-container {
+      text-align: center;
+      margin: 30px 0;
+    }
+    .infographic-thumb {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--amh-radius);
+      cursor: zoom-in;
+      box-shadow: var(--amh-shadow-soft);
+      border: 1px solid var(--amh-border);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .infographic-thumb:hover {
+      transform: scale(1.01);
+      box-shadow: var(--amh-shadow);
+    }
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 10000;
+      padding-top: 40px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(5px);
+    }
+    .lightbox-content {
+      margin: auto;
+      display: block;
+      max-width: 95%;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 4px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .close-btn:hover,
+    .close-btn:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    /* Animation */
+    .lightbox-content {  
+      animation-name: zoom;
+      animation-duration: 0.3s;
+    }
+    @keyframes zoom {
+      from {transform:scale(0)} 
+      to {transform:scale(1)}
+    }
+    @media only screen and (max-width: 700px){
+      .lightbox-content { width: 100%; }
+      .close-btn { right: 20px; top: 10px; font-size: 30px; }
+    }
+
+    /* ============ Responsive ============ */
+    @media (max-width: 700px) {
+      .content-body, .amh-content { padding: 26px; }
+      header, .amh-header { padding: 32px 18px; }
+      header h1, .amh-title { font-size: 1.85rem; }
+      header h2, .amh-tagline { letter-spacing: 1.2px; }
+      .rx-grid { grid-template-columns: 1fr; }
+      .rx-label { color: var(--amh-accent-teal); margin-top: 10px; }
+    }
+
+    /* ============ Print / PDF ============ */
+    @media print {
+      .no-print { display: none !important; }
+      body { background: #ffffff !important; color: #000000 !important; }
+      .main-container, .amh-page {
+        margin: 0 !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        max-width: none !important;
+      }
+      header, .amh-header {
+        background: #ffffff !important;
+        color: #000000 !important;
+        border-bottom: 2px solid #333333 !important;
+      }
+      header h2, .amh-tagline { opacity: 1 !important; }
+      header .doctor-tag, .amh-practice {
+        background: #ffffff !important;
+        color: #000000 !important;
+        border: 1px solid #333333 !important;
+      }
+      .amh-logo { filter: none !important; }
+      a { color: #000000 !important; text-decoration: underline !important; }
+      .rx-card, .clinical-note, .alert-box, .success-box, .medical-disclaimer, .toc, .amh-card {
+        background: #ffffff !important;
+        border-color: #333333 !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      /* Ensure infographic prints well but hides lightbox mechanics */
+      .infographic-container { page-break-inside: avoid; }
+      .infographic-thumb { max-height: 500px; width: auto; display: block; margin: 0 auto; box-shadow: none; border: 1px solid #ccc; }
+      .lightbox { display: none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="amh-page main-container" id="pdf-root" role="document">
+    <header class="amh-header">
+      <div class="amh-header-inner amh-header-centered">
+        <div class="amh-logo-wrap">
+          <img class="amh-logo" src="https://docbraymd.github.io/amh/AMHLogo.png" alt="Archangel Michael Health logo" />
+        </div>
+
+        <div class="amh-practice doctor-tag">Archangel Michael Health</div>
+
+        <h1 class="amh-title" id="page-title">The Gluteal Vital Sign</h1>
+        <h2 class="amh-tagline">Optimizing Health: Function, Metabolism &amp; Aesthetics</h2>
+        <div class="byline">by Christopher L. Bray MD PhD</div>
+
+        <div class="action-bar amh-actions no-print" aria-label="Actions">
+          <button class="amh-btn amh-btn-secondary" type="button" onclick="window.print()">
+            Print / Save as PDF
+          </button>
+          <button class="amh-btn amh-btn-primary" id="downloadPdfBtn" type="button">
+            Download PDF
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="amh-content content-body">
+      <p>
+        In the landscape of modern medicine, the gluteal region—comprising the gluteus maximus, medius, and minimus—is often relegated to cosmetic discussions. However, at Archangel Michael Health, we view the status of the gluteal musculature as a profound biomarker of systemic health. A "flat" or atrophied gluteal region is rarely just an aesthetic concern; it is a clinical sign pointing to a convergence of neurological inhibition ("sitting disease"), metabolic dysfunction, hormonal imbalance, and biomechanical inefficiency. This guide provides a sophisticated, evidence-based roadmap to restoring this vital muscle group through integrative care, protecting you from back pain, knee instability, and frailty while enhancing physical resilience.
+      </p>
+
+      <div class="toc no-print" aria-label="On this page">
+        <h2>On this page</h2>
+        <ul class="amh-list">
+          <li><a href="#overview">Overview &amp; Physiology</a></li>
+          <li><a href="#symptoms">Symptoms &amp; Functional Signs</a></li>
+          <li><a href="#drivers">Root Causes: The "Double Crush"</a></li>
+          <li><a href="#consequences">Medical Consequences</a></li>
+          <li><a href="#plan">Step-by-Step Improvement Plan</a></li>
+          <li><a href="#treatments">Conventional Treatments</a></li>
+          <li><a href="#integrative">Integrative Options &amp; Supplements</a></li>
+          <li><a href="#costs">Cost Considerations &amp; Safety</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#references">References</a></li>
+        </ul>
+      </div>
+
+      <h3 id="overview">Overview &amp; Physiology</h3>
+      <p>
+        The gluteus maximus is the largest muscle in the human body, a unique evolutionary adaptation that allows for efficient upright walking and running. It functions as the primary extensor of the hip and a stabilizer of the sacroiliac joint. Deep to this lie the gluteus medius and minimus, the architects of pelvic stability that prevent the hip from dropping during walking.
+      </p>
+      <p>
+        When these muscles wither, the body loses its "anti-gravity" support system. "Gluteal Amnesia" (or Dead Butt Syndrome) describes a neurological state where the brain, habituated to sitting, inhibits the gluteal muscles via reciprocal inhibition and instead recruits the lower back and hamstrings for movement. This "synergistic dominance" is a primary driver of chronic pain and injury. Furthermore, the glutes act as a massive "glucose sink," soaking up blood sugar during movement; their atrophy contributes directly to insulin resistance and metabolic decline.
+      </p>
+
+      <div class="clinical-note">
+        <strong>Clinical note:</strong> We consider gluteal status a "vital sign" of musculoskeletal health. Functional testing often reveals profound weakness long before aesthetic changes become bothersome.
+      </div>
+
+      <h3 id="symptoms">Symptoms &amp; Functional Signs</h3>
+      <p>
+        Patients typically present with complaints of a "flat," "sagging," or "shapeless" rear view, often accompanied by "hip dips" (lateral depressions). However, the functional symptoms are more clinically significant.
+      </p>
+      <ul class="amh-list symptom-list">
+        <li><strong>Chronic Lower Back Pain:</strong> Often due to the lumbar spine compensating for weak hip extension.</li>
+        <li><strong>Knee Pain ("Runner's Knee"):</strong> Caused by the femur rotating internally (knock-knees) when the gluteus medius fails to stabilize the hip.</li>
+        <li><strong>Poor Posture:</strong> "Swayback" (posterior pelvic tilt) or excessive anterior tilt, both indicating a loss of neutral pelvic alignment.</li>
+        <li><strong>Trendelenburg Gait:</strong> The hip drops on the non-weight-bearing side while walking.</li>
+        <li><strong>"Dead" Sensation:</strong> Numbness or paresthesia in the buttocks after prolonged sitting.</li>
+      </ul>
+
+      <div class="alert-box">
+        <strong>Red flags:</strong> Urgent evaluation is required for "saddle anesthesia" (numbness in the inner thighs/groin), sudden bladder/bowel dysfunction, or rapid asymmetric muscle wasting, which may indicate severe spinal nerve compression or neurological pathology.
+      </div>
+
+      <h3 id="drivers">Root Causes: The "Double Crush"</h3>
+      <p>
+        The etiology of gluteal atrophy is often multifactorial, involving a "double crush" of disuse and physiological resistance.
+      </p>
+
+      <h4>1. The Chair and Reciprocal Inhibition</h4>
+      <p>
+        Prolonged sitting (8-12 hours/day) creates mechanical compression and tightens the hip flexors. By the law of <em>reciprocal inhibition</em>, tight hip flexors neurologically "turn off" the opposing glute muscles. Over years, this rewrites your movement software, making it difficult to activate the glutes even during exercise.
+      </p>
+
+      <h4>2. Hormonal Shifts (Menopause &amp; Andropause)</h4>
+      <p>
+        Estrogen dictates "gynoid" fat distribution (hips and buttocks), which is metabolically protective. During perimenopause and menopause, estrogen decline causes a migration of this fat to the abdomen ("android" distribution) and reduces muscle protein synthesis efficiency. Simultaneously, age-related decline in testosterone and growth hormone accelerates the loss of Type II (fast-twitch) muscle fibers, which are predominant in the glutes.
+      </p>
+
+      <h4>3. Cortisol and Stress</h4>
+      <p>
+        Chronic stress elevates cortisol, a catabolic hormone that breaks down muscle tissue for energy. Gluteal muscles are rich in glucocorticoid receptors, making them particularly susceptible to stress-induced wasting. High cortisol often results in a phenotype of central obesity with thin, wasted limbs.
+      </p>
+
+      <h3 id="consequences">Medical Consequences</h3>
+      <p>
+        Weak glutes are a direct driver of orthopedic injury. Without their power, load is transferred to the lumbar discs (herniation risk), knees (ACL tear and meniscus risk), and hamstrings (strain risk). Metabolically, the loss of this large muscle mass reduces your basal metabolic rate and impairs glucose disposal, increasing the risk of Type 2 Diabetes and metabolic syndrome.
+      </p>
+
+      <h3 id="plan">Step-by-Step Improvement Plan</h3>
+      <div class="success-box">
+        <strong>The Protocol:</strong> Restoration requires a phased approach. Jumping straight to heavy lifting without neural connection often reinforces bad patterns.
+      </div>
+
+      <div class="infographic-container no-print">
+        <img src="https://docbraymd.github.io/amh/glute_exercises.jpg" alt="Glute Exercises Infographic - Click to enlarge" class="infographic-thumb" onclick="openLightbox()">
+        <p class="amh-muted amh-small" style="margin-top:8px;">
+          <span style="font-size:1.2em; vertical-align:middle;">🔍</span> 
+          <strong>Click image to enlarge</strong> (Right-click to download)
+        </p>
+      </div>
+
+      <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-btn">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" src="https://docbraymd.github.io/amh/glute_exercises.jpg" alt="Full size infographic">
+      </div>
+      <h4>Phase 1: Activation &amp; Neuromuscular Re-education (Weeks 1-4)</h4>
+      <p>
+        <strong>Goal:</strong> Re-establish the mind-muscle connection. If you cannot "feel" your glutes squeezing during these movements, do not advance to Phase 2.<br>
+        <strong>Frequency:</strong> Daily (10–15 minutes).<br>
+        <strong>Equipment:</strong> Bodyweight or light resistance bands.
+      </p>
+      <ul class="amh-list">
+        <li>
+          <strong>Glute Bridge (Supine):</strong> 
+          <em>(3 sets of 15–20 reps)</em><br>
+          Lie on your back with knees bent and feet flat on the floor. Drive through your heels to lift your hips toward the ceiling. 
+          <span class="amh-muted"><strong>Key:</strong> Pause for 2 seconds at the top and squeeze hard. Ensure your lower back does not arch; the movement should come entirely from the hips.</span>
+        </li>
+        <li>
+          <strong>Clamshells:</strong> 
+          <em>(3 sets of 15 reps per side)</em><br>
+          Lie on your side with legs stacked and knees bent at 45 degrees. Keeping feet touching, rotate the top knee open like a clamshell.
+          <span class="amh-muted"><strong>Key:</strong> Do not let your pelvis roll backward. Place a hand on your hip to ensure stability. This targets the gluteus medius.</span>
+        </li>
+        <li>
+          <strong>Bird-Dog:</strong> 
+          <em>(3 sets of 10 reps per side)</em><br>
+          Start on hands and knees (tabletop). Extend opposite arm and opposite leg simultaneously until straight.
+          <span class="amh-muted"><strong>Key:</strong> Focus on a flat back. Do not lift the leg too high; squeeze the glute to extend the leg, not the lower back.</span>
+        </li>
+      </ul>
+
+      <h4>Phase 2: Hypertrophy &amp; Loading (Weeks 5+)</h4>
+      <p>
+        <strong>Goal:</strong> Mechanical tension to stimulate muscle growth. You must use enough weight that the last 2–3 reps feel difficult.<br>
+        <strong>Frequency:</strong> 2–3 times per week (allow 48 hours rest between sessions).<br>
+        <strong>Equipment:</strong> Dumbbells, kettlebells, or barbells.
+      </p>
+      <ul class="amh-list">
+        <li>
+          <strong>The Hip Thrust (Horizontal Vector):</strong> 
+          <em>(3–4 sets of 8–12 reps)</em><br>
+          Sit with your upper back against a bench. Place a weight (dumbbell or barbell) across your hips. Drive hips up until your torso is parallel to the floor.
+          <span class="amh-muted"><strong>Key:</strong> Keep chin tucked to chest to protect the spine. This exercise elicits the highest activation of the gluteus maximus.</span>
+        </li>
+        <li>
+          <strong>Goblet Squat (Vertical Vector):</strong> 
+          <em>(3 sets of 10–12 reps)</em><br>
+          Hold a single dumbbell at chest height. Stand with feet slightly wider than shoulder-width, toes pointed slightly out. Sit back and down as if into a chair.
+          <span class="amh-muted"><strong>Key:</strong> Drive knees outward (do not let them cave in) and squeeze glutes to return to standing.</span>
+        </li>
+        <li>
+          <strong>Walking Lunges or Step-Ups (Unilateral):</strong> 
+          <em>(3 sets of 10–12 reps per leg)</em><br>
+          Step forward into a lunge or step up onto a box/bench.
+          <span class="amh-muted"><strong>Key:</strong> Lean your torso slightly forward (approx 30 degrees) to shift emphasis from the quads to the glutes. Drive through the front heel.</span>
+        </li>
+      </ul>
+
+      <h4>Phase 3: Integration (Lifestyle)</h4>
+      <p>
+        <strong>Goal:</strong> Prevent regression by integrating activation into daily life.<br>
+        <strong>Frequency:</strong> Daily habits.
+      </p>
+      <ul class="amh-list">
+        <li><strong>The "Squeeze" Check:</strong> When standing in line or washing dishes, consciously squeeze your glutes for 10-second intervals.</li>
+        <li><strong>Stairs:</strong> Take stairs two at a time, driving through the heel, to simulate a lunge pattern.</li>
+        <li><strong>Ergonomics:</strong> Avoid sitting for more than 60 minutes. Stand up, extend hips, and walk for 2 minutes to break the "inhibitory" cycle.</li>
+      </ul>
+
+      <h3 id="treatments">Conventional Treatments</h3>
+      <p>
+        Standard medical interventions focus on restoring function and managing underlying hormonal or orthopedic pathology.
+      </p>
+
+      <div class="rx-card amh-rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Physical Therapy (PT)</div>
+          <div class="rx-type">STANDARD</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">What it is</div>
+          <div>Prescribed guided exercise and manual therapy by a licensed professional.</div>
+
+          <div class="rx-label">How it works</div>
+          <div>Corrects movement patterns, releases tight hip flexors, and ensures safe progression of load to prevent injury.</div>
+
+          <div class="rx-label">Typical use</div>
+          <div>1-2 sessions/week for 6-12 weeks. Essential for patients with back/knee pain or tendinopathy.</div>
+
+          <div class="rx-label">Side effects</div>
+          <div>Delayed Onset Muscle Soreness (DOMS). Very high safety profile.</div>
+
+          <div class="rx-label">Cost</div>
+          <div>Varies by insurance; typically copays of $20-$50 per session.</div>
+        </div>
+      </div>
+
+      <div class="rx-card amh-rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Hormone Replacement Therapy (HRT)</div>
+          <div class="rx-type">MEDICAL</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">What it is</div>
+          <div>Bioidentical Estrogen (often with progesterone) and/or Testosterone supplementation for appropriate candidates.</div>
+
+          <div class="rx-label">How it works</div>
+          <div>Mitigates sarcopenia by improving muscle protein synthesis and maintains gynoid (hip/glute) fat distribution in peri/post-menopausal women.</div>
+
+          <div class="rx-label">Typical use</div>
+          <div>Transdermal patches, creams, or pellets. Requires comprehensive medical evaluation and monitoring.</div>
+
+          <div class="rx-label">Safety</div>
+          <div>Risk depends on patient history (e.g., clotting, cancer risks). Must be individualized.</div>
+
+          <div class="rx-label">Cost</div>
+          <div>$30-$100/month depending on formulation.</div>
+        </div>
+      </div>
+
+      <h3 id="integrative">Integrative Options &amp; Supplements</h3>
+      <p>
+        While exercise is the primary stimulus, the biochemical environment must support tissue growth. We utilize targeted supplements to combat sarcopenia, lower cortisol, and support connective tissue.
+      </p>
+
+      <div class="rx-card amh-rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Creatine Monohydrate</div>
+          <div class="rx-type">PERFORMANCE</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">What it is</div>
+          <div>A naturally occurring compound that replenishes ATP (energy) in muscle cells and draws water into muscle tissue (cellular hydration).</div>
+
+          <div class="rx-label">How it works</div>
+          <div>Increases power output for heavier training. Enhances cell signaling for satellite cell activity (repair). Protects against sarcopenia.</div>
+
+          <div class="rx-label">Typical use</div>
+          <div>3–5 grams daily, taken consistently. No "loading phase" necessary.</div>
+
+          <div class="rx-label">Safety</div>
+          <div>Highly safe. Mild water retention (intracellular, which is positive for muscle shape). Safe for healthy kidneys.</div>
+
+          <div class="rx-label">Cost</div>
+          <div>Very Low ($20–$30 for a 3-month supply). Use micronized monohydrate.</div>
+        </div>
+      </div>
+
+      <div class="rx-card amh-rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Whey or Pea Protein Isolate</div>
+          <div class="rx-type">NUTRITIONAL</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">What it is</div>
+          <div>Concentrated protein source essential for muscle repair and nitrogen balance.</div>
+
+          <div class="rx-label">How it works</div>
+          <div>Overcomes "anabolic resistance" in older adults by providing high levels of Leucine to trigger synthesis.</div>
+
+          <div class="rx-label">Typical use</div>
+          <div>Aim for 1.6 to 2.2 grams of protein per kg of body weight daily. "Protein Pacing": 25–40g doses every 3–4 hours.</div>
+
+          <div class="rx-label">Side effects</div>
+          <div>Bloating (if lactose intolerant). Switch to Isolate or Pea protein if sensitive.</div>
+
+          <div class="rx-label">Cost</div>
+          <div>Moderate ($40–$70/month).</div>
+        </div>
+      </div>
+
+      <div class="rx-card amh-rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Bioactive Collagen Peptides</div>
+          <div class="rx-type">TISSUE SUPPORT</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">What it is</div>
+          <div>Specific peptides that target connective tissue (fascia) and skin.</div>
+
+          <div class="rx-label">How it works</div>
+          <div>Stimulates fibroblasts to repair the extracellular matrix. Firmness depends on fascial tension/skin elasticity, not just muscle volume.</div>
+
+          <div class="rx-label">Typical use</div>
+          <div>10–15 grams daily, ideally with Vitamin C (cofactor). Dissolves in coffee/shakes.</div>
+
+          <div class="rx-label">Safety</div>
+          <div>Very well tolerated.</div>
+
+          <div class="rx-label">Cost</div>
+          <div>Moderate ($30–$50/month).</div>
+        </div>
+      </div>
+
+      <div class="rx-card amh-rx-card">
+        <div class="rx-header">
+          <div class="rx-name">Ashwagandha (KSM-66)</div>
+          <div class="rx-type">ADAPTOGEN</div>
+        </div>
+        <div class="rx-grid">
+          <div class="rx-label">What it is</div>
+          <div>An herbal adaptogen used to modulate the stress response.</div>
+
+          <div class="rx-label">How it works</div>
+          <div>Lowers chronically high cortisol. Since cortisol is catabolic (eats muscle), lowering it creates a better environment for growth.</div>
+
+          <div class="rx-label">Typical use</div>
+          <div>300-600mg daily (KSM-66 extract), typically in the evening.</div>
+
+          <div class="rx-label">Safety</div>
+          <div>Check for interactions with thyroid medication.</div>
+
+          <div class="rx-label">Cost</div>
+          <div>Low ($15-$25/month).</div>
+        </div>
+      </div>
+
+      <h3 id="costs">Cost Considerations &amp; Safety</h3>
+      <ul class="amh-list symptom-list">
+        <li><strong>High ROI (Return on Investment):</strong> Resistance training (Gym: $50/mo) + Creatine ($15/mo) + Protein ($50/mo). Total: ~$115/mo for systemic health transformation.</li>
+        <li><strong>Low ROI / High Risk:</strong> Passive treatments like "booty creams" have zero physiological efficacy.</li>
+      </ul>
+      
+      <div class="alert-box">
+        <strong>Surgical Warning (BBL):</strong> We strongly advise caution regarding the Brazilian Butt Lift (BBL). It has historically held the highest mortality rate of any aesthetic procedure (up to 1 in 3,000) due to the risk of fat embolism. The "natural" route is slower but confers vitality; surgery confers only volume and risk.
+      </div>
+
+      <h3 id="faq">FAQ</h3>
+      <h4>How long until I see results?</h4>
+      <p>Neural adaptations (strength) occur in weeks 1–4. Visible hypertrophy (muscle growth) typically takes 12–16 weeks of consistent, progressive training. Connective tissue remodeling takes 6+ months. Patience is required.</p>
+
+      <h4>Will heavy weights make me "bulky"?</h4>
+      <p>No. Women generally lack the testosterone levels to build excessive mass naturally. Building the gluteus maximus requires significant load; "toning" with light weights is often insufficient to change the shape of such a large muscle.</p>
+
+      <h4>I have bad knees. Can I still train glutes?</h4>
+      <p>Yes. In fact, strengthening the glutes is often the cure for knee pain. The "Hip Thrust" is an excellent alternative to squats as it loads the glutes heavily without placing axial load on the spine or excessive shear on the knees.</p>
+
+      <h3 id="references">References</h3>
+      <ol class="ref-list">
+        <li>Distefano, L. J., et al. "Gluteal Muscle Activation During Common Therapeutic Exercises." <em>Journal of Orthopaedic & Sports Physical Therapy</em>. <a href="https://www.jospt.org/doi/10.2519/jospt.2009.2796" target="_blank" rel="noopener">https://www.jospt.org/doi/10.2519/jospt.2009.2796</a></li>
+        <li>Contreras, B., et al. "A Comparison of Gluteus Maximus, Biceps Femoris, and Vastus Lateralis EMG Activity in the Back Squat and Barbell Hip Thrust Exercises." <em>Journal of Applied Biomechanics</em>. <a href="https://pubmed.ncbi.nlm.nih.gov/26252837/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/26252837/</a></li>
+        <li>Cleveland Clinic. "Dead Butt Syndrome (Gluteal Amnesia) & Sedentary Lifestyle." <a href="https://health.clevelandclinic.org/no-joke-your-desk-job-promotes-dead-butt-syndrome" target="_blank" rel="noopener">https://health.clevelandclinic.org/no-joke-your-desk-job-promotes-dead-butt-syndrome</a></li>
+        <li>American Society of Plastic Surgeons. "BBL Safety Warning: Gluteal Fat Grafting." <a href="https://www.plasticsurgery.org/news/press-releases/plastic-surgery-societies-issue-urgent-warning-about-the-risks-associated-with-brazilian-butt-lifts" target="_blank" rel="noopener">https://www.plasticsurgery.org/news/press-releases/plastic-surgery-societies-issue-urgent-warning-about-the-risks-associated-with-brazilian-butt-lifts</a></li>
+        <li>International Society of Sports Nutrition Position Stand: "Protein and Exercise." <a href="https://jissn.biomedcentral.com/articles/10.1186/s12970-017-0177-8" target="_blank" rel="noopener">https://jissn.biomedcentral.com/articles/10.1186/s12970-017-0177-8</a></li>
+      </ol>
+
+      <footer class="amh-footer">
+        <div class="amh-disclaimer medical-disclaimer">
+          <p><strong>Medical disclaimer:</strong> The information on this page is provided for general educational purposes only and is not medical advice. It is not intended to diagnose, treat, cure, or prevent any disease, and it does not establish a physician–patient relationship.</p>
+          <p>Do not apply this information to your specific situation without the oversight of a qualified clinician who can consider your full health history, medications, goals, preferences, and limitations. If you have urgent or severe symptoms, seek emergency care.</p>
+          <p style="margin: 0;"><strong>Copyright:</strong> © Dr. Bray at Archangel Michael Health <span id="amh-year">2025</span></p>
+        </div>
+
+        <div class="amh-footer-meta">
+          <span><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine</span>
+          <span class="amh-dot">•</span>
+          <span><strong>Last updated:</strong> <span id="amh-last-updated">—</span></span>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      // ---- Last updated + year ----
+      var yearEl = document.getElementById("amh-year");
+      if (yearEl) {
+        try { yearEl.textContent = String(new Date().getFullYear()); } catch (e) {}
+      }
+
+      var updatedEl = document.getElementById("amh-last-updated");
+      if (updatedEl) {
+        var lm = document.lastModified; 
+        var d = lm ? new Date(lm) : null;
+        if (d && !isNaN(d.getTime())) {
+          // ISO-like YYYY-MM-DD
+          var yyyy = d.getFullYear();
+          var mm = String(d.getMonth() + 1).padStart(2, "0");
+          var dd = String(d.getDate()).padStart(2, "0");
+          updatedEl.textContent = yyyy + "-" + mm + "-" + dd;
+        } else {
+          updatedEl.textContent = "—";
+        }
+      }
+
+      // ---- TOC scrolling ----
+      function scrollToId(id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      document.addEventListener("click", function (e) {
+        var btn = e.target.closest(".toc-btn[data-scroll]");
+        if (btn) {
+          e.preventDefault();
+          scrollToId(btn.getAttribute("data-scroll"));
+          return;
+        }
+
+        var link = e.target.closest('.toc a[href^="#"]');
+        if (link) {
+          var hash = link.getAttribute("href");
+          var target = hash && hash.length > 1 ? hash.slice(1) : null;
+          if (!target) return;
+          e.preventDefault();
+          scrollToId(target);
+          history.replaceState(null, "", hash);
+        }
+      });
+
+      // ---- Download PDF using html2pdf.js ----
+      var btn = document.getElementById("downloadPdfBtn");
+      if (!btn) return;
+
+      function safeFilename(title) {
+        return (title || "patient-guide")
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/(^-|-$)/g, "");
+      }
+
+      btn.addEventListener("click", function () {
+        if (typeof html2pdf === "undefined") {
+          alert("PDF generator is still loading. Please try again in a moment, or use Print / Save as PDF.");
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = "Preparing PDF...";
+
+        var title = (document.getElementById("page-title") && document.getElementById("page-title").textContent) || "Patient Guide";
+        var filename = safeFilename(title) + ".pdf";
+
+        // Clone content for PDF and remove UI elements
+        var source = document.getElementById("pdf-root").cloneNode(true);
+        source.querySelectorAll(".no-print").forEach(function (el) { el.remove(); });
+
+        var wrapper = document.createElement("div");
+        wrapper.style.background = "#ffffff";
+        wrapper.appendChild(source);
+
+        var opt = {
+          margin: [0.5, 0.5, 0.6, 0.5], // inches
+          filename: filename,
+          image: { type: "jpeg", quality: 0.98 },
+          html2canvas: { scale: 2, useCORS: true, letterRendering: true },
+          jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+          pagebreak: { mode: ["css", "legacy"] }
+        };
+
+        html2pdf()
+          .set(opt)
+          .from(wrapper)
+          .save()
+          .catch(function (err) {
+            console.error(err);
+            alert("Could not generate the PDF in this browser. Please use Print / Save as PDF.");
+          })
+          .finally(function () {
+            btn.disabled = false;
+            btn.textContent = "Download PDF";
+          });
+      });
+    })();
+
+    // ---- Lightbox Functionality ----
+    function openLightbox() {
+      var lightbox = document.getElementById('lightbox');
+      if (lightbox) lightbox.style.display = 'block';
+    }
+
+    function closeLightbox() {
+      var lightbox = document.getElementById('lightbox');
+      if (lightbox) lightbox.style.display = 'none';
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === "Escape") {
+        closeLightbox();
+      }
+    });
+  </script>
+</body>
+</html>
