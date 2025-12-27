@@ -60,7 +60,6 @@
 
     /* --- HEADER STYLES (Branded) --- */
     .amh-header {
-      /* Reverting to branded gradient based on user feedback */
       background: var(--amh-bg-page);
       color: #ffffff;
       border-bottom: 5px solid var(--amh-accent-teal);
@@ -77,7 +76,6 @@
     .amh-logo {
       height: 80px;
       width: auto;
-      /* Optional: Add slight drop shadow if logo is transparent PNG on dark bg */
       filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); 
     }
     .doctor-tag {
@@ -96,14 +94,14 @@
       margin: 0.2em 0;
       font-size: 2.2rem;
       font-weight: 800;
-      color: #ffffff; /* White text on dark header */
+      color: #ffffff;
       line-height: 1.2;
     }
     .amh-tagline {
       margin: 0;
       font-size: 1.2rem;
       font-weight: 300;
-      color: rgba(255, 255, 255, 0.9); /* Soft white */
+      color: rgba(255, 255, 255, 0.9);
       text-transform: uppercase;
       letter-spacing: 1px;
     }
@@ -397,6 +395,21 @@
       font-size: 0.95rem;
     }
 
+    /* References Section */
+    .ref-section {
+      margin-top: 40px;
+      border-top: 2px solid #eee;
+      padding-top: 20px;
+    }
+    .ref-list {
+      padding-left: 20px;
+      color: #666;
+      font-size: 0.85rem;
+    }
+    .ref-list li {
+      margin-bottom: 8px;
+    }
+
     .hand-guide-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -466,7 +479,6 @@
     <header class="amh-header">
       <div class="amh-header-inner amh-header-centered">
         <div class="amh-logo-wrap">
-          <!-- Logo Placeholder or Image -->
           <img class="amh-logo" src="https://docbraymd.github.io/amh/AMHLogo.png" alt="Archangel Michael Health logo" />
         </div>
 
@@ -534,13 +546,13 @@
             </div>
 
             <div class="input-group">
-              <label for="race">Race / Ethnicity <span class="optional-tag">(Crucial for BMI cutoffs)</span></label>
+              <label for="race">Race / Ethnicity <span class="optional-tag">(Crucial for clinical cutoffs)</span></label>
               <select id="race">
-                <option value="white">White / Caucasian</option>
+                <option value="standard">White / Caucasian</option>
                 <option value="black">Black / African American</option>
+                <option value="middle_eastern">Middle Eastern / Arab</option>
                 <option value="hispanic">Hispanic / Latino</option>
-                <option value="asian_east">Asian (East / Southeast)</option>
-                <option value="asian_south">Asian (South)</option>
+                <option value="asian">Asian (East, South, SE)</option>
                 <option value="native">Native American / Alaska Native</option>
                 <option value="pacific">Native Hawaiian / Pacific Islander</option>
                 <option value="other">Other</option>
@@ -692,7 +704,24 @@
             </table>
           </div>
 
-          <!-- 3. BODY FAT TABLE -->
+          <!-- 3. WAIST-TO-HEIGHT TABLE -->
+          <div class="status-table-container">
+            <div class="table-header">Waist-to-Height Ratio (WHtR) Categories</div>
+            <table class="status-table">
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Ratio</th>
+                  <th>Risk Level</th>
+                </tr>
+              </thead>
+              <tbody id="whtr-table-body">
+                <!-- JS Injected -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 4. BODY FAT TABLE -->
           <div class="status-table-container">
             <div class="table-header">Body Fat Percentage Categories</div>
             <table class="status-table">
@@ -709,6 +738,17 @@
             </table>
           </div>
 
+        </div>
+
+        <!-- REFERENCES -->
+        <div class="ref-section">
+          <h3>Clinical References & Norms</h3>
+          <ul class="ref-list">
+            <li><strong>BMI Categorization:</strong> Centers for Disease Control and Prevention (CDC), WHO, and AACE Consensus Statement 2025. Asian-specific cutoffs derived from WHO Expert Consultation (2004) and AACE/ACE Guidelines.</li>
+            <li><strong>Waist Circumference:</strong> International Diabetes Federation (IDF) Consensus Worldwide Definition of the Metabolic Syndrome (2006). Ethnicity-specific values for South Asians, Chinese, and Japanese populations; European cutoffs used for Middle Eastern and Mediterranean populations per IDF/AHA recommendations.</li>
+            <li><strong>Waist-to-Height Ratio (WHtR):</strong> Ashwell M, et al. "Waist-to-height ratio is a better screening tool than waist circumference and BMI for adult cardiometabolic risk factors." <em>Obesity Reviews</em> (2012). NICE Guidelines (2022).</li>
+            <li><strong>Body Fat Percentage:</strong> American Council on Exercise (ACE) General Population Norms. Gallagher D, et al. "Healthy percentage body fat ranges: an approach for developing guidelines based on body mass index." <em>Am J Clin Nutr</em> (2000).</li>
+          </ul>
         </div>
 
         <!-- EDUCATIONAL CONTENT -->
@@ -915,25 +955,23 @@
       
       document.getElementById('bmi-display-val').textContent = bmi;
 
-      // 4. TIMELINES
-      // Logic: 200 cal deficit = ~0.4 lbs loss per week
-      // Weight loss rate: 0.4 lbs / week -> ~1.7 lbs / month
-      // Waist Heuristic: ~5 lbs loss = 1 inch off waist
-      // BF% Heuristic: ~2 lbs loss = 1% drop in BF (conservative mix of lean/fat loss)
-
+      // 4. TIMELINES & GOALS
+      // Constants
       let timelineHtml = "";
       
-      // -- BMI Timeline --
-      // Asian Normal < 23, Standard < 25
-      let isAsian = (race.includes('asian'));
-      let bmiTarget = isAsian ? 22.9 : 24.9;
+      // Determine Race-Based Cutoffs
+      // Asian/Hispanic cutoffs: Normal <23, Overweight <25, Obese I <30 (Standard Asian Action points)
+      // Standard/Middle Eastern cutoffs: Normal <25, Overweight <30
       
+      let isLowerCutoffGroup = (race === 'asian' || race === 'hispanic');
+      let bmiTarget = isLowerCutoffGroup ? 22.9 : 24.9;
+      
+      // -- BMI Timeline --
       if (bmi > bmiTarget) {
         let targetWeight = (bmiTarget * heightInTotal * heightInTotal) / 703;
         let diffLbs = weightLbs - targetWeight;
-        let months = (diffLbs / 0.4) / 4.3;
+        let months = (diffLbs / 0.4) / 4.3; // 200cal deficit
         
-        // Display Target Weight in correct unit
         let displayTargetWeight = Math.round(targetWeight);
         let weightUnit = "lbs";
         if (currentUnit === 'metric') {
@@ -965,15 +1003,12 @@
       }
 
       // -- Waist Timeline --
-      // Asian M < 35.5, F < 31.5. Standard M < 37 (Increased risk cutoff) or 40 (High), let's use lower bound of increased risk as "Normal" goal
-      // Standard M < 37? Actually IDF says >94cm (37) is increased. >102 (40) is high. 
-      // Let's aim for "Low Risk" cutoff. 
-      // Male Standard: 37. Female Standard: 31.5.
-      // Male Asian: 35.5. Female Asian: 31.5.
+      // Asian/Hispanic M < 35.5 (90cm), F < 31.5 (80cm)
+      // Standard/Middle Eastern M < 37 (94cm), F < 31.5 (80cm) - IDF European cutoffs
       
       if (waistIn) {
         let wTarget = 0;
-        if (gender === 'male') { wTarget = isAsian ? 35.5 : 37.0; } 
+        if (gender === 'male') { wTarget = isLowerCutoffGroup ? 35.5 : 37.0; } 
         else { wTarget = 31.5; }
         
         if (waistIn > wTarget) {
@@ -1011,13 +1046,45 @@
         }
       }
 
+      // -- Waist-to-Height Ratio (WHtR) Timeline --
+      // Goal: < 0.5
+      if (waistIn) {
+        let whtr = waistIn / heightInTotal;
+        whtr = parseFloat(whtr.toFixed(2));
+        
+        if (whtr >= 0.5) {
+          let targetWaist = heightInTotal * 0.5;
+          let diffIn = waistIn - targetWaist;
+          let lbsNeeded = diffIn * 5; // 5 lbs per inch heuristic
+          let months = (lbsNeeded / 0.4) / 4.3;
+          
+          timelineHtml += `
+            <div class="timeline-box">
+              <div class="timeline-header">
+                <span>📐</span> WHtR Goal
+              </div>
+              <div class="timeline-val-big">~${Math.ceil(months)} Months</div>
+              <div class="timeline-sub">To reach ratio < 0.5<br>(Current: ${whtr})</div>
+            </div>
+          `;
+        } else {
+          timelineHtml += `
+            <div class="timeline-box" style="border-left-color: var(--amh-accent-green); background: #f0fdf4;">
+              <div class="timeline-header" style="color: var(--amh-accent-green);">
+                <span>✅</span> WHtR Goal
+              </div>
+              <div class="timeline-val-big">Achieved</div>
+              <div class="timeline-sub">Ratio is healthy (${whtr})</div>
+            </div>
+          `;
+        }
+      }
+
       // -- Body Fat Timeline --
-      // Male Normal < 25%. Female Normal < 32% (ACE "Obese" cutoff)
       if (bodyFat) {
         let bfTarget = (gender === 'male') ? 24.9 : 31.9;
         if (bodyFat > bfTarget) {
           let diffBf = bodyFat - bfTarget;
-          // Heuristic: 2 lbs per 1%
           let lbsNeeded = diffBf * 2;
           let months = (lbsNeeded / 0.4) / 4.3;
           
@@ -1048,9 +1115,9 @@
 
       // 5. TABLE GENERATION LOGIC
       
-      // --- BMI TABLE (6 Categories) ---
+      // --- BMI TABLE ---
       let bmiRanges = [];
-      if (isAsian) {
+      if (isLowerCutoffGroup) {
         bmiRanges = [
           { name: "Underweight", max: 18.4, class: "row-blue", risk: "Nutritional Risk" },
           { name: "Normal Range", max: 22.9, class: "row-green", risk: "Low Risk" },
@@ -1087,7 +1154,7 @@
       document.getElementById('bmi-table-body').innerHTML = bmiHtml;
 
 
-      // --- WAIST TABLE (4 Categories) ---
+      // --- WAIST TABLE ---
       let waistHtml = "";
       if (waistIn) {
         let isMetric = currentUnit === 'metric';
@@ -1097,11 +1164,12 @@
         let cut1, cut2, cut3;
         
         if (gender === 'male') {
-          if (isAsian) { cut1=35.5; cut2=39.5; cut3=43.5; } 
+          // Asian/Hispanic vs Standard/Middle Eastern
+          if (isLowerCutoffGroup) { cut1=35.5; cut2=39.5; cut3=43.5; } 
           else { cut1=37.0; cut2=40.2; cut3=45.0; }
         } else {
-          // Female
-          if (isAsian) { cut1=31.5; cut2=35.5; cut3=39.5; }
+          // Female (Same for both usually, 80cm)
+          if (isLowerCutoffGroup) { cut1=31.5; cut2=35.5; cut3=39.5; }
           else { cut1=31.5; cut2=35.0; cut3=40.0; }
         }
 
@@ -1137,8 +1205,38 @@
         document.getElementById('waist-table-body').innerHTML = `<tr><td colspan="3" style="text-align:center; color:#888;">Enter waist size to see risk category</td></tr>`;
       }
 
+      // --- WHtR TABLE ---
+      let whtrHtml = "";
+      if (waistIn) {
+        let ratio = waistIn / heightInTotal;
+        let whtrRanges = [
+          { name: "Healthy", max: 0.49, class: "row-green", risk: "Low Cardiometabolic Risk" },
+          { name: "Increased Risk", max: 0.59, class: "row-yellow", risk: "Consider Action" },
+          { name: "High Risk", max: 999, class: "row-red", risk: "Take Action" }
+        ];
+        
+        let minR = 0;
+        whtrRanges.forEach(r => {
+          let isActive = (ratio >= minR && ratio <= r.max);
+          let label = r.max > 10 ? `≥ 0.60` : `${minR.toFixed(1)} – ${r.max}`;
+          if (r.name.includes("Healthy")) label = `< 0.50`;
+          
+          whtrHtml += `
+            <tr class="${r.class} ${isActive ? 'row-active' : ''}">
+              <td>${r.name}</td>
+              <td>${label}</td>
+              <td>${r.risk}</td>
+            </tr>
+          `;
+          minR = r.max + 0.01;
+        });
+        document.getElementById('whtr-table-body').innerHTML = whtrHtml;
+      } else {
+        document.getElementById('whtr-table-body').innerHTML = `<tr><td colspan="3" style="text-align:center; color:#888;">Enter waist size to see WHtR</td></tr>`;
+      }
 
-      // --- BODY FAT TABLE (6 Categories) ---
+
+      // --- BODY FAT TABLE ---
       let bfHtml = "";
       if (bodyFat) {
         let bfRanges = [];
