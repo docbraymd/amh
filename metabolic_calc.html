@@ -912,6 +912,31 @@
         source.style.width = "100%";
         source.style.background = "#ffffff"; // Force white background on container
 
+        // --- FIX FOR WHITEOUT & TRANSPARENCY ISSUES ---
+        
+        // Fix Header Gradient: Force solid dark background in clone
+        var header = source.querySelector('.amh-header');
+        if (header) {
+            header.style.background = "#2c3e50"; // Solid dark blue-gray
+            header.style.backgroundImage = "none"; 
+            header.style.color = "#ffffff";
+        }
+
+        // Fix Card Shadows: Remove shadows, add solid borders for definition
+        var elementsWithShadow = source.querySelectorAll('.metric-card, .timeline-box, .status-table-container, .alert-box, .ai-tip, .hand-card, .bmi-header-card');
+        elementsWithShadow.forEach(function(el) {
+            el.style.boxShadow = "none";
+            el.style.border = "1px solid #dddddd";
+            el.style.backgroundColor = "#ffffff"; // Force opaque background
+            if (el.classList.contains('timeline-box') || el.classList.contains('ai-tip')) {
+               el.style.backgroundColor = "#f0f4f8"; // Keep slight tint opaque
+            }
+            if (el.classList.contains('bmi-header-card')) {
+               el.style.backgroundColor = "#2c3e50"; // Dark for BMI card
+               el.style.color = "#ffffff";
+            }
+        });
+
         // 3. Wrap in a fixed-width container to ensure desktop layout in PDF
         var wrapper = document.createElement("div");
         wrapper.style.width = "800px"; // Force desktop width for PDF rendering
