@@ -5,8 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Metabolic Health Calculator | Archangel Michael Health</title>
 
+  <!-- html2pdf for one-click PDF download -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
   <style>
-    /* ARCHANGEL MICHAEL HEALTH - SHARED STYLES */
+    /* ARCHANGEL MICHAEL HEALTH - MERGED STYLES */
     :root {
       /* Brand Colors */
       --amh-primary-dark: #2c3e50;
@@ -47,17 +50,36 @@
       box-shadow: var(--amh-shadow);
       border-radius: var(--amh-radius);
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* Header */
-    header {
+    @media (max-width: 600px) {
+      .main-container { margin: 0; border-radius: 0; }
+    }
+
+    /* --- HEADER STYLES (Branded) --- */
+    .amh-header {
+      /* Reverting to branded gradient based on user feedback */
       background: var(--amh-bg-page);
       color: #ffffff;
-      padding: 30px 20px;
-      text-align: center;
       border-bottom: 5px solid var(--amh-accent-teal);
+      padding: 40px 30px;
+      text-align: center;
     }
-
+    .amh-header-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .amh-logo-wrap {
+      margin-bottom: 15px;
+    }
+    .amh-logo {
+      height: 80px;
+      width: auto;
+      /* Optional: Add slight drop shadow if logo is transparent PNG on dark bg */
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); 
+    }
     .doctor-tag {
       background: var(--amh-accent-teal);
       color: #ffffff;
@@ -70,18 +92,61 @@
       display: inline-block;
       margin-bottom: 10px;
     }
-
-    h1 { margin: 0; font-size: 2rem; font-weight: 800; }
-    h2 { margin: 5px 0 0; font-size: 1.1rem; font-weight: 300; opacity: 0.9; text-transform: uppercase; letter-spacing: 1.5px; }
-
-    /* Content */
-    .content-body { padding: 40px; }
-    
-    @media (max-width: 600px) {
-      .content-body { padding: 20px; }
-      .main-container { margin: 0; border-radius: 0; }
+    .amh-title {
+      margin: 0.2em 0;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #ffffff; /* White text on dark header */
+      line-height: 1.2;
     }
+    .amh-tagline {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.9); /* Soft white */
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .byline {
+      margin-top: 10px;
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.7);
+      font-style: italic;
+    }
+    .amh-actions {
+      margin-top: 25px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+    .amh-btn {
+      appearance: none;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .amh-btn-primary {
+      background: var(--amh-accent-teal);
+      color: #fff;
+    }
+    .amh-btn-primary:hover { background: #138a72; }
+    .amh-btn-secondary {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .amh-btn-secondary:hover { background: rgba(255, 255, 255, 0.25); }
 
+    /* Content Area */
+    .content-body { padding: 40px; }
+    @media (max-width: 600px) { .content-body { padding: 20px; } }
+
+    /* --- CALCULATOR SPECIFIC STYLES --- */
+    
     /* Unit Toggle */
     .unit-toggle-container {
       display: flex;
@@ -116,7 +181,6 @@
       gap: 20px;
       margin-bottom: 25px;
     }
-    
     @media (max-width: 600px) { .calc-grid { grid-template-columns: 1fr; } }
 
     .input-group { margin-bottom: 15px; }
@@ -128,9 +192,9 @@
       border-radius: 6px;
       font-size: 1rem;
       font-family: inherit;
+      box-sizing: border-box;
     }
     .input-group select { cursor: pointer; }
-
     .optional-tag { font-size: 0.8em; color: #888; font-weight: 400; margin-left: 5px; }
 
     .btn-calculate {
@@ -154,16 +218,38 @@
       margin-top: 40px;
       animation: fadeIn 0.5s ease;
     }
-
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
+    /* BMI Display */
+    .bmi-header-card {
+      background: var(--amh-primary-dark);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .bmi-value-large {
+      font-size: 3rem;
+      font-weight: 900;
+      line-height: 1;
+      margin: 10px 0;
+    }
+    .bmi-label-large {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.9;
+    }
+
+    /* Metrics Grid */
     .result-cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
       margin-bottom: 30px;
     }
-
     .metric-card {
       background: var(--amh-bg-soft);
       border: 1px solid #eee;
@@ -172,12 +258,10 @@
       border-radius: 8px;
       text-align: center;
     }
-    
     .metric-card.highlight {
       background: #e8f6f3;
       border-color: var(--amh-accent-teal);
     }
-
     .metric-title { font-size: 0.85rem; text-transform: uppercase; color: #666; font-weight: 700; letter-spacing: 0.5px; }
     .metric-value { font-size: 2.2rem; font-weight: 800; color: var(--amh-primary-dark); margin: 10px 0; }
     .metric-sub { font-size: 0.9rem; color: #666; }
@@ -207,14 +291,12 @@
       gap: 30px;
       margin-top: 30px;
     }
-
     .status-table-container {
       border: 1px solid #e0e0e0;
       border-radius: 8px;
       overflow: hidden;
       box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     }
-    
     .table-header {
       background: var(--amh-primary-dark);
       color: white;
@@ -224,7 +306,6 @@
       font-size: 0.9rem;
       letter-spacing: 0.5px;
     }
-
     .status-table {
       width: 100%;
       border-collapse: collapse;
@@ -241,13 +322,11 @@
       font-weight: 700;
       font-size: 0.85rem;
     }
-    
-    /* Row Colors */
     .row-green { background-color: rgba(39, 174, 96, 0.1); border-left: 5px solid #27ae60; }
     .row-yellow { background-color: rgba(243, 156, 18, 0.1); border-left: 5px solid #f39c12; }
     .row-red { background-color: rgba(231, 76, 60, 0.1); border-left: 5px solid #e74c3c; }
-    .row-blue { background-color: rgba(52, 152, 219, 0.1); border-left: 5px solid #3498db; } /* Underweight */
-
+    .row-blue { background-color: rgba(52, 152, 219, 0.1); border-left: 5px solid #3498db; }
+    
     .row-active {
       box-shadow: inset 0 0 0 2px var(--amh-primary-dark);
       font-weight: 700;
@@ -264,6 +343,40 @@
       padding: 2px 8px;
       border-radius: 4px;
       font-size: 0.7rem;
+    }
+
+    /* TIMELINE BOX */
+    .timeline-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .timeline-box {
+      background: #eef2ff;
+      border: 1px solid #dbeafe;
+      border-left: 5px solid var(--amh-accent-indigo);
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .timeline-header {
+      font-weight: 700;
+      color: var(--amh-accent-indigo);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+    }
+    .timeline-val-big {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--amh-primary-dark);
+      margin: 5px 0;
+    }
+    .timeline-sub {
+      font-size: 0.85rem;
+      color: #666;
     }
 
     /* Educational Sections */
@@ -311,26 +424,76 @@
     }
     .ai-icon { font-size: 1.5rem; color: var(--amh-accent-indigo); }
     
+    /* Footer Standard */
+    .amh-footer {
+      background: var(--amh-bg-soft);
+      border-top: 1px solid #e0e0e0;
+      padding: 40px 30px;
+      font-size: 0.85rem;
+      color: var(--amh-text-soft);
+      text-align: center;
+      margin-top: auto;
+    }
+    .amh-disclaimer {
+      max-width: 800px;
+      margin: 0 auto 20px auto;
+      line-height: 1.5;
+    }
+    .amh-footer-meta {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      color: #999;
+    }
+    .amh-dot { color: #ccc; }
+
     /* Helpers */
     .hidden { display: none; }
+    
+    /* Print Hiding */
+    @media print {
+      .no-print { display: none !important; }
+      .amh-page { box-shadow: none; margin: 0; max-width: 100%; border-radius: 0; }
+    }
   </style>
 </head>
 <body>
 
-  <div class="main-container">
-    <header>
-      <div class="doctor-tag">Archangel Michael Health</div>
-      <h1>Metabolic Calculator</h1>
-      <h2>Science-Based Energy Expenditure Estimation</h2>
+  <!-- Main Container with ID for PDF Generation -->
+  <div class="amh-page main-container" id="pdf-root" role="document">
+    
+    <!-- HEADER -->
+    <header class="amh-header">
+      <div class="amh-header-inner amh-header-centered">
+        <div class="amh-logo-wrap">
+          <!-- Logo Placeholder or Image -->
+          <img class="amh-logo" src="https://docbraymd.github.io/amh/AMHLogo.png" alt="Archangel Michael Health logo" />
+        </div>
+
+        <div class="amh-practice doctor-tag">Archangel Michael Health</div>
+
+        <h1 class="amh-title" id="page-title">Metabolic Health Calculator</h1>
+        <h2 class="amh-tagline">Science-Based Energy Expenditure Estimation</h2>
+        <div class="byline">by Christopher L. Bray MD PhD</div>
+
+        <div class="action-bar amh-actions no-print" aria-label="Actions">
+          <button class="amh-btn amh-btn-secondary" type="button" onclick="window.print()">
+            Print / Save as PDF
+          </button>
+          <button class="amh-btn amh-btn-primary" id="downloadPdfBtn" type="button">
+            Download PDF
+          </button>
+        </div>
+      </div>
     </header>
 
-    <div class="content-body">
+    <div class="amh-content content-body">
       <p style="text-align: center; margin-bottom: 20px;">
         Use this tool to estimate your <strong>Basal Metabolic Rate (BMR)</strong> and see exactly where you stand on clinical health charts normed for your background.
       </p>
 
       <!-- Unit Toggle -->
-      <div class="unit-toggle-container">
+      <div class="unit-toggle-container no-print">
         <div class="unit-toggle">
           <div class="unit-option active" id="btn-us" onclick="setUnits('us')">US (Lbs, Ft/In)</div>
           <div class="unit-option" id="btn-metric" onclick="setUnits('metric')">Metric (Kg, Cm)</div>
@@ -338,7 +501,7 @@
       </div>
 
       <!-- CALCULATOR FORM -->
-      <form id="metabolicForm" onsubmit="calculateMetabolism(event)">
+      <form id="metabolicForm" class="no-print" onsubmit="calculateMetabolism(event)">
         <div class="calc-grid">
           
           <!-- Column 1 -->
@@ -433,11 +596,18 @@
       <!-- RESULTS SECTION (Hidden initially) -->
       <div id="results-area">
         
+        <!-- BMI LARGE DISPLAY -->
+        <div class="bmi-header-card">
+          <div class="bmi-label-large">Your Calculated BMI</div>
+          <div class="bmi-value-large" id="bmi-display-val">--</div>
+          <div id="bmi-category-text" style="font-size:1.1rem; opacity:0.9;"></div>
+        </div>
+
         <!-- VISUAL BREAKDOWN -->
         <div class="edu-section" style="margin-top: 0; padding-top: 0; border: none;">
           <h3 style="text-align: center;">Your Daily Energy Breakdown</h3>
           <p style="text-align: center; font-size: 0.9rem; color: #666; max-width: 600px; margin: 0 auto 20px auto;">
-            This bar shows how you burn calories. <strong>BMR</strong> is just staying alive. Exercise adds to the top but cannot replace a foundational diet.
+            This bar shows how you burn calories. <strong>BMR</strong> is the energy used just to stay alive. <strong>TEF</strong> (Thermic Effect of Food) is the energy used to digest and metabolize your meals. <strong>Activity</strong> is intentional exercise plus daily movement.
           </p>
 
           <div class="expenditure-visual" id="barChart">
@@ -470,7 +640,19 @@
         </div>
 
         <div class="alert-box">
-          <strong>Dr. Bray's Clinical Warning:</strong> Do not restrict calories below your BMR (approx. <span id="text-bmr">--</span> calories) for extended periods. Chronic severe restriction causes "metabolic adaptation," leading to plateaus and rapid regain.
+          <strong>Dr. Bray's Clinical Warning:</strong> Do not restrict calories below your BMR (approx. <span id="text-bmr">--</span>) for extended periods. Chronic severe restriction causes "metabolic adaptation," leading to plateaus and rapid regain.
+        </div>
+
+        <!-- GOAL TIMELINES -->
+        <div class="edu-section" id="goals-section">
+          <h3>Estimated Time to Reach Normal Ranges</h3>
+          <p style="font-size:0.9rem; color:#666;">
+            Estimates assume a consistent 200 calorie/day deficit (approx 0.4 lbs loss/week). This conservative pace preserves metabolic health.
+          </p>
+          
+          <div class="timeline-container" id="timeline-container">
+            <!-- JS will inject boxes here -->
+          </div>
         </div>
 
         <!-- TABLES SECTION -->
@@ -568,11 +750,94 @@
           </div>
         </div>
 
-      </div> <!-- End Results Area -->
-    </div>
-  </div>
+      </div> 
+      <!-- End Content Body -->
+
+      <!-- STANDARD FOOTER -->
+      <footer class="amh-footer">
+        <div class="amh-disclaimer medical-disclaimer">
+          <p><strong>Medical disclaimer:</strong> The information on this page is provided for general educational purposes only and is not medical advice. It is not intended to diagnose, treat, cure, or prevent any disease, and it does not establish a physician–patient relationship.</p>
+          <p>Do not apply this information to your specific situation without the oversight of a qualified clinician who can consider your full health history, medications, goals, preferences, and limitations. If you have urgent or severe symptoms, seek emergency care.</p>
+          <p style="margin: 0;"><strong>Copyright:</strong> © Dr. Bray at Archangel Michael Health <span id="amh-year">2025</span></p>
+        </div>
+
+        <div class="amh-footer-meta">
+          <span><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine</span>
+          <span class="amh-dot">•</span>
+          <span><strong>Last updated:</strong> <span id="amh-last-updated">—</span></span>
+        </div>
+      </footer>
+
+    </div> 
+    <!-- End Page Container -->
 
   <script>
+    // --- UTILITY: Dynamic Dates ---
+    (function () {
+      var yearEl = document.getElementById("amh-year");
+      if (yearEl) { try { yearEl.textContent = String(new Date().getFullYear()); } catch (e) {} }
+      var updatedEl = document.getElementById("amh-last-updated");
+      if (updatedEl) {
+        var d = new Date();
+        var yyyy = d.getFullYear();
+        var mm = String(d.getMonth() + 1).padStart(2, "0");
+        var dd = String(d.getDate()).padStart(2, "0");
+        updatedEl.textContent = yyyy + "-" + mm + "-" + dd;
+      }
+    })();
+
+    // --- PDF GENERATION LOGIC ---
+    var btn = document.getElementById("downloadPdfBtn");
+    if (btn) {
+      function safeFilename(title) {
+        return (title || "patient-guide").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+      }
+
+      btn.addEventListener("click", function () {
+        if (typeof html2pdf === "undefined") {
+          alert("PDF generator is still loading. Please try again in a moment, or use Print / Save as PDF.");
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = "Preparing PDF...";
+
+        var title = (document.getElementById("page-title") && document.getElementById("page-title").textContent) || "Metabolic Calculator";
+        var filename = safeFilename(title) + ".pdf";
+
+        // Clone content for PDF and remove UI elements
+        var source = document.getElementById("pdf-root").cloneNode(true);
+        source.querySelectorAll(".no-print").forEach(function (el) { el.remove(); });
+
+        var wrapper = document.createElement("div");
+        wrapper.style.background = "#ffffff";
+        wrapper.appendChild(source);
+
+        var opt = {
+          margin: [0.3, 0.3, 0.4, 0.3], // inches
+          filename: filename,
+          image: { type: "jpeg", quality: 0.98 },
+          html2canvas: { scale: 2, useCORS: true, letterRendering: true },
+          jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+          pagebreak: { mode: ["css", "legacy"] }
+        };
+
+        html2pdf()
+          .set(opt)
+          .from(wrapper)
+          .save()
+          .catch(function (err) {
+            console.error(err);
+            alert("Could not generate the PDF in this browser. Please use Print / Save as PDF.");
+          })
+          .finally(function () {
+            btn.disabled = false;
+            btn.textContent = "Download PDF";
+          });
+      });
+    }
+
+    // --- CALCULATOR LOGIC ---
     let currentUnit = 'us'; // 'us' or 'metric'
 
     function setUnits(unit) {
@@ -629,32 +894,162 @@
       const tef = tdee * 0.10;
       const activityCals = tdee - bmr - tef;
 
-      document.getElementById('val-maint').textContent = Math.round(tdee);
-      document.getElementById('val-200').textContent = Math.round(tdee - 200);
-      document.getElementById('val-500').textContent = Math.round(tdee - 500);
-      document.getElementById('text-bmr').textContent = Math.round(bmr);
+      document.getElementById('val-maint').textContent = Math.round(tdee) + " kcal";
+      document.getElementById('val-200').textContent = Math.round(tdee - 200) + " kcal";
+      document.getElementById('val-500').textContent = Math.round(tdee - 500) + " kcal";
+      document.getElementById('text-bmr').textContent = Math.round(bmr) + " kcal";
 
       const total = tdee;
       const pctBmr = (bmr / total) * 100;
       const pctTef = (tef / total) * 100;
       const pctAct = (activityCals / total) * 100;
       document.getElementById('barChart').innerHTML = `
-        <div class="bar-bmr" style="width: ${pctBmr}%">BMR ${Math.round(bmr)}</div>
+        <div class="bar-bmr" style="width: ${pctBmr}%">BMR ${Math.round(bmr)} kcal</div>
         <div class="bar-tef" style="width: ${pctTef}%">TEF</div>
-        <div class="bar-neat" style="width: ${pctAct}%">Move ${Math.round(activityCals)}</div>
+        <div class="bar-neat" style="width: ${pctAct}%">Move ${Math.round(activityCals)} kcal</div>
       `;
 
-      // 3. TABLE GENERATION LOGIC
+      // 3. BMI CALC & DISPLAY
       let bmi = (703 * weightLbs) / (heightInTotal * heightInTotal);
       bmi = parseFloat(bmi.toFixed(1));
-
-      // --- BMI TABLE (6 Categories) ---
-      // Asian cutoffs: Normal <23, Overweight 23-24.9, Obese I 25-29.9, Obese II 30-34.9, Obese III >=35
-      // Standard: Normal <25, Overweight 25-29.9, Obese I 30-34.9, Obese II 35-39.9, Obese III >=40
       
-      let isAsian = (race.includes('asian'));
-      let bmiRanges = [];
+      document.getElementById('bmi-display-val').textContent = bmi;
 
+      // 4. TIMELINES
+      // Logic: 200 cal deficit = ~0.4 lbs loss per week
+      // Weight loss rate: 0.4 lbs / week -> ~1.7 lbs / month
+      // Waist Heuristic: ~5 lbs loss = 1 inch off waist
+      // BF% Heuristic: ~2 lbs loss = 1% drop in BF (conservative mix of lean/fat loss)
+
+      let timelineHtml = "";
+      
+      // -- BMI Timeline --
+      // Asian Normal < 23, Standard < 25
+      let isAsian = (race.includes('asian'));
+      let bmiTarget = isAsian ? 22.9 : 24.9;
+      
+      if (bmi > bmiTarget) {
+        let targetWeight = (bmiTarget * heightInTotal * heightInTotal) / 703;
+        let diffLbs = weightLbs - targetWeight;
+        let months = (diffLbs / 0.4) / 4.3;
+        
+        // Display Target Weight in correct unit
+        let displayTargetWeight = Math.round(targetWeight);
+        let weightUnit = "lbs";
+        if (currentUnit === 'metric') {
+            displayTargetWeight = Math.round(targetWeight / 2.20462);
+            weightUnit = "kg";
+        }
+        
+        timelineHtml += `
+          <div class="timeline-box">
+            <div class="timeline-header">
+              <span>📉</span> BMI Goal
+            </div>
+            <div class="timeline-val-big">~${Math.ceil(months)} Months</div>
+            <div class="timeline-sub">To reach Normal BMI (${bmiTarget})<br>Target Weight: ${displayTargetWeight} ${weightUnit}</div>
+          </div>
+        `;
+        document.getElementById('bmi-category-text').textContent = "Above Normal Range";
+      } else {
+        document.getElementById('bmi-category-text').textContent = "Normal Range";
+        timelineHtml += `
+          <div class="timeline-box" style="border-left-color: var(--amh-accent-green); background: #f0fdf4;">
+            <div class="timeline-header" style="color: var(--amh-accent-green);">
+              <span>✅</span> BMI Goal
+            </div>
+            <div class="timeline-val-big">Achieved</div>
+            <div class="timeline-sub">You are in the normal range</div>
+          </div>
+        `;
+      }
+
+      // -- Waist Timeline --
+      // Asian M < 35.5, F < 31.5. Standard M < 37 (Increased risk cutoff) or 40 (High), let's use lower bound of increased risk as "Normal" goal
+      // Standard M < 37? Actually IDF says >94cm (37) is increased. >102 (40) is high. 
+      // Let's aim for "Low Risk" cutoff. 
+      // Male Standard: 37. Female Standard: 31.5.
+      // Male Asian: 35.5. Female Asian: 31.5.
+      
+      if (waistIn) {
+        let wTarget = 0;
+        if (gender === 'male') { wTarget = isAsian ? 35.5 : 37.0; } 
+        else { wTarget = 31.5; }
+        
+        if (waistIn > wTarget) {
+          let diffIn = waistIn - wTarget;
+          // Heuristic: 5 lbs per inch
+          let lbsNeeded = diffIn * 5; 
+          let months = (lbsNeeded / 0.4) / 4.3;
+          
+          let displayTargetWaist = wTarget;
+          let unitLabel = "in";
+          if (currentUnit === 'metric') {
+             displayTargetWaist = (wTarget * 2.54).toFixed(1);
+             unitLabel = "cm";
+          }
+          
+          timelineHtml += `
+            <div class="timeline-box">
+              <div class="timeline-header">
+                <span>📏</span> Waist Goal
+              </div>
+              <div class="timeline-val-big">~${Math.ceil(months)} Months</div>
+              <div class="timeline-sub">To reach Normal Waist (< ${displayTargetWaist} ${unitLabel})</div>
+            </div>
+          `;
+        } else {
+           timelineHtml += `
+            <div class="timeline-box" style="border-left-color: var(--amh-accent-green); background: #f0fdf4;">
+              <div class="timeline-header" style="color: var(--amh-accent-green);">
+                <span>✅</span> Waist Goal
+              </div>
+              <div class="timeline-val-big">Achieved</div>
+              <div class="timeline-sub">Your waist is in normal range</div>
+            </div>
+          `;
+        }
+      }
+
+      // -- Body Fat Timeline --
+      // Male Normal < 25%. Female Normal < 32% (ACE "Obese" cutoff)
+      if (bodyFat) {
+        let bfTarget = (gender === 'male') ? 24.9 : 31.9;
+        if (bodyFat > bfTarget) {
+          let diffBf = bodyFat - bfTarget;
+          // Heuristic: 2 lbs per 1%
+          let lbsNeeded = diffBf * 2;
+          let months = (lbsNeeded / 0.4) / 4.3;
+          
+          timelineHtml += `
+            <div class="timeline-box">
+              <div class="timeline-header">
+                <span>💪</span> Body Fat Goal
+              </div>
+              <div class="timeline-val-big">~${Math.ceil(months)} Months</div>
+              <div class="timeline-sub">To reach Normal Body Fat (< ${Math.ceil(bfTarget)}%)</div>
+            </div>
+          `;
+        } else {
+          timelineHtml += `
+            <div class="timeline-box" style="border-left-color: var(--amh-accent-green); background: #f0fdf4;">
+              <div class="timeline-header" style="color: var(--amh-accent-green);">
+                <span>✅</span> Body Fat Goal
+              </div>
+              <div class="timeline-val-big">Achieved</div>
+              <div class="timeline-sub">Your body fat is in normal range</div>
+            </div>
+          `;
+        }
+      }
+
+      document.getElementById('timeline-container').innerHTML = timelineHtml;
+
+
+      // 5. TABLE GENERATION LOGIC
+      
+      // --- BMI TABLE (6 Categories) ---
+      let bmiRanges = [];
       if (isAsian) {
         bmiRanges = [
           { name: "Underweight", max: 18.4, class: "row-blue", risk: "Nutritional Risk" },
@@ -687,31 +1082,18 @@
             <td>${r.risk}</td>
           </tr>
         `;
-        minVal = (r.max + 0.1).toFixed(1); // Set next min
+        minVal = (r.max + 0.1).toFixed(1); 
       });
       document.getElementById('bmi-table-body').innerHTML = bmiHtml;
 
 
       // --- WAIST TABLE (4 Categories) ---
-      // Use IDF-based granularity for 4 tiers: Normal, Increased, High, Very High
-      // Asian M: <90, 90-100, >100.
-      // Asian F: <80, 80-90, >90.
-      // Standard M: <94, 94-102, 102-115, >115
-      
       let waistHtml = "";
       if (waistIn) {
-        let waistRanges = [];
-        // Unit conversion for display consistency
         let isMetric = currentUnit === 'metric';
         let val = isMetric ? (waistIn * 2.54) : waistIn;
         val = parseFloat(val.toFixed(1));
 
-        // Cutoffs in INCHES for logic simplicity, displayed in user unit
-        // Standard M: <37, 37-40, 40-45, >45
-        // Standard F: <31.5, 31.5-35, 35-40, >40
-        // Asian M: <35.5, 35.5-39, 39-43, >43 (Approx)
-        // Asian F: <31.5, 31.5-35, 35-39, >39
-        
         let cut1, cut2, cut3;
         
         if (gender === 'male') {
@@ -723,13 +1105,12 @@
           else { cut1=31.5; cut2=35.0; cut3=40.0; }
         }
 
-        // Convert cutoffs to metric if needed for display
         let dCut1 = isMetric ? (cut1 * 2.54).toFixed(1) : cut1;
         let dCut2 = isMetric ? (cut2 * 2.54).toFixed(1) : cut2;
         let dCut3 = isMetric ? (cut3 * 2.54).toFixed(1) : cut3;
         let unitLabel = isMetric ? 'cm' : 'in';
 
-        waistRanges = [
+        let waistRanges = [
           { name: "Normal / Low Risk", max: cut1, display: `< ${dCut1} ${unitLabel}`, class: "row-green", risk: "Healthy" },
           { name: "Increased Risk", max: cut2, display: `${dCut1} – ${dCut2} ${unitLabel}`, class: "row-yellow", risk: "Caution" },
           { name: "High Risk", max: cut3, display: `${dCut2} – ${dCut3} ${unitLabel}`, class: "row-red", risk: "Warning" },
@@ -739,9 +1120,8 @@
         let wMin = 0;
         waistRanges.forEach(r => {
           let isActive = (waistIn > wMin && waistIn <= r.max);
-          // Special logic for first/last
           if (r.name.includes("Normal")) isActive = waistIn <= r.max;
-          if (r.name.includes("Very High")) isActive = waistIn > (isAsian ? cut3 : cut3); // Simplified
+          if (r.name.includes("Very High")) isActive = waistIn > cut3; 
 
           waistHtml += `
             <tr class="${r.class} ${isActive ? 'row-active' : ''}">
@@ -759,9 +1139,6 @@
 
 
       // --- BODY FAT TABLE (6 Categories) ---
-      // Male: Essential(2-5), Athletic(6-13), Fitness(14-17), Average(18-24), Overfat(25-29), Obese(30+)
-      // Female: Essential(10-13), Athletic(14-20), Fitness(21-24), Average(25-31), Overfat(32-36), Obese(37+)
-      
       let bfHtml = "";
       if (bodyFat) {
         let bfRanges = [];
