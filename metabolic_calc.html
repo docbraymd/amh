@@ -484,7 +484,7 @@
         print-color-adjust: exact;
       }
       /* Compact spacing for print to fit more per page */
-      .input-group, .btn-calculate { display: none; } /* Hide input form in print if desired, currently user wants results */
+      .input-group, .btn-calculate { display: none; } /* Hide input form in print */
       
       /* Avoid breaking critical elements */
       .metric-card, .timeline-box, .status-table-container, .hand-card, .bmi-header-card {
@@ -499,7 +499,7 @@
         gap: 10px;
       }
       .metric-card, .timeline-box, .hand-card {
-        flex: 1 1 45%; /* Force ~2 columns */
+        flex: 1 1 45%; 
         min-width: 250px;
       }
     }
@@ -900,20 +900,42 @@
         var title = (document.getElementById("page-title") && document.getElementById("page-title").textContent) || "Metabolic Calculator";
         var filename = safeFilename(title) + ".pdf";
 
-        // Clone content for PDF and remove UI elements
+        // 1. Clone content for PDF and remove UI elements
         var source = document.getElementById("pdf-root").cloneNode(true);
         source.querySelectorAll(".no-print").forEach(function (el) { el.remove(); });
+        
+        // 2. Prepare the clone specifically for rendering
+        source.style.margin = "0";
+        source.style.padding = "0";
+        source.style.boxShadow = "none";
+        source.style.maxWidth = "100%";
+        source.style.width = "100%";
+        source.style.background = "#ffffff"; // Force white background on container
 
+        // 3. Wrap in a fixed-width container to ensure desktop layout in PDF
         var wrapper = document.createElement("div");
+        wrapper.style.width = "800px"; // Force desktop width for PDF rendering
         wrapper.style.background = "#ffffff";
+        wrapper.style.padding = "20px";
         wrapper.appendChild(source);
+        
+        // 4. Temporarily append to body to ensure layout computes correctly (hidden)
+        wrapper.style.position = "absolute";
+        wrapper.style.left = "-9999px";
+        wrapper.style.top = "0";
+        document.body.appendChild(wrapper);
 
-        // Optimized for single-column print readability
+        // 5. Generate PDF
         var opt = {
-          margin: [0.3, 0.3, 0.4, 0.3], 
+          margin: [0.3, 0.3, 0.4, 0.3], // inches
           filename: filename,
           image: { type: "jpeg", quality: 0.98 },
-          html2canvas: { scale: 2, useCORS: true, letterRendering: true },
+          html2canvas: { 
+            scale: 2, 
+            useCORS: true, 
+            letterRendering: true,
+            backgroundColor: "#ffffff" // CRITICAL: Fixes "gray/white overlay" issue
+          },
           jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
           pagebreak: { mode: ["css", "legacy"] }
         };
@@ -922,11 +944,15 @@
           .set(opt)
           .from(wrapper)
           .save()
+          .then(function() {
+             document.body.removeChild(wrapper); // Cleanup
+             btn.disabled = false;
+             btn.textContent = "Download PDF";
+          })
           .catch(function (err) {
             console.error(err);
+            if(document.body.contains(wrapper)) document.body.removeChild(wrapper);
             alert("Could not generate the PDF in this browser. Please use Print / Save as PDF.");
-          })
-          .finally(function () {
             btn.disabled = false;
             btn.textContent = "Download PDF";
           });
