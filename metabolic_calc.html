@@ -859,7 +859,8 @@
         <div class="amh-footer-meta">
           <span><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine</span>
           <span class="amh-dot">•</span>
-          <span><strong>Last updated:</strong> <span id="amh-last-updated">—</span></span>
+          <span><strong>Last updated:</strong> <span id="amh-last-updated">2025-12-30</span></span>
+//          <span><strong>Last updated:</strong> <span id="amh-last-updated">—</span></span>
         </div>
       </footer>
 
@@ -871,14 +872,14 @@
     (function () {
       var yearEl = document.getElementById("amh-year");
       if (yearEl) { try { yearEl.textContent = String(new Date().getFullYear()); } catch (e) {} }
-      var updatedEl = document.getElementById("amh-last-updated");
-      if (updatedEl) {
-        var d = new Date();
-        var yyyy = d.getFullYear();
-        var mm = String(d.getMonth() + 1).padStart(2, "0");
-        var dd = String(d.getDate()).padStart(2, "0");
-        updatedEl.textContent = yyyy + "-" + mm + "-" + dd;
-      }
+//      var updatedEl = document.getElementById("amh-last-updated");
+//      if (updatedEl) {
+//        var d = new Date();
+//        var yyyy = d.getFullYear();
+//        var mm = String(d.getMonth() + 1).padStart(2, "0");
+//        var dd = String(d.getDate()).padStart(2, "0");
+//        updatedEl.textContent = yyyy + "-" + mm + "-" + dd;
+//      }
     })();
 
     // --- CALCULATOR LOGIC ---
@@ -1292,4 +1293,5 @@
   </script>
 </body>
 </html>
+
 
