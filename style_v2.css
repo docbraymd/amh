@@ -130,6 +130,7 @@ header .doctor-tag,
   display: inline-block;
   margin-top: 12px;
   letter-spacing: 0.2px;
+  text-decoration: none;
 }
 
 /* Titles */
