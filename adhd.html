@@ -466,7 +466,6 @@
   </div>
 
   <script>
-    (
     (function () {
       // 1. Update Copyright Year automatically
       var yearEl = document.getElementById("amh-year");
@@ -487,7 +486,7 @@
         
         updatedEl.textContent = yyyy + "-" + mm + "-" + dd;
       }
-    }
+    })();
 
       // ---- TOC scrolling (supports both anchor links and data-scroll buttons) ----
       function scrollToId(id) {
@@ -572,5 +571,6 @@
   </script>
 </body>
 </html>
+
 
 
