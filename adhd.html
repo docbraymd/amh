@@ -466,26 +466,28 @@
   </div>
 
   <script>
+    (
     (function () {
-      // ---- Last updated + year ----
+      // 1. Update Copyright Year automatically
       var yearEl = document.getElementById("amh-year");
-      if (yearEl) {
-        try { yearEl.textContent = String(new Date().getFullYear()); } catch (e) {}
-      }
+      if (yearEl) { try { yearEl.textContent = String(new Date().getFullYear()); } catch (e) {} }
 
+      // 2. Update "Last Updated" based on Server File Date
       var updatedEl = document.getElementById("amh-last-updated");
       if (updatedEl) {
-        var lm = document.lastModified; // usually reflects server file Last-Modified (works well on GitHub Pages)
-        var d = lm ? new Date(lm) : null;
-        if (d && !isNaN(d.getTime())) {
-          var yyyy = d.getFullYear();
-          var mm = String(d.getMonth() + 1).padStart(2, "0");
-          var dd = String(d.getDate()).padStart(2, "0");
-          updatedEl.textContent = yyyy + "-" + mm + "-" + dd;
-        } else {
-          updatedEl.textContent = "—";
-        }
+        // document.lastModified fetches the date the file was deployed to GitHub Pages
+        var d = new Date(document.lastModified);
+
+        // Safety check: If for some reason the date is invalid (e.g. local testing), use today
+        if (isNaN(d.getTime())) { d = new Date(); }
+
+        var yyyy = d.getFullYear();
+        var mm = String(d.getMonth() + 1).padStart(2, "0");
+        var dd = String(d.getDate()).padStart(2, "0");
+        
+        updatedEl.textContent = yyyy + "-" + mm + "-" + dd;
       }
+    }
 
       // ---- TOC scrolling (supports both anchor links and data-scroll buttons) ----
       function scrollToId(id) {
@@ -570,4 +572,5 @@
   </script>
 </body>
 </html>
+
 
