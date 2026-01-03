@@ -630,6 +630,63 @@ footer,
       .lifestyle-table td.lt-rec::before { content: "Recommendation"; display: block; font-weight: 900; color: #666; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
     }
 
+    /* General-purpose data table (used by ana.html and similar) */
+    .amh-table-wrap {
+      overflow-x: auto;
+      margin: 18px 0 26px 0;
+      border: 1px solid var(--amh-border);
+      border-radius: var(--amh-radius);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+    .amh-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+      background: #fff;
+    }
+    .amh-table th {
+      background: var(--amh-primary-dark);
+      color: #ffffff;
+      font-weight: 700;
+      text-align: left;
+      padding: 14px 12px;
+      border-bottom: 2px solid var(--amh-primary-light);
+      border-right: 1px solid var(--amh-primary-light);
+    }
+    .amh-table th:last-child {
+      border-right: none;
+    }
+    .amh-table td {
+      padding: 12px;
+      border-bottom: 1px solid var(--amh-border);
+      border-right: 1px solid #eee;
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    .amh-table td:last-child {
+      border-right: none;
+    }
+    .amh-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+    .amh-table tbody tr:nth-child(odd) {
+      background-color: #ffffff;
+    }
+    .amh-table tbody tr:nth-child(even) {
+      background-color: #f8f9fa;
+    }
+    @media print {
+      .amh-table th {
+        background: var(--amh-primary-dark) !important;
+        color: #fff !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .amh-table-wrap {
+        box-shadow: none;
+      }
+    }
+
 /* ============ Image Lightbox ============ */
 /* Figure container for images with optional captions */
 .amh-figure {
