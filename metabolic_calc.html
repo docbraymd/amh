@@ -871,14 +871,19 @@
     (function () {
       var yearEl = document.getElementById("amh-year");
       if (yearEl) { try { yearEl.textContent = String(new Date().getFullYear()); } catch (e) {} }
-//      var updatedEl = document.getElementById("amh-last-updated");
-//      if (updatedEl) {
-//        var d = new Date();
-//        var yyyy = d.getFullYear();
-//        var mm = String(d.getMonth() + 1).padStart(2, "0");
-//        var dd = String(d.getDate()).padStart(2, "0");
-//        updatedEl.textContent = yyyy + "-" + mm + "-" + dd;
-//      }
+      var updatedEl = document.getElementById("amh-last-updated");
+      if (updatedEl) {
+        var lm = document.lastModified;
+        var d = lm ? new Date(lm) : null;
+        if (d && !isNaN(d.getTime())) {
+          var yyyy = d.getFullYear();
+          var mm = String(d.getMonth() + 1).padStart(2, "0");
+          var dd = String(d.getDate()).padStart(2, "0");
+          updatedEl.textContent = yyyy + "-" + mm + "-" + dd;
+        } else {
+          updatedEl.textContent = "—";
+        }
+      }
     })();
 
     // --- CALCULATOR LOGIC ---

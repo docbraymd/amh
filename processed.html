@@ -10,45 +10,6 @@
 
   <!-- PDF export helper -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
-
-  <style>
-    /* Simple image lightbox (page-local) */
-    .amh-img-thumb img { cursor: zoom-in; }
-    dialog.amh-lightbox {
-      padding: 0;
-      border: none;
-      background: transparent;
-      max-width: 96vw;
-      width: 96vw;
-    }
-    dialog.amh-lightbox::backdrop { background: rgba(0, 0, 0, 0.75); }
-
-    .amh-lightbox img {
-      display: block;
-      margin: 0 auto;
-      max-width: 96vw;
-      max-height: 88vh;
-      border-radius: 12px;
-      background: #fff;
-    }
-
-    .amh-lightbox-close {
-      position: fixed;
-      top: 12px;
-      right: 14px;
-      width: 44px;
-      height: 44px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.25);
-      background: rgba(0,0,0,0.55);
-      color: #fff;
-      font-size: 28px;
-      line-height: 40px;
-      cursor: pointer;
-    }
-    .amh-lightbox-close:focus { outline: 2px solid rgba(255,255,255,0.7); outline-offset: 2px; }
-  </style>
 </head>
 
 <body>
@@ -59,7 +20,7 @@
           <img class="amh-logo" src="https://docbraymd.github.io/amh/AMHLogo.png" alt="Archangel Michael Health logo" />
         </div>
 
-        <div class="amh-practice doctor-tag">Archangel Michael Health</div>
+        <a href="https://archangelmichaelhealth.com/" class="amh-practice doctor-tag">Archangel Michael Health</a>
 
         <h1 class="amh-title" id="page-title">Food Processing: Ultra-Processed vs Processed vs Unprocessed</h1>
         <h2 class="amh-tagline">Patient Guide: Lifestyle, Integrative &amp; Conventional Care</h2>

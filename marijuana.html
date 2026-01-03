@@ -9,33 +9,6 @@
   <link rel="stylesheet" href="https://docbraymd.github.io/amh/style_v2.css" />
 
 
-  <!-- Page-specific styles (only for embedded graphic lightbox) -->
-  <style>
-    .amh-graphic-block { margin: 14px 0 22px; }
-    .amh-graphic-link { display: block; cursor: zoom-in; }
-    .amh-graphic-img { width: 100%; height: auto; border-radius: 14px; }
-
-    .amh-lightbox {
-      position: fixed;
-      inset: 0;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-      background: rgba(0,0,0,0.86);
-      z-index: 9999;
-    }
-    .amh-lightbox[aria-hidden="false"] { display: flex; }
-    .amh-lightbox img {
-      max-width: 96vw;
-      max-height: 96vh;
-      width: auto;
-      height: auto;
-      cursor: zoom-out;
-    }
-    body.amh-modal-open { overflow: hidden; }
-  </style>
-
   <!-- html2pdf for one-click PDF download -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
@@ -48,7 +21,7 @@
           <img class="amh-logo" src="https://docbraymd.github.io/amh/AMHLogo.png" alt="Archangel Michael Health logo" />
         </div>
 
-        <div class="amh-practice doctor-tag">Archangel Michael Health</div>
+        <a href="https://archangelmichaelhealth.com/" class="amh-practice doctor-tag">Archangel Michael Health</a>
 
         <h1 class="amh-title" id="page-title">Medical Marijuana</h1>
         <h2 class="amh-tagline">Patient Guide: Lifestyle, Integrative &amp; Conventional Care</h2>

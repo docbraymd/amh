@@ -193,19 +193,19 @@
       }
 
       var updatedEl = document.getElementById("amh-last-updated");
-//      if (updatedEl) {
-//        var lm = document.lastModified; // usually reflects server file Last-Modified (works well on GitHub Pages)
-//        var d = lm ? new Date(lm) : null;
-//        if (d && !isNaN(d.getTime())) {
+      if (updatedEl) {
+        var lm = document.lastModified; // usually reflects server file Last-Modified (works well on GitHub Pages)
+        var d = lm ? new Date(lm) : null;
+        if (d && !isNaN(d.getTime())) {
           // ISO-like YYYY-MM-DD
-//          var yyyy = d.getFullYear();
-//          var mm = String(d.getMonth() + 1).padStart(2, "0");
-//          var dd = String(d.getDate()).padStart(2, "0");
-//          updatedEl.textContent = yyyy + "-" + mm + "-" + dd;
-//        } else {
-//          updatedEl.textContent = "—";
-//        }
-//      }
+          var yyyy = d.getFullYear();
+          var mm = String(d.getMonth() + 1).padStart(2, "0");
+          var dd = String(d.getDate()).padStart(2, "0");
+          updatedEl.textContent = yyyy + "-" + mm + "-" + dd;
+        } else {
+          updatedEl.textContent = "—";
+        }
+      }
 
       // ---- TOC scrolling (support both anchor links and data-scroll buttons) ----
       function scrollToId(id) {

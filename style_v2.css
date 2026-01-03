@@ -626,3 +626,116 @@ footer,
       .lifestyle-table td.lt-sbp::before { content: "Approx SBP lowering"; display: block; font-weight: 900; color: #666; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
       .lifestyle-table td.lt-rec::before { content: "Recommendation"; display: block; font-weight: 900; color: #666; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
     }
+
+/* ============ Image Lightbox ============ */
+/* Figure container for images with optional captions */
+.amh-figure {
+  margin: 18px 0 24px;
+}
+.amh-figure figcaption {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+/* Thumbnail link styling */
+.amh-img-thumb {
+  display: block;
+  cursor: zoom-in;
+}
+.amh-img-thumb img {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.amh-img-thumb img:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Graphic block (alternative styling) */
+.amh-graphic-block {
+  margin: 14px 0 22px;
+}
+.amh-graphic-link {
+  display: block;
+  cursor: zoom-in;
+}
+.amh-graphic-img {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+}
+
+/* Dialog-based lightbox (modern browsers) */
+dialog.amh-lightbox {
+  padding: 0;
+  border: none;
+  background: transparent;
+  max-width: 96vw;
+  width: 96vw;
+}
+dialog.amh-lightbox::backdrop {
+  background: rgba(0, 0, 0, 0.75);
+}
+dialog.amh-lightbox img {
+  display: block;
+  margin: 0 auto;
+  max-width: 96vw;
+  max-height: 88vh;
+  border-radius: 12px;
+  background: #fff;
+}
+.amh-lightbox-close {
+  position: fixed;
+  top: 12px;
+  right: 14px;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 28px;
+  line-height: 40px;
+  cursor: pointer;
+  z-index: 10000;
+}
+.amh-lightbox-close:hover {
+  background: rgba(0, 0, 0, 0.75);
+}
+.amh-lightbox-close:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.7);
+  outline-offset: 2px;
+}
+
+/* Div-based lightbox (fallback) */
+div.amh-lightbox {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.86);
+  z-index: 9999;
+}
+div.amh-lightbox[aria-hidden="false"] {
+  display: flex;
+}
+div.amh-lightbox img {
+  max-width: 96vw;
+  max-height: 96vh;
+  width: auto;
+  height: auto;
+  cursor: zoom-out;
+}
+body.amh-modal-open {
+  overflow: hidden;
+}
+
+@media print {
+  .amh-lightbox { display: none !important; }
+}
