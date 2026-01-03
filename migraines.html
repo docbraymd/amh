@@ -7,113 +7,54 @@
 
   <link rel="stylesheet" href="https://docbraymd.github.io/amh/style_v2.css" />
 
-  <style>
-    /* Header logo */
-    .amh-logo-wrap{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      margin: 0 0 14px 0;
-    }
-    .amh-logo{
-      width: 110px;
-      height: auto;
-      display:block;
-      filter: drop-shadow(0 8px 18px rgba(0,0,0,0.22));
-    }
-
-    /* Action bar */
-    .action-bar{
-      display:flex;
-      gap:12px;
-      justify-content:center;
-      align-items:center;
-      margin-top:18px;
-      flex-wrap:wrap;
-    }
-    .amh-btn{
-      appearance:none;
-      border:1px solid rgba(255,255,255,0.35);
-      background:#16a085;
-      color:#fff;
-      padding:10px 14px;
-      border-radius:10px;
-      font-weight:700;
-      cursor:pointer;
-      transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
-    }
-    .amh-btn:hover{ transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,0.18); }
-    .amh-btn.secondary{
-      background:#34495e;
-      border-color: rgba(255,255,255,0.25);
-    }
-    .amh-btn:disabled{
-      opacity:0.65;
-      cursor:not-allowed;
-      transform:none;
-      box-shadow:none;
-    }
-    .no-print{ display:block; }
-
-    /* Print: hide action UI; remove background gradients for clean PDF */
-    @media print{
-      .no-print{ display:none !important; }
-      body{ background:#fff !important; }
-      .main-container{ margin:0 !important; box-shadow:none !important; border-radius:0 !important; }
-      header{ background:#fff !important; color:#000 !important; border-bottom:2px solid #333 !important; }
-      header h2{ opacity:1 !important; }
-      .doctor-tag{ background:#fff !important; color:#000 !important; border:1px solid #333 !important; }
-      .amh-logo{ filter:none !important; }
-      a{ color:#000 !important; text-decoration:underline !important; }
-    }
-  </style>
-
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 
 <body>
-  <div class="main-container" id="pdf-root" role="document">
-    <header>
-      <div class="amh-logo-wrap">
-        <img class="amh-logo" src="https://docbraymd.github.io/amh/AMHLogo.png" alt="Archangel Michael Health logo" />
-      </div>
+  <div class="amh-page main-container" id="pdf-root" role="document">
+    <header class="amh-header">
+      <div class="amh-header-inner amh-header-centered">
+        <div class="amh-logo-wrap">
+          <img class="amh-logo" src="https://docbraymd.github.io/amh/AMHLogo.png" alt="Archangel Michael Health logo" />
+        </div>
 
-      <a href="https://archangelmichaelhealth.com/" class="amh-practice doctor-tag">Archangel Michael Health</a>
+        <a href="https://archangelmichaelhealth.com/" class="amh-practice doctor-tag">Archangel Michael Health</a>
 
-      <h1 id="page-title">Migraine Mastery</h1>
+        <h1 id="page-title" class="amh-title">Migraine Mastery</h1>
 
-      <h2>Patient Guide: Lifestyle, Integrative &amp; Conventional Care</h2>
+        <h2 class="amh-tagline">Patient Guide: Lifestyle, Integrative &amp; Conventional Care</h2>
 
-      <div class="byline">by Christopher L. Bray MD PhD</div>
+        <div class="byline">by Christopher L. Bray MD PhD</div>
 
-      <div class="action-bar no-print" aria-label="Actions">
-        <button class="amh-btn secondary" type="button" onclick="window.print()">
-          Print / Save as PDF
-        </button>
-        <button class="amh-btn" id="downloadPdfBtn" type="button">
-          Download PDF
-        </button>
+        <div class="action-bar no-print" aria-label="Actions">
+          <button class="amh-btn amh-btn-secondary" type="button" onclick="window.print()">
+            Print / Save as PDF
+          </button>
+          <button class="amh-btn amh-btn-primary" id="downloadPdfBtn" type="button">
+            Download PDF
+          </button>
+        </div>
       </div>
     </header>
 
-    <div class="content-body">
+    <div class="amh-content content-body">
       <p>
         Migraine is not "just a bad headache"; it is a complex, genetic neurological disease characterized by a hyperexcitable brain. At Archangel Michael Health, we believe the most effective management combines rigorous internal medicine with the common-sense wisdom of lifestyle and integrative care. This guide is designed to help you move from passive suffering to active management by understanding your unique threshold for attacks and building physiological resilience.
       </p>
 
       <div class="toc no-print" aria-label="On this page">
-        <h4>On this page</h4>
-        <ul>
+        <h2>On this page</h2>
+        <ul class="amh-list">
           <li><a href="#overview">Overview: The Migraine Brain</a></li>
-          <li><a href="#symptoms">Phases, Symptoms & Red Flags</a></li>
-          <li><a href="#drivers">Root Causes & Threshold Theory</a></li>
-          <li><a href="#diet">Dietary Triggers: MSG, Cheese & Wine</a></li>
+          <li><a href="#symptoms">Phases, Symptoms &amp; Red Flags</a></li>
+          <li><a href="#drivers">Root Causes &amp; Threshold Theory</a></li>
+          <li><a href="#diet">Dietary Triggers: MSG, Cheese &amp; Wine</a></li>
           <li><a href="#plan">The "SEEDS" Improvement Plan</a></li>
           <li><a href="#acute">Acute Medications (Abortive)</a></li>
           <li><a href="#moh">Medication Overuse Headache</a></li>
           <li><a href="#preventative">Preventative Medications</a></li>
           <li><a href="#devices">Bioenergetic Devices</a></li>
-          <li><a href="#integrative">Integrative Options & Supplements</a></li>
+          <li><a href="#integrative">Integrative Options &amp; Supplements</a></li>
           <li><a href="#references">References</a></li>
         </ul>
       </div>
@@ -595,29 +536,33 @@
         </div>
       </div>
 
-      <h3 id="references">References & Resources</h3>
-      <p>
-        [1] Pescador Ruschel MA, De Jesus O. Migraine Headache. StatPearls [Internet]. StatPearls Publishing; 2024. <a href="https://www.ncbi.nlm.nih.gov/books/NBK560787/" target="_blank" rel="noopener">Link to Source</a><br>
-        [2] American Headache Society. Red Flags in Headache - What if it isn't Migraine? AHS Research Library. <a href="https://americanheadachesociety.org/research/library/red-flags-in-headache-what-if-it-isnt-migraine/" target="_blank" rel="noopener">Link to Source</a><br>
-        [3] Mayo Clinic Staff. Migraine Diagnosis & Treatment. Mayo Clinic. <a href="https://www.mayoclinic.org/diseases-conditions/migraine-headache/diagnosis-treatment/drc-20360207" target="_blank" rel="noopener">Link to Source</a><br>
-        [4] American Headache Society. Incorporating Nutraceuticals for Migraine Prevention. AHS Primary Care Migraine. <a href="https://americanheadachesociety.org/news/incorporating-nutraceuticals-for-migraine-prevention" target="_blank" rel="noopener">Link to Source</a><br>
-        [5] Comparison between the efficacy of ginger and sumatriptan in the ablative treatment of the common migraine. Phytother Res. 2014. <a href="https://pubmed.ncbi.nlm.nih.gov/23657930/" target="_blank" rel="noopener">Link to Study</a><br>
-        [6] University of Arizona Health Sciences. Green Light Therapy Shown to Reduce Migraine Frequency, Intensity. <a href="https://healthsciences.arizona.edu/news/releases/green-light-therapy-shown-reduce-migraine-frequency-intensity-0" target="_blank" rel="noopener">Link to Source</a><br>
-        [7] International Classification of Headache Disorders 3rd Edition (ICHD-3). <a href="https://ichd-3.org" target="_blank" rel="noopener">https://ichd-3.org</a><br>
-        [8] American Migraine Foundation. <a href="https://americanmigrainefoundation.org" target="_blank" rel="noopener">https://americanmigrainefoundation.org</a><br>
-        [9] National Headache Foundation. <a href="https://headaches.org" target="_blank" rel="noopener">https://headaches.org</a>
-      </p>
+      <h3 id="references">References</h3>
+      <ol class="ref-list">
+        <li>Pescador Ruschel MA, De Jesus O. Migraine Headache. StatPearls [Internet]. StatPearls Publishing; 2024. <a href="https://www.ncbi.nlm.nih.gov/books/NBK560787/" target="_blank" rel="noopener">https://www.ncbi.nlm.nih.gov/books/NBK560787/</a></li>
+        <li>American Headache Society. Red Flags in Headache - What if it isn't Migraine? AHS Research Library. <a href="https://americanheadachesociety.org/research/library/red-flags-in-headache-what-if-it-isnt-migraine/" target="_blank" rel="noopener">https://americanheadachesociety.org/research/library/red-flags-in-headache-what-if-it-isnt-migraine/</a></li>
+        <li>Mayo Clinic Staff. Migraine Diagnosis &amp; Treatment. Mayo Clinic. <a href="https://www.mayoclinic.org/diseases-conditions/migraine-headache/diagnosis-treatment/drc-20360207" target="_blank" rel="noopener">https://www.mayoclinic.org/diseases-conditions/migraine-headache/diagnosis-treatment/drc-20360207</a></li>
+        <li>American Headache Society. Incorporating Nutraceuticals for Migraine Prevention. AHS Primary Care Migraine. <a href="https://americanheadachesociety.org/news/incorporating-nutraceuticals-for-migraine-prevention" target="_blank" rel="noopener">https://americanheadachesociety.org/news/incorporating-nutraceuticals-for-migraine-prevention</a></li>
+        <li>Comparison between the efficacy of ginger and sumatriptan in the ablative treatment of the common migraine. Phytother Res. 2014. <a href="https://pubmed.ncbi.nlm.nih.gov/23657930/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/23657930/</a></li>
+        <li>University of Arizona Health Sciences. Green Light Therapy Shown to Reduce Migraine Frequency, Intensity. <a href="https://healthsciences.arizona.edu/news/releases/green-light-therapy-shown-reduce-migraine-frequency-intensity-0" target="_blank" rel="noopener">https://healthsciences.arizona.edu/news/releases/green-light-therapy-shown-reduce-migraine-frequency-intensity-0</a></li>
+        <li>International Classification of Headache Disorders 3rd Edition (ICHD-3). <a href="https://ichd-3.org" target="_blank" rel="noopener">https://ichd-3.org</a></li>
+        <li>American Migraine Foundation. <a href="https://americanmigrainefoundation.org" target="_blank" rel="noopener">https://americanmigrainefoundation.org</a></li>
+        <li>National Headache Foundation. <a href="https://headaches.org" target="_blank" rel="noopener">https://headaches.org</a></li>
+      </ol>
+    </div>
 
-      <footer>
-        <div class="medical-disclaimer">
+    <footer class="amh-footer">
+        <div class="amh-disclaimer medical-disclaimer">
           <p><strong>Medical disclaimer:</strong> The information on this page is provided for general educational purposes only and is not medical advice. It is not intended to diagnose, treat, cure, or prevent any disease, and it does not establish a physician–patient relationship.</p>
           <p>Do not apply this information to your specific situation without the oversight of a qualified clinician who can consider your full health history, medications, goals, preferences, and limitations. If you have urgent or severe symptoms, seek emergency care.</p>
-          <p style="margin: 0;"><strong>Copyright:</strong> © Dr. Bray at Archangel Michael Health <span id="amh-year">2025</span></p>
+          <p style="margin: 0;"><strong>Copyright:</strong> © Dr. Christopher Bray MD PhD at Archangel Michael Health <span id="amh-year">2025</span></p>
         </div>
 
-        <p><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine<br><strong>Last updated:</strong> <span id="amh-last-updated">—</span></p>
-      </footer>
-    </div>
+        <div class="amh-footer-meta">
+          <span><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine</span>
+          <span class="amh-dot">•</span>
+          <span><strong>Last updated:</strong> <span id="amh-last-updated">—</span></span>
+        </div>
+    </footer>
   </div>
 
   <script>

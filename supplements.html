@@ -8,122 +8,42 @@
   <!-- Shared stylesheet (GitHub Pages) -->
   <link rel="stylesheet" href="https://docbraymd.github.io/amh/style_v2.css" />
 
-  <!-- Minimal page-local styles for logo + action buttons + print behavior -->
-  <style>
-    /* Header logo */
-    .amh-logo-wrap {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0 0 14px 0;
-    }
-    .amh-logo {
-      width: 110px;
-      height: auto;
-      display: block;
-      filter: drop-shadow(0 8px 18px rgba(0,0,0,0.22));
-    }
-
-    /* Action bar */
-    .action-bar {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      align-items: center;
-      margin-top: 18px;
-      flex-wrap: wrap;
-    }
-    .amh-btn {
-      appearance: none;
-      border: 1px solid rgba(255,255,255,0.35);
-      background: #16a085;
-      color: #fff;
-      padding: 10px 14px;
-      border-radius: 10px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
-    }
-    .amh-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,0.18); }
-    .amh-btn.secondary {
-      background: #34495e;
-      border-color: rgba(255,255,255,0.25);
-    }
-    .amh-btn:disabled {
-      opacity: 0.65;
-      cursor: not-allowed;
-      transform: none;
-      box-shadow: none;
-    }
-    .no-print { display: block; }
-
-    /* Print: hide action UI; remove background gradients for clean PDF */
-    @media print {
-      .no-print { display: none !important; }
-      body { background: #fff !important; }
-      .main-container { margin: 0 !important; box-shadow: none !important; border-radius: 0 !important; }
-      header { background: #fff !important; color: #000 !important; border-bottom: 2px solid #333 !important; }
-      header h2 { opacity: 1 !important; }
-      .doctor-tag { background: #fff !important; color: #000 !important; border: 1px solid #333 !important; }
-      .amh-logo { filter: none !important; }
-      a { color: #000 !important; text-decoration: underline !important; }
-    }
-    
-    /* Reference List Styling */
-    .ref-list {
-      list-style-type: none;
-      padding-left: 0;
-      font-size: 0.95rem;
-    }
-    .ref-list li {
-      margin-bottom: 12px;
-      padding-left: 1.5em;
-      text-indent: -1.5em;
-    }
-    .ref-list a {
-      color: #16a085;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    .ref-list a:hover {
-      text-decoration: underline;
-    }
-  </style>
-
   <!-- html2pdf for one-click PDF download -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 
 <body>
-  <div class="main-container" id="pdf-root" role="document">
-    <header>
-      <!-- Logo -->
-      <div class="amh-logo-wrap">
-        <img class="amh-logo" src="https://docbraymd.github.io/amh/AMHLogo.png" alt="Archangel Michael Health logo" />
-      </div>
+  <div class="amh-page main-container" id="pdf-root" role="document">
+    <header class="amh-header">
+      <div class="amh-header-inner amh-header-centered">
+        <!-- Logo -->
+        <div class="amh-logo-wrap">
+          <img class="amh-logo" src="https://docbraymd.github.io/amh/AMHLogo.png" alt="Archangel Michael Health logo" />
+        </div>
 
-      <!-- Green pill: practice only -->
-      <a href="https://archangelmichaelhealth.com/" class="amh-practice doctor-tag">Archangel Michael Health</a>
+        <!-- Green pill: practice only -->
+        <a href="https://archangelmichaelhealth.com/" class="amh-practice doctor-tag">Archangel Michael Health</a>
 
-      <h1 id="page-title">The Supplement Integrity Gap</h1>
+        <h1 id="page-title" class="amh-title">The Supplement Integrity Gap</h1>
 
-      <!-- Shorter subtitle -->
-      <h2>A Physician’s Guide to Quality, Safety, and Efficacy in a Deregulated Market</h2>
+        <!-- Shorter subtitle -->
+        <h2 class="amh-tagline">A Physician's Guide to Quality, Safety, and Efficacy in a Deregulated Market</h2>
 
-      <div class="byline">by Christopher L. Bray MD PhD</div>
+        <div class="byline">by Christopher L. Bray MD PhD</div>
 
-      <!-- Buttons -->
-      <div class="action-bar no-print" aria-label="Actions">
-        <button class="amh-btn secondary" type="button" onclick="window.print()">
-          Print / Save as PDF
-        </button>
-        <button class="amh-btn" id="downloadPdfBtn" type="button">
-          Download PDF
-        </button>
+        <!-- Buttons -->
+        <div class="action-bar no-print" aria-label="Actions">
+          <button class="amh-btn amh-btn-secondary" type="button" onclick="window.print()">
+            Print / Save as PDF
+          </button>
+          <button class="amh-btn amh-btn-primary" id="downloadPdfBtn" type="button">
+            Download PDF
+          </button>
+        </div>
       </div>
     </header>
 
-    <div class="content-body">
+    <div class="amh-content content-body">
       <p>
         In our practice at Archangel Michael Health, we believe in using the least invasive methods to achieve health—optimizing lifestyle first and using supplements as targeted tools to correct deficiencies or support physiology.
       </p>
@@ -132,12 +52,12 @@
       </p>
 
       <div class="toc no-print" aria-label="On this page">
-        <h4>On this page</h4>
-        <ul>
+        <h2>On this page</h2>
+        <ul class="amh-list">
           <li><a href="#overview">The "Wild West" of Wellness</a></li>
           <li><a href="#integrity-gap">Symptoms of the Integrity Gap</a></li>
           <li><a href="#verification">Solution: Third-Party Verification</a></li>
-          <li><a href="#bioavailability">Bioavailability & Forms</a></li>
+          <li><a href="#bioavailability">Bioavailability &amp; Forms</a></li>
           <li><a href="#brands">Recommended Brands</a></li>
           <li><a href="#plan">Buying Checklist</a></li>
           <li><a href="#references">References</a></li>
@@ -313,41 +233,31 @@
         </ol>
       </div>
 
-      <h3 id="references">References & Resources</h3>
-      <ul class="ref-list">
-        <li>
-            1. <strong>US Pharmacopeia (USP).</strong> <a href="https://www.usp.org/verification-services/dietary-supplements-verification-program" target="_blank" rel="noopener">"Choosing for Quality: Dietary Supplements Verification Program."</a>
-        </li>
-        <li>
-            2. <strong>NSF International.</strong> <a href="https://www.nsf.org/consumer-resources/articles/supplement-certification" target="_blank" rel="noopener">"Dietary Supplement Certification - NSF/ANSI 173."</a>
-        </li>
-        <li>
-            3. <strong>ConsumerLab.com.</strong> <a href="https://www.consumerlab.com/results/" target="_blank" rel="noopener">"Independent Tests and Reviews of Vitamin, Mineral, and Herbal Supplements."</a>
-        </li>
-        <li>
-            4. <strong>Cohen, P. A., et al.</strong> <a href="https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2707944" target="_blank" rel="noopener">"Presence of Banned Drugs in Dietary Supplements Following FDA Recalls."</a> <em>JAMA Network Open.</em>
-        </li>
-        <li>
-            5. <strong>DiNicolantonio, J. J., et al.</strong> <a href="https://openheart.bmj.com/content/5/1/e000668" target="_blank" rel="noopener">"Subclinical magnesium deficiency: a principal driver of cardiovascular disease."</a> <em>Open Heart.</em>
-        </li>
-        <li>
-            6. <strong>Nordic Naturals.</strong> <a href="https://www.nordic.com/healthy-science/triglyceride-vs-ethyl-ester-fish-oil/" target="_blank" rel="noopener">"The difference between Ethyl Ester and Triglyceride Form Fish Oils."</a>
-        </li>
-        <li>
-            7. <strong>Gaia Herbs.</strong> <a href="https://www.gaiaherbs.com/pages/meet-your-herbs" target="_blank" rel="noopener">"Meet Your Herbs Transparency Program."</a>
-        </li>
-      </ul>
+      <h3 id="references">References</h3>
+      <ol class="ref-list">
+        <li><strong>US Pharmacopeia (USP).</strong> <a href="https://www.usp.org/verification-services/dietary-supplements-verification-program" target="_blank" rel="noopener">"Choosing for Quality: Dietary Supplements Verification Program."</a></li>
+        <li><strong>NSF International.</strong> <a href="https://www.nsf.org/consumer-resources/articles/supplement-certification" target="_blank" rel="noopener">"Dietary Supplement Certification - NSF/ANSI 173."</a></li>
+        <li><strong>ConsumerLab.com.</strong> <a href="https://www.consumerlab.com/results/" target="_blank" rel="noopener">"Independent Tests and Reviews of Vitamin, Mineral, and Herbal Supplements."</a></li>
+        <li><strong>Cohen, P. A., et al.</strong> <a href="https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2707944" target="_blank" rel="noopener">"Presence of Banned Drugs in Dietary Supplements Following FDA Recalls."</a> <em>JAMA Network Open.</em></li>
+        <li><strong>DiNicolantonio, J. J., et al.</strong> <a href="https://openheart.bmj.com/content/5/1/e000668" target="_blank" rel="noopener">"Subclinical magnesium deficiency: a principal driver of cardiovascular disease."</a> <em>Open Heart.</em></li>
+        <li><strong>Nordic Naturals.</strong> <a href="https://www.nordic.com/healthy-science/triglyceride-vs-ethyl-ester-fish-oil/" target="_blank" rel="noopener">"The difference between Ethyl Ester and Triglyceride Form Fish Oils."</a></li>
+        <li><strong>Gaia Herbs.</strong> <a href="https://www.gaiaherbs.com/pages/meet-your-herbs" target="_blank" rel="noopener">"Meet Your Herbs Transparency Program."</a></li>
+      </ol>
+    </div>
 
-      <footer>
-        <div class="medical-disclaimer">
+    <footer class="amh-footer">
+        <div class="amh-disclaimer medical-disclaimer">
           <p><strong>Medical disclaimer:</strong> The information on this page is provided for general educational purposes only and is not medical advice. It is not intended to diagnose, treat, cure, or prevent any disease, and it does not establish a physician–patient relationship.</p>
-          <p>Do not apply this information to your specific situation without the oversight of a qualified clinician who can consider your full health history, medications, goals, preferences, and limitations.</p>
-          <p style="margin: 0;"><strong>Copyright:</strong> © Dr. Bray at Archangel Michael Health <span id="amh-year">2025</span></p>
+          <p>Do not apply this information to your specific situation without the oversight of a qualified clinician who can consider your full health history, medications, goals, preferences, and limitations. If you have urgent or severe symptoms, seek emergency care.</p>
+          <p style="margin: 0;"><strong>Copyright:</strong> © Dr. Christopher Bray MD PhD at Archangel Michael Health <span id="amh-year">2025</span></p>
         </div>
 
-        <p><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine<br><strong>Last updated:</strong> <span id="amh-last-updated">—</span></p>
-      </footer>
-    </div>
+        <div class="amh-footer-meta">
+          <span><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine</span>
+          <span class="amh-dot">•</span>
+          <span><strong>Last updated:</strong> <span id="amh-last-updated">—</span></span>
+        </div>
+    </footer>
   </div>
 
   <script>

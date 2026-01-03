@@ -6,113 +6,54 @@
   <title>Hemorrhoids &amp; Hemorrhoidal Disease | Archangel Michael Health</title>
 
   <link rel="stylesheet" href="https://docbraymd.github.io/amh/style_v2.css" />
-  
-  <style>
-    /* Header logo */
-    .amh-logo-wrap{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      margin: 0 0 14px 0;
-    }
-    .amh-logo{
-      width: 110px;
-      height: auto;
-      display:block;
-      filter: drop-shadow(0 8px 18px rgba(0,0,0,0.22));
-    }
-
-    /* Action bar */
-    .action-bar{
-      display:flex;
-      gap:12px;
-      justify-content:center;
-      align-items:center;
-      margin-top:18px;
-      flex-wrap:wrap;
-    }
-    .amh-btn{
-      appearance:none;
-      border:1px solid rgba(255,255,255,0.35);
-      background:#16a085;
-      color:#fff;
-      padding:10px 14px;
-      border-radius:10px;
-      font-weight:700;
-      cursor:pointer;
-      transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
-    }
-    .amh-btn:hover{ transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,0.18); }
-    .amh-btn.secondary{
-      background:#34495e;
-      border-color: rgba(255,255,255,0.25);
-    }
-    .amh-btn:disabled{
-      opacity:0.65;
-      cursor:not-allowed;
-      transform:none;
-      box-shadow:none;
-    }
-    .no-print{ display:block; }
-
-    /* Print: hide action UI; remove background gradients for clean PDF */
-    @media print{
-      .no-print{ display:none !important; }
-      body{ background:#fff !important; }
-      .main-container{ margin:0 !important; box-shadow:none !important; border-radius:0 !important; }
-      header{ background:#fff !important; color:#000 !important; border-bottom:2px solid #333 !important; }
-      header h2{ opacity:1 !important; }
-      .doctor-tag{ background:#fff !important; color:#000 !important; border:1px solid #333 !important; }
-      .amh-logo{ filter:none !important; }
-      a{ color:#000 !important; text-decoration:underline !important; }
-    }
-  </style>
 
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 
 <body>
-  <div class="main-container" id="pdf-root" role="document">
-    <header>
-      <div class="amh-logo-wrap">
-        <img class="amh-logo" src="https://docbraymd.github.io/amh/AMHLogo.png" alt="Archangel Michael Health logo" />
-      </div>
+  <div class="amh-page main-container" id="pdf-root" role="document">
+    <header class="amh-header">
+      <div class="amh-header-inner amh-header-centered">
+        <div class="amh-logo-wrap">
+          <img class="amh-logo" src="https://docbraymd.github.io/amh/AMHLogo.png" alt="Archangel Michael Health logo" />
+        </div>
 
-      <a href="https://archangelmichaelhealth.com/" class="amh-practice doctor-tag">Archangel Michael Health</a>
+        <a href="https://archangelmichaelhealth.com/" class="amh-practice doctor-tag">Archangel Michael Health</a>
 
-      <h1 id="page-title">Hemorrhoidal Disease</h1>
+        <h1 id="page-title" class="amh-title">Hemorrhoidal Disease</h1>
 
-      <h2>Patient Guide: Lifestyle, Integrative &amp; Conventional Care</h2>
+        <h2 class="amh-tagline">Patient Guide: Lifestyle, Integrative &amp; Conventional Care</h2>
 
-      <div class="byline">by Christopher L. Bray MD PhD</div>
+        <div class="byline">by Christopher L. Bray MD PhD</div>
 
-      <div class="action-bar no-print" aria-label="Actions">
-        <button class="amh-btn secondary" type="button" onclick="window.print()">
-          Print / Save as PDF
-        </button>
-        <button class="amh-btn" id="downloadPdfBtn" type="button">
-          Download PDF
-        </button>
+        <div class="action-bar no-print" aria-label="Actions">
+          <button class="amh-btn amh-btn-secondary" type="button" onclick="window.print()">
+            Print / Save as PDF
+          </button>
+          <button class="amh-btn amh-btn-primary" id="downloadPdfBtn" type="button">
+            Download PDF
+          </button>
+        </div>
       </div>
     </header>
 
-    <div class="content-body">
+    <div class="amh-content content-body">
       <p>
         Hemorrhoids are often dismissed as a minor nuisance, but for many patients, they represent a significant quality-of-life issue. At Archangel Michael Health, we view hemorrhoidal disease not just as a local anatomy problem, but as a signal of broader physiological strain—often involving connective tissue integrity, vascular health, and digestive mechanics. This guide is designed to help you understand the root causes and manage the condition using a tiered approach that prioritizes lifestyle and integrative interventions before escalating to surgery.
       </p>
 
       <div class="toc no-print" aria-label="On this page">
-        <h4>On this page</h4>
-        <ul>
-          <li><button type="button" class="toc-btn" data-scroll="section-1">1. Overview and key points</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="section-2">2. Symptoms and red flags</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="section-3">3. Diagnosis and physiology</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="section-4">4. Root causes and drivers</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="section-5">5. The Improvement Plan</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="section-6">6. Conventional treatments</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="section-7">7. Integrative options</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="section-8">8. Surgical considerations</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="references">References</button></li>
+        <h2>On this page</h2>
+        <ul class="amh-list">
+          <li><a href="#section-1">Overview and key points</a></li>
+          <li><a href="#section-2">Symptoms and red flags</a></li>
+          <li><a href="#section-3">Diagnosis and physiology</a></li>
+          <li><a href="#section-4">Root causes and drivers</a></li>
+          <li><a href="#section-5">The Improvement Plan</a></li>
+          <li><a href="#section-6">Conventional treatments</a></li>
+          <li><a href="#section-7">Integrative options</a></li>
+          <li><a href="#section-8">Surgical considerations</a></li>
+          <li><a href="#references">References</a></li>
         </ul>
       </div>
 
@@ -355,27 +296,31 @@
           </div>
         </div>
       </div>
+
+      <h3 id="references">References</h3>
+      <ol class="ref-list">
+        <li>Mayo Clinic on Hemorrhoids Symptoms and Causes: <a href="https://www.mayoclinic.org/diseases-conditions/hemorrhoids/symptoms-causes/syc-20360268" target="_blank" rel="noopener">https://www.mayoclinic.org/diseases-conditions/hemorrhoids/symptoms-causes/syc-20360268</a></li>
+        <li>Cleveland Clinic on Hemorrhoids: <a href="https://my.clevelandclinic.org/health/diseases/15120-hemorrhoids" target="_blank" rel="noopener">https://my.clevelandclinic.org/health/diseases/15120-hemorrhoids</a></li>
+        <li>AAFP on Hemorrhoids Diagnosis and Treatment: <a href="https://www.aafp.org/pubs/afp/issues/2018/0201/p172.html" target="_blank" rel="noopener">https://www.aafp.org/pubs/afp/issues/2018/0201/p172.html</a></li>
+        <li>NIH on Natural Products in Hemorrhoid Management: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12128686/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC12128686/</a></li>
+        <li>Rupa Health on Functional Medicine Approach: <a href="https://www.rupahealth.com/post/a-functional-medicine-approach-to-treating-hemorrhoids" target="_blank" rel="noopener">https://www.rupahealth.com/post/a-functional-medicine-approach-to-treating-hemorrhoids</a></li>
+        <li>NIH: Conservative treatment of hemorrhoids (results of observational study): <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6223991/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC6223991/</a></li>
+        <li>NIDDK: Eating, Diet, and Nutrition for Hemorrhoids: <a href="https://www.niddk.nih.gov/health-information/digestive-diseases/hemorrhoids/eating-diet-nutrition" target="_blank" rel="noopener">https://www.niddk.nih.gov/health-information/digestive-diseases/hemorrhoids/eating-diet-nutrition</a></li>
+      </ol>
     </div>
 
-    <footer>
-      <p class="references-block">
-        <strong>References &amp; Resources:</strong><br />
-        1. Mayo Clinic on Hemorrhoids Symptoms and Causes: <a href="https://www.mayoclinic.org/diseases-conditions/hemorrhoids/symptoms-causes/syc-20360268" target="_blank" rel="noopener">https://www.mayoclinic.org/diseases-conditions/hemorrhoids/symptoms-causes/syc-20360268</a><br />
-        2. Cleveland Clinic on Hemorrhoids: <a href="https://my.clevelandclinic.org/health/diseases/15120-hemorrhoids" target="_blank" rel="noopener">https://my.clevelandclinic.org/health/diseases/15120-hemorrhoids</a><br />
-        3. AAFP on Hemorrhoids Diagnosis and Treatment: <a href="https://www.aafp.org/pubs/afp/issues/2018/0201/p172.html" target="_blank" rel="noopener">https://www.aafp.org/pubs/afp/issues/2018/0201/p172.html</a><br />
-        4. NIH on Natural Products in Hemorrhoid Management: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12128686/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC12128686/</a><br />
-        5. Rupa Health on Functional Medicine Approach: <a href="https://www.rupahealth.com/post/a-functional-medicine-approach-to-treating-hemorrhoids" target="_blank" rel="noopener">https://www.rupahealth.com/post/a-functional-medicine-approach-to-treating-hemorrhoids</a><br />
-        6. NIH: Conservative treatment of hemorrhoids (results of observational study): <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6223991/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/articles/PMC6223991/</a><br />
-        7. NIDDK: Eating, Diet, and Nutrition for Hemorrhoids: <a href="https://www.niddk.nih.gov/health-information/digestive-diseases/hemorrhoids/eating-diet-nutrition" target="_blank" rel="noopener">https://www.niddk.nih.gov/health-information/digestive-diseases/hemorrhoids/eating-diet-nutrition</a>
-      </p>
+    <footer class="amh-footer">
+        <div class="amh-disclaimer medical-disclaimer">
+          <p><strong>Medical disclaimer:</strong> The information on this page is provided for general educational purposes only and is not medical advice. It is not intended to diagnose, treat, cure, or prevent any disease, and it does not establish a physician–patient relationship.</p>
+          <p>Do not apply this information to your specific situation without the oversight of a qualified clinician who can consider your full health history, medications, goals, preferences, and limitations. If you have urgent or severe symptoms, seek emergency care.</p>
+          <p style="margin: 0;"><strong>Copyright:</strong> © Dr. Christopher Bray MD PhD at Archangel Michael Health <span id="amh-year">2025</span></p>
+        </div>
 
-      <div class="medical-disclaimer">
-        <p><strong>Medical disclaimer:</strong> The information on this page is provided for general educational purposes only and is not medical advice. It is not intended to diagnose, treat, cure, or prevent any disease, and it does not establish a physician–patient relationship.</p>
-        <p>Do not apply this information to your specific situation without the oversight of a qualified clinician who can consider your full health history, medications, goals, preferences, and limitations. If you have urgent or severe symptoms, seek emergency care.</p>
-        <p style="margin: 0;"><strong>Copyright:</strong> © Dr. Bray at Archangel Michael Health <span id="amh-year">2025</span></p>
-      </div>
-
-      <p><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine<br><strong>Last updated:</strong> <span id="amh-last-updated">—</span></p>
+        <div class="amh-footer-meta">
+          <span><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine</span>
+          <span class="amh-dot">•</span>
+          <span><strong>Last updated:</strong> <span id="amh-last-updated">—</span></span>
+        </div>
     </footer>
   </div>
 

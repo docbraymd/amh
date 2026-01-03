@@ -7,110 +7,51 @@
 
   <link rel="stylesheet" href="https://docbraymd.github.io/amh/style_v2.css" />
 
-  <style>
-    /* Header logo */
-    .amh-logo-wrap{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      margin: 0 0 14px 0;
-    }
-    .amh-logo{
-      width: 110px;
-      height: auto;
-      display:block;
-      filter: drop-shadow(0 8px 18px rgba(0,0,0,0.22));
-    }
-
-    /* Action bar */
-    .action-bar{
-      display:flex;
-      gap:12px;
-      justify-content:center;
-      align-items:center;
-      margin-top:18px;
-      flex-wrap:wrap;
-    }
-    .amh-btn{
-      appearance:none;
-      border:1px solid rgba(255,255,255,0.35);
-      background:#16a085;
-      color:#fff;
-      padding:10px 14px;
-      border-radius:10px;
-      font-weight:700;
-      cursor:pointer;
-      transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
-    }
-    .amh-btn:hover{ transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,0.18); }
-    .amh-btn.secondary{
-      background:#34495e;
-      border-color: rgba(255,255,255,0.25);
-    }
-    .amh-btn:disabled{
-      opacity:0.65;
-      cursor:not-allowed;
-      transform:none;
-      box-shadow:none;
-    }
-    .no-print{ display:block; }
-
-    /* Print settings */
-    @media print{
-      .no-print{ display:none !important; }
-      body{ background:#fff !important; }
-      .main-container{ margin:0 !important; box-shadow:none !important; border-radius:0 !important; width:100% !important; }
-      header{ background:#fff !important; color:#000 !important; border-bottom:2px solid #333 !important; }
-      header h2{ opacity:1 !important; }
-      .doctor-tag{ background:#fff !important; color:#000 !important; border:1px solid #333 !important; }
-      .amh-logo{ filter:none !important; }
-      a{ color:#000 !important; text-decoration:underline !important; }
-    }
-  </style>
-
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 
 <body>
-  <div class="main-container" id="pdf-root" role="document">
-    <header>
-      <div class="amh-logo-wrap">
-        <img class="amh-logo" src="https://docbraymd.github.io/amh/AMHLogo.png" alt="Archangel Michael Health logo" />
-      </div>
+  <div class="amh-page main-container" id="pdf-root" role="document">
+    <header class="amh-header">
+      <div class="amh-header-inner amh-header-centered">
+        <div class="amh-logo-wrap">
+          <img class="amh-logo" src="https://docbraymd.github.io/amh/AMHLogo.png" alt="Archangel Michael Health logo" />
+        </div>
 
-      <a href="https://archangelmichaelhealth.com/" class="amh-practice doctor-tag">Archangel Michael Health</a>
+        <a href="https://archangelmichaelhealth.com/" class="amh-practice doctor-tag">Archangel Michael Health</a>
 
-      <h1 id="page-title">Elevated hsCRP: The Hidden Risk</h1>
+        <h1 id="page-title" class="amh-title">Elevated hsCRP: The Hidden Risk</h1>
 
-      <h2>Patient Guide: Inflammation, Calcium Scores &amp; Root Cause Resolution</h2>
+        <h2 class="amh-tagline">Patient Guide: Inflammation, Calcium Scores &amp; Root Cause Resolution</h2>
 
-      <div class="byline">by Christopher L. Bray MD PhD</div>
+        <div class="byline">by Christopher L. Bray MD PhD</div>
 
-      <div class="action-bar no-print" aria-label="Actions">
-        <button class="amh-btn secondary" type="button" onclick="window.print()">
-          Print / Save as PDF
-        </button>
-        <button class="amh-btn" id="downloadPdfBtn" type="button">
-          Download PDF
-        </button>
+        <div class="action-bar no-print" aria-label="Actions">
+          <button class="amh-btn amh-btn-secondary" type="button" onclick="window.print()">
+            Print / Save as PDF
+          </button>
+          <button class="amh-btn amh-btn-primary" id="downloadPdfBtn" type="button">
+            Download PDF
+          </button>
+        </div>
       </div>
     </header>
 
-    <div class="content-body">
+    <div class="amh-content content-body">
       <p>
         At Archangel Michael Health, we view an elevated high-sensitivity C-Reactive Protein (hsCRP) as a "check engine" light for your blood vessels. Unlike standard CRP which detects acute infection, hsCRP detects the low-grade, simmering inflammation that drives heart disease. This guide explains the risks, how to rule out hidden infections, and the specific root causes we can reverse together.
       </p>
 
       <div class="toc no-print" aria-label="On this page">
-        <h4>On this page</h4>
-        <ul>
-          <li><button type="button" class="toc-btn" data-scroll="section-1">1. Risks &amp; Calcium Score</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="section-2">2. Active Surveillance</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="section-3">3. Root Causes &amp; Plans</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="section-4">4. Conventional Treatments</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="section-5">5. Integrative Options</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="section-6">6. Recheck Strategy</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="references">7. References</button></li>
+        <h2>On this page</h2>
+        <ul class="amh-list">
+          <li><a href="#section-1">Risks &amp; Calcium Score</a></li>
+          <li><a href="#section-2">Active Surveillance</a></li>
+          <li><a href="#section-3">Root Causes &amp; Plans</a></li>
+          <li><a href="#section-4">Conventional Treatments</a></li>
+          <li><a href="#section-5">Integrative Options</a></li>
+          <li><a href="#section-6">Recheck Strategy</a></li>
+          <li><a href="#references">References</a></li>
         </ul>
       </div>
 
@@ -502,26 +443,29 @@
         </p>
       </div>
 
-      <h3 id="references">7. References</h3>
-      <p class="references-block">
-        <strong>References &amp; Resources:</strong><br />
-        1. JUPITER Trial (Rosuvastatin & hsCRP): <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa0807646" target="_blank" rel="noopener">NEJM 2008</a><br />
-        2. Periodontal Disease & CV Risk: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4389485/" target="_blank" rel="noopener">PMC4389485</a><br />
-        3. AHA Guidelines on Calcium Scoring: <a href="https://www.jacc.org/doi/10.1016/j.jcmg.2018.09.023" target="_blank" rel="noopener">JACC Img</a><br />
-        4. Visceral Fat & Inflammation: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7595183/" target="_blank" rel="noopener">PMC7595183</a><br />
-        5. Ginger & Inflammation: <a href="https://pubmed.ncbi.nlm.nih.gov/34857250/" target="_blank" rel="noopener">PubMed 34857250</a><br />
-        6. AGEs & Diet: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3704564/" target="_blank" rel="noopener">J Am Diet Assoc</a>
-      </p>
+      <h3 id="references">References</h3>
+      <ol class="ref-list">
+        <li>JUPITER Trial (Rosuvastatin & hsCRP): <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa0807646" target="_blank" rel="noopener">NEJM 2008</a></li>
+        <li>Periodontal Disease & CV Risk: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4389485/" target="_blank" rel="noopener">PMC4389485</a></li>
+        <li>AHA Guidelines on Calcium Scoring: <a href="https://www.jacc.org/doi/10.1016/j.jcmg.2018.09.023" target="_blank" rel="noopener">JACC Img</a></li>
+        <li>Visceral Fat & Inflammation: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7595183/" target="_blank" rel="noopener">PMC7595183</a></li>
+        <li>Ginger & Inflammation: <a href="https://pubmed.ncbi.nlm.nih.gov/34857250/" target="_blank" rel="noopener">PubMed 34857250</a></li>
+        <li>AGEs & Diet: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3704564/" target="_blank" rel="noopener">J Am Diet Assoc</a></li>
+      </ol>
     </div>
 
-    <footer>
-      <div class="medical-disclaimer">
-        <p><strong>Medical disclaimer:</strong> The information on this page is provided for general educational purposes only and is not medical advice. It is not intended to diagnose, treat, cure, or prevent any disease, and it does not establish a physician–patient relationship.</p>
-        <p>Do not apply this information to your specific situation without the oversight of a qualified clinician who can consider your full health history, medications, goals, preferences, and limitations. If you have urgent or severe symptoms, seek emergency care.</p>
-        <p style="margin: 0;"><strong>Copyright:</strong> © Dr. Bray at Archangel Michael Health <span id="amh-year">2025</span></p>
-      </div>
+    <footer class="amh-footer">
+        <div class="amh-disclaimer medical-disclaimer">
+          <p><strong>Medical disclaimer:</strong> The information on this page is provided for general educational purposes only and is not medical advice. It is not intended to diagnose, treat, cure, or prevent any disease, and it does not establish a physician–patient relationship.</p>
+          <p>Do not apply this information to your specific situation without the oversight of a qualified clinician who can consider your full health history, medications, goals, preferences, and limitations. If you have urgent or severe symptoms, seek emergency care.</p>
+          <p style="margin: 0;"><strong>Copyright:</strong> © Dr. Christopher Bray MD PhD at Archangel Michael Health <span id="amh-year">2025</span></p>
+        </div>
 
-      <p><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine<br><strong>Last updated:</strong> <span id="amh-last-updated">—</span></p>
+        <div class="amh-footer-meta">
+          <span><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine</span>
+          <span class="amh-dot">•</span>
+          <span><strong>Last updated:</strong> <span id="amh-last-updated">—</span></span>
+        </div>
     </footer>
   </div>
 

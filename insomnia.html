@@ -8,121 +8,57 @@
   <!-- Shared stylesheet (GitHub Pages) -->
   <link rel="stylesheet" href="https://docbraymd.github.io/amh/style_v2.css" />
 
-  <!-- Minimal page-local styles for logo + action buttons + print behavior -->
-  <style>
-    /* Header logo */
-    .amh-logo-wrap{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      margin: 0 0 14px 0;
-    }
-    .amh-logo{
-      width: 110px;
-      height: auto;
-      display:block;
-      filter: drop-shadow(0 8px 18px rgba(0,0,0,0.22));
-    }
-
-    /* Action bar */
-    .action-bar{
-      display:flex;
-      gap:12px;
-      justify-content:center;
-      align-items:center;
-      margin-top:18px;
-      flex-wrap:wrap;
-    }
-    .amh-btn{
-      appearance:none;
-      border:1px solid rgba(255,255,255,0.35);
-      background:#16a085;
-      color:#fff;
-      padding:10px 14px;
-      border-radius:10px;
-      font-weight:700;
-      cursor:pointer;
-      transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
-    }
-    .amh-btn:hover{ transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,0.18); }
-    .amh-btn.secondary{
-      background:#34495e;
-      border-color: rgba(255,255,255,0.25);
-    }
-    .amh-btn:disabled{
-      opacity:0.65;
-      cursor:not-allowed;
-      transform:none;
-      box-shadow:none;
-    }
-    .no-print{ display:block; }
-
-    /* Print: hide action UI; remove background gradients for clean PDF */
-    @media print{
-      .no-print{ display:none !important; }
-      body{ background:#fff !important; }
-      .main-container{ margin:0 !important; box-shadow:none !important; border-radius:0 !important; }
-      header{ background:#fff !important; color:#000 !important; border-bottom:2px solid #333 !important; }
-      header h2{ opacity:1 !important; }
-      .doctor-tag{ background:#fff !important; color:#000 !important; border:1px solid #333 !important; }
-      .amh-logo{ filter:none !important; }
-      a{ color:#000 !important; text-decoration:underline !important; }
-      .toc { display: none; }
-      .ref-list { padding-left: 20px; }
-    }
-    
-    .ref-list li { margin-bottom: 8px; }
-  </style>
-
   <!-- html2pdf for one-click PDF download -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 
 <body>
-  <div class="main-container" id="pdf-root" role="document">
-    <header>
-      <!-- Logo -->
-      <div class="amh-logo-wrap">
-        <img class="amh-logo" src="https://docbraymd.github.io/amh/AMHLogo.png" alt="Archangel Michael Health logo" />
-      </div>
+  <div class="amh-page main-container" id="pdf-root" role="document">
+    <header class="amh-header">
+      <div class="amh-header-inner amh-header-centered">
+        <!-- Logo -->
+        <div class="amh-logo-wrap">
+          <img class="amh-logo" src="https://docbraymd.github.io/amh/AMHLogo.png" alt="Archangel Michael Health logo" />
+        </div>
 
-      <!-- Green pill: practice only -->
-      <a href="https://archangelmichaelhealth.com/" class="amh-practice doctor-tag">Archangel Michael Health</a>
+        <!-- Green pill: practice only -->
+        <a href="https://archangelmichaelhealth.com/" class="amh-practice doctor-tag">Archangel Michael Health</a>
 
-      <h1 id="page-title">Insomnia: Restoring Sleep Architecture</h1>
+        <h1 id="page-title" class="amh-title">Insomnia: Restoring Sleep Architecture</h1>
 
-      <!-- Shorter subtitle -->
-      <h2>A Comprehensive Protocol for Reclaiming Restorative Rest</h2>
+        <!-- Shorter subtitle -->
+        <h2 class="amh-tagline">A Comprehensive Protocol for Reclaiming Restorative Rest</h2>
 
-      <div class="byline">by Christopher L. Bray MD PhD</div>
+        <div class="byline">by Christopher L. Bray MD PhD</div>
 
-      <!-- Buttons -->
-      <div class="action-bar no-print" aria-label="Actions">
-        <button class="amh-btn secondary" type="button" onclick="window.print()">
-          Print / Save as PDF
-        </button>
-        <button class="amh-btn" id="downloadPdfBtn" type="button">
-          Download PDF
-        </button>
+        <!-- Buttons -->
+        <div class="action-bar no-print" aria-label="Actions">
+          <button class="amh-btn amh-btn-secondary" type="button" onclick="window.print()">
+            Print / Save as PDF
+          </button>
+          <button class="amh-btn amh-btn-primary" id="downloadPdfBtn" type="button">
+            Download PDF
+          </button>
+        </div>
       </div>
     </header>
 
-    <div class="content-body">
+    <div class="amh-content content-body">
       <p>
         In the contemporary landscape of internal medicine, few physiological processes are as fundamental to human health—and yet as profoundly disrupted—as sleep. For the patients of Archangel Michael Health, understanding the mechanisms of sleep is a critical step toward reclaiming vitality, metabolic stability, and cognitive longevity. We view chronic insomnia not merely as a "deficiency of sleeping pills," but often as a dysregulation of the body’s biological "hardware" (circadian rhythms, neurochemistry) and "software" (habits, stress response). This guide provides an advanced, integrative roadmap to identify root causes and restore natural sleep architecture.
       </p>
 
       <div class="toc no-print" aria-label="On this page">
-        <h4>On this page</h4>
-        <ul>
-          <li><button type="button" class="toc-btn" data-scroll="section-1">1. The Science of Sleep Drive</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="section-2">2. Symptoms &amp; Red Flags</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="section-3">3. Root Causes (Hardware vs. Software)</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="section-4">4. The Archangel Michael Protocol</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="section-srt">5. Advanced Behavioral: Sleep Restriction</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="section-5">6. Integrative Therapeutics</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="section-6">7. Prescription Options</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="references">References</button></li>
+        <h2>On this page</h2>
+        <ul class="amh-list">
+          <li><a href="#section-1">The Science of Sleep Drive</a></li>
+          <li><a href="#section-2">Symptoms &amp; Red Flags</a></li>
+          <li><a href="#section-3">Root Causes (Hardware vs. Software)</a></li>
+          <li><a href="#section-4">The Archangel Michael Protocol</a></li>
+          <li><a href="#section-srt">Advanced Behavioral: Sleep Restriction</a></li>
+          <li><a href="#section-5">Integrative Therapeutics</a></li>
+          <li><a href="#section-6">Prescription Options</a></li>
+          <li><a href="#references">References</a></li>
         </ul>
       </div>
 
@@ -398,10 +334,6 @@
       </div>
 
       <h3 id="references">References</h3>
-      <p>
-        The following references provide the evidence base for the protocols above.
-      </p>
-      
       <ol class="ref-list">
         <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8813037/" target="_blank">Sleep and Circadian Regulation of Cortisol: A Short Review (PMC)</a></li>
         <li><a href="https://stacks.cdc.gov/view/cdc/212264/cdc_212264_DS1.pdf" target="_blank">Impact of Sleep and Its Disturbances on Hypothalamo-Pituitary-Adrenal Axis Activity (CDC)</a></li>
@@ -414,17 +346,21 @@
         <li><a href="https://www.hubermanlab.com/topics/light-exposure-and-circadian-rhythm" target="_blank">Light Exposure and Circadian Rhythm (Huberman Lab / Stanford)</a></li>
         <li><a href="https://www.mayoclinic.org/diseases-conditions/insomnia/diagnosis-treatment/drc-20355173" target="_blank">Insomnia: Diagnosis and Treatment (Mayo Clinic)</a></li>
       </ol>
+    </div>
 
-      <footer>
-        <div class="medical-disclaimer">
+    <footer class="amh-footer">
+        <div class="amh-disclaimer medical-disclaimer">
           <p><strong>Medical disclaimer:</strong> The information on this page is provided for general educational purposes only and is not medical advice. It is not intended to diagnose, treat, cure, or prevent any disease, and it does not establish a physician–patient relationship.</p>
           <p>Do not apply this information to your specific situation without the oversight of a qualified clinician who can consider your full health history, medications, goals, preferences, and limitations. If you have urgent or severe symptoms, seek emergency care.</p>
-          <p style="margin: 0;"><strong>Copyright:</strong> © Dr. Bray at Archangel Michael Health <span id="amh-year">2025</span></p>
+          <p style="margin: 0;"><strong>Copyright:</strong> © Dr. Christopher Bray MD PhD at Archangel Michael Health <span id="amh-year">2025</span></p>
         </div>
 
-        <p><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine<br><strong>Last updated:</strong> <span id="amh-last-updated">—</span></p>
-      </footer>
-    </div>
+        <div class="amh-footer-meta">
+          <span><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine</span>
+          <span class="amh-dot">•</span>
+          <span><strong>Last updated:</strong> <span id="amh-last-updated">—</span></span>
+        </div>
+    </footer>
   </div>
 
   <script>

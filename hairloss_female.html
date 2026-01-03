@@ -11,14 +11,6 @@
   <!-- html2pdf for one-click PDF download -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
-  <!-- Minimal page-specific additions (kept small to preserve global consistency) -->
-  <style>
-    .plan-checklist { margin: 0.25rem 0 1.25rem 0; padding-left: 1.1rem; }
-    .plan-checklist li { margin: 0.25rem 0; }
-    .plan-checklist input[type="checkbox"] { transform: translateY(1px); margin-right: 0.5rem; }
-    .small-note { font-size: 0.95em; opacity: 0.92; }
-    .micro-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 1rem 0; }
-  </style>
 </head>
 
 <body>
@@ -83,8 +75,7 @@
 
       <div class="clinical-note">
         <strong>High-yield approach:</strong>
-        <div class="micro-divider"></div>
-        <ul class="amh-list">
+        <ul class="amh-list" style="margin-top: 12px;">
           <li><strong>First:</strong> classify the pattern (shedding vs thinning vs patchy vs scarring vs breakage).</li>
           <li><strong>Second:</strong> look for internal, reversible constraints (iron depletion, thyroid disease, protein/calorie deficit, medication triggers, hormonal imbalance, scalp inflammation).</li>
           <li><strong>Third:</strong> start evidence-based therapy early and stay consistent. Hair grows slowly; most plans require <strong>3–6 months</strong> for early changes and <strong>9–16 months</strong> for peak response.</li>
@@ -239,7 +230,7 @@
       </ul>
 
       <h4>How clinicians often interpret “hair-relevant” results</h4>
-      <p class="small-note">
+      <p class="amh-small">
         This is not a substitute for individualized medical interpretation; it is a practical framework used by many clinicians.
         Hair follicles often respond better when certain values are not merely “normal,” but more robustly supportive.
       </p>
@@ -290,7 +281,7 @@
       </ul>
 
       <h4>D) Medication triggers (examples; timeline matters)</h4>
-      <p class="small-note">
+      <p class="amh-small">
         Many medications have been associated with telogen effluvium in some patients. This does not mean the medication must be stopped; it means the timing should be discussed and alternatives considered when appropriate.
       </p>
       <ul class="amh-list symptom-list">
@@ -308,12 +299,12 @@
       </div>
 
       <h4>Stage 0 (today): classify the pattern</h4>
-      <ul class="plan-checklist">
-        <li><label><input type="checkbox">Primary issue is shedding (many full-length hairs with bulbs).</label></li>
-        <li><label><input type="checkbox">Primary issue is thinning/widening part (miniaturization).</label></li>
-        <li><label><input type="checkbox">Primary issue is patchy loss (smooth patches or irregular patches).</label></li>
-        <li><label><input type="checkbox">Primary issue is scalp symptoms (itch/burn/pain/scale/redness).</label></li>
-        <li><label><input type="checkbox">Primary issue is breakage/fragility (short broken pieces, no length retention).</label></li>
+      <ul class="amh-list symptom-list">
+        <li><strong>Shedding:</strong> many full-length hairs with bulbs.</li>
+        <li><strong>Thinning/widening part:</strong> miniaturization pattern.</li>
+        <li><strong>Patchy loss:</strong> smooth patches or irregular patches.</li>
+        <li><strong>Scalp symptoms:</strong> itch/burn/pain/scale/redness.</li>
+        <li><strong>Breakage/fragility:</strong> short broken pieces, no length retention.</li>
       </ul>
 
       <h4>Stage 1 (first 2–4 weeks): remove obvious external drivers and stabilize physiology</h4>
@@ -875,12 +866,13 @@
         <li>Drake LA, et al. Nutritional supplements for hair loss: systematic review. JAMA Dermatology. <a href="https://jamanetwork.com/journals/jamadermatology/fullarticle/2798413" target="_blank" rel="noopener">https://jamanetwork.com/journals/jamadermatology/fullarticle/2798413</a></li>
               <li>Nutrafol. Products. <a href="https://nutrafol.com/products/" target="_blank" rel="noopener">https://nutrafol.com/products/</a></li>
 </ol>
+    </div>
 
-      <footer class="amh-footer">
+    <footer class="amh-footer">
         <div class="amh-disclaimer medical-disclaimer">
           <p><strong>Medical disclaimer:</strong> The information on this page is provided for general educational purposes only and is not medical advice. It is not intended to diagnose, treat, cure, or prevent any disease, and it does not establish a physician–patient relationship.</p>
           <p>Do not apply this information to your specific situation without the oversight of a qualified clinician who can consider your full health history, medications, goals, preferences, and limitations. If you have urgent or severe symptoms, seek emergency care.</p>
-          <p style="margin: 0;"><strong>Copyright:</strong> © Dr. Bray at Archangel Michael Health <span id="amh-year">2025</span></p>
+          <p style="margin: 0;"><strong>Copyright:</strong> © Dr. Christopher Bray MD PhD at Archangel Michael Health <span id="amh-year">2025</span></p>
         </div>
 
         <div class="amh-footer-meta">
@@ -888,8 +880,7 @@
           <span class="amh-dot">•</span>
           <span><strong>Last updated:</strong> <span id="amh-last-updated">—</span></span>
         </div>
-      </footer>
-    </div>
+    </footer>
   </div>
 
   <script>

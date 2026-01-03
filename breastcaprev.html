@@ -10,102 +10,6 @@
 
   <!-- html2pdf for one-click PDF download -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
-  <style>
-    /* Page-local table styling (requested) */
-    .amh-table-wrap { overflow-x: auto; }
-    table.amh-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 14px 0 8px 0;
-      font-size: 0.95rem;
-      line-height: 1.45;
-    }
-    table.amh-table th, table.amh-table td {
-      border: 1px solid var(--amh-border);
-      padding: 10px 10px;
-      vertical-align: top;
-    }
-    table.amh-table th {
-      background: var(--amh-bg-soft);
-      font-weight: 800;
-      text-align: left;
-    }
-    .amh-table-note {
-      font-size: 0.92rem;
-      color: var(--amh-text-soft);
-      margin-top: 6px;
-    }
-  
-    /* Infographics (click to expand) */
-    figure.amh-figure {
-      margin: 18px 0;
-    }
-    img.amh-infographic {
-      width: 100%;
-      height: auto;
-      max-width: 980px;
-      display: block;
-      margin: 12px auto 6px auto;
-      border-radius: 14px;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.12);
-      cursor: zoom-in;
-      border: 1px solid var(--amh-border);
-      background: #fff;
-    }
-    .amh-figcaption {
-      text-align: center;
-      font-size: 0.92rem;
-      color: var(--amh-text-soft);
-      margin: 0 auto;
-      max-width: 980px;
-    }
-    body.amh-modal-open {
-      overflow: hidden;
-    }
-    .amh-img-modal {
-      position: fixed;
-      inset: 0;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 22px;
-      background: rgba(0,0,0,0.88);
-      z-index: 9999;
-    }
-    .amh-img-modal.open {
-      display: flex;
-    }
-    .amh-img-modal img {
-      max-width: 96vw;
-      max-height: 92vh;
-      width: auto;
-      height: auto;
-      border-radius: 14px;
-      box-shadow: 0 18px 42px rgba(0,0,0,0.45);
-      cursor: zoom-out;
-      background: #fff;
-    }
-    .amh-img-close {
-      position: fixed;
-      top: 14px;
-      right: 14px;
-      width: 46px;
-      height: 46px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.25);
-      background: rgba(255,255,255,0.12);
-      color: #ffffff;
-      font-size: 28px;
-      line-height: 1;
-      cursor: pointer;
-    }
-    .amh-img-close:focus {
-      outline: 3px solid rgba(255,255,255,0.35);
-      outline-offset: 2px;
-    }
-
-  </style>
 </head>
 
 <body>
@@ -874,12 +778,13 @@
         <li>National Cancer Institute. Cancer Stat Facts: Female Breast Cancer (incidence and mortality context).: <a href="https://seer.cancer.gov/statfacts/html/breast.html" target="_blank" rel="noopener">https://seer.cancer.gov/statfacts/html/breast.html</a></li>
         <li>National Academies / Endocrine Society resources on endocrine-disrupting chemicals (EDCs) and health (background context).: <a href="https://www.endocrine.org/topics/edc" target="_blank" rel="noopener">https://www.endocrine.org/topics/edc</a></li>
       </ol>
+    </div>
 
-      <footer class="amh-footer">
+    <footer class="amh-footer">
         <div class="amh-disclaimer medical-disclaimer">
           <p><strong>Medical disclaimer:</strong> The information on this page is provided for general educational purposes only and is not medical advice. It is not intended to diagnose, treat, cure, or prevent any disease, and it does not establish a physician–patient relationship.</p>
           <p>Do not apply this information to your specific situation without the oversight of a qualified clinician who can consider your full health history, medications, goals, preferences, and limitations. If you have urgent or severe symptoms, seek emergency care.</p>
-          <p style="margin: 0;"><strong>Copyright:</strong> © Dr. Bray at Archangel Michael Health <span id="amh-year">2025</span></p>
+          <p style="margin: 0;"><strong>Copyright:</strong> © Dr. Christopher Bray MD PhD at Archangel Michael Health <span id="amh-year">2025</span></p>
         </div>
 
         <div class="amh-footer-meta">
@@ -887,8 +792,7 @@
           <span class="amh-dot">•</span>
           <span><strong>Last updated:</strong> <span id="amh-last-updated">—</span></span>
         </div>
-      </footer>
-    </div>
+    </footer>
   </div>
 
   <!-- Image modal (click an infographic to expand) -->

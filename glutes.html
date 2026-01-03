@@ -10,62 +10,6 @@
 
   <!-- html2pdf for one-click PDF download -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
-  <!-- Page-specific styles for infographic lightbox -->
-  <style>
-    /* Infographic lightbox (page-specific) */
-    .infographic-container { margin: 20px 0; text-align: center; }
-    .infographic-thumb {
-      max-width: 100%;
-      height: auto;
-      border-radius: 14px;
-      cursor: zoom-in;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .infographic-thumb:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
-    }
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-      background: rgba(0, 0, 0, 0.88);
-      z-index: 9999;
-    }
-    .lightbox.open { display: flex; }
-    .lightbox img {
-      max-width: 96vw;
-      max-height: 94vh;
-      border-radius: 12px;
-      cursor: zoom-out;
-    }
-    .lightbox-close {
-      position: fixed;
-      top: 14px;
-      right: 14px;
-      width: 46px;
-      height: 46px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      background: rgba(0, 0, 0, 0.55);
-      color: #fff;
-      font-size: 28px;
-      line-height: 44px;
-      cursor: pointer;
-    }
-    body.lightbox-open { overflow: hidden; }
-
-    @media print {
-      .infographic-container { page-break-inside: avoid; }
-      .infographic-thumb { max-height: 500px; width: auto; display: block; margin: 0 auto; box-shadow: none; border: 1px solid #ccc; }
-      .lightbox { display: none !important; }
-    }
-  </style>
 </head>
 
 <body>
@@ -172,18 +116,16 @@
         <strong>The Protocol:</strong> Restoration requires a phased approach. Jumping straight to heavy lifting without neural connection often reinforces bad patterns.
       </div>
 
-      <div class="infographic-container no-print">
-        <img src="https://docbraymd.github.io/amh/glute_exercises.jpg" alt="Glute Exercises Infographic - Click to enlarge" class="infographic-thumb" onclick="openLightbox()">
-        <p class="amh-muted amh-small" style="margin-top:8px;">
-          <span style="font-size:1.2em; vertical-align:middle;">🔍</span>
-          <strong>Click image to enlarge</strong> (Right-click to download)
-        </p>
-      </div>
-
-      <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-        <span class="close-btn">&times;</span>
-        <img class="lightbox-content" id="lightbox-img" src="https://docbraymd.github.io/amh/glute_exercises.jpg" alt="Full size infographic">
-      </div>
+      <figure class="amh-figure no-print" aria-label="Glute exercises infographic">
+        <img
+          class="amh-infographic"
+          src="https://docbraymd.github.io/amh/glute_exercises.jpg"
+          alt="Glute Exercises Infographic - Click to enlarge"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption class="amh-figcaption">Glute exercises summary (click the image to enlarge).</figcaption>
+      </figure>
 
       <h4>Phase 1: Activation &amp; Neuromuscular Re-education (Weeks 1-4)</h4>
       <p>
@@ -410,12 +352,13 @@
         <li>American Society of Plastic Surgeons. "BBL Safety Warning: Gluteal Fat Grafting." <a href="https://www.plasticsurgery.org/news/press-releases/plastic-surgery-societies-issue-urgent-warning-about-the-risks-associated-with-brazilian-butt-lifts" target="_blank" rel="noopener">https://www.plasticsurgery.org/news/press-releases/plastic-surgery-societies-issue-urgent-warning-about-the-risks-associated-with-brazilian-butt-lifts</a></li>
         <li>International Society of Sports Nutrition Position Stand: "Protein and Exercise." <a href="https://jissn.biomedcentral.com/articles/10.1186/s12970-017-0177-8" target="_blank" rel="noopener">https://jissn.biomedcentral.com/articles/10.1186/s12970-017-0177-8</a></li>
       </ol>
+    </div>
 
-      <footer class="amh-footer">
+    <footer class="amh-footer">
         <div class="amh-disclaimer medical-disclaimer">
           <p><strong>Medical disclaimer:</strong> The information on this page is provided for general educational purposes only and is not medical advice. It is not intended to diagnose, treat, cure, or prevent any disease, and it does not establish a physician–patient relationship.</p>
           <p>Do not apply this information to your specific situation without the oversight of a qualified clinician who can consider your full health history, medications, goals, preferences, and limitations. If you have urgent or severe symptoms, seek emergency care.</p>
-          <p style="margin: 0;"><strong>Copyright:</strong> © Dr. Bray at Archangel Michael Health <span id="amh-year">2025</span></p>
+          <p style="margin: 0;"><strong>Copyright:</strong> © Dr. Christopher Bray MD PhD at Archangel Michael Health <span id="amh-year">2025</span></p>
         </div>
 
         <div class="amh-footer-meta">
@@ -423,8 +366,13 @@
           <span class="amh-dot">•</span>
           <span><strong>Last updated:</strong> <span id="amh-last-updated">—</span></span>
         </div>
-      </footer>
-    </div>
+    </footer>
+  </div>
+
+  <!-- Image modal (click an infographic to expand) -->
+  <div class="amh-img-modal" id="amhImgModal" aria-hidden="true" role="dialog" aria-label="Expanded image">
+    <button class="amh-img-close" id="amhImgModalClose" type="button" aria-label="Close image">×</button>
+    <img id="amhImgModalImg" alt="" />
   </div>
 
   <script>
@@ -473,6 +421,65 @@
           e.preventDefault();
           scrollToId(target);
           history.replaceState(null, "", hash);
+        }
+      });
+
+      // ---- Click-to-expand infographics ----
+      var imgModal = document.getElementById("amhImgModal");
+      var imgModalImg = document.getElementById("amhImgModalImg");
+      var imgModalClose = document.getElementById("amhImgModalClose");
+
+      function openImgModal(src, alt) {
+        if (!imgModal || !imgModalImg) return;
+        imgModalImg.src = src;
+        imgModalImg.alt = alt || "";
+        imgModal.classList.add("open");
+        imgModal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("amh-modal-open");
+      }
+
+      function closeImgModal() {
+        if (!imgModal || !imgModalImg) return;
+        imgModal.classList.remove("open");
+        imgModal.setAttribute("aria-hidden", "true");
+        imgModalImg.src = "";
+        imgModalImg.alt = "";
+        document.body.classList.remove("amh-modal-open");
+      }
+
+      document.querySelectorAll("img.amh-infographic").forEach(function (img) {
+        img.setAttribute("role", "button");
+        img.setAttribute("tabindex", "0");
+
+        img.addEventListener("click", function () {
+          openImgModal(img.currentSrc || img.src, img.alt);
+        });
+
+        img.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            openImgModal(img.currentSrc || img.src, img.alt);
+          }
+        });
+      });
+
+      if (imgModal) {
+        imgModal.addEventListener("click", function (e) {
+          if (e.target === imgModal) closeImgModal();
+        });
+      }
+
+      if (imgModalImg) {
+        imgModalImg.addEventListener("click", closeImgModal);
+      }
+
+      if (imgModalClose) {
+        imgModalClose.addEventListener("click", closeImgModal);
+      }
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && imgModal && imgModal.classList.contains("open")) {
+          closeImgModal();
         }
       });
 
@@ -530,24 +537,6 @@
           });
       });
     })();
-
-    // ---- Lightbox Functionality ----
-    function openLightbox() {
-      var lightbox = document.getElementById('lightbox');
-      if (lightbox) lightbox.style.display = 'block';
-    }
-
-    function closeLightbox() {
-      var lightbox = document.getElementById('lightbox');
-      if (lightbox) lightbox.style.display = 'none';
-    }
-
-    // Close on Escape key
-    document.addEventListener('keydown', function(event) {
-      if (event.key === "Escape") {
-        closeLightbox();
-      }
-    });
   </script>
 </body>
 </html>

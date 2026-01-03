@@ -5,159 +5,56 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Decoding Your Immune System | Archangel Michael Health</title>
 
+  <!-- Shared stylesheet -->
   <link rel="stylesheet" href="https://docbraymd.github.io/amh/style_v2.css" />
 
-  <style>
-    /* Header logo */
-    .amh-logo-wrap{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      margin: 0 0 14px 0;
-    }
-    .amh-logo{
-      width: 110px;
-      height: auto;
-      display:block;
-      filter: drop-shadow(0 8px 18px rgba(0,0,0,0.22));
-    }
-
-    /* Action bar */
-    .action-bar{
-      display:flex;
-      gap:12px;
-      justify-content:center;
-      align-items:center;
-      margin-top:18px;
-      flex-wrap:wrap;
-    }
-    .amh-btn{
-      appearance:none;
-      border:1px solid rgba(255,255,255,0.35);
-      background:#16a085;
-      color:#fff;
-      padding:10px 14px;
-      border-radius:10px;
-      font-weight:700;
-      cursor:pointer;
-      transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
-    }
-    .amh-btn:hover{ transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,0.18); }
-    .amh-btn.secondary{
-      background:#34495e;
-      border-color: rgba(255,255,255,0.25);
-    }
-    .amh-btn:disabled{
-      opacity:0.65;
-      cursor:not-allowed;
-      transform:none;
-      box-shadow:none;
-    }
-
-    /* Table Styles */
-    .amh-table-wrap {
-      overflow-x: auto;
-      margin-top: 12px;
-      border: 1px solid #e0e0e0;
-      border-radius: 12px;
-    }
-    .amh-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.95rem;
-      background: #fff;
-    }
-    .amh-table th {
-      background: #f8f9fa;
-      color: #2c3e50;
-      font-weight: 700;
-      text-align: left;
-      padding: 12px;
-      border-bottom: 2px solid #e0e0e0;
-    }
-    .amh-table td {
-      padding: 12px;
-      border-bottom: 1px solid #eee;
-      vertical-align: top;
-      line-height: 1.5;
-    }
-    .amh-table tr:last-child td {
-      border-bottom: none;
-    }
-    .amh-table tr:nth-child(even) {
-      background-color: #fafafa;
-    }
-
-    /* Reference Links */
-    .references-block a {
-      color: var(--accent-teal);
-      text-decoration: none;
-      border-bottom: 1px dotted var(--accent-teal);
-    }
-    .references-block a:hover {
-      border-bottom: 1px solid var(--accent-teal);
-    }
-
-    .no-print{ display:block; }
-
-    /* Print: hide action UI; remove background gradients for clean PDF */
-    @media print{
-      .no-print{ display:none !important; }
-      body{ background:#fff !important; }
-      .main-container{ margin:0 !important; box-shadow:none !important; border-radius:0 !important; }
-      header{ background:#fff !important; color:#000 !important; border-bottom:2px solid #333 !important; }
-      header h2{ opacity:1 !important; }
-      .doctor-tag{ background:#fff !important; color:#000 !important; border:1px solid #333 !important; }
-      .amh-logo{ filter:none !important; width: 60px !important; } /* Force small logo on print */
-      a{ color:#000 !important; text-decoration:underline !important; }
-      .amh-table th { background: #eee !important; color: #000 !important; border-bottom: 1px solid #000 !important; }
-    }
-  </style>
-
+  <!-- html2pdf for one-click PDF download -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 
 <body>
-  <div class="main-container" id="pdf-root" role="document">
-    <header>
-      <div class="amh-logo-wrap">
-        <img class="amh-logo" src="https://docbraymd.github.io/amh/AMHLogo.png" alt="Archangel Michael Health logo" />
-      </div>
+  <div class="amh-page main-container" id="pdf-root" role="document">
+    <header class="amh-header">
+      <div class="amh-header-inner amh-header-centered">
+        <div class="amh-logo-wrap">
+          <img class="amh-logo" src="https://docbraymd.github.io/amh/AMHLogo.png" alt="Archangel Michael Health logo" />
+        </div>
 
-      <a href="https://archangelmichaelhealth.com/" class="amh-practice doctor-tag">Archangel Michael Health</a>
+        <a href="https://archangelmichaelhealth.com/" class="amh-practice doctor-tag">Archangel Michael Health</a>
 
-      <h1 id="page-title">Decoding Your Immune System</h1>
+        <h1 class="amh-title" id="page-title">Decoding Your Immune System</h1>
 
-      <h2>A Comprehensive Guide to Autoimmunity Testing &amp; Root Cause Solutions</h2>
+        <h2 class="amh-tagline">A Comprehensive Guide to Autoimmunity Testing &amp; Root Cause Solutions</h2>
 
-      <div class="byline">by Christopher L. Bray MD PhD</div>
+        <div class="byline">by Christopher L. Bray MD PhD</div>
 
-      <div class="action-bar no-print" aria-label="Actions">
-        <button class="amh-btn secondary" type="button" onclick="window.print()">
-          Print / Save as PDF
-        </button>
-        <button class="amh-btn" id="downloadPdfBtn" type="button">
-          Download PDF
-        </button>
+        <div class="action-bar amh-actions no-print" aria-label="Actions">
+          <button class="amh-btn amh-btn-secondary" type="button" onclick="window.print()">
+            Print / Save as PDF
+          </button>
+          <button class="amh-btn amh-btn-primary" id="downloadPdfBtn" type="button">
+            Download PDF
+          </button>
+        </div>
       </div>
     </header>
 
-    <div class="content-body">
+    <div class="amh-content content-body">
       
       <div class="toc no-print" aria-label="On this page">
-        <h4>On this page</h4>
-        <ul>
-          <li><button type="button" class="toc-btn" data-scroll="what-is-autoimmunity">1. What is Autoimmunity?</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="when-not-to-order">2. When NOT to Order</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="oa-strategy">3. Integrative Strategy: Osteoarthritis</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="inflammation">4. The Barometers: ESR &amp; CRP</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="ana-reflex">5. ANA &amp; Reflex Table</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="specific-antibodies">6. Specific Antibodies (Lupus/RA)</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="genetics">7. Genetic HLA Testing</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="root-causes">8. Root Causes &amp; Triggers</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="medications">9. Standard Medications</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="integrative-plan">10. Integrative Action Plan</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="references">References</button></li>
+        <h2>On this page</h2>
+        <ul class="amh-list">
+          <li><a href="#what-is-autoimmunity">What is Autoimmunity?</a></li>
+          <li><a href="#when-not-to-order">When NOT to Order</a></li>
+          <li><a href="#oa-strategy">Integrative Strategy: Osteoarthritis</a></li>
+          <li><a href="#inflammation">The Barometers: ESR &amp; CRP</a></li>
+          <li><a href="#ana-reflex">ANA &amp; Reflex Table</a></li>
+          <li><a href="#specific-antibodies">Specific Antibodies (Lupus/RA)</a></li>
+          <li><a href="#genetics">Genetic HLA Testing</a></li>
+          <li><a href="#root-causes">Root Causes &amp; Triggers</a></li>
+          <li><a href="#medications">Standard Medications</a></li>
+          <li><a href="#integrative-plan">Integrative Action Plan</a></li>
+          <li><a href="#references">References</a></li>
         </ul>
       </div>
 
@@ -529,32 +426,33 @@
       </div>
 
       <h3 id="references">References</h3>
-      <p class="references-block">
-        <strong>Scientific Literature &amp; Guidelines</strong><br>
-        1. <a href="https://www.ncbi.nlm.nih.gov/books/NBK537071/" target="_blank" rel="noopener">Biochemistry, Antinuclear Antibodies (ANA) - StatPearls - NCBI Bookshelf</a><br>
-        2. <a href="https://www.ifm.org/articles/rheumatoid-arthritis" target="_blank" rel="noopener">Windows of Opportunity for Preclinical Rheumatoid Arthritis - The Institute for Functional Medicine</a><br>
-        3. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4653962/" target="_blank" rel="noopener">Erythrocyte sedimentation rate and C-reactive protein - PMC</a><br>
-        4. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4529012/" target="_blank" rel="noopener">Mercury Exposure and Antinuclear Antibodies among Females of Reproductive Age: NHANES - NIH</a><br>
-        5. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5135624/" target="_blank" rel="noopener">Association between vitamin D deficiency and antinuclear antibodies - NIH</a><br>
-        6. <a href="https://journals.physiology.org/doi/full/10.1152/physrev.00003.2008" target="_blank" rel="noopener">Zonulin and Its Regulation of Intestinal Barrier Function - American Physiological Society</a><br>
-        7. <a href="https://www.arthritis.org/health-wellness/healthy-living/nutrition/anti-inflammatory/the-ultimate-arthritis-diet" target="_blank" rel="noopener">The Ultimate Arthritis Diet - Arthritis Foundation</a><br>
-        <br>
-        <strong>Patient Guides &amp; Fact Sheets</strong><br>
-        8. <a href="https://rheumatology.org/patients/antinuclear-antibodies-ana" target="_blank" rel="noopener">ACR Patient Fact Sheet on ANA</a>: A clear overview of what ANA tests mean, common patterns, and disease associations—ideal for beginners.<br>
-        9. <a href="https://my.clevelandclinic.org/health/diagnostics/ana-antinuclear-antibody-test" target="_blank" rel="noopener">Cleveland Clinic's Guide to the ANA Test</a>: A straightforward explanation of why the test is done and how to interpret results.<br>
-        10. <a href="https://www.med.unc.edu/medicine/rheumatology-allergy-immunology/patient-care/rheumatology-clinical-care/decoding-the-ana-a-guide-to-ana-testing/" target="_blank" rel="noopener">UNC School of Medicine's Decoding the ANA Guide</a>: Focuses on practical aspects of ANA testing, including limitations and follow-up steps.
-      </p>
+      <ol class="ref-list">
+        <li><a href="https://www.ncbi.nlm.nih.gov/books/NBK537071/" target="_blank" rel="noopener">Biochemistry, Antinuclear Antibodies (ANA) - StatPearls - NCBI Bookshelf</a></li>
+        <li><a href="https://www.ifm.org/articles/rheumatoid-arthritis" target="_blank" rel="noopener">Windows of Opportunity for Preclinical Rheumatoid Arthritis - The Institute for Functional Medicine</a></li>
+        <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4653962/" target="_blank" rel="noopener">Erythrocyte sedimentation rate and C-reactive protein - PMC</a></li>
+        <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4529012/" target="_blank" rel="noopener">Mercury Exposure and Antinuclear Antibodies among Females of Reproductive Age: NHANES - NIH</a></li>
+        <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5135624/" target="_blank" rel="noopener">Association between vitamin D deficiency and antinuclear antibodies - NIH</a></li>
+        <li><a href="https://journals.physiology.org/doi/full/10.1152/physrev.00003.2008" target="_blank" rel="noopener">Zonulin and Its Regulation of Intestinal Barrier Function - American Physiological Society</a></li>
+        <li><a href="https://www.arthritis.org/health-wellness/healthy-living/nutrition/anti-inflammatory/the-ultimate-arthritis-diet" target="_blank" rel="noopener">The Ultimate Arthritis Diet - Arthritis Foundation</a></li>
+        <li><a href="https://rheumatology.org/patients/antinuclear-antibodies-ana" target="_blank" rel="noopener">ACR Patient Fact Sheet on ANA</a>: A clear overview of what ANA tests mean, common patterns, and disease associations.</li>
+        <li><a href="https://my.clevelandclinic.org/health/diagnostics/ana-antinuclear-antibody-test" target="_blank" rel="noopener">Cleveland Clinic's Guide to the ANA Test</a>: A straightforward explanation of why the test is done and how to interpret results.</li>
+        <li><a href="https://www.med.unc.edu/medicine/rheumatology-allergy-immunology/patient-care/rheumatology-clinical-care/decoding-the-ana-a-guide-to-ana-testing/" target="_blank" rel="noopener">UNC School of Medicine's Decoding the ANA Guide</a>: Focuses on practical aspects of ANA testing, including limitations and follow-up steps.</li>
+      </ol>
+    </div>
 
-      <footer>
-        <div class="medical-disclaimer">
+    <footer class="amh-footer">
+        <div class="amh-disclaimer medical-disclaimer">
           <p><strong>Medical disclaimer:</strong> The information on this page is provided for general educational purposes only and is not medical advice. It is not intended to diagnose, treat, cure, or prevent any disease, and it does not establish a physician–patient relationship.</p>
           <p>Do not apply this information to your specific situation without the oversight of a qualified clinician who can consider your full health history, medications, goals, preferences, and limitations. If you have urgent or severe symptoms, seek emergency care.</p>
-          <p style="margin: 0;"><strong>Copyright:</strong> © Dr. Bray at Archangel Michael Health <span id="amh-year">2025</span></p>
+          <p style="margin: 0;"><strong>Copyright:</strong> © Dr. Christopher Bray MD PhD at Archangel Michael Health <span id="amh-year">2025</span></p>
         </div>
 
-        <p><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine<br><strong>Last updated:</strong> <span id="amh-last-updated">—</span></p>
-      </footer>
-    </div>
+        <div class="amh-footer-meta">
+          <span><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine</span>
+          <span class="amh-dot">•</span>
+          <span><strong>Last updated:</strong> <span id="amh-last-updated">—</span></span>
+        </div>
+    </footer>
   </div>
 
   <script>

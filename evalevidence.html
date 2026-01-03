@@ -8,116 +8,56 @@
   <!-- Shared stylesheet (GitHub Pages) -->
   <link rel="stylesheet" href="https://docbraymd.github.io/amh/style_v2.css" />
 
-  <!-- Minimal page-local styles for logo + action buttons + print behavior -->
-  <style>
-    /* Header logo */
-    .amh-logo-wrap{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      margin: 0 0 14px 0;
-    }
-    .amh-logo{
-      width: 110px;
-      height: auto;
-      display:block;
-      filter: drop-shadow(0 8px 18px rgba(0,0,0,0.22));
-    }
-
-    /* Action bar */
-    .action-bar{
-      display:flex;
-      gap:12px;
-      justify-content:center;
-      align-items:center;
-      margin-top:18px;
-      flex-wrap:wrap;
-    }
-    .amh-btn{
-      appearance:none;
-      border:1px solid rgba(255,255,255,0.35);
-      background:#16a085;
-      color:#fff;
-      padding:10px 14px;
-      border-radius:10px;
-      font-weight:700;
-      cursor:pointer;
-      transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
-    }
-    .amh-btn:hover{ transform: translateY(-1px); box-shadow: 0 8px 18px rgba(0,0,0,0.18); }
-    .amh-btn.secondary{
-      background:#34495e;
-      border-color: rgba(255,255,255,0.25);
-    }
-    .amh-btn:disabled{
-      opacity:0.65;
-      cursor:not-allowed;
-      transform:none;
-      box-shadow:none;
-    }
-    .no-print{ display:block; }
-
-    /* Print: hide action UI; remove background gradients for clean PDF */
-    @media print{
-      .no-print{ display:none !important; }
-      body{ background:#fff !important; }
-      .main-container{ margin:0 !important; box-shadow:none !important; border-radius:0 !important; }
-      header{ background:#fff !important; color:#000 !important; border-bottom:2px solid #333 !important; }
-      header h2{ opacity:1 !important; }
-      .doctor-tag{ background:#fff !important; color:#000 !important; border:1px solid #333 !important; }
-      .amh-logo{ filter:none !important; }
-      a{ color:#000 !important; text-decoration:underline !important; }
-    }
-  </style>
-
   <!-- html2pdf for one-click PDF download -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 
 <body>
-  <div class="main-container" id="pdf-root" role="document">
-    <header>
-      <!-- Logo -->
-      <div class="amh-logo-wrap">
-        <img class="amh-logo" src="https://docbraymd.github.io/amh/AMHLogo.png" alt="Archangel Michael Health logo" />
-      </div>
+  <div class="amh-page main-container" id="pdf-root" role="document">
+    <header class="amh-header">
+      <div class="amh-header-inner amh-header-centered">
+        <!-- Logo -->
+        <div class="amh-logo-wrap">
+          <img class="amh-logo" src="https://docbraymd.github.io/amh/AMHLogo.png" alt="Archangel Michael Health logo" />
+        </div>
 
-      <!-- Green pill: practice only -->
-      <a href="https://archangelmichaelhealth.com/" class="amh-practice doctor-tag">Archangel Michael Health</a>
+        <!-- Green pill: practice only -->
+        <a href="https://archangelmichaelhealth.com/" class="amh-practice doctor-tag">Archangel Michael Health</a>
 
-      <h1 id="page-title">Evaluating Healthcare Evidence</h1>
+        <h1 id="page-title" class="amh-title">Evaluating Healthcare Evidence</h1>
 
-      <!-- Shorter subtitle -->
-      <h2>A Clinical Guide for the Sophisticated Patient</h2>
+        <!-- Shorter subtitle -->
+        <h2 class="amh-tagline">A Clinical Guide for the Sophisticated Patient</h2>
 
-      <div class="byline">by Christopher L. Bray MD PhD</div>
+        <div class="byline">by Christopher L. Bray MD PhD</div>
 
-      <!-- Buttons -->
-      <div class="action-bar no-print" aria-label="Actions">
-        <button class="amh-btn secondary" type="button" onclick="window.print()">
-          Print / Save as PDF
-        </button>
-        <button class="amh-btn" id="downloadPdfBtn" type="button">
-          Download PDF
-        </button>
+        <!-- Buttons -->
+        <div class="action-bar no-print" aria-label="Actions">
+          <button class="amh-btn amh-btn-secondary" type="button" onclick="window.print()">
+            Print / Save as PDF
+          </button>
+          <button class="amh-btn amh-btn-primary" id="downloadPdfBtn" type="button">
+            Download PDF
+          </button>
+        </div>
       </div>
     </header>
 
-    <div class="content-body">
+    <div class="amh-content content-body">
       <p>
         At Archangel Michael Health, we operate on the principles of preventative medicine and treating problems early with common sense. However, in the 21st century, the greatest threat to your preventative health plan is often the "Infodemic"—a chaotic environment where peer-reviewed science competes for your attention against viral anecdotes and corporate marketing. To be an effective partner in your own healthcare, you must treat "Misinformation" as a condition to be diagnosed and managed.
       </p>
 
       <!-- TOC uses buttons + JS scrolling -->
       <div class="toc no-print" aria-label="On this page">
-        <h4>On this page</h4>
-        <ul>
-          <li><button type="button" class="toc-btn" data-scroll="presentation">1. Symptoms of Misinformation</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="diagnosis">2. Diagnosis & Hierarchy</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="root-causes">3. Root Causes</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="consequences">4. Consequences</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="treatment">5. Treatment Plan (Rx)</button></li>
-          <li><button type="button" class="toc-btn" data-scroll="references">References</button></li>
+        <h2>On this page</h2>
+        <ul class="amh-list">
+          <li><a href="#presentation">Symptoms of Misinformation</a></li>
+          <li><a href="#diagnosis">Diagnosis &amp; Hierarchy</a></li>
+          <li><a href="#root-causes">Root Causes</a></li>
+          <li><a href="#consequences">Consequences</a></li>
+          <li><a href="#treatment">Treatment Plan (Rx)</a></li>
+          <li><a href="#references">References</a></li>
         </ul>
       </div>
 
@@ -274,7 +214,7 @@
       </div>
 
       <h3 id="references">References</h3>
-      <ol style="padding-left: 20px; line-height: 1.6;">
+      <ol class="ref-list">
         <li>
           NIH Office of Dietary Supplements: <a href="https://ods.od.nih.gov/HealthInformation/How_To_Evaluate_Health_Information_on_the_Internet_Questions_and_Answers.aspx" target="_blank" rel="noopener">How to Evaluate Health Information on the Internet</a>
         </li>
@@ -291,17 +231,21 @@
           Ioannidis, J. P. (2005). <a href="https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.0020124" target="_blank" rel="noopener">Why most published research findings are false</a>. <em>PLOS Medicine</em>.
         </li>
       </ol>
+    </div>
 
-      <footer>
-        <div class="medical-disclaimer">
+    <footer class="amh-footer">
+        <div class="amh-disclaimer medical-disclaimer">
           <p><strong>Medical disclaimer:</strong> The information on this page is provided for general educational purposes only and is not medical advice. It is not intended to diagnose, treat, cure, or prevent any disease, and it does not establish a physician–patient relationship.</p>
           <p>Do not apply this information to your specific situation without the oversight of a qualified clinician who can consider your full health history, medications, goals, preferences, and limitations. If you have urgent or severe symptoms, seek emergency care.</p>
-          <p style="margin: 0;"><strong>Copyright:</strong> © Dr. Bray at Archangel Michael Health <span id="amh-year">2025</span></p>
+          <p style="margin: 0;"><strong>Copyright:</strong> © Dr. Christopher Bray MD PhD at Archangel Michael Health <span id="amh-year">2025</span></p>
         </div>
 
-        <p><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine<br><strong>Last updated:</strong> <span id="amh-last-updated">—</span></p>
-      </footer>
-    </div>
+        <div class="amh-footer-meta">
+          <span><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine</span>
+          <span class="amh-dot">•</span>
+          <span><strong>Last updated:</strong> <span id="amh-last-updated">—</span></span>
+        </div>
+    </footer>
   </div>
 
   <script>
