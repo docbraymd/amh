@@ -395,10 +395,13 @@ ul.amh-list li::before {
   margin-right: auto;
 }
 .ref-list {
-  margin: 10px 0 0 1.2rem;
-  padding: 0;
+  margin: 10px 0 0 21px;
+  padding-left: 25px;
+  line-height: 1.6;
 }
-.ref-list li { margin-bottom: 8px; }
+.ref-list li {
+  margin-bottom: 8px;
+}
 .references-block a,
 .ref-list a {
   text-decoration: underline;
