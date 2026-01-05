@@ -1,0 +1,902 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vitamin D Sun & Supplement Estimator | Archangel Michael Health</title>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#0f1a33;
+      --card2:#0d1730;
+      --text:#eef2ff;
+      --muted:#b7c0dd;
+      --muted2:#8f9abf;
+      --border:rgba(255,255,255,.12);
+      --accent:#7aa2ff;
+      --accent2:#60d394;
+      --warn:#f7b955;
+      --danger:#ff6b6b;
+      --shadow: 0 10px 25px rgba(0,0,0,.35);
+      --radius:16px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    body{
+      margin:0;
+      font-family:var(--sans);
+      background: radial-gradient(1200px 700px at 10% 10%, rgba(122,162,255,.22), transparent 60%),
+                  radial-gradient(1200px 700px at 90% 0%, rgba(96,211,148,.16), transparent 55%),
+                  radial-gradient(1000px 700px at 70% 90%, rgba(247,185,85,.12), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.45;
+    }
+    a{color:var(--accent); text-decoration:none;}
+    .wrap{max-width:1100px; margin:0 auto; padding:28px 16px 64px;}
+    header{
+      display:flex; gap:14px; align-items:flex-start; justify-content:space-between;
+      flex-wrap:wrap; margin-bottom:18px;
+    }
+    .title h1{margin:0; font-size:28px; letter-spacing:.2px;}
+    .title p{margin:6px 0 0; color:var(--muted); max-width:75ch;}
+    .pill{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:10px 12px; border-radius:999px;
+      background:rgba(255,255,255,.06); border:1px solid var(--border);
+      box-shadow: var(--shadow);
+      color:var(--muted);
+      font-size:13px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+    }
+    @media (min-width: 980px){
+      .grid{ grid-template-columns: 1.15fr .85fr; }
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .card .hd{
+      padding:14px 16px;
+      display:flex; align-items:flex-end; justify-content:space-between; gap:10px;
+      border-bottom:1px solid var(--border);
+      background:rgba(0,0,0,.12);
+    }
+    .card .hd h2{margin:0; font-size:16px;}
+    .card .hd .sub{margin:0; font-size:12px; color:var(--muted2);}
+    .card .bd{padding:14px 16px;}
+    .note{
+      padding:12px 14px; border:1px dashed var(--border); border-radius:12px;
+      background:rgba(0,0,0,.14); color:var(--muted);
+      font-size:13px;
+    }
+    .row{display:grid; grid-template-columns: 1fr; gap:10px;}
+    @media (min-width: 720px){
+      .row{ grid-template-columns: 1fr 1fr; }
+    }
+    label{display:block; font-size:13px; color:var(--muted); margin:0 0 6px;}
+    input[type="number"], input[type="text"], select{
+      width:100%;
+      background:rgba(0,0,0,.22);
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:10px 10px;
+      color:var(--text);
+      outline:none;
+      font-size:14px;
+    }
+    input[type="number"]{font-variant-numeric: tabular-nums;}
+    input:focus, select:focus{border-color: rgba(122,162,255,.55); box-shadow:0 0 0 3px rgba(122,162,255,.15);}
+    .help{margin:8px 0 0; color:var(--muted2); font-size:12px;}
+    .btnbar{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;}
+    button{
+      cursor:pointer;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:12px;
+      font-size:13px;
+    }
+    button:hover{border-color: rgba(255,255,255,.22); background:rgba(255,255,255,.08);}
+    .mini{
+      font-size:12px; color:var(--muted2);
+    }
+    .months{
+      display:grid; grid-template-columns: repeat(6, minmax(0,1fr)); gap:8px;
+    }
+    .mchk{
+      display:flex; gap:10px; align-items:center;
+      padding:10px 10px;
+      border:1px solid var(--border);
+      border-radius:12px;
+      background:rgba(0,0,0,.18);
+    }
+    .mchk input{width:18px; height:18px;}
+    .mchk span{font-size:13px; color:var(--muted);}
+    .tablewrap{overflow:auto; border:1px solid var(--border); border-radius:14px;}
+    table{border-collapse:collapse; width:100%; min-width:900px;}
+    th, td{border-bottom:1px solid rgba(255,255,255,.08); padding:10px 10px; vertical-align:top;}
+    th{
+      position:sticky; top:0;
+      background:rgba(15,26,51,.92);
+      backdrop-filter: blur(8px);
+      text-align:left;
+      font-size:12px;
+      color:var(--muted);
+      z-index:2;
+    }
+    td{font-size:13px;}
+    td.num{font-family:var(--mono); text-align:right; white-space:nowrap;}
+    td.desc{color:var(--muted); max-width:44ch;}
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(0,0,0,.18);
+      font-size:12px;
+      color:var(--muted);
+    }
+    .dot{width:10px; height:10px; border-radius:50%;}
+    .dot.ok{background:var(--accent2);}
+    .dot.warn{background:var(--warn);}
+    .dot.bad{background:var(--danger);}
+    .kpi{
+      display:grid; grid-template-columns: 1fr; gap:10px;
+    }
+    @media (min-width: 520px){
+      .kpi{ grid-template-columns: 1fr 1fr; }
+    }
+    .k{
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:12px 12px;
+      background:rgba(0,0,0,.14);
+    }
+    .k .t{font-size:12px; color:var(--muted2);}
+    .k .v{margin-top:6px; font-size:18px; font-family:var(--mono);}
+    .k .v small{font-size:12px; color:var(--muted2); font-family:var(--sans);}
+    .split{display:grid; grid-template-columns:1fr; gap:10px;}
+    @media (min-width: 900px){
+      .split{grid-template-columns: 1fr 1fr;}
+    }
+    .warnbox{
+      border:1px solid rgba(247,185,85,.28);
+      background:rgba(247,185,85,.10);
+      border-radius:14px;
+      padding:12px 12px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .dangerbox{
+      border:1px solid rgba(255,107,107,.30);
+      background:rgba(255,107,107,.10);
+      border-radius:14px;
+      padding:12px 12px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    footer{margin-top:16px; color:var(--muted2); font-size:12px;}
+    .muted{color:var(--muted);}
+    .mono{font-family:var(--mono);}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="title">
+        <h1>Vitamin D Sun & Supplement Estimator</h1>
+        <p>
+          A patient-facing calculator to (1) estimate daily vitamin D input from sun exposure, diet, and supplements, and (2) estimate the supplement dose or additional sun time needed to move toward a target <span class="mono">25(OH)D</span> level. This is an estimate only—confirm with a blood test and discuss individualized dosing with your clinician.
+        </p>
+      </div>
+      <div class="pill">
+        <span class="mono">Archangel Michael Health</span>
+        <span class="mini">Educational tool</span>
+      </div>
+    </header>
+
+    <div class="grid">
+      <section class="card">
+        <div class="hd">
+          <div>
+            <h2>Step 1 — Enter your core data</h2>
+            <p class="sub">This drives sun-strength, skin, age, and body-mass adjustments.</p>
+          </div>
+          <div class="btnbar">
+            <button type="button" id="btnReset">Reset example inputs</button>
+          </div>
+        </div>
+        <div class="bd">
+          <div class="row">
+            <div>
+              <label for="lat">Geographic latitude (degrees, whole number)</label>
+              <input id="lat" type="number" min="0" max="90" step="1" value="30" />
+              <div class="help">If unsure, search your city + “latitude”. Example: Gainesville, FL ≈ 29–30.</div>
+            </div>
+            <div>
+              <label for="age">Age (years)</label>
+              <input id="age" type="number" min="0" max="120" step="1" value="40" />
+              <div class="help">This model reduces vitamin D production with age.</div>
+            </div>
+            <div>
+              <label for="weight">Body weight (lb)</label>
+              <input id="weight" type="number" min="50" max="600" step="1" value="180" />
+              <div class="help">Heavier body mass reduces serum response per IU in this model.</div>
+            </div>
+            <div>
+              <label for="skin">Skin type factor (numeric)</label>
+              <input id="skin" type="number" min="0.5" max="12" step="0.1" value="2" />
+              <div class="help">
+                Example factors: 1.0 = lightest Caucasian; 1.5 = darker Caucasian; 2.0 = Mediterranean; 3.0 = Middle Eastern; 5–10 = Black (varies).
+              </div>
+            </div>
+          </div>
+
+          <div style="height:12px"></div>
+
+          <div class="card" style="background:rgba(0,0,0,.08); box-shadow:none;">
+            <div class="hd" style="background:transparent;">
+              <div>
+                <h2 style="font-size:15px;">Step 2 — Recent “warm months” with meaningful sun exposure</h2>
+                <p class="sub">Check each of the last 6 months that were warm enough to expose skin to strong sun.</p>
+              </div>
+              <div class="btnbar">
+                <button type="button" data-months="none">None</button>
+                <button type="button" data-months="some">Some</button>
+                <button type="button" data-months="most">Most</button>
+                <button type="button" data-months="all">All</button>
+              </div>
+            </div>
+            <div class="bd">
+              <div class="months" role="group" aria-label="Warm month selection (earliest to latest)">
+                <label class="mchk"><input type="checkbox" class="mflag" data-i="0" /><span>Month 1</span></label>
+                <label class="mchk"><input type="checkbox" class="mflag" data-i="1" /><span>Month 2</span></label>
+                <label class="mchk"><input type="checkbox" class="mflag" data-i="2" /><span>Month 3</span></label>
+                <label class="mchk"><input type="checkbox" class="mflag" data-i="3" /><span>Month 4</span></label>
+                <label class="mchk"><input type="checkbox" class="mflag" data-i="4" /><span>Month 5</span></label>
+                <label class="mchk"><input type="checkbox" class="mflag" data-i="5" /><span>Month 6</span></label>
+              </div>
+              <div class="help">
+                “Strong sun” here implies: direct skin exposure (no glass), sun fairly high in the sky, and avoiding sunburn. Your personal UV exposure can differ substantially based on time of day, clouds, shade, aerosols, sunscreen, and local UV index.
+              </div>
+            </div>
+          </div>
+
+          <div style="height:12px"></div>
+
+          <div class="card" style="background:rgba(0,0,0,.08); box-shadow:none;">
+            <div class="hd" style="background:transparent;">
+              <div>
+                <h2 style="font-size:15px;">Step 3 — Weekly sun exposure by clothing (“dress mode”)</h2>
+                <p class="sub">Enter minutes per week in strong sun for each mode during warm months.</p>
+              </div>
+            </div>
+            <div class="bd">
+              <div class="tablewrap" aria-label="Sun exposure table">
+                <table>
+                  <thead>
+                    <tr>
+                      <th style="width:120px;">Body surface %</th>
+                      <th>Dress mode description</th>
+                      <th style="width:150px;">Weekly minutes</th>
+                      <th style="width:160px;">Equiv daily minutes</th>
+                      <th style="width:170px;">Daily Vit D (IU)</th>
+                      <th style="width:190px;">Daily Vit D (IU), season-adjusted</th>
+                    </tr>
+                  </thead>
+                  <tbody id="sunRows"></tbody>
+                  <tfoot>
+                    <tr>
+                      <td colspan="4" class="desc"><strong>Total from sun</strong> (capped in this model)</td>
+                      <td class="num" id="sunTotalRaw">—</td>
+                      <td class="num" id="sunTotalAdj">—</td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+
+              <div style="height:10px"></div>
+
+              <div class="row">
+                <div>
+                  <label for="suppIU">Vitamin D from supplements (IU/day)</label>
+                  <input id="suppIU" type="number" min="0" max="50000" step="100" value="0" />
+                  <div class="help">If you take D3 intermittently, enter your <em>average</em> per day.</div>
+                </div>
+                <div>
+                  <label for="foodIU">Vitamin D from food (IU/day)</label>
+                  <input id="foodIU" type="number" min="0" max="5000" step="50" value="100" />
+                  <div class="help">Typical diet contributions are often modest unless fortified foods or fatty fish are frequent.</div>
+                </div>
+              </div>
+
+              <div style="height:12px"></div>
+              <div class="note">
+                This calculator uses a simplified physiologic model. If you want a definitive answer, the most reliable approach is a blood test for <span class="mono">25(OH)D</span> (and clinical interpretation in your context).
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="card">
+        <div class="hd">
+          <div>
+            <h2>Results</h2>
+            <p class="sub">Updated automatically as you change inputs.</p>
+          </div>
+        </div>
+        <div class="bd">
+          <div class="kpi">
+            <div class="k">
+              <div class="t">Full-body vitamin D production rate (IU/min) at your latitude (heuristic)</div>
+              <div class="v" id="kFullBody">—</div>
+            </div>
+            <div class="k">
+              <div class="t">Age-related production factor</div>
+              <div class="v" id="kAgeFactor">— <small>% of young-adult baseline</small></div>
+            </div>
+            <div class="k">
+              <div class="t">Season / recent warm-month factor</div>
+              <div class="v" id="kSeason">— <small>%</small></div>
+            </div>
+            <div class="k">
+              <div class="t">Effective total vitamin D input (model IU/day)</div>
+              <div class="v" id="kEffectiveIU">—</div>
+            </div>
+          </div>
+
+          <div style="height:10px"></div>
+
+          <div class="split">
+            <div class="k">
+              <div class="t">Estimated 25(OH)D level</div>
+              <div class="v"><span id="kNg">—</span> <small>ng/mL</small></div>
+              <div class="v" style="margin-top:2px;"><span id="kNmol">—</span> <small>nmol/L</small></div>
+              <div style="margin-top:10px;" class="badge" id="kStatus">
+                <span class="dot" id="kDot"></span>
+                <span id="kStatusText">—</span>
+              </div>
+            </div>
+            <div class="k">
+              <div class="t">Vitamin D status ranges (context)</div>
+              <div class="muted" style="font-size:13px; margin-top:10px;">
+                <div><span class="mono">0–10</span> ng/mL: Severely deficient</div>
+                <div><span class="mono">11–20</span>: Deficient</div>
+                <div><span class="mono">21–32</span>: Low-normal</div>
+                <div><span class="mono">33–49</span>: Normal</div>
+                <div><span class="mono">50–65</span>: Optimum (common functional target)</div>
+                <div><span class="mono">66–100</span>: High (but typically not toxic)</div>
+                <div><span class="mono">&gt;100</span>: Toxicity possible (clinical evaluation recommended)</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="height:14px"></div>
+
+          <div class="card" style="background:rgba(0,0,0,.10); box-shadow:none;">
+            <div class="hd" style="background:transparent;">
+              <div>
+                <h2 style="font-size:15px;">Planning — what might you need to reach a target?</h2>
+                <p class="sub">Uses the same model for “what-if” estimates.</p>
+              </div>
+            </div>
+            <div class="bd">
+              <div class="row">
+                <div>
+                  <label for="labNg">If you have a lab result, enter it (ng/mL, optional)</label>
+                  <input id="labNg" type="number" min="0" max="150" step="0.1" placeholder="Leave blank to use the estimate above" />
+                  <div class="help">If entered, the “gap-to-target” calculation is anchored to the lab value.</div>
+                </div>
+                <div>
+                  <label for="targetPreset">Target range preset</label>
+                  <select id="targetPreset">
+                    <option value="33,49">Normal (33–49 ng/mL)</option>
+                    <option value="50,65" selected>Optimum (50–65 ng/mL)</option>
+                    <option value="21,32">Low-normal (21–32 ng/mL)</option>
+                    <option value="66,80">High-normal (66–80 ng/mL)</option>
+                    <option value="custom">Custom</option>
+                  </select>
+                  <div class="help">Your clinician may set a different target based on your context (bone health, pregnancy, CKD, etc.).</div>
+                </div>
+              </div>
+
+              <div class="row" id="customRange" style="display:none; margin-top:10px;">
+                <div>
+                  <label for="tMin">Custom target minimum (ng/mL)</label>
+                  <input id="tMin" type="number" min="0" max="150" step="0.1" value="50" />
+                </div>
+                <div>
+                  <label for="tMax">Custom target maximum (ng/mL)</label>
+                  <input id="tMax" type="number" min="0" max="150" step="0.1" value="65" />
+                </div>
+              </div>
+
+              <div style="height:10px"></div>
+
+              <div class="split">
+                <div class="warnbox">
+                  <strong>Supplement estimate:</strong>
+                  <div style="margin-top:6px;">
+                    Additional D3 supplement to move toward the target midpoint:
+                    <div class="mono" style="font-size:18px; margin-top:6px;" id="planSupp">—</div>
+                    <div class="mini" id="planSuppNote" style="margin-top:6px;"></div>
+                  </div>
+                </div>
+
+                <div class="warnbox">
+                  <strong>Sun-time estimate:</strong>
+                  <div style="margin-top:10px;">
+                    <label for="planMode" style="margin-bottom:6px;">Add sun time using this dress mode</label>
+                    <select id="planMode"></select>
+                    <div class="mono" style="font-size:18px; margin-top:10px;" id="planSun">—</div>
+                    <div class="mini" id="planSunNote" style="margin-top:6px;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div style="height:10px"></div>
+
+              <div class="dangerbox" id="safetyBox" style="display:none;">
+                <strong>Safety flag:</strong>
+                <span id="safetyText"></span>
+              </div>
+
+              <footer>
+                Practical safety notes: avoid sunburn; start low and titrate; consider skin-cancer risk, photosensitizing medications, pregnancy, kidney disease, granulomatous disease, hyperparathyroidism, and sarcoidosis. If using higher-dose vitamin D, discuss monitoring (calcium, renal function, and repeat <span class="mono">25(OH)D</span>).
+              </footer>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    // ===== Constants derived from the reference spreadsheet logic =====
+    const LAT_TABLE = [
+      {lat:0,   iuPerMin:2000},
+      {lat:5,   iuPerMin:2250},
+      {lat:10,  iuPerMin:2500},
+      {lat:15,  iuPerMin:2250},
+      {lat:20,  iuPerMin:2500},
+      {lat:25,  iuPerMin:2250},
+      {lat:30,  iuPerMin:2000},
+      {lat:35,  iuPerMin:1625},
+      {lat:40,  iuPerMin:1250},
+      {lat:45,  iuPerMin:1180},
+      {lat:50,  iuPerMin:1110},
+      {lat:55,  iuPerMin:973},
+      {lat:60,  iuPerMin:835},
+      {lat:65,  iuPerMin:668},
+      {lat:70,  iuPerMin:500},
+      {lat:80,  iuPerMin:225},
+      {lat:85,  iuPerMin:112},
+      {lat:90,  iuPerMin:0}
+    ];
+
+    const DRESS_MODES = [
+      {key:"m1", frac:0.11, label:"Sun on arms and hands (short sleeves, slacks, hat)"},
+      {key:"m2", frac:0.18, label:"Face, neck, arms, hands (no hat)"},
+      {key:"m3", frac:0.32, label:"Face/neck/arms/hands + lower legs (shirt + shorts)"},
+      {key:"m4", frac:0.53, label:"Top half of body (stripped to waist)"},
+      {key:"m5", frac:0.73, label:"Whole body except one-piece bathing costume (ladies)"},
+      {key:"m6", frac:0.88, label:"Whole body except swim costume (men) / bikini (ladies)"},
+      {key:"m7", frac:1.00, label:"Whole body"},
+      {key:"m8", frac:null, label:"Optional custom dress mode (enter body surface %)"}
+    ];
+
+    // ===== Helpers =====
+    const $ = (id) => document.getElementById(id);
+
+    function clamp(x, lo, hi){
+      x = Number.isFinite(x) ? x : lo;
+      return Math.max(lo, Math.min(hi, x));
+    }
+
+    function fmt0(x){ return (Number.isFinite(x) ? Math.round(x).toLocaleString() : "—"); }
+    function fmt1(x){ return (Number.isFinite(x) ? (Math.round(x*10)/10).toLocaleString(undefined, {minimumFractionDigits:1, maximumFractionDigits:1}) : "—"); }
+
+    // Approximate VLOOKUP with TRUE using (lat + 2.5) bins
+    function iuPerMinFromLatitude(lat){
+      const adj = lat + 2.5;
+      let out = LAT_TABLE[0].iuPerMin;
+      for (const row of LAT_TABLE){
+        if (row.lat <= adj) out = row.iuPerMin;
+        else break;
+      }
+      return out;
+    }
+
+    function agePctFactor(age){
+      // Spreadsheet: MIN(100-(age-20), 100)
+      const raw = Math.min(100 - (age - 20), 100);
+      return clamp(raw, 0, 100);
+    }
+
+    function seasonPct(lat, warmFlags){
+      // Spreadsheet chain:
+      // J33 = MIN(100,110-lat)
+      // then each month: MIN(100, IF(Y, prev+30, prev*0.8))
+      let x = Math.min(100, 110 - lat);
+      for (const isWarm of warmFlags){
+        x = isWarm ? Math.min(100, x + 30) : Math.min(100, x * 0.8);
+      }
+      return clamp(x, 0, 100);
+    }
+
+    function sunDailyIU(weeklyMinutes, bodyFrac, fullBodyIuPerMin, agePct, skinFactor){
+      // Spreadsheet:
+      // MIN((weeklyMin*bodyFrac)*0.6*fullBody*agePct/100/7/skin, 10000*agePct/100*bodyFrac)
+      const prod = (weeklyMinutes * bodyFrac) * 0.6 * fullBodyIuPerMin * (agePct/100) / 7 / skinFactor;
+      const cap  = 10000 * (agePct/100) * bodyFrac;
+      return Math.min(prod, cap);
+    }
+
+    function levelNgFromEffectiveIU(J27){
+      // Spreadsheet:
+      // base = (J27/100)*0.4 + SQRT(J27/100)*4.2
+      // if J27 < 2000: add (2000-J27)/250
+      const base = (J27/100) * 0.4 + Math.sqrt(Math.max(J27,0)/100) * 4.2;
+      return (J27 < 2000) ? ((2000 - J27)/250 + base) : base;
+    }
+
+    function invertEffectiveIUForTargetNg(targetNg){
+      // Binary search for J27 such that levelNgFromEffectiveIU(J27) ~= targetNg
+      const t = clamp(targetNg, 0, 150);
+      let lo = 0, hi = 20000;
+      while (levelNgFromEffectiveIU(hi) < t && hi < 200000) hi *= 2;
+      for (let i=0; i<60; i++){
+        const mid = (lo + hi) / 2;
+        const y = levelNgFromEffectiveIU(mid);
+        if (y < t) lo = mid; else hi = mid;
+      }
+      return (lo + hi) / 2;
+    }
+
+    function statusFromNg(ng){
+      if (!Number.isFinite(ng)) return {label:"—", cls:"warn"};
+      if (ng <= 10) return {label:"Severely deficient (0–10)", cls:"bad"};
+      if (ng <= 20) return {label:"Deficient (11–20)", cls:"bad"};
+      if (ng <= 32) return {label:"Low-normal (21–32)", cls:"warn"};
+      if (ng <= 49) return {label:"Normal (33–49)", cls:"ok"};
+      if (ng <= 65) return {label:"Optimum (50–65)", cls:"ok"};
+      if (ng <= 100) return {label:"High (66–100)", cls:"warn"};
+      return {label:"Toxicity possible (>100)", cls:"bad"};
+    }
+
+    // ===== Build dynamic table =====
+    function buildSunTable(){
+      const tbody = $("sunRows");
+      tbody.innerHTML = "";
+      for (const m of DRESS_MODES){
+        const tr = document.createElement("tr");
+
+        const tdPct = document.createElement("td");
+        if (m.frac === null){
+          tdPct.innerHTML = `
+            <div style="display:flex; gap:8px; align-items:center;">
+              <input id="customPct" type="number" min="1" max="100" step="1" value="25"
+                     style="width:88px; padding:8px 8px; border-radius:10px;" />
+              <span class="muted">%</span>
+            </div>`;
+        } else {
+          tdPct.className = "num";
+          tdPct.textContent = Math.round(m.frac*100) + "%";
+        }
+
+        const tdDesc = document.createElement("td");
+        tdDesc.className = "desc";
+        tdDesc.textContent = m.label;
+
+        const tdWk = document.createElement("td");
+        tdWk.innerHTML = `<input id="wk_${m.key}" type="number" min="0" max="2000" step="5" value="0"
+                           style="width:140px; padding:8px 8px; border-radius:10px;" />`;
+
+        const tdDlyMin = document.createElement("td");
+        tdDlyMin.className = "num mono";
+        tdDlyMin.id = `dlyMin_${m.key}`;
+        tdDlyMin.textContent = "—";
+
+        const tdIU = document.createElement("td");
+        tdIU.className = "num mono";
+        tdIU.id = `rawIU_${m.key}`;
+        tdIU.textContent = "—";
+
+        const tdAdj = document.createElement("td");
+        tdAdj.className = "num mono";
+        tdAdj.id = `adjIU_${m.key}`;
+        tdAdj.textContent = "—";
+
+        tr.appendChild(tdPct);
+        tr.appendChild(tdDesc);
+        tr.appendChild(tdWk);
+        tr.appendChild(tdDlyMin);
+        tr.appendChild(tdIU);
+        tr.appendChild(tdAdj);
+        tbody.appendChild(tr);
+      }
+
+      // Planning mode dropdown mirrors dress modes, including custom
+      const sel = $("planMode");
+      sel.innerHTML = "";
+      for (const m of DRESS_MODES){
+        const opt = document.createElement("option");
+        opt.value = m.key;
+        opt.textContent = (m.frac===null) ? "Custom dress mode (use % above)" : `${Math.round(m.frac*100)}% — ${m.label}`;
+        sel.appendChild(opt);
+      }
+      sel.value = "m2";
+    }
+
+    // ===== Read inputs + compute =====
+    function readWarmFlags(){
+      return Array.from(document.querySelectorAll(".mflag")).map(chk => chk.checked);
+    }
+
+    function getModeFrac(modeKey){
+      const m = DRESS_MODES.find(x => x.key === modeKey);
+      if (!m) return null;
+      if (m.frac !== null) return m.frac;
+      const pct = parseFloat(($("customPct")?.value || "0"));
+      return clamp(pct, 0, 100) / 100;
+    }
+
+    function calcAll(){
+      const lat = clamp(parseFloat($("lat").value), 0, 90);
+      const age = clamp(parseFloat($("age").value), 0, 120);
+      const weight = clamp(parseFloat($("weight").value), 50, 600);
+      const skin = clamp(parseFloat($("skin").value), 0.5, 12);
+
+      const suppIU = clamp(parseFloat($("suppIU").value), 0, 50000);
+      const foodIU = clamp(parseFloat($("foodIU").value), 0, 5000);
+
+      const warmFlags = readWarmFlags();
+
+      const fullBody = iuPerMinFromLatitude(lat);
+      const agePct = agePctFactor(age);
+      const season = seasonPct(lat, warmFlags);
+
+      // Per-mode computations
+      let sunRawSum = 0;
+      const perMode = [];
+      for (const m of DRESS_MODES){
+        const wkMin = clamp(parseFloat(($(`wk_${m.key}`)?.value || "0")), 0, 2000);
+        const frac = getModeFrac(m.key);
+        const dlyMin = wkMin / 7;
+
+        let rawIU = 0;
+        if (frac > 0 && wkMin > 0){
+          rawIU = sunDailyIU(wkMin, frac, fullBody, agePct, skin);
+        }
+        const adjIU = rawIU * (season/100);
+
+        perMode.push({key:m.key, wkMin, frac, dlyMin, rawIU, adjIU});
+        sunRawSum += rawIU;
+      }
+
+      // Total sun cap (spreadsheet caps sum to 10000*agePct/100)
+      const sunRawTotalCapped = Math.min(sunRawSum, 10000*(agePct/100));
+      const sunAdjTotal = sunRawTotalCapped * (season/100);
+
+      // Effective total IU/day (J27)
+      const nonSun = suppIU + foodIU;
+      const effectiveIU = nonSun * 176 / weight + sunAdjTotal;
+
+      // Estimated level
+      const estNg = levelNgFromEffectiveIU(effectiveIU);
+      const estNmol = estNg * 2.5;
+
+      // Update UI - KPIs
+      $("kFullBody").textContent = fmt0(fullBody) + " IU/min";
+      $("kAgeFactor").textContent = fmt1(agePct);
+      $("kSeason").textContent = fmt1(season);
+      $("kEffectiveIU").textContent = fmt0(effectiveIU) + " IU/day (model)";
+
+      $("sunTotalRaw").textContent = fmt0(sunRawTotalCapped);
+      $("sunTotalAdj").textContent = fmt0(sunAdjTotal);
+
+      $("kNg").textContent = fmt1(estNg);
+      $("kNmol").textContent = fmt1(estNmol);
+
+      const st = statusFromNg(estNg);
+      $("kStatusText").textContent = st.label;
+      const dot = $("kDot");
+      dot.className = "dot " + (st.cls === "ok" ? "ok" : (st.cls === "bad" ? "bad" : "warn"));
+
+      // Update table rows
+      for (const m of perMode){
+        $(`dlyMin_${m.key}`).textContent = fmt1(m.dlyMin);
+        $(`rawIU_${m.key}`).textContent = fmt0(m.rawIU);
+        $(`adjIU_${m.key}`).textContent = fmt0(m.adjIU);
+      }
+
+      // ===== Planning =====
+      const preset = $("targetPreset").value;
+      const customWrap = $("customRange");
+      if (preset === "custom") customWrap.style.display = "grid";
+      else customWrap.style.display = "none";
+
+      let tMin, tMax;
+      if (preset === "custom"){
+        tMin = clamp(parseFloat($("tMin").value), 0, 150);
+        tMax = clamp(parseFloat($("tMax").value), 0, 150);
+      } else {
+        const parts = preset.split(",").map(x => parseFloat(x));
+        tMin = clamp(parts[0], 0, 150);
+        tMax = clamp(parts[1], 0, 150);
+      }
+      const tMid = (tMin + tMax) / 2;
+
+      // Supplement estimate (additional D3; anchored to a lab value if provided)
+      const targetEffIU = invertEffectiveIUForTargetNg(tMid);
+
+      const labNg = parseFloat($("labNg").value);
+      const hasLab = Number.isFinite(labNg) && labNg > 0;
+      const baselineNg = hasLab ? clamp(labNg, 0, 150) : estNg;
+      const baselineEffIU = hasLab ? invertEffectiveIUForTargetNg(baselineNg) : effectiveIU;
+
+      const deltaEffIU = targetEffIU - baselineEffIU; // effective IU/day gap to target midpoint
+
+      // If you prefer to reach the target by supplementing (and keeping sun habits steady),
+      // estimate the *additional* D3 needed beyond what you entered:
+      const addSuppIU = Math.max(0, deltaEffIU) * (weight/176);
+      const totalSuppIU = suppIU + addSuppIU;
+
+      if (deltaEffIU <= 0){
+        $("planSupp").textContent = "No additional supplement needed (at/above target midpoint)";
+      } else {
+        $("planSupp").textContent = `Add ~${fmt0(addSuppIU)} IU/day D3 (total supplement ~${fmt0(totalSuppIU)} IU/day)`;
+      }
+
+      // Dose rounding suggestion
+      const roundedAdd = Math.max(0, Math.round(addSuppIU/500) * 500);
+      const roundedTotal = Math.max(0, Math.round(totalSuppIU/500) * 500);
+
+      let suppNote = hasLab
+        ? `Baseline anchored to your lab value (${fmt1(baselineNg)} ng/mL). Target midpoint: ${fmt1(tMid)} ng/mL.`
+        : `Baseline anchored to the model estimate. Target midpoint: ${fmt1(tMid)} ng/mL.`;
+
+      if (deltaEffIU <= 0){
+        suppNote += " If you are consistently above target, discuss dose reduction and repeat testing with your clinician.";
+      } else {
+        suppNote += ` Rounded add-on estimate: ~${roundedAdd.toLocaleString()} IU/day (total ~${roundedTotal.toLocaleString()} IU/day). Common daily options: 1,000 • 2,500 • 5,000 IU.`;
+      }
+      $("planSuppNote").textContent = suppNote;
+
+      // Sun time needed (additional strong-sun exposure; keeps current food + supplement intake)
+      const addSunAdj = Math.max(0, deltaEffIU);
+
+      const planKey = $("planMode").value;
+      const planFrac = getModeFrac(planKey);
+      const safetyBox = $("safetyBox");
+      const safetyText = $("safetyText");
+      safetyBox.style.display = "none";
+      safetyText.textContent = "";
+
+      if (season <= 0.1){
+        $("planSun").textContent = "Not feasible (season factor near 0%)";
+        $("planSunNote").textContent = "With the selected latitude and month pattern, this model treats sun contribution as negligible.";
+      } else if (!(planFrac > 0)){
+        $("planSun").textContent = "Enter a custom body surface %";
+        $("planSunNote").textContent = "To compute required minutes, the model needs an exposed body surface fraction.";
+      } else if (addSunAdj <= 0.1){
+        $("planSun").textContent = "No additional sun time needed (in this model)";
+        $("planSunNote").textContent = "Current baseline is at/above the target midpoint estimate.";
+      } else {
+        // Convert adjusted IU need -> raw IU need, then to weekly minutes for the chosen mode
+        const addSunRawDaily = addSunAdj / (season/100);
+        const denom = (planFrac * 0.6 * fullBody * (agePct/100));
+        const addWeeklyMin = (denom > 0) ? (addSunRawDaily * 7 * skin / denom) : Infinity;
+
+        // Check mode cap (10000 * agePct/100 * bodyFrac)
+        const modeCapDaily = 10000 * (agePct/100) * planFrac;
+
+        if (addSunRawDaily > modeCapDaily + 1e-6){
+          $("planSun").textContent = "Not feasible via sun alone in this dress mode";
+          $("planSunNote").textContent = "This model caps production per mode/day. Consider supplementing, increasing exposed surface, or re-checking target.";
+        } else {
+          $("planSun").textContent = fmt0(addWeeklyMin) + " additional minutes/week";
+          $("planSunNote").textContent =
+            `Added time assumes “strong sun” and the selected dress mode. Equivalent: ~${fmt1(addWeeklyMin/7)} minutes/day.`;
+        }
+
+        // Safety flags (supplement-centric)
+        const highNg = hasLab ? Math.max(estNg, baselineNg) : estNg;
+
+        if (totalSuppIU > 10000){
+          safetyBox.style.display = "block";
+          safetyText.textContent = " Total supplemental vitamin D would exceed 10,000 IU/day in this estimate. Do not do this without clinician guidance and lab monitoring.";
+        } else if (totalSuppIU > 5000){
+          safetyBox.style.display = "block";
+          safetyText.textContent = " Total supplemental vitamin D is >5,000 IU/day. Consider discussing dose and monitoring with your clinician.";
+        } else if (highNg > 100){
+          safetyBox.style.display = "block";
+          safetyText.textContent = " 25(OH)D is >100 ng/mL (toxicity possible). Reduce intake and seek clinical evaluation.";
+        }
+      }
+    }
+
+    // ===== Wire up events =====
+    function wire(){
+      const inputs = [
+        "lat","age","weight","skin","suppIU","foodIU","labNg","targetPreset","tMin","tMax","planMode"
+      ];
+      for (const id of inputs){
+        $(id).addEventListener("input", calcAll);
+        $(id).addEventListener("change", calcAll);
+      }
+      document.querySelectorAll(".mflag").forEach(chk => {
+        chk.addEventListener("change", calcAll);
+      });
+
+      // Sun-table weekly minutes + custom pct
+      function attachSunInputs(){
+        for (const m of DRESS_MODES){
+          const el = $(`wk_${m.key}`);
+          if (el){
+            el.addEventListener("input", calcAll);
+            el.addEventListener("change", calcAll);
+          }
+        }
+        const c = $("customPct");
+        if (c){
+          c.addEventListener("input", calcAll);
+          c.addEventListener("change", calcAll);
+        }
+      }
+
+      attachSunInputs();
+
+      // Month presets
+      document.querySelectorAll("button[data-months]").forEach(btn=>{
+        btn.addEventListener("click", ()=>{
+          const mode = btn.getAttribute("data-months");
+          const flags = document.querySelectorAll(".mflag");
+          if (mode === "none"){
+            flags.forEach(chk => chk.checked = false);
+          } else if (mode === "some"){
+            flags.forEach((chk,i)=> chk.checked = (i===1 || i===3));
+          } else if (mode === "most"){
+            flags.forEach((chk,i)=> chk.checked = (i!==0));
+          } else if (mode === "all"){
+            flags.forEach(chk => chk.checked = true);
+          }
+          calcAll();
+        });
+      });
+
+      // Reset
+      $("btnReset").addEventListener("click", ()=>{
+        $("lat").value = 30;
+        $("age").value = 40;
+        $("weight").value = 180;
+        $("skin").value = 2;
+        $("suppIU").value = 0;
+        $("foodIU").value = 100;
+        $("labNg").value = "";
+        $("targetPreset").value = "50,65";
+        document.querySelectorAll(".mflag").forEach(chk => chk.checked = false);
+        DRESS_MODES.forEach(m => { const el = $(`wk_${m.key}`); if (el) el.value = 0; });
+        const c = $("customPct"); if (c) c.value = 25;
+        $("planMode").value = "m2";
+        calcAll();
+      });
+    }
+
+    // Init
+    buildSunTable();
+    wire();
+    calcAll();
+  </script>
+</body>
+</html>
