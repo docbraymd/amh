@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Dr. Bray’s “Real Food” Diet | Archangel Michael Health</title>
+<!-- Shared stylesheet -->
+<link href="style_v2.css" rel="stylesheet"/><style>:root{ --amh-max-width: 1200px; }
+/* =========================
+   RealFood page adaptations
+   (self-contained to avoid editing style_v2.css)
+   ========================= */
+
+.rf-top-panel { margin: 22px 0 30px; }
+.rf-subtitle { margin: 0 0 10px; font-weight: 600; color: var(--amh-text); }
+.rf-instructions { margin: 8px 0 0; color: var(--amh-text-muted); font-size: 0.98rem; }
+
+/* Toggle Switch & Pills */
+.toggle-switch-container{
+  display:flex; align-items:center; justify-content:center;
+  gap:12px; flex-wrap:wrap;
+  padding: 14px 12px;
+  border: 1px dashed var(--amh-border);
+  border-radius: 14px;
+  background: var(--amh-bg-page);
+  margin: 14px 0 16px;
+}
+.toggle-switch{ position: relative; display:inline-block; width: 60px; height: 32px; }
+.toggle-switch input{ opacity:0; width:0; height:0; }
+.toggle-switch .slider{
+  position:absolute; cursor:pointer; inset:0;
+  background:#d0d7de; border:1px solid var(--amh-border);
+  transition:.2s; border-radius: 999px;
+}
+.toggle-switch .slider:before{
+  position:absolute; content:""; height:26px; width:26px;
+  left:3px; top:2px;
+  background:#ffffff; border-radius:50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,.18);
+  transition:.2s;
+}
+.toggle-switch input:checked + .slider{
+  background: var(--amh-accent-teal);
+}
+.toggle-switch input:checked + .slider:before{
+  transform: translateX(28px);
+}
+
+/* Explicit Active/Inactive States for Pills */
+.toggle-switch-container .rf-mode-pill{
+  appearance:none;
+  border: 1px solid var(--amh-border);
+  background: #ffffff; /* White background for inactive */
+  color: #333333;      /* Dark text for inactive */
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.toggle-switch-container .rf-mode-pill.is-active{
+  background: #0F9D84 !important; /* Green background for active */
+  border-color: #0F9D84 !important;
+  color: #ffffff !important;      /* White text for active */
+}
+.toggle-switch-container .rf-mode-pill:focus-visible{
+  outline: 3px solid var(--amh-accent-teal);
+  outline-offset: 2px;
+}
+
+.stats-container{
+  display:flex; gap: 10px; flex-wrap:wrap;
+  justify-content:center;
+  margin: 12px 0 4px;
+}
+.key-stat{
+  display:inline-flex; align-items:center;
+  padding: 8px 12px;
+  background: var(--amh-bg-soft);
+  border: 1px solid var(--amh-border);
+  border-radius: 999px;
+  font-weight: 600;
+  color: var(--amh-text);
+  box-shadow: var(--amh-shadow-soft);
+}
+@keyframes rfPulse { 0%{ transform: translateY(0);} 50%{ transform: translateY(-1px);} 100%{ transform: translateY(0);} }
+
+.rf-tabs.nav-tabs{
+  display:flex; flex-wrap:wrap; gap: 10px;
+  justify-content:center;
+  margin: 16px 0 24px;
+}
+
+
+/* Plant-only vs include-animal-product content */
+.plant-option{ display: block; }
+.meat-option{ display: none; }
+.include-meat .plant-option{ display: none; }
+.include-meat .meat-option{ display: block; }
+
+/* Base tab behavior (screen) */
+.tab-content{ display:none; margin: 0 0 26px; }
+.tab-content.active{ display:block; }
+
+/* Cards inside each tab */
+.card.amh-card.rf-card{
+  padding: 22px;
+  margin: 0 0 18px;
+}
+.rf-card-mini{ padding: 18px; margin: 0 0 14px; }
+
+/* Grids */
+.food-grid, .nova-grid, .shopping-list{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 14px 0 8px;
+}
+.food-item, .nova-card{
+  background: var(--amh-bg-soft);
+  border: 1px solid var(--amh-border);
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: var(--amh-shadow-soft);
+}
+.food-item strong{ display:block; margin-bottom: 6px; }
+.food-item small{ color: var(--amh-text-muted); }
+
+/* Standardized Lists inside Food Items (for Shopping/Grains) */
+.food-item ul {
+    margin: 8px 0;
+    padding-left: 20px;
+    list-style-type: disc;
+}
+.food-item li {
+    margin-bottom: 4px;
+    line-height: 1.4;
+}
+
+/* Checklist */
+.checklist{
+  list-style:none;
+  padding:0;
+  margin: 14px 0 10px;
+}
+.checklist li{
+  display:flex;
+  align-items:flex-start;
+  gap: 10px;
+  padding: 12px 12px;
+  margin: 10px 0;
+  border: 1px solid var(--amh-border);
+  border-radius: 14px;
+  background: #ffffff;
+  cursor: pointer;
+  box-shadow: var(--amh-shadow-soft);
+}
+.checklist li:hover{ background: var(--amh-bg-soft); }
+.checklist .checkbox{
+  width: 22px; height: 22px;
+  border: 2px solid var(--amh-accent-teal);
+  border-radius: 6px;
+  display:flex; align-items:center; justify-content:center;
+  font-weight: 800;
+  flex: 0 0 22px;
+  margin-top: 1px;
+}
+.checklist li.completed{
+  border-color: rgba(15,157,132,.5);
+  background: rgba(15,157,132,.08);
+}
+.checklist li.completed .checkbox{
+  background: var(--amh-accent-teal);
+  color: #ffffff;
+}
+.checklist li.completed span,
+.checklist li.completed div{ opacity: .9; }
+.checklist li.completed{ text-decoration: none; }
+
+/* Callouts */
+.tip-box, .warning-box{
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin: 16px 0;
+  box-shadow: var(--amh-shadow-soft);
+  border: 1px solid var(--amh-border);
+  background: var(--amh-bg-soft);
+}
+.warning-box{
+  border-left: 6px solid #b33a3a;
+  background: #fff6f6;
+}
+.tip-box{
+  border-left: 6px solid var(--amh-accent-teal);
+}
+
+/* Plate */
+.plate-visual{ width:100%; max-width: 420px; margin: 18px auto; }
+.plate{
+  width:100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  position:relative;
+  overflow:hidden;
+  border: 8px solid #ffffff;
+  box-shadow: 0 10px 26px rgba(0,0,0,.14);
+  background: #ffffff;
+}
+.plate-section{
+  position:absolute;
+  display:flex; align-items:center; justify-content:center;
+  text-align:center;
+  padding: 12px;
+  cursor:pointer;
+  transition: opacity .15s ease-in-out, transform .15s ease-in-out;
+  font-weight: 700;
+}
+.plate-section:hover{ opacity:.92; transform: scale(1.01); }
+.vegetables-section{ width:100%; height:50%; bottom:0; background: rgba(15,157,132,.22); }
+.protein-section{ width:50%; height:50%; top:0; left:0; background: rgba(52,73,94,.18); }
+.grains-section{ width:50%; height:50%; top:0; right:0; background: rgba(217,164,0,.22); }
+.plate-section h3{ margin: 0; font-size: 1.4rem; }
+.plate-section p{ margin: 6px 0 0; font-weight: 700; }
+#plate-info{ margin-top: 14px; }
+
+/* Timeline (cooking workflow) */
+.timeline{ position:relative; margin: 18px 0; padding-left: 22px; }
+.timeline:before{
+  content:""; position:absolute; left: 8px; top: 0; bottom: 0;
+  width: 3px; background: rgba(15,157,132,.35); border-radius: 3px;
+}
+.timeline-item{ position:relative; padding-left: 16px; margin: 0 0 14px; }
+
+.timeline-marker{
+  position:absolute; left: -2px; top: 12px; /* Adjusted top alignment */
+  width: 18px; height: 18px; border-radius:50%;
+  background: var(--amh-accent-teal);
+  border: 3px solid #ffffff;
+  box-shadow: 0 3px 8px rgba(0,0,0,.18);
+  /* Removed text content styles from marker */
+}
+.timeline-content{ 
+    padding: 10px 12px; 
+    border: 1px solid var(--amh-border); 
+    border-radius: 14px; 
+    background:#ffffff; 
+}
+.timeline-content h4 {
+    margin: 0 0 4px 0;
+    color: var(--amh-accent-teal);
+    font-size: 1rem;
+}
+
+/* Progress */
+.progress-tracker{ margin: 16px 0; }
+.progress-item{ margin: 14px 0; }
+.progress-label{ display:flex; justify-content:space-between; font-weight: 700; margin-bottom: 6px; }
+.progress-bar{ height: 12px; border-radius: 999px; background: #e6eaee; overflow:hidden; border: 1px solid var(--amh-border); }
+.progress-fill{ height: 100%; width: 0%; border-radius: 999px; background: var(--amh-accent-teal); transition: width .35s ease; }
+
+/* Modals (screen) */
+.modal{
+  display:none;
+  position:fixed; inset: 0;
+  background: rgba(0,0,0,.55);
+  z-index: 9999;
+  padding: 28px 16px;
+  overflow:auto;
+}
+.modal-content{
+  max-width: 860px;
+  margin: 0 auto;
+  background:#ffffff;
+  border-radius: 18px;
+  padding: 22px;
+  border: 1px solid var(--amh-border);
+  box-shadow: 0 18px 48px rgba(0,0,0,.25);
+  position:relative;
+}
+.close-button{
+  position:absolute; top: 10px; right: 14px;
+  font-size: 28px; line-height: 28px;
+  cursor:pointer;
+  color: var(--amh-text-muted);
+}
+.close-button:hover{ color: var(--amh-text); }
+
+</style>
+</head>
+<body>
+<div class="amh-page main-container" id="pdf-root" role="document">
+<header class="amh-header">
+<div class="amh-header-inner amh-header-centered">
+<div class="amh-logo-wrap">
+<img alt="Archangel Michael Health logo" class="amh-logo" src="https://docbraymd.github.io/amh/AMHLogo.png"/>
+</div>
+<a class="amh-practice doctor-tag" href="https://archangelmichaelhealth.com/">Archangel Michael Health</a>
+<h1 class="amh-title" id="page-title">Dr. Bray’s “Real Food” Diet</h1>
+<h2 class="amh-tagline">Patient Guide: Evidence-Based Nutrition for Better Health</h2>
+<div class="byline">by Christopher L. Bray MD PhD</div>
+<!-- Actions removed as requested -->
+</div>
+</header>
+<div class="amh-content content-body"><p>This guide translates Dr. Bray’s “Real Food” approach into a practical, evidence-informed nutrition plan. It emphasizes whole foods, metabolic health, and sustainable habits. Use the tabs for interactive navigation.</p><div class="amh-card rf-top-panel"><p class="rf-subtitle">Evidence-Based Nutrition for Better Health</p><p class="rf-instructions no-print">Use the toggle and tabs below to personalize the guidance.</p><div class="toggle-switch-container no-print"><button aria-pressed="true" class="rf-mode-pill is-active" data-mode="plant" title="Show plant-only guidance" type="button">Plant-Only</button><label class="toggle-switch">
+<input id="meatToggle" type="checkbox"/>
+<span class="slider"></span>
+</label><button aria-pressed="false" class="rf-mode-pill" data-mode="meat" title="Include animal products where offered" type="button">Include Animal Products</button></div><div class="stats-container">
+<span class="key-stat">Up to 47% Lower Dementia Risk<sup>1</sup></span>
+<span class="key-stat">30% Lower Major Cardiac Events<sup>2</sup></span>
+<span class="key-stat">Up to 15% Lower Cancer Risk<sup>3</sup></span>
+<span class="key-stat">46% Lower Obesity Risk<sup>4</sup></span>
+<span class="key-stat">Up to 40% Lower Type 2 Diabetes Risk<sup>5</sup></span>
+</div></div><div class="nav-tabs no-print rf-tabs">
+<button class="amh-btn tab-button amh-btn-primary active" data-tab="foundation" onclick="showTab('foundation', this, true)" type="button">Foundation Foods</button>
+<button class="amh-btn tab-button amh-btn-secondary" data-tab="plate" onclick="showTab('plate', this, true)" type="button">Build Your Plate</button>
+<button class="amh-btn tab-button amh-btn-secondary" data-tab="grains" onclick="showTab('grains', this, true)" type="button">A World of Grains</button>
+<button class="amh-btn tab-button amh-btn-secondary" data-tab="cultural" onclick="showTab('cultural', this, true)" type="button">Cultural Adaptations</button>
+<button class="amh-btn tab-button amh-btn-secondary" data-tab="cooking" onclick="showTab('cooking', this, true)" type="button">Smart Cooking</button>
+<button class="amh-btn tab-button amh-btn-secondary" data-tab="shopping" onclick="showTab('shopping', this, true)" type="button">Shopping Guide</button>
+<button class="amh-btn tab-button amh-btn-secondary" data-tab="progress" onclick="showTab('progress', this, true)" type="button">Track Progress</button>
+</div><div class="tab-content active rf-tab-panel" id="foundation">
+<div class="card amh-card rf-card">
+<h2>Your Foundation Foods for Metabolic Health</h2>
+<h3>🥬 Plant Powerhouses</h3>
+<div class="food-grid">
+<div class="food-item">
+<h4>Non-Starchy Vegetables</h4>
+<p>Artichoke, arugula, asparagus, beets, bok choy, broccoli, cauliflower, leafy greens, mushrooms, onions, peppers, sea vegetables.</p>
+<small>✓ Focus on local &amp; seasonal</small>
+</div>
+<div class="food-item">
+<h4>Fruits</h4>
+<p>Focus on low-glycemic options. Berries (blueberries, raspberries, strawberries), cherries, grapefruit, pears, apples, plums, pomegranate seeds.</p>
+<small>✓ Rich in antioxidants</small>
+</div>
+<div class="food-item">
+<h4>Legumes</h4>
+<p>Black beans, chickpeas, edamame, kidney beans, lentils, green peas. Bean soups are excellent.</p>
+<small>✓ 15-18g protein per cup</small>
+</div>
+<div class="food-item">
+<h4>Nuts &amp; Seeds</h4>
+<p>Almonds, Brazil nuts, cashews, chia, flax, hazelnuts, hemp, macadamia, pecans, pistachios, pumpkin seeds, walnuts.</p>
+<small>✓ Healthy fats + protein</small>
+</div>
+<div class="food-item">
+<h4>Diverse Whole Grains</h4>
+<p>Amaranth, barley, brown rice, buckwheat, farro, millet, oats, quinoa, teff. </p>
+<small>✓ High in fiber</small>
+</div>
+<div class="food-item">
+<h4>Beverages</h4>
+<p>Filtered water, sparkling water, green tea (unsweetened), low-sodium vegetable juice, herbal teas.</p>
+<small>✓ Stay hydrated</small>
+</div>
+</div>
+<div class="meat-option">
+<h3>🥛 Mindful Animal Products (In Moderation)</h3>
+<div class="food-grid">
+<div class="food-item">
+<h4>Small, Oily Fish</h4>
+<p>Wild-caught anchovies, herring, mackerel, salmon, sardines.</p>
+<small>✓ 2-3x weekly</small>
+</div>
+<div class="food-item">
+<h4>Pasture-Raised &amp; Grass-Fed</h4>
+<p>Eggs, beef, buffalo, elk, lamb, venison. From local farms when possible.</p>
+<small>✓ Higher in nutrients</small>
+</div>
+<div class="food-item">
+<h4>Fermented Dairy</h4>
+<p>Kefir and plain Greek yogurt from grass-fed cows when possible.</p>
+<small>✓ Gut-healthy probiotics</small>
+</div>
+<div class="food-item">
+<h4>Grass-Fed Cheeses</h4>
+<p>Hard cheeses like Parmesan or aged cheddar in moderation.</p>
+<small>✓ Use as a flavor accent</small>
+</div>
+</div>
+</div>
+<h3>✨ Therapeutic Foods</h3>
+<div class="food-grid">
+<div class="food-item">
+<h4>Fermented Foods</h4>
+<p>Kimchi, sauerkraut, pickles, miso, natto, tempeh.</p>
+<small>✓ Excellent for gut health</small>
+</div>
+<div class="food-item">
+<h4>Herbs &amp; Spices</h4>
+<p>Cinnamon, cayenne, garlic, ginger, oregano, turmeric.</p>
+<small>✓ Anti-inflammatory properties</small>
+</div>
+<div class="food-item">
+<h4>Nutrient-Dense Additions</h4>
+<p>Spirulina, microgreens, sprouts, dark chocolate (70%+).</p>
+<small>✓ Packed with phytonutrients</small>
+</div>
+</div>
+<div class="tip-box">
+<strong>Key Principle:</strong> Focus on adding beneficial foods rather than restricting. Start with one change per week. Whenever possible, choose local and seasonal produce from a farmers' market to maximize nutrient density.
+                </div>
+</div>
+</div><div class="tab-content rf-tab-panel" id="plate">
+<div class="card amh-card rf-card">
+<h2>Build Your Power Plate</h2>
+<p>Click each section to learn more about optimal portions and food choices.</p>
+<div class="plate-visual">
+<div class="plate">
+<div class="vegetables-section plate-section" onclick="showPlateInfo('vegetables')">
+<div>
+<h3>50%</h3>
+<p>Non-Starchy<br/>Vegetables</p>
+</div>
+</div>
+<div class="protein-section plate-section" onclick="showPlateInfo('protein')">
+<div>
+<h3 class="plate-protein-percent">25%</h3>
+<p class="plate-protein-text">Plant Proteins<br/>&amp; Legumes</p>
+</div>
+</div>
+<div class="grains-section plate-section" onclick="showPlateInfo('grains')">
+<div>
+<h3>25%</h3>
+<p>Whole Grains<br/>or Starchy Veg</p>
+</div>
+</div>
+</div>
+</div>
+<div class="modal-buttons-container">
+<button class="amh-btn modal-button amh-btn-secondary" onclick="openModal('if-modal')" type="button">Understanding Intermittent Fasting</button>
+<button class="amh-btn modal-button amh-btn-secondary" onclick="openModal('fats-modal')" type="button">A Guide to Fats &amp; Oils</button>
+<button class="amh-btn modal-button amh-btn-secondary" onclick="openModal('processed-food-modal')" type="button">Understanding Processed Food</button>
+</div>
+<div class="tip-box" id="plate-info">
+<p>Click on any section of the plate above to learn about optimal food choices and portions for that category.</p>
+</div>
+<h3>Sample Meal Ideas</h3>
+<div class="checklist meal-ideas-checklist">
+<li class="checklist-item plant-option" onclick="toggleCheck(this)">
+<div class="checkbox"></div>
+<span><strong>Breakfast:</strong> Steel-cut oats + berries + walnuts + ground flax</span>
+</li>
+<li class="checklist-item meat-option" onclick="toggleCheck(this)">
+<div class="checkbox"></div>
+<span><strong>Breakfast:</strong> Two pasture-raised eggs with sautéed spinach and a side of avocado.</span>
+</li>
+<li class="checklist-item plant-option" onclick="toggleCheck(this)">
+<div class="checkbox"></div>
+<span><strong>Lunch:</strong> Chickpea, quinoa, and roasted vegetable bowl</span>
+</li>
+<li class="checklist-item meat-option" onclick="toggleCheck(this)">
+<div class="checkbox"></div>
+<span><strong>Lunch:</strong> Large salad with mixed greens, seasonal vegetables, and wild-caught salmon or sardines.</span>
+</li>
+<li class="checklist-item plant-option" onclick="toggleCheck(this)">
+<div class="checkbox"></div>
+<span><strong>Dinner:</strong> Lentil dal + brown rice + sautéed greens + kefir</span>
+</li>
+<li class="checklist-item meat-option" onclick="toggleCheck(this)">
+<div class="checkbox"></div>
+<span><strong>Dinner:</strong> A modest portion of grass-fed beef stir-fry with broccoli and bell peppers, served with quinoa.</span>
+</li>
+<li class="checklist-item" onclick="toggleCheck(this)">
+<div class="checkbox"></div>
+<span><strong>Snack:</strong> Apple slices + almond butter or hummus + vegetables</span>
+</li>
+</div>
+<h3>Daily Actions</h3>
+<div class="checklist daily-actions-checklist">
+<li onclick="toggleCheck(this)">
+<div class="checkbox"></div>
+<span>Minimal processed foods</span>
+</li>
+<li onclick="toggleCheck(this)">
+<div class="checkbox"></div>
+<span>Cook at home at least once</span>
+</li>
+<li onclick="toggleCheck(this)">
+<div class="checkbox"></div>
+<span>Drink primarily water, unsweetened tea, or coffee, avoiding all sweeteners.</span>
+</li>
+</div>
+<button class="amh-btn amh-btn-primary" onclick="calculateProgress()" type="button">Calculate My Progress Score</button>
+<div id="progress-result" style="margin-top: 20px;"></div>
+</div>
+</div><div class="tab-content rf-tab-panel" id="grains">
+<div class="card amh-card rf-card">
+<h2>A World of Whole Grains: Beyond Rice and Bread</h2>
+<p>Expand your palate and boost your nutrition by exploring these ancient and traditional grains from around the globe. They offer a wealth of fiber, protein, vitamins, and minerals that processed grains lack.</p>
+<div class="food-grid">
+<div class="food-item">
+<h4>Quinoa</h4>
+<p><strong>Origin:</strong> Andean region of South America.</p>
+<p>Complete protein, high in fiber, magnesium, B vitamins, iron, and potassium. Naturally gluten-free.</p>
+<small>✓ Bases for bowls, salads, soups</small>
+</div>
+<div class="food-item">
+<h4>Amaranth</h4>
+<p><strong>Origin:</strong> Ancient grain of the Aztecs in Mexico.</p>
+<p>Complete protein, rich in fiber, manganese, magnesium, phosphorus, and iron. Antioxidant rich.</p>
+<small>✓ Porridge, "popped", thickener</small>
+</div>
+<div class="food-item">
+<h4>Millet</h4>
+<p><strong>Origin:</strong> Africa and Asia.</p>
+<p>High in fiber, magnesium, and antioxidants. Gluten-free with low glycemic index.</p>
+<small>✓ Porridge, flatbreads, rice sub</small>
+</div>
+<div class="food-item">
+<h4>Teff</h4>
+<p><strong>Origin:</strong> Ethiopia and Eritrea.</p>
+<p>Leads all grains in calcium content. Excellent source of vitamin C, iron, protein, and fiber.</p>
+<small>✓ Injera, porridge</small>
+</div>
+<div class="food-item">
+<h4>Farro</h4>
+<p><strong>Origin:</strong> Middle East (Fertile Crescent).</p>
+<p>Very high in fiber, good protein, zinc, and magnesium. Helps stabilize blood sugar.</p>
+<small>✓ Salads, soups, risotto</small>
+</div>
+<div class="food-item">
+<h4>Sorghum</h4>
+<p><strong>Origin:</strong> Africa.</p>
+<p>Rich in antioxidants, fiber, and B vitamins. High tannins may slow sugar absorption.</p>
+<small>✓ Whole grain, popped, flour</small>
+</div>
+<div class="food-item">
+<h4>Barley</h4>
+<p><strong>Origin:</strong> Fertile Crescent.</p>
+<p>Excellent source of beta-glucan fiber (lowers cholesterol). Rich in selenium and B vitamins.</p>
+<small>✓ Soups, stews, side dish</small>
+</div>
+<div class="food-item">
+<h4>Flax</h4>
+<p><strong>Origin:</strong> Middle East.</p>
+<p>Best plant source of ALA omega-3. High in lignans and soluble fiber.</p>
+<small>✓ Ground (essential), baking</small>
+</div>
+<div class="food-item">
+<h4>Buckwheat</h4>
+<p><strong>Origin:</strong> Southeast Asia.</p>
+<p>Gluten-free pseudocereal. Good protein, fiber, magnesium, manganese. Contains rutin.</p>
+<small>✓ Soba noodles, kasha, pancakes</small>
+</div>
+<div class="food-item">
+<h4>Chia</h4>
+<p><strong>Origin:</strong> Mexico and Guatemala.</p>
+<p>Packed with fiber, ALA omega-3s, protein, and calcium. Forms gel in liquid.</p>
+<small>✓ Pudding, smoothies, baking</small>
+</div>
+<div class="food-item">
+<h4>Oats</h4>
+<p><strong>Origin:</strong> Near East.</p>
+<p>High beta-glucan fiber for cholesterol and blood sugar management.</p>
+<small>✓ Steel-cut or rolled (not instant)</small>
+</div>
+<div class="food-item">
+<h4>Brown Rice</h4>
+<p><strong>Origin:</strong> Asia.</p>
+<p>Retains bran and germ. More fiber, magnesium, and B vitamins than white rice.</p>
+<small>✓ Stir-fries, bowls, sides</small>
+</div>
+</div>
+</div>
+</div><div class="tab-content rf-tab-panel" id="cultural">
+<div class="card amh-card rf-card">
+<h2>Honor Your Cultural Food Traditions</h2>
+<p>Adapt proven health principles to your familiar flavors and preparation methods, using local and seasonal ingredients.</p>
+<div class="cultural-adaptation">
+<div class="culture-card amh-card rf-card-mini">
+<h4>🌍 Middle Eastern</h4>
+<ul>
+<li><strong>Legumes:</strong> Hummus, ful medames (fava bean stew), mujadara (lentils and rice/bulgur).</li>
+<li><strong>Salads:</strong> Tabbouleh (with bulgur), fattoush (salad with toasted bread).</li>
+<li><strong>Fermented:</strong> Labneh (strained yogurt), pickled turnips and cucumbers.</li>
+<li><strong>Herbs &amp; Spices:</strong> Use anti-inflammatory turmeric, sumac, and za'atar blends.</li>
+<li><strong>Swaps:</strong> Choose bulgur or freekeh over white rice. Grill meats like kebabs instead of frying.</li>
+</ul>
+</div>
+<div class="culture-card amh-card rf-card-mini">
+<h4>🌏 East &amp; Southeast Asian</h4>
+<ul>
+<li><strong>Soy:</strong> Tofu, tempeh, edamame as primary proteins.</li>
+<li><strong>Fermented:</strong> Kimchi, miso, natto for gut health.</li>
+<li><strong>Vegetables:</strong> Steamed bok choy, seaweed salads (wakame), sautéed gai lan (Chinese broccoli).</li>
+<li><strong>Soups:</strong> Miso soup, clear vegetable broths, Vietnamese pho with brown rice noodles.</li>
+<li><strong>Swaps:</strong> Use brown rice in congee or as a side. Choose steamed or lightly stir-fried dishes over deep-fried options.</li>
+</ul>
+</div>
+<div class="culture-card amh-card rf-card-mini">
+<h4>🌶️ Indian Subcontinent</h4>
+<ul>
+<li><strong>Lentils (Dal):</strong> A daily staple; cook masoor, toor, or moong dal.</li>
+<li><strong>Legumes:</strong> Chana masala (chickpeas), rajma (kidney beans).</li>
+<li><strong>Fermented:</strong> Dosa and idli (fermented rice/lentil batters), homemade yogurt (dahi).</li>
+<li><strong>Vegetables:</strong> Aloo gobi (potato-cauliflower), saag (leafy greens), bhindi masala (okra).</li>
+<li><strong>Spices:</strong> Turmeric, cinnamon, fenugreek, and cumin are excellent for metabolic health.</li>
+<li><strong>Swaps:</strong> Use brown rice or millets (like jowar, bajra) instead of white rice for biryani or khichdi.</li>
+</ul>
+</div>
+<div class="culture-card amh-card rf-card-mini">
+<h4>🌍 African</h4>
+<ul>
+<li><strong>Grains:</strong> Sorghum, millet, and teff are traditional, nutrient-dense staples.</li>
+<li><strong>Stews:</strong> Groundnut stew (peanut-based), Ethiopian misir wot (spicy red lentils).</li>
+<li><strong>Greens:</strong> Sukuma wiki (collard greens), moringa leaves, cassava leaves.</li>
+<li><strong>Legumes:</strong> Black-eyed peas, bambara beans are widely used.</li>
+<li><strong>Cooking:</strong> Favor one-pot stews and steaming methods.</li>
+<li><strong>Swaps:</strong> Make jollof rice with brown rice. Use teff for injera.</li>
+</ul>
+</div>
+<div class="culture-card amh-card rf-card-mini">
+<h4>🌎 Latin American</h4>
+<ul>
+<li><strong>Beans &amp; Grains:</strong> Gallo pinto (rice and beans), quinoa or amaranth-based soups (sopa de quinua).</li>
+<li><strong>Vegetables:</strong> Calabacitas (sautéed squash), nopalitos (cactus pads), jicama salad.</li>
+<li><strong>Proteins:</strong> Fresh ceviche (fish cured in citrus), black bean soups.</li>
+<li><strong>Salsas &amp; Sauces:</strong> Pico de gallo, guacamole, and tomatillo salsa are full of fresh ingredients.</li>
+<li><strong>Swaps:</strong> Choose whole corn or whole grain tortillas over flour. Steam tamales instead of frying.</li>
+</ul>
+</div>
+<div class="culture-card amh-card rf-card-mini">
+<h4>🏝️ Caribbean</h4>
+<ul>
+<li><strong>Staples:</strong> Rice and peas (made with kidney beans and coconut milk), plantains (baked or boiled, not fried).</li>
+<li><strong>Proteins:</strong> Stewed fish with herbs and peppers, jerk chicken (grilled), lentil stews.</li>
+<li><strong>Vegetables:</strong> Callaloo (leafy green), pumpkin, breadfruit, christophine (chayote squash).</li>
+<li><strong>Flavor Base:</strong> Use "green seasoning" (a blend of fresh herbs, peppers, and onions).</li>
+<li><strong>Swaps:</strong> Opt for brown rice. Emphasize grilled or stewed preparations over frying.</li>
+</ul>
+</div>
+</div>
+<div class="tip-box">
+<strong>Remember:</strong> Your cultural foods contain wisdom. We're enhancing tradition, not replacing it.
+                </div>
+</div>
+</div><div class="tab-content rf-tab-panel" id="cooking">
+<div class="card amh-card rf-card">
+<h2>Smart Cooking for Maximum Nutrition</h2>
+<h3>Best Cooking Methods (Ranked by Nutrient Retention)</h3>
+<div class="progress-tracker">
+<div class="progress-item">
+<div class="progress-label">
+<span>1. Raw/No Cooking</span>
+<span>~100% nutrients retained</span>
+</div>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 100%;">Highest</div>
+</div>
+</div>
+<div class="progress-item">
+<div class="progress-label">
+<span>2. Steaming</span>
+<span>~91% nutrients retained</span>
+</div>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 91%;">Best Choice</div>
+</div>
+</div>
+<div class="progress-item">
+<div class="progress-label">
+<span>3. Blanching</span>
+<span>~85-90% nutrients retained</span>
+</div>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 88%;">Excellent</div>
+</div>
+</div>
+<div class="progress-item">
+<div class="progress-label">
+<span>4. Light Sautéing (&lt; 175°C)</span>
+<span>~85% nutrients retained</span>
+</div>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 85%;">Very Good</div>
+</div>
+</div>
+<div class="progress-item">
+<div class="progress-label">
+<span>5. Pressure Cooking</span>
+<span>~80% nutrients retained</span>
+</div>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 80%;">Good</div>
+</div>
+</div>
+<div class="progress-item">
+<div class="progress-label">
+<span>6. Stir-frying</span>
+<span>~65-75% nutrients retained</span>
+</div>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 70%;">Good</div>
+</div>
+</div>
+<div class="progress-item">
+<div class="progress-label">
+<span>7. Baking/Roasting</span>
+<span>~60-75% nutrients retained</span>
+</div>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 68%;">Moderate</div>
+</div>
+</div>
+<div class="progress-item">
+<div class="progress-label">
+<span>8. Grilling</span>
+<span>~60-70% nutrients retained</span>
+</div>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 65%;">Moderate</div>
+</div>
+</div>
+<div class="progress-item">
+<div class="progress-label">
+<span>9. Braising</span>
+<span>~50-70% nutrients retained</span>
+</div>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 60%;">Moderate</div>
+</div>
+</div>
+<div class="progress-item">
+<div class="progress-label">
+<span>10. Slow Cooking</span>
+<span>~50-65% nutrients retained</span>
+</div>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 58%;">Use Sparingly</div>
+</div>
+</div>
+<div class="progress-item">
+<div class="progress-label">
+<span>11. Boiling</span>
+<span>~45-65% nutrients retained</span>
+</div>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 55%;">Use Sparingly</div>
+</div>
+</div>
+<div class="progress-item">
+<div class="progress-label">
+<span>12. Deep Boiling (long periods)</span>
+<span>~30-40% nutrients retained</span>
+</div>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 38%; background: linear-gradient(90deg, #ff6b6b, #ff8787);">Limit</div>
+</div>
+</div>
+<div class="progress-item">
+<div class="progress-label">
+<span>13. Deep Frying</span>
+<span>~25% nutrients retained</span>
+</div>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 25%; background: linear-gradient(90deg, #ff6b6b, #ff8787);">Avoid</div>
+</div>
+</div>
+<div class="progress-item">
+<div class="progress-label">
+<span>14. Refrying/Multiple Heating</span>
+<span>~20-35% nutrients retained</span>
+</div>
+<div class="progress-bar">
+<div class="progress-fill" style="width: 28%; background: linear-gradient(90deg, #ff6b6b, #ff8787);">Avoid</div>
+</div>
+</div>
+</div>
+<div class="tip-box" style="border-left-color: #943126; margin-top: 30px;">
+<h3 style="color: #943126;">⚠️ A Note on High-Temperature Cooking</h3>
+<p>While grilling and roasting can be flavorful, it's crucial to avoid charring or burning your food. Cooking at very high temperatures, especially over an open flame, can create harmful compounds like <strong>Polycyclic Aromatic Hydrocarbons (PAHs)</strong> and <strong>Heterocyclic Amines (HCAs)</strong>.</p>
+<p>These molecules form when fat and juices from meat drip onto a fire, creating smoke that coats the food, or when any food is cooked to the point of being blackened. Ingesting these compounds is linked to cellular damage and increased health risks. Many people enjoy the taste of charred food or cook at high temperatures to save time, but it's a practice best avoided for long-term health.</p>
+<p><strong>Your Goal:</strong> Cook food until it's done, aiming for a golden-brown color, not black. If parts of your food do get charred, it's best to cut those sections off before eating.</p>
+</div>
+<h3>Healthiest Oils &amp; Fats Selection Guide</h3>
+<div class="tip-box">
+<strong>Key Principle:</strong> Delicate MUFA and PUFA oils are best consumed fresh and protected from heat, light, and air to prevent damage. Look for cold-pressed, unrefined oils in dark bottles and store them properly.
+                </div>
+<div class="food-grid">
+<div class="food-item">
+<h4>Extra Virgin Olive Oil</h4>
+<p><strong>Nutrients:</strong> Rich in heart-healthy monounsaturated fats (oleic acid) and powerful antioxidants called polyphenols, which are anti-inflammatory.</p>
+<p><strong>Best For:</strong> Salad dressings, finishing dishes, light sautéing.</p>
+<small><strong>Smoke Point:</strong> ~175-190°C. Do not use for high-heat cooking.</small>
+</div>
+<div class="food-item">
+<h4>Avocado Oil</h4>
+<p><strong>Nutrients:</strong> High in monounsaturated fats and vitamin E. Also contains lutein, an antioxidant beneficial for eye health.</p>
+<p><strong>Best For:</strong> High-heat cooking, roasting, searing.</p>
+<small><strong>Smoke Point:</strong> ~270°C. A very stable oil for higher temperatures.</small>
+</div>
+<div class="food-item">
+<h4>Ghee (Clarified Butter)</h4>
+<p><strong>Nutrients:</strong> A source of fat-soluble vitamins A, E, and K2. Contains butyrate, a short-chain fatty acid that supports gut health.</p>
+<p><strong>Best For:</strong> Sautéing, roasting, and cooking at moderate to high temperatures.</p>
+<small><strong>Smoke Point:</strong> ~250°C. Lactose and casein are removed.</small>
+</div>
+<div class="food-item">
+<h4>Flaxseed Oil</h4>
+<p><strong>Nutrients:</strong> The best plant source of anti-inflammatory omega-3 fatty acids (ALA). Rich in lignans, which have antioxidant properties.</p>
+<p><strong>Best For:</strong> Salad dressings, smoothies, drizzling over finished foods.</p>
+<small><strong>No Heat:</strong> Very delicate. Never heat this oil. Must be refrigerated.</small>
+</div>
+<div class="food-item">
+<h4>Hemp Seed Oil</h4>
+<p><strong>Nutrients:</strong> Provides an ideal balance of omega-6 to omega-3 fatty acids (about 3:1). Also contains GLA, another beneficial fatty acid.</p>
+<p><strong>Best For:</strong> Finishing dishes, dressings, smoothies. Adds a nutty flavor.</p>
+<small><strong>No Heat:</strong> Delicate structure. Do not use for cooking. Refrigerate.</small>
+</div>
+<div class="food-item">
+<h4>Walnut Oil</h4>
+<p><strong>Nutrients:</strong> A good source of plant-based omega-3s (ALA) and rich in antioxidants that support brain health and reduce inflammation.</p>
+<p><strong>Best For:</strong> Vinaigrettes and drizzling over vegetables or pasta.</p>
+<small><strong>No Heat:</strong> Best used unheated to preserve its omega-3s. Refrigerate.</small>
+</div>
+</div>
+</div>
+</div><div class="tab-content rf-tab-panel" id="shopping">
+<div class="card amh-card rf-card">
+<h2>Strategic Shopping Guide</h2>
+<h3>Weekly Shopping List Template</h3>
+<div class="food-grid">
+<div class="food-item">
+<h4>Vegetables (Local &amp; Seasonal)</h4>
+<ul>
+    <li>Leafy Greens (kale, arugula)</li>
+    <li>Cruciferous (broccoli, cauliflower)</li>
+    <li>Artichokes, Asparagus, Beets</li>
+    <li>Mushrooms, Onions, Leeks</li>
+    <li>Sea Vegetables (nori, wakame)</li>
+    <li>Fermented Veggies (kimchi)</li>
+</ul>
+<small>✓ Prioritize fresh & organic</small>
+</div>
+<div class="food-item">
+<h4>Fruits (Low-Glycemic)</h4>
+<ul>
+    <li>Berries (fresh or frozen)</li>
+    <li>Apples, Pears, Plums</li>
+    <li>Cherries, Grapefruit</li>
+    <li>Pomegranate seeds</li>
+    <li>Kiwi, Apricots</li>
+    <li>Avocado</li>
+</ul>
+<small>✓ Whole fruit over juice</small>
+</div>
+<div class="food-item plant-option">
+<h4>Plant Proteins &amp; Legumes</h4>
+<ul>
+    <li>Dried Lentils, Chickpeas</li>
+    <li>Canned Beans (low-sodium)</li>
+    <li>Edamame (frozen)</li>
+    <li>Organic Tofu, Tempeh, Natto</li>
+    <li>Spirulina Powder</li>
+    <li>Plain Kefir/Yogurt</li>
+</ul>
+<small>✓ Combine for complete protein</small>
+</div>
+<div class="food-item meat-option">
+<h4>Quality Proteins</h4>
+<ul>
+    <li>Wild Sardines, Salmon, Mackerel</li>
+    <li>Pasture-Raised Eggs</li>
+    <li>Grass-Fed Beef or Venison</li>
+    <li>Dried Lentils &amp; Chickpeas</li>
+    <li>Grass-Fed Hard Cheese</li>
+    <li>Plain Kefir/Yogurt</li>
+</ul>
+<small>✓ Quality over quantity</small>
+</div>
+<div class="food-item">
+<h4>Whole Grains</h4>
+<ul>
+    <li>Steel-cut Oats, Quinoa</li>
+    <li>Barley, Buckwheat, Farro</li>
+    <li>Brown or Wild Rice</li>
+    <li>Millet or Teff</li>
+    <li>Sorghum</li>
+    <li>Amaranth</li>
+</ul>
+<small>✓ Intact grains are best</small>
+</div>
+<div class="food-item">
+<h4>Healthy Fats, Nuts &amp; Seeds</h4>
+<ul>
+    <li>Extra Virgin Olive Oil</li>
+    <li>Avocado, Avocado Oil</li>
+    <li>Walnuts, Almonds, Pecans</li>
+    <li>Ground Flaxseed, Chia Seeds</li>
+    <li>Hemp, Pumpkin, Sesame Seeds</li>
+    <li>Pistachios, Macadamia Nuts</li>
+</ul>
+<small>✓ Raw & unsalted</small>
+</div>
+<div class="food-item">
+<h4>Beverages, Herbs &amp; Spices</h4>
+<ul>
+    <li>Green Tea, Herbal Teas</li>
+    <li>Sparkling Mineral Water</li>
+    <li>Fresh Garlic &amp; Ginger</li>
+    <li>Turmeric &amp; Cinnamon</li>
+    <li>Oregano, Cayenne</li>
+    <li>Dark Chocolate (70%+)</li>
+</ul>
+<small>✓ Flavor without sugar</small>
+</div>
+</div>
+<h3>Budget &amp; Sourcing Tips</h3>
+<div class="tip-box">
+<ul>
+<li><strong>Check EWG's Guide:</strong> Refer to the <a href="https://www.ewg.org/foodnews/full-list.php" rel="noopener noreferrer" target="_blank">EWG's Dirty Dozen™ and Clean Fifteen™</a> lists to prioritize which organic produce to buy.</li>
+<li><strong>Shop at farmers' markets:</strong> Get the best prices on local, seasonal produce and connect with your farmer.</li>
+<li><strong>Buy in bulk:</strong> Dried beans, lentils, whole grains are often cheaper in bulk bins.</li>
+<li><strong>Frozen is great:</strong> Frozen fruits and vegetables are just as nutritious and can be more affordable.</li>
+</ul>
+</div>
+</div>
+</div><div class="tab-content rf-tab-panel" id="progress">
+<div class="card amh-card rf-card">
+<h2>Track Your Progress</h2>
+<h3>Your Journey Timeline</h3>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-marker"></div>
+<div class="timeline-content">
+<h4>Week 1-2</h4>
+<strong>Initial Changes:</strong> Energy improvements, better digestion, reduced cravings
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-marker"></div>
+<div class="timeline-content">
+<h4>Week 2-4</h4>
+<strong>Blood Sugar Stability:</strong> Fewer energy crashes, improved mood, better sleep
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-marker"></div>
+<div class="timeline-content">
+<h4>Month 2-3</h4>
+<strong>Weight Changes:</strong> 3-6 kg loss typical, clothes fitting better
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-marker"></div>
+<div class="timeline-content">
+<h4>Month 3-6</h4>
+<strong>Lab Improvements:</strong> HbA1c down 0.5-1.2%, cholesterol improved
+</div>
+</div>
+</div>
+<h3>Daily Goals Checklist</h3>
+<div class="checklist">
+<li onclick="toggleCheck(this)">
+<div class="checkbox"></div>
+<span>5+ servings of vegetables</span>
+</li>
+<li onclick="toggleCheck(this)">
+<div class="checkbox"></div>
+<span>1 serving of legumes</span>
+</li>
+<li onclick="toggleCheck(this)">
+<div class="checkbox"></div>
+<span>1 fermented food (kefir, yogurt, kimchi)</span>
+</li>
+<li onclick="toggleCheck(this)">
+<div class="checkbox"></div>
+<span>Whole grains instead of refined</span>
+</li>
+<li onclick="toggleCheck(this)">
+<div class="checkbox"></div>
+<span>Handful of nuts/seeds</span>
+</li>
+</div>
+</div>
+</div><div class="card rf-references amh-card rf-card" id="references">
+<h2>Scientific References</h2>
+<ol>
+<li><strong>Dementia Risk:</strong> Carrasco-Marín F, Parra-Soto S, Guerrero-Wyss M, et al. Adherence to Four Dietary Indices and the Risk of All-Cause and Cause-Specific Dementia: Findings From the UK Biobank Study. *Diabetes, Obesity &amp; Metabolism*. 2025;. doi:10.1111/dom.16609.</li>
+<li><strong>Cardiovascular Events:</strong> Estruch R, Ros E, Salas-Salvadó J, et al. Primary Prevention of Cardiovascular Disease with a Mediterranean Diet Supplemented with Extra-Virgin Olive Oil or Nuts. *The New England Journal of Medicine*. 2018;378(25):e34. doi:10.1056/NEJMoa1800389.</li>
+<li><strong>Cancer Risk:</strong> Capodici A, Mocciaro G, Gori D, et al. Cardiovascular Health and Cancer Risk Associated With Plant Based Diets: An Umbrella Review. *PloS One*. 2024;19(5):e0300711. doi:10.1371/journal.pone.0300711.</li>
+<li><strong>Obesity Risk:</strong> Berthy F, Toujgani H, Duquenne P, et al. Prospective Association of the EAT-Lancet Reference Diet With Body Weight Changes and Incidence of Overweight and Obesity in a French Cohort. *The American Journal of Clinical Nutrition*. 2025;:S0002-9165(25)00335-1. doi:10.1016/j.ajcnut.2025.06.013.</li>
+<li><strong>Type 2 Diabetes Risk:</strong> Rosenzweig JL, Bakris GL, Berglund LF, et al. Primary Prevention of ASCVD and T2DM in Patients at Metabolic Risk: An Endocrine Society* Clinical Practice Guideline. *The Journal of Clinical Endocrinology and Metabolism*. 2019;104(9):3939-3985. doi:10.1210/jc.2019-01338.</li>
+</ol>
+<p style="margin-top: 16px;"><strong>Additional Resources:</strong> <a href="https://realfood.gov/" target="_blank" rel="noopener">2025-2030 USDA Dietary Guidelines for Americans</a></p>
+</div>
+<div class="modal" id="if-modal">
+<div class="modal-content">
+<span class="close-button" onclick="closeModal('if-modal')">×</span>
+<h3>Understanding Intermittent Fasting (IF)</h3>
+<p>Intermittent Fasting isn't about *what* you eat, but *when* you eat. It involves cycling between periods of eating and voluntary fasting.</p>
+<h4>What is Time-Restricted Eating (TRE)?</h4>
+<p>This is the most common form of IF. You simply limit your eating to a specific window of time each day. A popular example is the 16:8 method, where you fast for 16 hours and eat all your meals within an 8-hour window (e.g., 12:00 PM to 8:00 PM).</p>
+<h4>Potential Benefits:</h4>
+<ul>
+<li><strong>Improved Insulin Sensitivity:</strong> Fasting can help lower insulin levels, making your body's cells more sensitive to it, which is crucial for preventing type 2 diabetes.</li>
+<li><strong>Cellular Repair (Autophagy):</strong> During fasting, your body initiates a cellular cleanup process called autophagy, removing waste products and damaged cells.</li>
+<li><strong>Weight Management:</strong> By limiting your eating window, you may naturally consume fewer calories.</li>
+</ul>
+<h4>When to Use It &amp; When to Be Careful:</h4>
+<p><strong>Consider Using It:</strong> If you are looking to improve metabolic markers like blood sugar, insulin, and cholesterol, TRE can be a powerful tool. It's often easier to adopt than calorie-counting diets.</p>
+<p><strong>Be Careful / Consult a Doctor First:</strong> Do not practice IF without medical supervision if you:</p>
+<ul>
+<li>Are pregnant, breastfeeding, or trying to conceive.</li>
+<li>Have a history of eating disorders.</li>
+<li>Are underweight or have a physically demanding job.</li>
+<li>Have diabetes (especially Type 1) or take medications that affect blood sugar.</li>
+</ul>
+<p><strong>Always start slowly.</strong> You can begin with a 12-hour eating window and gradually shorten it as your body adapts.</p>
+</div>
+</div><div class="modal" id="fats-modal">
+<div class="modal-content">
+<span class="close-button" onclick="closeModal('fats-modal')">×</span>
+<h3>A Guide to Fats &amp; Oils</h3>
+<p>Fats are essential for health, but the type of fat matters immensely. Let's break them down.</p>
+<h4>Saturated Fats (Limit &amp; Choose Wisely)</h4>
+<p>These are typically solid at room temperature. While some can be part of a healthy diet in moderation, others are linked to increased LDL ("bad") cholesterol.</p>
+<ul>
+<li><strong>Stearic Acid:</strong> Found in cocoa butter, high-quality grass-fed animal fat, and shea butter. Appears to have a more neutral effect on cholesterol levels compared to other saturated fats.</li>
+<li><strong>Palmitic Acid:</strong> Found in palm oil, butter, cheese, and factory-farmed meat. Strongly associated with raising LDL cholesterol. Should be minimized.</li>
+<li><strong>Lauric Acid:</strong> High in coconut oil. It raises LDL cholesterol, but also appears to raise HDL ("good") cholesterol. Best used in moderation.</li>
+</ul>
+<h4>Monounsaturated Fats (MUFAs - Embrace)</h4>
+<p>These are heart-healthy fats. Main sources include olive oil (especially extra virgin), avocados and avocado oil, almonds, peanuts, and cashews.</p>
+<h4>Polyunsaturated Fats (PUFAs - Essential, but Balance is Key)</h4>
+<p>These include Omega-3 and Omega-6 fatty acids, which your body cannot produce.</p>
+<h5>Omega-3 Fatty Acids (Anti-Inflammatory)</h5>
+<ul>
+<li><strong>Short-Chain (ALA - Alpha-Linolenic Acid):</strong> Found in plant foods like flaxseeds, chia seeds, and walnuts. Your body can convert ALA into long-chain omega-3s, but the process is very inefficient.</li>
+<li><strong>Long-Chain (EPA &amp; DHA):</strong> Found primarily in fatty fish (salmon, sardines, mackerel) and algae oil. These are critical for brain health, reducing inflammation, and cardiovascular protection. This is the most potent form of omega-3.</li>
+</ul>
+<h5>Omega-6 Fatty Acids (Can be Pro-Inflammatory in Excess)</h5>
+<ul>
+<li><strong>Linoleic Acid (LA):</strong> The most common omega-6, found in many vegetable oils like soybean, corn, safflower, and sunflower oil, as well as nuts and seeds. While it is an essential fatty acid, modern diets often contain an excessive amount, which can promote inflammation if not balanced by adequate omega-3 intake.</li>
+<li><strong>Arachidonic Acid (AA):</strong> Found in meat, poultry, and eggs. It plays a role in inflammation. While some is necessary, high levels can be problematic. Grass-fed and pasture-raised animal products tend to have a better ratio of omega-6 to omega-3 fats.</li>
+</ul>
+<p><strong>The Goal:</strong> The key is not to eliminate omega-6s, but to improve the ratio of omega-6 to omega-3s by reducing processed seed oils and increasing your intake of omega-3-rich foods.</p>
+</div>
+</div><div class="modal" id="processed-food-modal">
+<div class="modal-content">
+<span class="close-button" onclick="closeModal('processed-food-modal')">×</span>
+<h3>Understanding Processed Food (NOVA Classification)</h3>
+<p>Not all processing is bad. The NOVA classification system helps categorize foods by their degree of processing, which is a strong indicator of their health impact.</p>
+<div class="nova-grid">
+<div class="nova-card nova-1">
+<h4>Group 1: Unprocessed or Minimally Processed Foods</h4>
+<p>These are whole foods in their natural (or near-natural) state. They form the foundation of a healthy diet.</p>
+<p><strong>Examples:</strong> Fresh fruits, vegetables, legumes, nuts, seeds, grains, and fresh cuts of meat, fish, and eggs.</p>
+</div>
+<div class="nova-card nova-2">
+<h4>Group 2: Processed Culinary Ingredients</h4>
+<p>These are substances derived from Group 1 foods by processes like pressing, refining, or grinding. They are used to prepare and cook Group 1 foods.</p>
+<p><strong>Examples:</strong> Olive oil, butter, sugar, salt, and vinegar.</p>
+</div>
+<div class="nova-card nova-3">
+<h4>Group 3: Processed Foods</h4>
+<p>These are relatively simple products made by adding ingredients like salt, sugar, or oil to Group 1 foods. The main purpose is to increase durability or enhance flavor.</p>
+<p><strong>Examples:</strong> Canned fish, freshly made breads, cheeses, and fruits in syrup.</p>
+</div>
+<div class="nova-card nova-4">
+<h4>Group 4: Ultra-Processed Foods (UPFs)</h4>
+<p>These are industrial formulations with five or more ingredients, including those not typically used in home cooking (like additives, preservatives, and artificial colors). They are designed to be hyper-palatable and should be minimized.</p>
+<p><strong>Examples:</strong> Soft drinks, cookies, chips, sugary cereals, and ready-to-eat meals.</p>
+</div>
+</div>
+<div style="margin-top: 20px; text-align: center;">
+    <a href="https://edu.archangelmichaelhealth.com/processed.html" target="_blank" class="amh-btn amh-btn-primary">View Full Ultraprocessed Food Informational Guide</a>
+</div>
+</div>
+</div></div>
+<footer class="amh-footer">
+<div class="amh-disclaimer medical-disclaimer">
+<p><strong>Medical disclaimer:</strong> The information on this page is provided for general educational purposes only and is not medical advice. It is not intended to diagnose, treat, cure, or prevent any disease, and it does not establish a physician–patient relationship.</p>
+<p>Do not apply this information to your specific situation without the oversight of a qualified clinician who can consider your full health history, medications, goals, preferences, and limitations. If you have urgent or severe symptoms, seek emergency care.</p>
+<p style="margin: 0;"><strong>Copyright:</strong> © Dr. Christopher Bray MD PhD at Archangel Michael Health <span id="amh-year">2025</span></p>
+</div>
+<div class="amh-footer-meta">
+<span><strong>Archangel Michael Health</strong> | Internal &amp; Integrative Medicine</span>
+<span class="amh-dot">•</span>
+<span><strong>Last updated:</strong> <span id="amh-last-updated">2025-12-30</span></span>
+</div>
+</footer>
+</div>
+<script>
+const meatToggle = document.getElementById('meatToggle');
+
+        meatToggle.addEventListener('change', function() {
+            document.body.classList.toggle('include-meat', this.checked);
+            var root = document.getElementById('pdf-root');
+            if (root) root.classList.toggle('include-meat', this.checked);
+            updatePlateVisual(this.checked);
+            syncModePills(this.checked);
+        });
+
+        function updatePlateVisual(includesMeat) {
+            const proteinText = document.querySelector('.plate-protein-text');
+            if (includesMeat) {
+                proteinText.innerHTML = 'Quality Proteins<br>& Legumes';
+            } else {
+                proteinText.innerHTML = 'Plant Proteins<br>& Legumes';
+            }
+        }
+
+        function syncModePills(includesMeat) {
+            document.querySelectorAll('.rf-mode-pill').forEach(function(btn){
+                var mode = btn.getAttribute('data-mode');
+                var active = includesMeat ? (mode === 'meat') : (mode === 'plant');
+                btn.classList.toggle('is-active', active);
+                btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+            });
+        }
+
+        function showTab(tabName, btnEl, shouldScroll) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Normalize all tab buttons
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+                btn.classList.remove('amh-btn-primary');
+                if (!btn.classList.contains('amh-btn-secondary')) btn.classList.add('amh-btn-secondary');
+            });
+
+            // Show selected tab
+            const target = document.getElementById(tabName);
+            if (!target) return;
+            target.classList.add('active');
+
+            // Activate the matching button
+            const btn = btnEl || document.querySelector('.tab-button[data-tab="' + tabName + '"]');
+            if (btn) {
+                btn.classList.add('active');
+                btn.classList.add('amh-btn-primary');
+                btn.classList.remove('amh-btn-secondary');
+            }
+
+            // Update URL hash (without jump)
+            try { history.replaceState(null, '', '#' + tabName); } catch (e) {}
+
+            // Optional scroll
+            if (shouldScroll) {
+                try { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (e) {}
+            }
+        }
+
+        function toggleCheck(element) {
+            element.classList.toggle('completed');
+            if (element.classList.contains('completed')) {
+                element.querySelector('.checkbox').innerHTML = '✓';
+            } else {
+                element.querySelector('.checkbox').innerHTML = '';
+            }
+        }
+        
+        function showPlateInfo(section) {
+            const infoBox = document.getElementById('plate-info');
+            const includeMeat = document.body.classList.contains('include-meat');
+
+            const plantProteinInfo = "Include protein-rich foods like lentils, chickpeas, black beans, tofu, or tempeh. Target 15-20g protein per meal for sustained energy and blood sugar control.";
+            
+            const meatProteinInfo = "Your protein can come from plants like lentils and beans, or high-quality animal sources in moderation. Favor wild, low-mercury fish (sardines, salmon) over other meats. If choosing poultry or beef, opt for organic, pasture-raised options from a trusted local source. Pasture-raised eggs are also a great choice."
+
+            const info = {
+                vegetables: {
+                    title: "Non-Starchy Vegetables (50% of plate)",
+                    content: "Fill half your plate with colorful vegetables like leafy greens, broccoli, cauliflower, bell peppers, zucchini, and tomatoes. These provide essential vitamins, minerals, and fiber with minimal calories. Aim for variety in colors - each color provides different beneficial compounds. Choose local and seasonal whenever possible."
+                },
+                protein: {
+                    title: "Quality Proteins (25% of plate)",
+                    content: includeMeat ? meatProteinInfo : plantProteinInfo
+                },
+                grains: {
+                    title: "Whole Grains or Starchy Vegetables (25% of plate)",
+                    content: "Choose nutrient-dense options like quinoa, farro, bulgur, brown rice, or starchy vegetables like sweet potatoes. These provide sustained energy and important B vitamins. Always choose whole grain over refined options."
+                }
+            };
+            
+            const selected = info[section];
+            infoBox.innerHTML = `<h4>${selected.title}</h4><p>${selected.content}</p>`;
+            infoBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        
+       function calculateProgress() {
+            // Select all checklist items on the plate tab
+            const allChecklistItems = document.querySelectorAll('#plate .checklist li');
+            
+            // Filter for only the VISIBLE items. 'offsetParent' is null for hidden elements.
+            const visibleItems = Array.from(allChecklistItems).filter(li => li.offsetParent !== null);
+            
+            // Count how many of the VISIBLE items are completed
+            const checkedVisibleItems = visibleItems.filter(li => li.classList.contains('completed'));
+            
+            const totalVisibleItems = visibleItems.length;
+            const totalCheckedVisibleItems = checkedVisibleItems.length;
+
+            const percentage = totalVisibleItems > 0 ? Math.round((totalCheckedVisibleItems / totalVisibleItems) * 100) : 0;
+            
+            let message = '';
+            let color = '';
+            
+            if (percentage >= 80) {
+                message = `Excellent! You're achieving ${percentage}% of your daily goals. You're on track for significant health improvements!`;
+                color = 'linear-gradient(135deg, #11998e, #38ef7d)';
+            } else if (percentage >= 60) {
+                message = `Good progress! You're achieving ${percentage}% of your daily goals. Keep building on these healthy habits!`;
+                color = 'linear-gradient(135deg, #667eea, #764ba2)';
+            } else if (percentage >= 40) {
+                message = `You're making progress with ${percentage}% of goals met. Focus on adding one more healthy habit this week!`;
+                color = 'linear-gradient(135deg, #fdbb2d, #22c1c3)';
+            } else {
+                message = `You've started with ${percentage}% of goals. Remember, small steps lead to big changes. Choose one goal to focus on today!`;
+                color = 'linear-gradient(135deg, #fc466b, #3f5efb)';
+            }
+            
+            document.getElementById('progress-result').innerHTML = `
+                <div style="background: ${color}; color: white; padding: 20px; border-radius: 15px;">
+                    <h3>Your Daily Progress: ${percentage}%</h3>
+                    <p>${message}</p>
+                </div>
+            `;
+        }
+
+
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+        
+        window.onclick = function(event) {
+            const modals = document.getElementsByClassName('modal');
+            for (let i = 0; i < modals.length; i++) {
+                if (event.target == modals[i]) {
+                    modals[i].style.display = "none";
+                }
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate key stats on load
+            const stats = document.querySelectorAll('.key-stat');
+            stats.forEach((stat, index) => {
+                setTimeout(() => {
+                    stat.style.animation = 'rfPulse 2s infinite';
+                }, index * 200);
+            });
+            // Set initial state
+            document.body.classList.toggle('include-meat', meatToggle.checked);
+            var root = document.getElementById('pdf-root');
+            if (root) root.classList.toggle('include-meat', meatToggle.checked);
+            updatePlateVisual(meatToggle.checked);
+            syncModePills(meatToggle.checked);
+
+            // Allow clicking the labels to change mode
+            document.querySelectorAll('.rf-mode-pill').forEach(function(btn){
+                btn.addEventListener('click', function(){
+                    var mode = btn.getAttribute('data-mode');
+                    meatToggle.checked = (mode === 'meat');
+                    meatToggle.dispatchEvent(new Event('change', { bubbles: true }));
+                });
+            });
+
+
+            // Open the correct tab if the URL contains a hash (e.g., #grains)
+            var hash = (window.location && window.location.hash) ? window.location.hash.slice(1) : "";
+            if (hash) {
+                var el = document.getElementById(hash);
+                if (el && el.classList && el.classList.contains('tab-content')) {
+                    showTab(hash, null, false);
+                }
+            }
+
+            // Modal usability: close on backdrop click and Escape
+            document.querySelectorAll('.modal').forEach(function (modal) {
+                modal.addEventListener('click', function (e) {
+                    if (e.target === modal) {
+                        modal.style.display = 'none';
+                    }
+                });
+            });
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    document.querySelectorAll('.modal').forEach(function (modal) {
+                        modal.style.display = 'none';
+                    });
+                }
+            });
+
+        });
+</script><script>
+(function () {
+      // ---- Last updated + year ----
+      var yearEl = document.getElementById("amh-year");
+      if (yearEl) {
+        try { yearEl.textContent = String(new Date().getFullYear()); } catch (e) {}
+      }
+
+      var updatedEl = document.getElementById("amh-last-updated");
+      if (updatedEl) {
+        var lm = document.lastModified; // usually reflects server file Last-Modified (works well on GitHub Pages)
+        var d = lm ? new Date(lm) : null;
+        if (d && !isNaN(d.getTime())) {
+          // ISO-like YYYY-MM-DD
+          var yyyy = d.getFullYear();
+          var mm = String(d.getMonth() + 1).padStart(2, "0");
+          var dd = String(d.getDate()).padStart(2, "0");
+          updatedEl.textContent = yyyy + "-" + mm + "-" + dd;
+        } else {
+          updatedEl.textContent = "—";
+        }
+      }
+    })();
+</script>
+</body>
+</html>
